@@ -9,6 +9,7 @@ import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.*;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
@@ -19,8 +20,13 @@ import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 
 public class Main extends Application {
 
@@ -174,16 +180,28 @@ public class Main extends Application {
 
     Group root3 = new Group(text1, text2,text3, text4);
 
+    InputStream stream = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\QuestionMark.png");
+    Image image = new Image(stream);
 
+    ImageView imageView = new ImageView();
 
+    imageView.setImage(image);
+
+    imageView.setX(1000);
+    imageView.setY(150);
+    imageView.setFitWidth(50);
+    imageView.setPreserveRatio(true);
+
+    Group root4 = new Group(imageView);
 
     Group root = new Group();
-        root.getChildren().add(root1);
-        root.getChildren().add(root2);
-        root.getChildren().add(root3);
+    root.getChildren().add(root1);
+    root.getChildren().add(root2);
+    root.getChildren().add(root3);
+    root.getChildren().add(root4);
 
-        primaryStage.setScene(new Scene(root, 800, 800, Color.BLACK));
-        primaryStage.show();
+    primaryStage.setScene(new Scene(root, 800, 800, Color.BLACK));
+    primaryStage.show();
 }
 
 
