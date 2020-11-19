@@ -11,6 +11,8 @@ import javafx.util.Duration;
 import javafx.animation.RotateTransition;  
 import javafx.animation.Interpolator;
 import javafx.scene.layout.Pane;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent; 
 
 public class PlayButton extends Application{
     
@@ -167,6 +169,16 @@ public class PlayButton extends Application{
         });
         polygon.setFill(Color.WHITE);
 
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
+            @Override 
+            public void handle(MouseEvent e) { 
+               System.out.println("Hello World"); 
+               polygon.setFill(Color.DARKSLATEBLUE);
+            } 
+        };  
+         //Registering the event filter 
+        polygon.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);   
+          
         Group root = new Group(arc1,arc4,arc3,arc2, circle);
         canvas.getChildren().add(root);
         
