@@ -30,11 +30,18 @@ import java.io.InputStream;
 
 public class Main extends Application {
 
+    public static Stage stage;
+
+    public Main() {
+        stage = new Stage();
+    }
+
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage stage1) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setFullScreen(true);
+        //stage.setTitle("Hello World");
+        stage.setFullScreen(true);
 
         Text text1 = new Text();
         text1.setText("C");
@@ -180,28 +187,46 @@ public class Main extends Application {
 
     Group root3 = new Group(text1, text2,text3, text4);
 
-    InputStream stream = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\QuestionMark.png");
-    Image image = new Image(stream);
+    InputStream stream1 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\QuestionMark.png");
+    Image image1 = new Image(stream1);
+    ImageView imageView1 = new ImageView();
+    imageView1.setImage(image1);
+    imageView1.setX(1000);
+    imageView1.setY(150);
+    imageView1.setFitWidth(50);
+    imageView1.setPreserveRatio(true);
+    InputStream stream2 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Achievements.png");
+    Image image2 = new Image(stream2);
+    ImageView imageView2 = new ImageView();
+    imageView2.setImage(image2);
+    imageView2.setX(200);
+    imageView2.setY(150);
+    imageView2.setFitWidth(50);
+    imageView2.setPreserveRatio(true);
 
-    ImageView imageView = new ImageView();
+    Group root4 = new Group(imageView1, imageView2);
 
-    imageView.setImage(image);
 
-    imageView.setX(1000);
-    imageView.setY(150);
-    imageView.setFitWidth(50);
-    imageView.setPreserveRatio(true);
+    PlayButton pb = new PlayButton();
+    pb.show();
+    Group root5 = pb.getRoot();
 
-    Group root4 = new Group(imageView);
+    GameModesBanner gmb = new GameModesBanner();
+    gmb.show();
+    Group root6 = gmb.getRoot();
+
+
 
     Group root = new Group();
     root.getChildren().add(root1);
     root.getChildren().add(root2);
     root.getChildren().add(root3);
     root.getChildren().add(root4);
+    root.getChildren().add(root5);
+    root.getChildren().add(root6);
 
-    primaryStage.setScene(new Scene(root, 800, 800, Color.BLACK));
-    primaryStage.show();
+    stage.setScene(new Scene(root, 800, 800, Color.BLACK));
+    stage.show();
 }
 
 
