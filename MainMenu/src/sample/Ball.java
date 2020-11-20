@@ -18,14 +18,15 @@ public class Ball extends Application{
     public void start(Stage stage) {
     	
     	Pane canvas = new Pane();
-    	Scene scene = new Scene(canvas, 300, 300, Color.ALICEBLUE);
+    	Scene scene = new Scene(canvas, 800, 800, Color.ALICEBLUE);
     	Circle ball = new Circle(10, Color.CADETBLUE);
-        ball.relocate(50, 5);
+        ball.relocate(500, 5);
         
         canvas.getChildren().add(ball);
         
         stage.setTitle("Animated Ball");
         stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
         int flag=0;
         int i=0;
