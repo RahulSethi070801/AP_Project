@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
@@ -39,7 +40,7 @@ class PlayButton
 //        Pane canvas = new Pane();
 
         Arc arc1 = new Arc();
-        arc1.setCenterX(700.0f);
+        arc1.setCenterX(750.0f);
         arc1.setCenterY(500.0f);
         arc1.setStartAngle(0.0f);
         arc1.setRadiusX(90.0f);
@@ -49,7 +50,7 @@ class PlayButton
         arc1.setRadiusY(90.0f);
 
         Arc arc2 = new Arc();
-        arc2.setCenterX(700.0f);
+        arc2.setCenterX(750.0f);
         arc2.setCenterY(500.0f);
         arc2.setRadiusX(90.0f);
         arc2.setRadiusY(90.0f);
@@ -59,7 +60,7 @@ class PlayButton
         arc2.setFill(Color.rgb(250, 225, 0));
 
         Arc arc3 = new Arc();
-        arc3.setCenterX(700.0f);
+        arc3.setCenterX(750.0f);
         arc3.setCenterY(500.0f);
         arc3.setRadiusX(90.0f);
         arc3.setRadiusY(90.0f);
@@ -69,7 +70,7 @@ class PlayButton
         arc3.setFill(Color.rgb(50, 219, 240));
 
         Arc arc4 = new Arc();
-        arc4.setCenterX(700.0f);
+        arc4.setCenterX(750.0f);
         arc4.setCenterY(500.0f);
         arc4.setRadiusX(90.0f);
         arc4.setRadiusY(90.0f);
@@ -79,7 +80,7 @@ class PlayButton
         arc4.setFill(Color.rgb(255, 1, 129));
 
         Arc arc5 = new Arc();
-        arc5.setCenterX(700.0f);
+        arc5.setCenterX(750.0f);
         arc5.setCenterY(500.0f);
         arc5.setRadiusX(70.0f);
         arc5.setRadiusY(70.0f);
@@ -89,7 +90,7 @@ class PlayButton
         arc5.setFill(Color.rgb(144, 13, 255));
 
         Arc arc6 = new Arc();
-        arc6.setCenterX(700.0f);
+        arc6.setCenterX(750.0f);
         arc6.setCenterY(500.0f);
         arc6.setRadiusX(70.0f);
         arc6.setRadiusY(70.0f);
@@ -99,7 +100,7 @@ class PlayButton
         arc6.setFill(Color.rgb (250, 225, 0));
 
         Arc arc7 = new Arc();
-        arc7.setCenterX(700.0f);
+        arc7.setCenterX(750.0f);
         arc7.setCenterY(500.0f);
         arc7.setRadiusX(70.0f);
         arc7.setRadiusY(70.0f);
@@ -109,7 +110,7 @@ class PlayButton
         arc7.setFill(Color.rgb(50, 219, 240));
 
         Arc arc8 = new Arc();
-        arc8.setCenterX(700.0f);
+        arc8.setCenterX(750.0f);
         arc8.setCenterY(500.0f);
         arc8.setRadiusX(70.0f);
         arc8.setRadiusY(70.0f);
@@ -119,7 +120,7 @@ class PlayButton
         arc8.setFill(Color.rgb(255, 1, 129));
 
         Arc arc9 = new Arc();
-        arc9.setCenterX(700.0f);
+        arc9.setCenterX(750.0f);
         arc9.setCenterY(500.0f);
         arc9.setRadiusX(50.0f);
         arc9.setRadiusY(50.0f);
@@ -129,7 +130,7 @@ class PlayButton
         arc9.setFill(Color.rgb(144, 13, 255));
 
         Arc arc10 = new Arc();
-        arc10.setCenterX(700.0f);
+        arc10.setCenterX(750.0f);
         arc10.setCenterY(500.0f);
         arc10.setRadiusX(50.0f);
         arc10.setRadiusY(50.0f);
@@ -139,7 +140,7 @@ class PlayButton
         arc10.setFill(Color.rgb (250, 225, 0));
 
         Arc arc11 = new Arc();
-        arc11.setCenterX(700.0f);
+        arc11.setCenterX(750.0f);
         arc11.setCenterY(500.0f);
         arc11.setRadiusX(50.0f);
         arc11.setRadiusY(50.0f);
@@ -149,7 +150,7 @@ class PlayButton
         arc11.setFill(Color.rgb(50, 219, 240));
 
         Arc arc12 = new Arc();
-        arc12.setCenterX(700.0f);
+        arc12.setCenterX(750.0f);
         arc12.setCenterY(500.0f);
         arc12.setRadiusX(50.0f);
         arc12.setRadiusY(50.0f);
@@ -159,19 +160,19 @@ class PlayButton
         arc12.setFill(Color.rgb(255, 1, 129));
 
         Circle circle = new Circle();
-        circle.setCenterX(700.0f);
+        circle.setCenterX(750.0f);
         circle.setCenterY(500.0f);
         circle.setRadius(80.0f);
-        circle.setFill(Color.rgb(39, 39, 39));
+        circle.setFill(Color.rgb(0, 0, 0));
 
         Circle circle1 = new Circle();
-        circle1.setCenterX(700.0f);
+        circle1.setCenterX(750.0f);
         circle1.setCenterY(500.0f);
         circle1.setRadius(60.0f);
-        circle1.setFill(Color.rgb(39, 39, 39));
+        circle1.setFill(Color.rgb(0, 0, 0));
 
         Circle circle2 = new Circle();
-        circle2.setCenterX(700.0f);
+        circle2.setCenterX(750.0f);
         circle2.setCenterY(500.0f);
         circle2.setRadius(40.0f);
         circle2.setFill(Color.rgb(39, 39, 39));
@@ -180,9 +181,9 @@ class PlayButton
 
         Polygon polygon = new Polygon();
         polygon.getPoints().addAll(new Double[]{
-            720.0, 500.0,
-            680.0, 520.0,
-            680.0, 480.0
+            770.0, 500.0,
+            730.0, 520.0,
+            730.0, 480.0
         });
         polygon.setFill(Color.WHITE);
 
@@ -214,7 +215,7 @@ class PlayButton
         RotateTransition rotate = new RotateTransition();  
         rotate.setAxis(Rotate.Z_AXIS);
         rotate.setByAngle(360);  
-        rotate.setCycleCount(50);  
+        rotate.setCycleCount(Timeline.INDEFINITE);
         rotate.setDuration(Duration.millis(2000));  
         rotate.setAutoReverse(false);
         rotate.setInterpolator(Interpolator.LINEAR);
@@ -224,7 +225,7 @@ class PlayButton
         RotateTransition rotate1 = new RotateTransition();  
         rotate1.setAxis(Rotate.Z_AXIS);
         rotate1.setByAngle(-360);  
-        rotate1.setCycleCount(50);  
+        rotate1.setCycleCount(Timeline.INDEFINITE);
         rotate1.setDuration(Duration.millis(2000));  
         rotate1.setAutoReverse(false);
         rotate1.setInterpolator(Interpolator.LINEAR);
@@ -234,7 +235,7 @@ class PlayButton
         RotateTransition rotate2 = new RotateTransition();  
         rotate2.setAxis(Rotate.Z_AXIS);
         rotate2.setByAngle(360);  
-        rotate2.setCycleCount(50);  
+        rotate2.setCycleCount(Timeline.INDEFINITE);
         rotate2.setDuration(Duration.millis(2000));  
         rotate2.setAutoReverse(false);
         rotate2.setInterpolator(Interpolator.LINEAR);

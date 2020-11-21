@@ -2,6 +2,7 @@ package sample;
 
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point3D;
@@ -44,7 +45,7 @@ class Ring
         arc1.setRadiusY(90.0f);
         arc1.setStartAngle(0.0f);
         arc1.setLength(90.0f);
-        arc1.setFill(Color.CYAN);
+        arc1.setFill(Color.rgb(144, 13, 255));
 
         Arc arc2 = new Arc();
         arc2.setCenterX(700.0f);
@@ -53,7 +54,7 @@ class Ring
         arc2.setRadiusY(90.0f);
         arc2.setStartAngle(90.0f);
         arc2.setLength(90.0f);
-        arc2.setFill(Color.PINK);
+        arc2.setFill(Color.rgb (250, 225, 0));
 
         Arc arc3 = new Arc();
         arc3.setCenterX(700.0f);
@@ -62,7 +63,7 @@ class Ring
         arc3.setRadiusY(90.0f);
         arc3.setStartAngle(180.0f);
         arc3.setLength(90.0f);
-        arc3.setFill(Color.YELLOW);
+        arc3.setFill(Color.rgb(50, 219, 240));
 
         Arc arc4 = new Arc();
         arc4.setCenterX(700.0f);
@@ -71,7 +72,7 @@ class Ring
         arc4.setRadiusY(90.0f);
         arc4.setStartAngle(270.0f);
         arc4.setLength(90.0f);
-        arc4.setFill(Color.DARKBLUE);
+        arc4.setFill(Color.rgb(255, 1, 129));
 
         //Setting the type of the arc
         arc1.setType(ArcType.ROUND);
@@ -88,7 +89,7 @@ class Ring
         rotateTransition.setDuration(Duration.millis(1000));
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
-        rotateTransition.setCycleCount(50);
+        rotateTransition.setCycleCount(Timeline.INDEFINITE);
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.play();

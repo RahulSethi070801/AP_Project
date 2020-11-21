@@ -2,6 +2,7 @@ package sample;
 
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point3D;
@@ -35,19 +36,19 @@ public class Design
         root = new Group();
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        Line line1 = new Line(200, 200, 300, 200);
+        Line line1 = new Line(250, 200, 350, 200);
         line1.setStrokeWidth(20);
-        Line line2 = new Line(300, 200, 400, 200);
+        Line line2 = new Line(350, 200, 450, 200);
         line2.setStrokeWidth(20);
-        Line line3 = new Line(300, 200, 300, 300);
+        Line line3 = new Line(350, 200, 350, 300);
         line3.setStrokeWidth(20);
-        Line line4 = new Line(300, 200, 300, 100);
+        Line line4 = new Line(350, 200, 350, 100);
         line4.setStrokeWidth(20);
 
-        line1.setStroke(Color.YELLOW);
-        line2.setStroke(Color.GREEN);
-        line3.setStroke(Color.CYAN);
-        line4.setStroke(Color.BLUE);
+        line1.setStroke(Color.rgb(144, 13, 255));
+        line2.setStroke(Color.rgb(250, 225, 0));
+        line3.setStroke(Color.rgb(50, 219, 240));
+        line4.setStroke(Color.rgb(255, 1, 129));
 
 
 
@@ -60,10 +61,10 @@ public class Design
         Line line8 = new Line(1100, 200, 1100, 100);
         line8.setStrokeWidth(20);
 
-        line5.setStroke(Color.YELLOW);
-        line6.setStroke(Color.GREEN);
-        line7.setStroke(Color.CYAN);
-        line8.setStroke(Color.BLUE);
+        line5.setStroke(Color.rgb(144, 13, 255));
+        line6.setStroke(Color.rgb(250, 225, 0));
+        line7.setStroke(Color.rgb(50, 219, 240));
+        line8.setStroke(Color.rgb(255, 1, 129));
 
 
 
@@ -73,7 +74,7 @@ public class Design
         rotateTransition1.setDuration(Duration.millis(2000));
         rotateTransition1.setNode(root1);
         rotateTransition1.setByAngle(360);
-        rotateTransition1.setCycleCount(50);
+        rotateTransition1.setCycleCount(Timeline.INDEFINITE);
         rotateTransition1.setAutoReverse(false);
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.play();
@@ -84,7 +85,7 @@ public class Design
         rotateTransition2.setDuration(Duration.millis(2000));
         rotateTransition2.setNode(root2);
         rotateTransition2.setByAngle(360);
-        rotateTransition2.setCycleCount(50);
+        rotateTransition2.setCycleCount(Timeline.INDEFINITE);
         rotateTransition2.setAutoReverse(false);
         rotateTransition2.setInterpolator(Interpolator.LINEAR);
         rotateTransition2.play();

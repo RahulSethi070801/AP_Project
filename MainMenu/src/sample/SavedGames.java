@@ -60,7 +60,7 @@ public class SavedGames
                 885.0, 275.0,
                 900.0, 300.0,
         });
-        t1.setFill(Color.rgb(39, 39, 39));
+        t1.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t1);
 
         Polygon t2 = new Polygon();
@@ -69,7 +69,7 @@ public class SavedGames
                 715.0, 275.0,
                 700.0, 300.0,
         });
-        t2.setFill(Color.rgb(39, 39, 39));
+        t2.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t2);
 
         Text t = new Text (750, 280, "Game Modes");

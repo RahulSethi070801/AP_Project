@@ -2,6 +2,7 @@ package sample;
 
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -90,7 +91,7 @@ public class Heading
         arc1.setRadiusY(40.0f);
         arc1.setStartAngle(0.0f);
         arc1.setLength(90.0f);
-        arc1.setFill(Color.CYAN);
+        arc1.setFill(Color.rgb(144, 13, 255));
         arc1.setType(ArcType.ROUND);
 
         Arc arc2 = new Arc();
@@ -100,7 +101,7 @@ public class Heading
         arc2.setRadiusY(40.0f);
         arc2.setStartAngle(90.0f);
         arc2.setLength(90.0f);
-        arc2.setFill(Color.PINK);
+        arc2.setFill(Color.rgb (250, 225, 0));
         arc2.setType(ArcType.ROUND);
 
         Arc arc3 = new Arc();
@@ -110,7 +111,7 @@ public class Heading
         arc3.setRadiusY(40.0f);
         arc3.setStartAngle(180.0f);
         arc3.setLength(90.0f);
-        arc3.setFill(Color.YELLOW);
+        arc3.setFill(Color.rgb(50, 219, 240));
         arc3.setType(ArcType.ROUND);
 
         Arc arc4 = new Arc();
@@ -120,7 +121,7 @@ public class Heading
         arc4.setRadiusY(40.0f);
         arc4.setStartAngle(270.0f);
         arc4.setLength(90.0f);
-        arc4.setFill(Color.DARKBLUE);
+        arc4.setFill(Color.rgb(255, 1, 129));
         arc4.setType(ArcType.ROUND);
 
         Circle circle1 = new Circle(660, 125, 30);
@@ -132,7 +133,7 @@ public class Heading
         rotateTransition1.setDuration(Duration.millis(1000));
         rotateTransition1.setNode(root1);
         rotateTransition1.setByAngle(360);
-        rotateTransition1.setCycleCount(50);
+        rotateTransition1.setCycleCount(Timeline.INDEFINITE);
         rotateTransition1.setAutoReverse(false);
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.play();
@@ -145,7 +146,7 @@ public class Heading
         arc5.setRadiusY(40.0f);
         arc5.setStartAngle(0.0f);
         arc5.setLength(90.0f);
-        arc5.setFill(Color.CYAN);
+        arc5.setFill(Color.rgb(144, 13, 255));
         arc5.setType(ArcType.ROUND);
 
         Arc arc6 = new Arc();
@@ -155,7 +156,7 @@ public class Heading
         arc6.setRadiusY(40.0f);
         arc6.setStartAngle(90.0f);
         arc6.setLength(90.0f);
-        arc6.setFill(Color.PINK);
+        arc6.setFill(Color.rgb (250, 225, 0));
         arc6.setType(ArcType.ROUND);
 
         Arc arc7 = new Arc();
@@ -165,7 +166,7 @@ public class Heading
         arc7.setRadiusY(40.0f);
         arc7.setStartAngle(180.0f);
         arc7.setLength(90.0f);
-        arc7.setFill(Color.YELLOW);
+        arc7.setFill(Color.rgb(50, 219, 240));
         arc7.setType(ArcType.ROUND);
 
         Arc arc8 = new Arc();
@@ -175,7 +176,7 @@ public class Heading
         arc8.setRadiusY(40.0f);
         arc8.setStartAngle(270.0f);
         arc8.setLength(90.0f);
-        arc8.setFill(Color.DARKBLUE);
+        arc8.setFill(Color.rgb(255, 1, 129));
         arc8.setType(ArcType.ROUND);
 
         Circle circle2 = new Circle(810, 125, 30);
@@ -187,7 +188,7 @@ public class Heading
         rotateTransition2.setDuration(Duration.millis(1000));
         rotateTransition2.setNode(root2);
         rotateTransition2.setByAngle(360);
-        rotateTransition2.setCycleCount(50);
+        rotateTransition2.setCycleCount(Timeline.INDEFINITE);
         rotateTransition2.setAutoReverse(false);
         rotateTransition2.setInterpolator(Interpolator.LINEAR);
         rotateTransition2.play();
@@ -198,20 +199,40 @@ public class Heading
         Image image1 = new Image(stream1);
         ImageView imageView1 = new ImageView();
         imageView1.setImage(image1);
-        imageView1.setX(1200);
-        imageView1.setY(150);
+        imageView1.setX(300);
+        imageView1.setY(400);
         imageView1.setFitWidth(50);
         imageView1.setPreserveRatio(true);
+
         InputStream stream2 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Achievements.png");
         Image image2 = new Image(stream2);
         ImageView imageView2 = new ImageView();
         imageView2.setImage(image2);
+        imageView2.setX(300);
+        imageView2.setY(500);
+        imageView2.setFitWidth(50);
+        imageView2.setPreserveRatio(true);
+
+        InputStream stream3 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Achievements.png");
+        Image image3 = new Image(stream3);
+        ImageView imageView3 = new ImageView();
+        imageView2.setImage(image3);
         imageView2.setX(200);
         imageView2.setY(150);
         imageView2.setFitWidth(50);
         imageView2.setPreserveRatio(true);
 
-        Group root4 = new Group(imageView1, imageView2);
+        InputStream stream4 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Achievements.png");
+        Image image4 = new Image(stream4);
+        ImageView imageView4 = new ImageView();
+        imageView2.setImage(image4);
+        imageView2.setX(200);
+        imageView2.setY(150);
+        imageView2.setFitWidth(50);
+        imageView2.setPreserveRatio(true);
+
+
+        Group root4 = new Group(imageView1, imageView2, imageView3, imageView4);
 
 
 //        PlayButton pb = new PlayButton();
