@@ -79,6 +79,16 @@ public class SavedGames
         root.getChildren().add(t);
 
         for(int i=1;i<5;i++){
+            Polygon rectangle1 = new Polygon();
+            rectangle1.getPoints().addAll(new Double[]{
+                    900.0, 360.0+i*3,
+                    700.0, 363.0+i*3,
+                    700.0, 380.0+i*3,
+                    900.0, 380.0+i*3,
+            });
+            rectangle1.setFill(Color.WHITE);
+            root.getChildren().add(rectangle1);
+
             t = new Text (750, 380+i*30, "Game "+i);
             // t.setText("This is a text sample");
             t.setFont(Font.font ("Comic Sans MS", 17));
@@ -95,6 +105,7 @@ public class SavedGames
             t.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
             // t.setOnMouseEntered( e -> t.setFill(Color.YELLOW));
             registerHandler(t, Color.BLUE, Color.MAGENTA);
+            
         }
 
         //Scene scene = new Scene(root, Color.rgb(39, 39, 39));
