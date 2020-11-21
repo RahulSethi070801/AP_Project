@@ -61,9 +61,9 @@ public class Main extends Application {
         gmb.show();
         Group root4 = gmb.getRoot();
 
-        SavedGames sg = new SavedGames();
-        sg.show();
-        Group root5 = sg.getRoot();
+        Exit exit = new Exit();
+        exit.show();
+        Group root5 = exit.getRoot();
 
 
 
@@ -72,7 +72,7 @@ public class Main extends Application {
         root.getChildren().add(root2);
         root.getChildren().add(root3);
         root.getChildren().add(root4);
-        //root.getChildren().add(root5);
+        root.getChildren().add(root5);
 //        root.getChildren().add(root6);
 
         stage.setScene(new Scene(root, 800, 800, Color.BLACK));

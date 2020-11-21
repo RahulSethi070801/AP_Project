@@ -8,19 +8,28 @@ import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.input.KeyCode;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class Ball
 {
     Group root;
 
-    Ball(Bounds bounds)
-    {
+    Ball(Bounds bounds) throws FileNotFoundException {
         show(bounds);
     }
 
@@ -34,8 +43,7 @@ public class Ball
         return root;
     }
 
-    public void show(Bounds bounds)
-    {
+    public void show(Bounds bounds) throws FileNotFoundException {
 
         root = new Group();
 
@@ -45,8 +53,8 @@ public class Ball
         Scene scene2 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
-        Circle ball = new Circle(10, Color.CADETBLUE);
-        ball.relocate(700, 700);
+        Circle ball = new Circle(10, Color.rgb(144, 13, 255));
+        ball.relocate(675, 700);
 
         Ring ring = new Ring();
         ring.show();
@@ -109,6 +117,50 @@ public class Ball
 
             }
         });
+
+        InputStream stream1 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Pause.png");
+        Image image1 = new Image(stream1);
+        ImageView imageView1 = new ImageView();
+        imageView1.setImage(image1);
+        imageView1.setX(1400);
+        imageView1.setY(50);
+        imageView1.setFitWidth(100);
+        imageView1.setPreserveRatio(true);
+
+        InputStream stream2 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Star.jpg");
+        Image image2 = new Image(stream2);
+        ImageView imageView2 = new ImageView();
+        imageView2.setImage(image2);
+        imageView2.setX(30);
+        imageView2.setY(50);
+        imageView2.setFitWidth(80);
+        imageView2.setPreserveRatio(true);
+
+        InputStream stream3 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Star1.png");
+        Image image3 = new Image(stream3);
+        ImageView imageView3 = new ImageView();
+        imageView3.setImage(image3);
+        imageView3.setX(675);
+        imageView3.setY(375);
+        imageView3.setFitWidth(50);
+        imageView3.setPreserveRatio(true);
+
+        Text text1 = new Text();
+        text1.setText("0");
+        text1.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
+        text1.setFill(Color.WHITE);
+        text1.setStrokeWidth(5);
+        text1.setX(130);
+        text1.setY(100);
+
+        Group root2 = new Group(imageView1);
+        Group root3 = new Group(imageView2,imageView3);
+        Group root4 = new Group(text1);
+        root.getChildren().add(root2);
+        root.getChildren().add(root3);
+        root.getChildren().add(root4);
+
+
 
     }
 

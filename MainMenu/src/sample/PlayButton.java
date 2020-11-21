@@ -18,6 +18,8 @@ import javafx.animation.RotateTransition;
 import javafx.animation.Interpolator;
 import javafx.scene.layout.Pane;
 
+import java.io.FileNotFoundException;
+
 class PlayButton
 {
     Group root;
@@ -43,17 +45,17 @@ class PlayButton
         arc1.setCenterX(750.0f);
         arc1.setCenterY(500.0f);
         arc1.setStartAngle(0.0f);
-        arc1.setRadiusX(90.0f);
+        arc1.setRadiusX(100.0f);
         arc1.setLength(90.0f);
         arc1.setType(ArcType.ROUND);
         arc1.setFill(Color.rgb(144, 13, 255));
-        arc1.setRadiusY(90.0f);
+        arc1.setRadiusY(100.0f);
 
         Arc arc2 = new Arc();
         arc2.setCenterX(750.0f);
         arc2.setCenterY(500.0f);
-        arc2.setRadiusX(90.0f);
-        arc2.setRadiusY(90.0f);
+        arc2.setRadiusX(100.0f);
+        arc2.setRadiusY(100.0f);
         arc2.setStartAngle(90.0f);
         arc2.setLength(90.0f);
         arc2.setType(ArcType.ROUND);
@@ -62,8 +64,8 @@ class PlayButton
         Arc arc3 = new Arc();
         arc3.setCenterX(750.0f);
         arc3.setCenterY(500.0f);
-        arc3.setRadiusX(90.0f);
-        arc3.setRadiusY(90.0f);
+        arc3.setRadiusX(100.0f);
+        arc3.setRadiusY(100.0f);
         arc3.setStartAngle(180.0f);
         arc3.setLength(90.0f);
         arc3.setType(ArcType.ROUND);
@@ -72,8 +74,8 @@ class PlayButton
         Arc arc4 = new Arc();
         arc4.setCenterX(750.0f);
         arc4.setCenterY(500.0f);
-        arc4.setRadiusX(90.0f);
-        arc4.setRadiusY(90.0f);
+        arc4.setRadiusX(100.0f);
+        arc4.setRadiusY(100.0f);
         arc4.setStartAngle(270.0f);
         arc4.setLength(90.0f);
         arc4.setType(ArcType.ROUND);
@@ -82,8 +84,8 @@ class PlayButton
         Arc arc5 = new Arc();
         arc5.setCenterX(750.0f);
         arc5.setCenterY(500.0f);
-        arc5.setRadiusX(70.0f);
-        arc5.setRadiusY(70.0f);
+        arc5.setRadiusX(80.0f);
+        arc5.setRadiusY(80.0f);
         arc5.setStartAngle(0.0f);
         arc5.setLength(90.0f);
         arc5.setType(ArcType.ROUND);
@@ -92,8 +94,8 @@ class PlayButton
         Arc arc6 = new Arc();
         arc6.setCenterX(750.0f);
         arc6.setCenterY(500.0f);
-        arc6.setRadiusX(70.0f);
-        arc6.setRadiusY(70.0f);
+        arc6.setRadiusX(80.0f);
+        arc6.setRadiusY(80.0f);
         arc6.setStartAngle(90.0f);
         arc6.setLength(90.0f);
         arc6.setType(ArcType.ROUND);
@@ -102,8 +104,8 @@ class PlayButton
         Arc arc7 = new Arc();
         arc7.setCenterX(750.0f);
         arc7.setCenterY(500.0f);
-        arc7.setRadiusX(70.0f);
-        arc7.setRadiusY(70.0f);
+        arc7.setRadiusX(80.0f);
+        arc7.setRadiusY(80.0f);
         arc7.setStartAngle(180.0f);
         arc7.setLength(90.0f);
         arc7.setType(ArcType.ROUND);
@@ -112,8 +114,8 @@ class PlayButton
         Arc arc8 = new Arc();
         arc8.setCenterX(750.0f);
         arc8.setCenterY(500.0f);
-        arc8.setRadiusX(70.0f);
-        arc8.setRadiusY(70.0f);
+        arc8.setRadiusX(80.0f);
+        arc8.setRadiusY(80.0f);
         arc8.setStartAngle(270.0f);
         arc8.setLength(90.0f);
         arc8.setType(ArcType.ROUND);
@@ -122,8 +124,8 @@ class PlayButton
         Arc arc9 = new Arc();
         arc9.setCenterX(750.0f);
         arc9.setCenterY(500.0f);
-        arc9.setRadiusX(50.0f);
-        arc9.setRadiusY(50.0f);
+        arc9.setRadiusX(60.0f);
+        arc9.setRadiusY(60.0f);
         arc9.setStartAngle(0.0f);
         arc9.setLength(90.0f);
         arc9.setType(ArcType.ROUND);
@@ -132,8 +134,8 @@ class PlayButton
         Arc arc10 = new Arc();
         arc10.setCenterX(750.0f);
         arc10.setCenterY(500.0f);
-        arc10.setRadiusX(50.0f);
-        arc10.setRadiusY(50.0f);
+        arc10.setRadiusX(60.0f);
+        arc10.setRadiusY(60.0f);
         arc10.setStartAngle(90.0f);
         arc10.setLength(90.0f);
         arc10.setType(ArcType.ROUND);
@@ -142,8 +144,8 @@ class PlayButton
         Arc arc11 = new Arc();
         arc11.setCenterX(750.0f);
         arc11.setCenterY(500.0f);
-        arc11.setRadiusX(50.0f);
-        arc11.setRadiusY(50.0f);
+        arc11.setRadiusX(60.0f);
+        arc11.setRadiusY(60.0f);
         arc11.setStartAngle(180.0f);
         arc11.setLength(90.0f);
         arc11.setType(ArcType.ROUND);
@@ -152,8 +154,8 @@ class PlayButton
         Arc arc12 = new Arc();
         arc12.setCenterX(750.0f);
         arc12.setCenterY(500.0f);
-        arc12.setRadiusX(50.0f);
-        arc12.setRadiusY(50.0f);
+        arc12.setRadiusX(60.0f);
+        arc12.setRadiusY(60.0f);
         arc12.setStartAngle(270.0f);
         arc12.setLength(90.0f);
         arc12.setType(ArcType.ROUND);
@@ -162,19 +164,19 @@ class PlayButton
         Circle circle = new Circle();
         circle.setCenterX(750.0f);
         circle.setCenterY(500.0f);
-        circle.setRadius(80.0f);
+        circle.setRadius(90.0f);
         circle.setFill(Color.rgb(0, 0, 0));
 
         Circle circle1 = new Circle();
         circle1.setCenterX(750.0f);
         circle1.setCenterY(500.0f);
-        circle1.setRadius(60.0f);
+        circle1.setRadius(70.0f);
         circle1.setFill(Color.rgb(0, 0, 0));
 
         Circle circle2 = new Circle();
         circle2.setCenterX(750.0f);
         circle2.setCenterY(500.0f);
-        circle2.setRadius(40.0f);
+        circle2.setRadius(50.0f);
         circle2.setFill(Color.rgb(39, 39, 39));
         circle2.setStrokeWidth(5.0f);
         circle2.setStroke(Color.BLACK);
@@ -193,7 +195,11 @@ class PlayButton
                 Bounds bounds = root.getBoundsInParent();
                 System.out.println("Hello World");
                 polygon.setFill(Color.DARKSLATEBLUE);
-                new Ball(bounds);
+                try {
+                    new Ball(bounds);
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
         };
         //Registering the event filter

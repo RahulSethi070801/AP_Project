@@ -38,33 +38,33 @@ class GameModesBanner
 
         Polygon rectangle = new Polygon();
         rectangle.getPoints().addAll(new Double[]{
-            800.0, 650.0,
-            600.0, 650.0,
-            600.0, 700.0,
-            800.0, 700.0,
+            850.0, 650.0,
+            650.0, 650.0,
+            650.0, 700.0,
+            850.0, 700.0,
         });
         rectangle.setFill(Color.BLUE);
         root.getChildren().add(rectangle);
 
         Polygon t1 = new Polygon();
         t1.getPoints().addAll(new Double[]{
-            800.0, 650.0,
-            785.0, 675.0,
-            800.0, 700.0,
+            850.0, 650.0,
+            835.0, 675.0,
+            850.0, 700.0,
         });
         t1.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t1);
 
         Polygon t2 = new Polygon();
         t2.getPoints().addAll(new Double[]{
-            600.0, 650.0,
-            615.0, 675.0,
-            600.0, 700.0,
+            650.0, 650.0,
+            665.0, 675.0,
+            650.0, 700.0,
         });
         t2.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t2);
 
-        Text t = new Text (650, 680, "Game Modes");
+        Text t = new Text (700, 680, "Game Modes");
         // t.setText("This is a text sample");
         t.setFont(Font.font ("Comic Sans MS", 17));
         t.setFill(Color.WHITE);
