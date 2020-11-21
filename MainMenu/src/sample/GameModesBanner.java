@@ -1,8 +1,11 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -66,6 +69,21 @@ class GameModesBanner
         t.setFont(Font.font ("Comic Sans MS", 17));
         t.setFill(Color.WHITE);
         root.getChildren().add(t);
+
+
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent e)
+            {
+                Bounds bounds = root.getBoundsInParent();
+                System.out.println("Hello World");
+                //root.setFill(Color.DARKSLATEBLUE);
+                new SavedGames();
+            }
+        };
+        //Registering the event filter
+        root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
 
     }

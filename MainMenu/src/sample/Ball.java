@@ -46,7 +46,7 @@ public class Ball
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
         Circle ball = new Circle(10, Color.CADETBLUE);
-        ball.relocate(100, 500);
+        ball.relocate(700, 700);
 
         Ring ring = new Ring();
         ring.show();
