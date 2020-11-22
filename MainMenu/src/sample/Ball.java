@@ -82,7 +82,9 @@ public class Ball
         root.getChildren().add(ball);
 
 
-        InputStream stream4 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Star1.png");
+        String localDir = System.getProperty("user.dir");
+        System.out.println(localDir);
+        InputStream stream4 = new FileInputStream(localDir+"\\Star1.png");
         Image image4 = new Image(stream4);
         ImageView imageView4 = new ImageView();
         imageView4.setImage(image4);
@@ -209,7 +211,7 @@ public class Ball
             }
         });
 
-        String localDir = System.getProperty("user.dir");
+//        String localDir = System.getProperty("user.dir");
 
         InputStream stream1 = new FileInputStream(localDir+"\\Pause.png");
         Image image1 = new Image(stream1);
