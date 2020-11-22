@@ -1,5 +1,5 @@
 # Compiled class file
-*.class
+MainMenu/out/production/MainMenu/sample/*.class
 
 # Log file
 *.log
