@@ -18,6 +18,8 @@ import javafx.animation.Interpolator;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.*;
 
+import java.io.FileNotFoundException;
+
 class GameModesBanner
 {
     Group root;
@@ -79,7 +81,11 @@ class GameModesBanner
                 Bounds bounds = root.getBoundsInParent();
                 System.out.println("Hello World");
                 //root.setFill(Color.DARKSLATEBLUE);
-                new SavedGames();
+                try {
+                    new SavedGames();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
         };
         //Registering the event filter
