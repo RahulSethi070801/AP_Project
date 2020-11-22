@@ -104,7 +104,7 @@ public class Ball
                 new EventHandler<ActionEvent>() {
 
                     double dx = 7; //Step on x or velocity
-                    double dy = 3; //Step on y
+                    double dy = 6; //Step on y
 
                     @Override
                     public void handle(ActionEvent t) {
@@ -163,7 +163,7 @@ public class Ball
 
                 Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
                         new EventHandler<ActionEvent>() {
-                            double dy = -5; //Step on y
+                            double dy = -6; //Step on y
                             @Override
                             public void handle(ActionEvent t) {
                                 ball.setLayoutY(ball.getLayoutY() + dy);

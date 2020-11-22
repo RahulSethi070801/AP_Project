@@ -227,7 +227,7 @@ public class Heading
         imageView3.setFitWidth(80);
         imageView3.setPreserveRatio(true);
 
-        InputStream stream4 = new FileInputStream(localDir +"\\music.png");
+        InputStream stream4 = new FileInputStream(localDir +"\\Music.png");
         Image image4 = new Image(stream4);
         ImageView imageView4 = new ImageView();
         imageView4.setImage(image4);

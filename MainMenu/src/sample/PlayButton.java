@@ -203,6 +203,7 @@ class PlayButton
             }
         };
         //Registering the event filter
+        circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         polygon.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
         root = new Group();
@@ -222,7 +223,7 @@ class PlayButton
         rotate.setAxis(Rotate.Z_AXIS);
         rotate.setByAngle(360);  
         rotate.setCycleCount(Timeline.INDEFINITE);
-        rotate.setDuration(Duration.millis(2000));  
+        rotate.setDuration(Duration.millis(2000));
         rotate.setAutoReverse(false);
         rotate.setInterpolator(Interpolator.LINEAR);
         rotate.setNode(root1);
