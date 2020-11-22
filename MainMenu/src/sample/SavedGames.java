@@ -113,7 +113,9 @@ public class SavedGames
             
         }
 
-        InputStream stream1 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Back.jpg");
+        String localDir = System.getProperty("user.dir");
+
+        InputStream stream1 = new FileInputStream(localDir + "//Back.jpg");
         Image image1 = new Image(stream1);
         ImageView imageView1 = new ImageView();
         imageView1.setImage(image1);

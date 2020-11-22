@@ -104,6 +104,15 @@ public class PauseMenu
             EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent e) {
+                    if (x==2 || x==3)
+                    {
+                        try {
+                            new MainPage();
+                        } catch (FileNotFoundException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+
                     System.out.println("Hello World"+x);
                 }
             };

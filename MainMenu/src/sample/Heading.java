@@ -5,12 +5,15 @@ import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.*;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
@@ -207,6 +210,22 @@ public class Heading
         imageView1.setFitWidth(80);
         imageView1.setPreserveRatio(true);
 
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Bounds bounds = root.getBoundsInParent();
+                System.out.println("Hello World");
+                //imageView1.setFill(Color.DARKSLATEBLUE);
+                try {
+                    new Help();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        //Registering the event filter
+        imageView1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
         InputStream stream2 = new FileInputStream(localDir+"\\Achievements.png");
         Image image2 = new Image(stream2);
         ImageView imageView2 = new ImageView();
@@ -238,19 +257,6 @@ public class Heading
 
 
         Group root4 = new Group(imageView1, imageView2, imageView3, imageView4);
-
-
-//        PlayButton pb = new PlayButton();
-//        pb.show();
-//        Group root5 = pb.getRoot();
-//
-//        GameModesBanner gmb = new GameModesBanner();
-//        gmb.show();
-//        Group root6 = gmb.getRoot();
-
-
-
-        //Group root = new Group();
         root.getChildren().add(root1);
         root.getChildren().add(root2);
         root.getChildren().add(root3);

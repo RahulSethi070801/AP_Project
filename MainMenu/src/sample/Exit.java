@@ -64,7 +64,7 @@ class Exit
         t2.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t2);
 
-        Text t = new Text (730, 780, "Exit");
+        Text t = new Text (727, 780, "EXIT");
         // t.setText("This is a text sample");
         t.setFont(Font.font ("Comic Sans MS", 17));
         t.setFill(Color.WHITE);

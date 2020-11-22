@@ -66,7 +66,7 @@ class GameModesBanner
         t2.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t2);
 
-        Text t = new Text (700, 680, "Game Modes");
+        Text t = new Text (693, 680, "SAVED GAMES");
         // t.setText("This is a text sample");
         t.setFont(Font.font ("Comic Sans MS", 17));
         t.setFill(Color.WHITE);
