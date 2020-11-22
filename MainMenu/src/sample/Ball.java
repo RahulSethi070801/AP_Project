@@ -118,7 +118,9 @@ public class Ball
             }
         });
 
-        InputStream stream1 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Pause.png");
+        String localDir = System.getProperty("user.dir");
+
+        InputStream stream1 = new FileInputStream(localDir+"\\Pause.png");
         Image image1 = new Image(stream1);
         ImageView imageView1 = new ImageView();
         imageView1.setImage(image1);
@@ -127,7 +129,7 @@ public class Ball
         imageView1.setFitWidth(100);
         imageView1.setPreserveRatio(true);
 
-        InputStream stream2 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Star.jpg");
+        InputStream stream2 = new FileInputStream(localDir+"\\Star.jpg");
         Image image2 = new Image(stream2);
         ImageView imageView2 = new ImageView();
         imageView2.setImage(image2);
@@ -136,7 +138,7 @@ public class Ball
         imageView2.setFitWidth(80);
         imageView2.setPreserveRatio(true);
 
-        InputStream stream3 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Star1.png");
+        InputStream stream3 = new FileInputStream(localDir+"\\Star1.png");
         Image image3 = new Image(stream3);
         ImageView imageView3 = new ImageView();
         imageView3.setImage(image3);
