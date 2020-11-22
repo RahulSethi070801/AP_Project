@@ -100,11 +100,11 @@ public class Ball
         int flag=0;
         int i=0;
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(23),
                 new EventHandler<ActionEvent>() {
 
                     double dx = 7; //Step on x or velocity
-                    double dy = 6; //Step on y
+                    double dy = 7; //Step on y
 
                     @Override
                     public void handle(ActionEvent t) {
@@ -156,14 +156,14 @@ public class Ball
                     }
                 }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A) {
                 System.out.println("A key was pressed");
-
+                timeline.play();
                 Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
                         new EventHandler<ActionEvent>() {
-                            double dy = -6; //Step on y
+                            double dy = -7; //Step on y
                             @Override
                             public void handle(ActionEvent t) {
                                 ball.setLayoutY(ball.getLayoutY() + dy);
