@@ -114,19 +114,6 @@ public class PauseMenu
 
         }
 
-//        String localDir = System.getProperty("user.dir");
-//
-//        InputStream stream1 = new FileInputStream(localDir+"\\Back.jpg");
-//        Image image1 = new Image(stream1);
-//        ImageView imageView1 = new ImageView();
-//        imageView1.setImage(image1);
-//        imageView1.setX(50);
-//        imageView1.setY(50);
-//        imageView1.setFitWidth(80);
-//        imageView1.setPreserveRatio(true);
-//
-//        Group root2 = new Group(imageView1);
-//        root.getChildren().add(root2);
 
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
             @Override
