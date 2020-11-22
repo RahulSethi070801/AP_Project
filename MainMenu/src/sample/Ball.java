@@ -10,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
@@ -298,6 +299,22 @@ public class Ball
         imageView1.setFitWidth(100);
         imageView1.setPreserveRatio(true);
 
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+//                Bounds bounds = root.getBoundsInParent();
+                System.out.println("Pause");
+//                polygon.setFill(Color.DARKSLATEBLUE);
+                try {
+                    new PauseMenu();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        //Registering the event filter
+
+
         InputStream stream2 = new FileInputStream(localDir+"\\Star.jpg");
         Image image2 = new Image(stream2);
         ImageView imageView2 = new ImageView();
@@ -313,6 +330,7 @@ public class Ball
         Group root2 = new Group(imageView1);
         Group root3 = new Group(imageView2);
 
+        root2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
         root.getChildren().add(root2);
         root.getChildren().add(root3);
