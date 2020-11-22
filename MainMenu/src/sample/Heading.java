@@ -218,7 +218,7 @@ public class Heading
 
 
 
-        InputStream stream3 = new FileInputStream(localDir + "\\speaker.png");
+        InputStream stream3 = new FileInputStream(localDir + "\\Speaker.png");
         Image image3 = new Image(stream3);
         ImageView imageView3 = new ImageView();
         imageView3.setImage(image3);
