@@ -24,6 +24,8 @@ import javafx.scene.input.KeyCode;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.RandomAccessFile;
+import java.util.Random;
 
 public class Ball
 {
@@ -43,7 +45,23 @@ public class Ball
         return root;
     }
 
-    public void show(Bounds bounds) throws FileNotFoundException {
+
+    public int getRandom(int n)
+    {
+        Random rand = new Random();
+        return rand.nextInt(n);
+    }
+
+    public static boolean isCollide(Circle x, Group y)
+    {
+        Bounds RectA = x.localToScene(x.getBoundsInLocal());
+        Bounds RectB = y.localToScene(y.getBoundsInLocal());
+
+        return RectB.intersects(RectA);
+    }
+
+    public void show(Bounds bounds) throws FileNotFoundException
+    {
 
         root = new Group();
 
@@ -63,9 +81,20 @@ public class Ball
         root.getChildren().add(root1);
         root.getChildren().add(ball);
 
-        //Main.stage.setTitle("Animated Ball");
 
-        //Main.stage.show();
+        InputStream stream4 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Star1.png");
+        Image image4 = new Image(stream4);
+        ImageView imageView4 = new ImageView();
+        imageView4.setImage(image4);
+        imageView4.setX(675);
+        imageView4.setY(175);
+        imageView4.setFitWidth(50);
+        imageView4.setPreserveRatio(true);
+
+        Group root5 = new Group(imageView4);
+        root.getChildren().add(root5);
+
+
         int flag=0;
         int i=0;
 
@@ -79,6 +108,38 @@ public class Ball
                     public void handle(ActionEvent t) {
 
                         ball.setLayoutY(ball.getLayoutY() + dy);
+
+                        if (root.getChildren().contains(root5) && isCollide(ball, root5))
+                        {
+                            System.out.println("touch");
+                            while (true)
+                            {
+                                if (getRandom(4) == 0)
+                                {
+                                    continue;
+                                }
+                                if (getRandom(4) == 1)
+                                {
+                                    ball.setFill(Color.rgb (250, 225, 0));
+                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 2)
+                                {
+                                    ball.setFill(Color.rgb(50, 219, 240));
+                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 3)
+                                {
+                                    ball.setFill(Color.rgb(255, 1, 129));
+                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                            }
+                        }
+
+
 
                         //Bounds bounds = root.getBoundsInParent();
 //                        System.out.println(bounds);
@@ -105,6 +166,36 @@ public class Ball
                             public void handle(ActionEvent t) {
                                 ball.setLayoutY(ball.getLayoutY() + dy);
                                 Bounds bounds = root.getBoundsInLocal();
+
+                                if (root.getChildren().contains(root5) && isCollide(ball, root5))
+                                {
+                                    System.out.println("touch");
+                                    while (true)
+                                    {
+                                        if (getRandom(4) == 0)
+                                        {
+                                            continue;
+                                        }
+                                        if (getRandom(4) == 1)
+                                        {
+                                            ball.setFill(Color.rgb (250, 225, 0));
+                                            root.getChildren().remove(root5);
+                                            break;
+                                        }
+                                        if (getRandom(4) == 2)
+                                        {
+                                            ball.setFill(Color.rgb(50, 219, 240));
+                                            root.getChildren().remove(root5);
+                                            break;
+                                        }
+                                        if (getRandom(4) == 3)
+                                        {
+                                            ball.setFill(Color.rgb(255, 1, 129));
+                                            root.getChildren().remove(root5);
+                                            break;
+                                        }
+                                    }
+                                }
 //                                if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
 //                                        (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius()))){
 //
