@@ -25,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -195,7 +196,9 @@ public class Heading
 
         Group root3 = new Group(text1, text2,text3, text4);
 
-        InputStream stream1 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\QuestionMark.png");
+        String localDir = System.getProperty("user.dir");
+
+        InputStream stream1 = new FileInputStream(localDir+"\\QuestionMark.png");
         Image image1 = new Image(stream1);
         ImageView imageView1 = new ImageView();
         imageView1.setImage(image1);
@@ -204,7 +207,7 @@ public class Heading
         imageView1.setFitWidth(80);
         imageView1.setPreserveRatio(true);
 
-        InputStream stream2 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Achievements.png");
+        InputStream stream2 = new FileInputStream(localDir+"\\Achievements.png");
         Image image2 = new Image(stream2);
         ImageView imageView2 = new ImageView();
         imageView2.setImage(image2);
@@ -213,7 +216,9 @@ public class Heading
         imageView2.setFitWidth(80);
         imageView2.setPreserveRatio(true);
 
-        InputStream stream3 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Sound.png");
+
+
+        InputStream stream3 = new FileInputStream(localDir + "\\speaker.png");
         Image image3 = new Image(stream3);
         ImageView imageView3 = new ImageView();
         imageView3.setImage(image3);
@@ -222,7 +227,7 @@ public class Heading
         imageView3.setFitWidth(80);
         imageView3.setPreserveRatio(true);
 
-        InputStream stream4 = new FileInputStream("D:\\Semester 3\\Advanced Programming\\Project\\Music.png");
+        InputStream stream4 = new FileInputStream(localDir +"\\music.png");
         Image image4 = new Image(stream4);
         ImageView imageView4 = new ImageView();
         imageView4.setImage(image4);

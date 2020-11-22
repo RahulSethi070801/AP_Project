@@ -18,23 +18,21 @@ import javafx.animation.Interpolator;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.*;
 
-public class PauseMenu extends Application
+class PauseMenu
 {
-    // Group root;
+     Group root;
 
-    // public void setRoot(Group root)
-    // {
-    //     this.root = root;
-    // }
+     public void setRoot(Group root)
+     {
+         this.root = root;
+     }
 
-    // public Group getRoot()
-    // {
-    //     return root;
-    // }
+     public Group getRoot()
+     {
+         return root;
+     }
 
-    // public void show()
-    @Override
-    public void start(Stage stage)
+     public void show()
     {
         Pane root = new Pane();
         Scene scene = new Scene(root, 300, 300, Color.ALICEBLUE);
@@ -91,11 +89,8 @@ public class PauseMenu extends Application
         //Registering the event filter
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
-        stage.setTitle("Animated Ball");
-        stage.setScene(scene);
-        stage.show();
-    }
-    public static void main(String args[]){
-        launch();
+//        stage.setTitle("Animated Ball");
+//        stage.setScene(scene);
+//        stage.show();
     }
 }
