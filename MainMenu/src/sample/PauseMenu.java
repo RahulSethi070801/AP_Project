@@ -83,7 +83,7 @@ public class PauseMenu
         t.setFill(Color.WHITE);
         root.getChildren().add(t);
 
-        String arr[]={"Resume Game" , "Restart game", "Save and Exit", "Exit"};
+        String arr[]={"Resume Game" , "Restart Game", "Save and Exit", "Exit"};
         for(int i=1;i<5;i++){
             rectangle = new Polygon();
             rectangle.getPoints().addAll(new Double[]{

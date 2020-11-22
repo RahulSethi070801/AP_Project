@@ -222,7 +222,7 @@ public class Heading
         Image image3 = new Image(stream3);
         ImageView imageView3 = new ImageView();
         imageView3.setImage(image3);
-        imageView3.setX(900);
+        imageView3.setX(1020);
         imageView3.setY(400);
         imageView3.setFitWidth(80);
         imageView3.setPreserveRatio(true);
@@ -231,9 +231,9 @@ public class Heading
         Image image4 = new Image(stream4);
         ImageView imageView4 = new ImageView();
         imageView4.setImage(image4);
-        imageView4.setX(900);
+        imageView4.setX(1007);
         imageView4.setY(500);
-        imageView4.setFitWidth(80);
+        imageView4.setFitWidth(110);
         imageView4.setPreserveRatio(true);
 
 
