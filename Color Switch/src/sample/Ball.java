@@ -68,10 +68,6 @@ public class Ball
 
         root = new Group();
 
-
-
-
-        //stage.setScene(new Scene(root, 800, 800, Color.BLACK));
         Scene scene2 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
@@ -151,19 +147,6 @@ public class Ball
 //        circle.setFill(Color.BLACK);
 
         Group root5 = new Group(arc1, arc2, arc3, arc4);
-
-//        String localDir = System.getProperty("user.dir");
-//        System.out.println(localDir);
-//        InputStream stream4 = new FileInputStream(localDir+"\\Star1.png");
-//        Image image4 = new Image(stream4);
-//        ImageView imageView4 = new ImageView();
-//        imageView4.setImage(image4);
-//        imageView4.setX();
-//        imageView4.setY();
-//        imageView4.setFitWidth(50);
-//        imageView4.setPreserveRatio(true);
-//
-//        Group root5 = new Group(imageView4);
         root.getChildren().add(root5);
 
 
@@ -210,9 +193,6 @@ public class Ball
                                 }
                             }
                         }
-
-
-
                         //Bounds bounds = root.getBoundsInParent();
 //                        System.out.println(bounds);
 //
@@ -222,7 +202,6 @@ public class Ball
 //                            dy = -dy;
 //
 //                        }
-
                     }
                 }));
         timeline.setCycleCount(Timeline.INDEFINITE);

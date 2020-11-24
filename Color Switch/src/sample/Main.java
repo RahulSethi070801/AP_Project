@@ -44,45 +44,6 @@ public class Main extends Application {
     {
         stage.show();
         new MainPage();
-        //stage2.show();
-
-        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        //stage.setTitle("Hello World");
-//        stage.setFullScreen(true);
-//
-//
-//        Heading hd = new Heading();
-//        hd.show();
-//        Group root1 = hd.getRoot();
-//
-//        Design ds = new Design();
-//        ds.show();
-//        Group root2 = ds.getRoot();
-//
-//        PlayButton pb = new PlayButton();
-//        pb.show();
-//        Group root3 = pb.getRoot();
-//
-//        GameModesBanner gmb = new GameModesBanner();
-//        gmb.show();
-//        Group root4 = gmb.getRoot();
-//
-//        Exit exit = new Exit();
-//        exit.show();
-//        Group root5 = exit.getRoot();
-//
-//
-//
-//        Group root = new Group();
-//        root.getChildren().add(root1);
-//        root.getChildren().add(root2);
-//        root.getChildren().add(root3);
-//        root.getChildren().add(root4);
-//        root.getChildren().add(root5);
-////        root.getChildren().add(root6);
-//
-//        stage.setScene(new Scene(root, 800, 800, Color.BLACK));
-//        stage.show();
 }
 
 
