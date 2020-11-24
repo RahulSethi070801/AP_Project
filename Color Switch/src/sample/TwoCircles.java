@@ -1,4 +1,4 @@
 package sample;
 
-public class TwoCircles {
+public class TwoCircles  extends Obstacle{
 }

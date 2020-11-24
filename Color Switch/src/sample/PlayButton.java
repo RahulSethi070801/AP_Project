@@ -39,8 +39,6 @@ class PlayButton
     public void show()
     {
 
-//        Pane canvas = new Pane();
-
         Arc arc1 = new Arc();
         arc1.setCenterX(750.0f);
         arc1.setCenterY(500.0f);
@@ -193,16 +191,16 @@ class PlayButton
             @Override
             public void handle(MouseEvent e) {
                 Bounds bounds = root.getBoundsInParent();
-                System.out.println("Hello World");
+                System.out.println("Clicked on Play Button");
                 polygon.setFill(Color.DARKSLATEBLUE);
                 try {
-                    new Ball(bounds);
+                    new GameEngine();
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
             }
         };
-        //Registering the event filter
+        //Registering the event filter to play
         circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         polygon.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
@@ -249,11 +247,5 @@ class PlayButton
         rotate2.setNode(root3);
         rotate2.play();  
 
-//        Scene scene = new Scene(canvas,600, 300, Color.rgb(39, 39, 39));
-//
-//
-//        stage.setTitle("Drawing a Circle");
-//        stage.setScene(scene);
-//        stage.show();
     }
 }

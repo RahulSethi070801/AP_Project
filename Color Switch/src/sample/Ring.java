@@ -18,7 +18,7 @@ import javafx.util.Duration;
 
 
 
-class Ring
+class Ring extends Obstacle
 {
     Group root;
 
@@ -81,7 +81,7 @@ class Ring
         arc4.setType(ArcType.ROUND);
 
         Circle circle = new Circle(700, 400, 90);
-        circle.setFill(Color.WHITE);
+        circle.setFill(Color.BLACK);
 
         root = new Group(arc1, arc2, arc3, arc4, circle);
 

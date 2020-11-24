@@ -44,7 +44,7 @@ public class Main extends Application {
     {
         stage.show();
         new MainPage();
-}
+    }
 
 
     public static void main(String[] args) {

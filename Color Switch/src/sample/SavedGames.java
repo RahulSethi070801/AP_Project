@@ -23,14 +23,18 @@ import javafx.scene.input.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class SavedGames
+public class SavedGames implements Serializable
 {
+    Group root;
 
+    ArrayList<Game> savedGames;
     SavedGames() throws FileNotFoundException {
+        root = new Group();
         show();
     }
-    Group root;
 
     public void setRoot(Group root)
     {
@@ -43,7 +47,6 @@ public class SavedGames
     }
   
     public void show() throws FileNotFoundException {
-        root = new Group();
 
         Scene scene3 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene3);
@@ -149,6 +152,7 @@ public class SavedGames
     public void changeColor(Text t){
         t.setFill(Color.YELLOW);
     }
+
     private void registerHandler(Text s, Color defaultColor, Color hoverColor) {
         s.setOnMouseEntered( e -> s.setFill(hoverColor));
         s.setOnMouseExited(e -> s.setFill(defaultColor));
