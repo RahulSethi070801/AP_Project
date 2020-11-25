@@ -31,6 +31,28 @@ public class Game {
     ArrayList<Star> stars;
     User user;
     long score = 0;
+    long difficulty = 0;
+    public void resumeGame(){}
+    public void pauseGame(){}
+//    public Ball getBall(){}
+    public void setBall(){}
+//    public Obstacle getCurrentObstacle(){}
+    public void setCurrentObstacle(Obstacle obstacle){}
+    public long getDifficulty()
+    {
+        return this.difficulty;
+    }
+    public void setDifficulty(){}
+    public void playGame(){}
+    public void setBackground(){}
+    public void controlBall(){}
+    public void exitGame(){}
+    public void checkCollision(){}
+//    public Obstacle getRandomObstacle(){}
+    public void setStars(int stars){}
+    public void getStars(){}
+    public void reviveGame(){}
+    public void saveAndExitGame(){}
     Game() throws FileNotFoundException
     {
         root = new Group();

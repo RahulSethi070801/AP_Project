@@ -31,6 +31,8 @@ import java.util.Random;
 
 public class ColorSwitch {
     Group root;
+    long y;
+    String color;
     public void setRoot(Group root)
     {
         this.root=root;

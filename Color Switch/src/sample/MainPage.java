@@ -50,6 +50,15 @@ public class MainPage
         return root;
     }
 
+    public void printMenu(Game games[])
+    {
+
+    }
+
+    public void printUserDetails(User user)
+    {
+
+    }
 
     public void show() throws FileNotFoundException
     {

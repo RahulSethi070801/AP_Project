@@ -42,6 +42,25 @@ public class GameEngine {
         System.out.println("Game Engine Initialized");
     }
 
+    public User getUser()
+    {
+        return this.user;
+    }
+
+    public void setUser( User user)
+    {
+        this.user=user;
+    }
+
+    public void createUser()
+    {
+
+    }
+
+    public void saveGame()
+    {
+
+    }
     public void setRoot(Group root)
     {
         this.root = root;
