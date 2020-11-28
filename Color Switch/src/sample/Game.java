@@ -33,6 +33,7 @@ public class Game {
     User user;
     long score = 0;
     long difficulty = 0;
+    String name;
     public void resumeGame(){}
     public void pauseGame(){}
 //    public Ball getBall(){}
@@ -56,11 +57,16 @@ public class Game {
     public void saveAndExitGame(){}
     Game() throws FileNotFoundException
     {
+        this.name = "NEW GAME";
         root = new Group();
         scene2 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
         show();
+    }
+    Game(String name)
+    {
+        this.name = name;
     }
     public int getRandom(int n)
     {

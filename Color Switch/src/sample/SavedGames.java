@@ -31,7 +31,8 @@ public class SavedGames implements Serializable
     Group root;
 
     ArrayList<Game> savedGames;
-    SavedGames() throws FileNotFoundException {
+    SavedGames(ArrayList<Game> savedGames) throws FileNotFoundException {
+        this.savedGames = savedGames;
         root = new Group();
         show();
     }
@@ -86,23 +87,23 @@ public class SavedGames implements Serializable
         t.setFill(Color.WHITE);
         root.getChildren().add(t);
 
-        for(int i=1;i<5;i++){
+        for(int i=0;i<this.savedGames.size();i++){
             rectangle = new Polygon();
             rectangle.getPoints().addAll(new Double[]{
-                    850.0, 350.0+i*50,
-                    650.0, 350.0+i*50,
-                    650.0, 390.0+i*50,
-                    850.0, 390.0+i*50,
+                    850.0, 350.0+(i+1)*50,
+                    650.0, 350.0+(i+1)*50,
+                    650.0, 390.0+(i+1)*50,
+                    850.0, 390.0+(i+1)*50,
             });
             rectangle.setFill(Color.WHITE);
             root.getChildren().add(rectangle);
 
-            t = new Text (730, 380+i*50, "Game "+i);
+            t = new Text (730, 380+(i+1)*50, this.savedGames.get(i).name);
             // t.setText("This is a text sample");
             t.setFont(Font.font ("Comic Sans MS", 17));
             t.setFill(Color.BLUE);
             root.getChildren().add(t);
-            int x = i;
+            int x = i+1;
             EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent e) {

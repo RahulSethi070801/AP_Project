@@ -28,15 +28,20 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
+import java.util.*;
 
 public class MainPage
 {
 
     Group root;
+    ArrayList<Game> savedGames;
 
     MainPage() throws FileNotFoundException
     {
+        this.savedGames = new ArrayList<Game>();
+        for(int i=0;i<5;i++){
+            this.savedGames.add(new Game("Game"+(i+1)));
+        }
         show();
     }
 
@@ -82,7 +87,7 @@ public class MainPage
         pb.show();
         Group root3 = pb.getRoot();
 
-        GameModesBanner gmb = new GameModesBanner();
+        GameModesBanner gmb = new GameModesBanner(savedGames);
         gmb.show();
         Group root4 = gmb.getRoot();
 

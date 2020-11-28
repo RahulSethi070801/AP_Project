@@ -19,11 +19,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.*;
 
 import java.io.FileNotFoundException;
-
+import java.util.*;
 class GameModesBanner
 {
     Group root;
-
+    ArrayList<Game> savedGames;
+    GameModesBanner(ArrayList<Game> savedGames){
+           this.savedGames = savedGames;
+    }
     public void setRoot(Group root)
     {
         this.root = root;
@@ -82,7 +85,7 @@ class GameModesBanner
                 System.out.println("Hello World");
                 //root.setFill(Color.DARKSLATEBLUE);
                 try {
-                    new SavedGames();
+                    new SavedGames(savedGames);
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
