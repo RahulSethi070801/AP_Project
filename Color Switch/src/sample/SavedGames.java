@@ -29,7 +29,6 @@ import java.util.ArrayList;
 public class SavedGames implements Serializable
 {
     Group root;
-
     ArrayList<Game> savedGames;
     SavedGames(ArrayList<Game> savedGames) throws FileNotFoundException {
         this.savedGames = savedGames;
