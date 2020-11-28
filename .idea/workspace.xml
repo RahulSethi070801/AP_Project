@@ -19,7 +19,34 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c380a2ed-b772-4377-b84d-3137dea82b2b" name="Default Changelist" comment="" />
+    <list default="true" id="c380a2ed-b772-4377-b84d-3137dea82b2b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Color Switch/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Triangle$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/Color Switch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/Color Switch.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Ball.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/GameEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/GameModesBanner$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/GameModesBanner$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/GameModesBanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/GameModesBanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/MainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/MainPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Ring.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Ring.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/SavedGames$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/SavedGames$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/SavedGames$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/SavedGames$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/SavedGames.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/SavedGames.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/out/production/Color Switch/sample/Square.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/src/sample/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/src/sample/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/src/sample/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/src/sample/GameModesBanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/src/sample/GameModesBanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/src/sample/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/src/sample/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color Switch/src/sample/SavedGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/Color Switch/src/sample/SavedGames.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -32,6 +32,7 @@ public class GameEngine {
     ArrayList<Obstacle> obstacles;
     ArrayList<Star> stars;
     User user;
+    ArrayList<Game> savedGames;
     GameEngine() throws FileNotFoundException {
         root = new Group();
         scene2 = new Scene(root, 800, 800, Color.BLACK);
