@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -77,16 +78,22 @@ public class Game {
     public void show() throws FileNotFoundException
     {
 
-        Ball ball = new Ball();
-        ball.show();
+        Ball ball = new Ball(); // ball is the object of Ball Class
+        Circle ball_c = ball.show();
         Group root_ball = ball.getRoot();
+        //Circle c = ball.getRoot().getChildren().get(0);
 
 
         // Obstacle 1 -> ring
-        Ring ring = new Ring();
-        ring.show();
-        Group root_ring = ring.getRoot();
-        root.getChildren().add(root_ring);
+//        Ring ring = new Ring();
+//        ring.show();
+//        Group root_ring = ring.getRoot();
+//        root.getChildren().add(root_ring);
+
+        Square square = new Square();
+        square.show();
+        Group root_square = square.getRoot();
+        root.getChildren().add(root_square);
 
 
         // Score count
@@ -125,6 +132,8 @@ public class Game {
 
                         ball.setLayoutY(dy);
 
+                        square.blast(ball_c);
+
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {
                             System.out.println("touch");
@@ -137,18 +146,21 @@ public class Game {
                                 if (getRandom(4) == 1)
                                 {
                                     ball.setFill(Color.rgb (250, 225, 0));
+                                    ball.setColor(Color.rgb (250, 225, 0));
                                     root.getChildren().remove(root5);
                                     break;
                                 }
                                 if (getRandom(4) == 2)
                                 {
                                     ball.setFill(Color.rgb(50, 219, 240));
+                                    ball.setColor(Color.rgb(50, 219, 240));
                                     root.getChildren().remove(root5);
                                     break;
                                 }
                                 if (getRandom(4) == 3)
                                 {
                                     ball.setFill(Color.rgb(255, 1, 129));
+                                    ball.setColor(Color.rgb(255, 1, 129));
                                     root.getChildren().remove(root5);
                                     break;
                                 }
@@ -180,6 +192,7 @@ public class Game {
                             public void handle(ActionEvent t) {
                                 ball.setLayoutY( dy);
                                 Bounds bounds = root.getBoundsInLocal();
+                                square.blast(ball_c);
 
                                 if (root.getChildren().contains(root5) && isCollide(ball, root5))
                                 {

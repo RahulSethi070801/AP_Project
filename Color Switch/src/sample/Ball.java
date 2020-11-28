@@ -35,6 +35,16 @@ public class Ball
     Group root;
     Circle ball;
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    Color color;
+
     public void setRoot(Group root)
     {
         this.root = root;
@@ -60,15 +70,18 @@ public class Ball
         return RectB.intersects(RectA);
     }
 
-    public Group show() throws FileNotFoundException
+    public Circle show() throws FileNotFoundException
     {
 
         root = new Group();
 
-        this.ball = new Circle(10, Color.rgb(144, 13, 255));
-        this.ball.relocate(688, 700);
+        ball = new Circle(10, Color.rgb(144, 13, 255));
+        //real_ball.setColor(Color.rgb(144, 13, 255));
+        ball.relocate(688, 700);
 
         root.getChildren().add(this.ball);
+
+        return ball;
 //        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(23),
 //                new EventHandler<ActionEvent>() {
 //
@@ -232,7 +245,7 @@ public class Ball
 //        root.getChildren().add(root4);
 //        root.getChildren().add(root6);
 //
-        return root;
+        //return root;
 
     }
 
