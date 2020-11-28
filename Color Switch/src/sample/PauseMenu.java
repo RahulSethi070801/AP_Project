@@ -112,6 +112,10 @@ public class PauseMenu
                             ex.printStackTrace();
                         }
                     }
+                    if(x==1){
+                        System.out.println("return");
+                        return;
+                    }
 
                     System.out.println("Hello World"+x);
                 }

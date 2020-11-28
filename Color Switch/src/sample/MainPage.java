@@ -35,14 +35,32 @@ public class MainPage
 
     Group root;
     ArrayList<Game> savedGames;
-
+//    Stage stage;
     MainPage() throws FileNotFoundException
     {
         this.savedGames = new ArrayList<Game>();
+        // TODO : read from a file (serializable)
         for(int i=0;i<5;i++){
             this.savedGames.add(new Game("Game"+(i+1)));
         }
+//        this.stage=stage;
         show();
+    }
+    MainPage(Game game)
+    {
+        // TODO : first read all the saved games then save the recieved game
+        this.savedGames = new ArrayList<Game>();
+        // TODO : read from a file (serializable)
+        for(int i=0;i<5;i++){
+            this.savedGames.add(new Game("Game"+(i+1)));
+        }
+        this.savedGames.add(game);
+        try {
+            show();
+        }
+        catch(Exception e){
+            System.out.println("asdas");
+        }
     }
 
     public void setRoot(Group root)
