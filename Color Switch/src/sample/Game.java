@@ -87,6 +87,12 @@ public class Game {
         Main.stage.setFullScreen(true);
         show();
     }
+    public void play() throws FileNotFoundException
+    {
+        Main.stage.setScene(scene2);
+        Main.stage.setFullScreen(true);
+        this.show();
+    }
     Game(String name)
     {
         this.name = name;

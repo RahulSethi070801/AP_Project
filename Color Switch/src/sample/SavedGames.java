@@ -107,6 +107,14 @@ public class SavedGames implements Serializable
                 @Override
                 public void handle(MouseEvent e) {
                     System.out.println("Hello World"+x);
+                    Game game = savedGames.get(x-1);
+                    try {
+                        game.play();
+                    }
+                    catch(Exception ex){
+                        System.out.println("HEHEEH");
+                        System.out.println(ex);
+                    }
                 }
             };
             //Registering the event filter 

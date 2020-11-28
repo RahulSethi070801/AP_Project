@@ -87,11 +87,8 @@ public class MainPage
     {
         root = new Group();
 
-
         Main.stage.setScene(new Scene(root, 800, 800, Color.BLACK));
         Main.stage.setFullScreen(true);
-
-
 
         Heading hd = new Heading();
         hd.show();
@@ -112,8 +109,6 @@ public class MainPage
         Exit exit = new Exit();
         exit.show();
         Group root5 = exit.getRoot();
-
-
 
         //Group root = new Group();
         root.getChildren().add(root1);
