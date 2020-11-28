@@ -299,7 +299,8 @@ public class Game {
 //                timeline1.pause();
                 root.setEffect(new GaussianBlur());
 
-                HBox pauseRoot = new HBox(20);
+                HBox pauseRoot = new HBox(40);
+                pauseRoot.setFillHeight(true);
                 pauseRoot.getChildren().add(new Label("Paused"));
                 pauseRoot.setStyle("-fx-background-color: rgba(255, 255, 255, 0.8);");
                 pauseRoot.setAlignment(Pos.CENTER);
