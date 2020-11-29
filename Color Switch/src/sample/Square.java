@@ -4,6 +4,7 @@ package sample;
 */
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point3D;
@@ -34,18 +35,23 @@ class Square extends Obstacle
         return root;
     }
 
-    public static boolean isCollide(Circle x, Line y)
-    {
-        Bounds RectA = x.localToScene(x.getBoundsInLocal());
-        Bounds RectB = y.localToScene(y.getBoundsInLocal());
-        return RectA.intersects(RectB);
-    }
 //    public static boolean isCollide(Circle x, Line y)
 //    {
-//        Bounds RectA = x.getBoundsInLocal();
-//        Bounds RectB = y.getBoundsInLocal();
+//        Bounds RectA = x.localToScene(x.getBoundsInParent());
+//        Bounds RectB = y.localToScene(y.getBoundsInParent());
 //        return RectA.intersects(RectB);
 //    }
+    public static boolean isCollide(Circle x, Line y)
+    {
+        Shape intersect = Shape.intersect(x,y);
+        boolean b = false;
+        if (intersect.getBoundsInLocal().getWidth() != -1)
+        {
+            b = true;
+        }
+        return b;
+        //return x.getBoundsInParent().intersects(y.getBoundsInParent());
+    }
 
     public void blast(Circle ball)
     {
@@ -93,22 +99,21 @@ class Square extends Obstacle
 
         line1 = new Line(550, 350, 750, 550);
         line1.setStrokeWidth(10);
+        line1.setFill(null);
         line2 = new Line(550, 350, 750, 150);
         line2.setStrokeWidth(10);
+        line2.setFill(null);
         line3 = new Line(750, 550, 950, 350);
         line3.setStrokeWidth(10);
+        line3.setFill(null);
         line4 = new Line(750, 150, 950, 350);
         line4.setStrokeWidth(10);
+        line4.setFill(null);
 
         line1.setStroke(Color.rgb(144, 13, 255));
         line2.setStroke(Color.rgb (250, 225, 0));
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
-
-//        line1.setFill(Color.YELLOW);
-//        line2.setFill(Color.GREEN);
-//        line3.setFill(Color.CYAN);
-
 
         root = new Group(line1, line2, line3, line4);
 
@@ -116,12 +121,9 @@ class Square extends Obstacle
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
-        rotateTransition.setCycleCount(50);
+        rotateTransition.setCycleCount(Timeline.INDEFINITE);
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.play();
-
-
     }
-
 }
