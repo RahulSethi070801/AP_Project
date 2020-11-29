@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.Group;
+
 import java.io.Serializable;
 
 public class Obstacle implements Serializable
@@ -42,6 +44,15 @@ public class Obstacle implements Serializable
 
     public void setX(long x) {
         this.x = x;
+    }
+
+    public void show()
+    {
+
+    }
+    public Group getRoot()
+    {
+
     }
 }
 

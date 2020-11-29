@@ -115,7 +115,34 @@ public class Game implements Serializable {
         Group root_ball = ball.getRoot();
         //Circle c = ball.getRoot().getChildren().get(0);
 
+        Random rand = new Random();
+        String tempO[] = {"Ring", "Square", "TwoCircles", "Triangle" };
+        for(int i=0;i<5;i++)
+        {
+            int ind = rand.nextInt(4);
+            Obstacle o;
+            if(!tempO[ind].equals("Ring"))
+            {
+                o = new Ring();
+            }
+            if(!tempO[ind].equals("Square"))
+            {
+                o = new Square();
+            }
+            if(!tempO[ind].equals("TwoCircles"))
+            {
+                o = new TwoCircles();
+            }
+            if(!tempO[ind].equals("Triangle"))
+            {
+                o = new Triangle();
+            }
+            o.show();
+            obstacles.add(o);
+            Group root_square = o.getRoot();
+            root.getChildren().add(root_square);
 
+        }
         // Obstacle 1 -> ring
 //        Ring ring = new Ring();
 //        ring.show();
