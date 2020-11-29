@@ -28,14 +28,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game {
+public class Game implements Serializable {
     Group root;
     Scene scene2;
     ArrayList<Obstacle> obstacles;
@@ -86,6 +83,12 @@ public class Game {
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
         show();
+    }
+    public void play() throws FileNotFoundException
+    {
+        Main.stage.setScene(scene2);
+        Main.stage.setFullScreen(true);
+        this.show();
     }
     Game(String name)
     {

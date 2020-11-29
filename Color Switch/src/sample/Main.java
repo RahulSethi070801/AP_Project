@@ -51,3 +51,11 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
+/*
+
+--module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml
+--add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED
+
+ */

@@ -7,8 +7,9 @@ import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 
-public class Star {
+public class Star implements Serializable {
 
     Group root;
     public Group  show(double x, double y) throws FileNotFoundException

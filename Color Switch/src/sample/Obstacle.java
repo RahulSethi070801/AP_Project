@@ -1,6 +1,8 @@
 package sample;
 
-public class Obstacle
+import java.io.Serializable;
+
+public class Obstacle implements Serializable
 {
     protected double speed;
     protected String colors[] = { "Red", "Blue", "Pink", "Yellow"};

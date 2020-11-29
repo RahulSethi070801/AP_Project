@@ -41,6 +41,7 @@ class Square extends Obstacle
 //        Bounds RectB = y.localToScene(y.getBoundsInParent());
 //        return RectA.intersects(RectB);
 //    }
+
     public static boolean isCollide(Circle x, Line y)
     {
         Shape intersect = Shape.intersect(x,y);

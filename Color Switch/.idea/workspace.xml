@@ -277,10 +277,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606235154878" />
+<<<<<<< HEAD
     <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606598016634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606598016634" />
+=======
+    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606598409040">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606598409040" />
+>>>>>>> 0759c9b9e2044a9370976d1ca2d83cb69433e701
     <state x="954" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1606380737564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -293,9 +300,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="397" y="5" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605509054881" />
-    <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1606571168425">
+    <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1606598388727">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+<<<<<<< HEAD
     <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606571168425" />
     <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1606664868203">
       <screen x="0" y="0" width="1536" height="824" />
@@ -313,6 +321,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606664868203" />
+=======
+    <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606598388727" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606599020526">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1606599020526">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1606599020526">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1606599020526">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
+>>>>>>> 0759c9b9e2044a9370976d1ca2d83cb69433e701
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606242403010">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -329,10 +356,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606242403010" />
+<<<<<<< HEAD
     <state x="498" y="0" key="SettingsEditor" timestamp="1606598003897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606598003897" />
+=======
+    <state x="498" y="0" key="SettingsEditor" timestamp="1606598396000">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606598396000" />
+>>>>>>> 0759c9b9e2044a9370976d1ca2d83cb69433e701
     <state x="618" y="327" key="VCS.ChangelistChooser" timestamp="1605509077399">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
