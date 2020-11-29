@@ -1,14 +1,11 @@
 package sample;
-
 /*
- Triangle obstacle
+    Square obstacle
 */
-
-import javafx.animation.AnimationTimer;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
-// import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
@@ -16,16 +13,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.shape.*;
 import javafx.scene.shape.Polygon;
-import javafx.scene.transform.Rotate;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.awt.*;
 
-class Triangle extends Obstacle
+class Square extends Obstacle
 {
     Group root;
-    Line line1, line2, line3;
+    Line line1, line2, line3, line4;
 
     public void setRoot(Group root)
     {
@@ -37,6 +35,13 @@ class Triangle extends Obstacle
         return root;
     }
 
+//    public static boolean isCollide(Circle x, Line y)
+//    {
+//        Bounds RectA = x.localToScene(x.getBoundsInParent());
+//        Bounds RectB = y.localToScene(y.getBoundsInParent());
+//        return RectA.intersects(RectB);
+//    }
+
     public static boolean isCollide(Circle x, Line y)
     {
         Shape intersect = Shape.intersect(x,y);
@@ -46,6 +51,7 @@ class Triangle extends Obstacle
             b = true;
         }
         return b;
+        //return x.getBoundsInParent().intersects(y.getBoundsInParent());
     }
 
     public void blast(Circle ball)
@@ -78,39 +84,47 @@ class Triangle extends Obstacle
             else
                 System.out.println("blast");
         }
+        if (isCollide(ball, line4))
+        {
+//            System.out.println(ball.getColor());
+//            System.out.println(shape4.getFill());
+            if (ball.getFill().equals(line4.getStroke()))
+                System.out.println("same color");
+            else
+                System.out.println("blast");
+        }
     }
+
     public void show()
     {
-        Line line1 = new Line(200, 200, 376, 301.734);
-        line1.setStrokeWidth(5);
+
+        line1 = new Line(550, 350, 750, 550);
+        line1.setStrokeWidth(10);
         line1.setFill(null);
-        Line line2 = new Line(200, 200, 376, 98.266);
-        line2.setStrokeWidth(5);
+        line2 = new Line(550, 350, 750, 150);
+        line2.setStrokeWidth(10);
         line2.setFill(null);
-        Line line3 = new Line(376, 301.734, 376, 98.266);
-        line3.setStrokeWidth(5);
+        line3 = new Line(750, 550, 950, 350);
+        line3.setStrokeWidth(10);
         line3.setFill(null);
+        line4 = new Line(750, 150, 950, 350);
+        line4.setStrokeWidth(10);
+        line4.setFill(null);
 
         line1.setStroke(Color.rgb(144, 13, 255));
         line2.setStroke(Color.rgb (250, 225, 0));
         line3.setStroke(Color.rgb(50, 219, 240));
+        line4.setStroke(Color.rgb(255, 1, 129));
 
+        root = new Group(line1, line2, line3, line4);
 
-        root = new Group(line2, line1, line3);
-        //root.getChildren().addAll(line1, line2, line3);
-
-        Rotate r = new Rotate();
-        root.getTransforms().add(r);
-        r.setPivotX(317.3);
-        r.setPivotY(200);
-
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-                r.setAngle(r.getAngle()+2);
-            }
-        };
-        timer.start();
+        RotateTransition rotateTransition = new RotateTransition();
+        rotateTransition.setDuration(Duration.millis(5000));
+        rotateTransition.setNode(root);
+        rotateTransition.setByAngle(360);
+        rotateTransition.setCycleCount(Timeline.INDEFINITE);
+        rotateTransition.setAutoReverse(false);
+        rotateTransition.setInterpolator(Interpolator.LINEAR);
+        rotateTransition.play();
     }
-
 }
