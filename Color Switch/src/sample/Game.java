@@ -115,45 +115,56 @@ public class Game implements Serializable {
         Group root_ball = ball.getRoot();
         //Circle c = ball.getRoot().getChildren().get(0);
 
-        Random rand = new Random();
-        String tempO[] = {"Ring", "Square", "TwoCircles", "Triangle" };
-        for(int i=0;i<5;i++)
-        {
-            int ind = rand.nextInt(4);
-            Obstacle o;
-            if(!tempO[ind].equals("Ring"))
-            {
-                o = new Ring();
-            }
-            if(!tempO[ind].equals("Square"))
-            {
-                o = new Square();
-            }
-            if(!tempO[ind].equals("TwoCircles"))
-            {
-                o = new TwoCircles();
-            }
-            if(!tempO[ind].equals("Triangle"))
-            {
-                o = new Triangle();
-            }
-            o.show();
-            obstacles.add(o);
-            Group root_square = o.getRoot();
-            root.getChildren().add(root_square);
-
-        }
+//        Random rand = new Random();
+//        String tempO[] = {"Ring", "Square", "TwoCircles", "Triangle" };
+//        int y=0;
+//        for(int i=0;i<5;i++)
+//        {
+//            int ind = rand.nextInt(4);
+//            Obstacle o = new Obstacle();
+//            if(!tempO[ind].equals("Ring"))
+//            {
+//                o = new Ring();
+//            }
+//            if(!tempO[ind].equals("Square"))
+//            {
+//                o = new Square();
+//            }
+//            if(!tempO[ind].equals("TwoCircles"))
+//            {
+//                o = new TwoCircles();
+//            }
+//            if(!tempO[ind].equals("Triangle"))
+//            {
+//                o = new Triangle();
+//            }
+//            o.show(y);
+//            y-=100;
+//            obstacles.add(o);
+//            Group root_square = o.getRoot();
+//            root.getChildren().add(root_square);
+//
+//        }
         // Obstacle 1 -> ring
+        Ring ring = new Ring();
+        ring.show();
+        Group root_ring = ring.getRoot();
+        root.getChildren().add(root_ring);
+
+//        Square square = new Square();
+//        square.show((long)500);
+//        Group root_square = square.getRoot();
+//        root.getChildren().add(root_square);
+//
+//        Triangle triangle = new Triangle();
+//        triangle.show((long)0);
+//        Group root_triangle = triangle.getRoot();
+//        root.getChildren().add(root_triangle);
+
 //        Ring ring = new Ring();
 //        ring.show();
 //        Group root_ring = ring.getRoot();
 //        root.getChildren().add(root_ring);
-
-        Square square = new Square();
-        square.show();
-        Group root_square = square.getRoot();
-        root.getChildren().add(root_square);
-
 
         // Score count
         Text text1 = new Text();
@@ -187,7 +198,7 @@ public class Game implements Serializable {
 
                         ball.setLayoutY(dy);
 
-                        square.blast(ball_c);
+                        ring.blast(ball_c);
 
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {
@@ -234,14 +245,14 @@ public class Game implements Serializable {
                 }));
         timeline.setCycleCount(Timeline.INDEFINITE);
 
-        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(13),
+        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
                 new EventHandler<ActionEvent>() {
                     double dy = -10; //Step on y
                     @Override
                     public void handle(ActionEvent t) {
                         ball.setLayoutY( dy);
                         Bounds bounds = root.getBoundsInLocal();
-                        square.blast(ball_c);
+                        ring.blast(ball_c);
 
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {

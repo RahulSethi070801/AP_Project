@@ -101,39 +101,39 @@ class Ring extends Obstacle
         Arc arc11 = new Arc(700, 400, 110, 110, 0, 90);
         arc11.setType(ArcType.ROUND);
         arc11.setFill(Color.VIOLET);
-        arc11.setFill(null);
+//        arc11.setFill(null);
         arc12 = new Arc(700, 400, 90, 90, 0, 90);
         arc12.setType(ArcType.ROUND);
         arc12.setFill(Color.VIOLET);
-        arc12.setFill(null);
+//        arc12.setFill(null);
 
 
         Arc arc21 = new Arc(700, 400, 110, 110, 90, 90);
         arc21.setType(ArcType.ROUND);
         arc21.setFill(Color.BLUE);
-        arc21.setFill(null);
+//        arc21.setFill(null);
         arc22 = new Arc(700, 400, 90, 90, 90, 90);
         arc22.setType(ArcType.ROUND);
         arc22.setFill(Color.BLUE);
-        arc22.setFill(null);
+//        arc22.setFill(null);
 
         Arc arc31 = new Arc(700, 400, 110, 110, 180, 90);
         arc31.setType(ArcType.ROUND);
         arc31.setFill(Color.RED);
-        arc31.setFill(null);
+//        arc31.setFill(null);
         arc32 = new Arc(700, 400, 90, 90, 180, 90);
         arc32.setType(ArcType.ROUND);
         arc32.setFill(Color.RED);
-        arc32.setFill(null);
+//        arc32.setFill(null);
 
         Arc arc41 = new Arc(700, 400, 110, 110, 270, 90);
         arc41.setType(ArcType.ROUND);
         arc41.setFill(Color.YELLOW);
-        arc41.setFill(null);
+//        arc41.setFill(null);
         arc42 = new Arc(700, 400, 90, 90, 270, 90);
         arc42.setType(ArcType.ROUND);
         arc42.setFill(Color.YELLOW);
-        arc42.setFill(null);
+//        arc42.setFill(null);
 
         shape1 = Shape.subtract(arc11, arc12);
         shape1.setFill(Color.rgb(144, 13, 255));

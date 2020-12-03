@@ -79,20 +79,20 @@ class Triangle extends Obstacle
                 System.out.println("blast");
         }
     }
-    public void show()
+    public void show( long y)
     {
-        Line line1 = new Line(200, 200, 376, 301.734);
+        Line line1 = new Line(200, 200+y, 376, 301.734+y);
         line1.setStrokeWidth(5);
         line1.setFill(null);
-        Line line2 = new Line(200, 200, 376, 98.266);
+        Line line2 = new Line(200, 200+y, 376, 98.266+y);
         line2.setStrokeWidth(5);
         line2.setFill(null);
-        Line line3 = new Line(376, 301.734, 376, 98.266);
+        Line line3 = new Line(376, 301.734+y, 376, 98.266+y);
         line3.setStrokeWidth(5);
         line3.setFill(null);
 
         line1.setStroke(Color.rgb(144, 13, 255));
-        line2.setStroke(Color.rgb (250, 225, 0));
+        line2.setStroke(Color.rgb (255, 1, 129));
         line3.setStroke(Color.rgb(50, 219, 240));
 
 

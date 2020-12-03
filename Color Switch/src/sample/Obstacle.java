@@ -46,13 +46,13 @@ public class Obstacle implements Serializable
         this.x = x;
     }
 
-    public void show()
+    public void show(int y)
     {
 
     }
     public Group getRoot()
     {
-
+        return new Group();
     }
 }
 
