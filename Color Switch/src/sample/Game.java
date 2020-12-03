@@ -120,7 +120,7 @@ public class Game implements Serializable {
         String tempO[] = {"Ring", "Square", "Triangle" };
         ArrayList<Group> root_list = new ArrayList<Group>();
         long y=0;
-        for(int i=0;i<5;i++)
+        for(int i=0;i<100;i++)
         {
             int ind = rand.nextInt(3);
 //            int ind = 0;
@@ -253,12 +253,15 @@ public class Game implements Serializable {
                     double dy = -10; //Step on y
                     @Override
                     public void handle(ActionEvent t) {
-                        for(int i=0;i<5;i++)
-                        {
-                            double dey = root_list.get(i).getLayoutY();
-                            root_list.get(i).setLayoutY(dey-dy);
-                        }
+
                         ball.setLayoutY( dy);
+
+                        if(ball.getLayoutY()<500) {
+                            for (int i = 0; i < 100; i++) {
+                                double dey = root_list.get(i).getLayoutY();
+                                root_list.get(i).setLayoutY(dey - dy);
+                            }
+                        }
                         Bounds bounds = root.getBoundsInLocal();
                         obstacles.get(0).blast(ball_c);
 

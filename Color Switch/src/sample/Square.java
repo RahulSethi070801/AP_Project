@@ -105,16 +105,16 @@ class Square extends Obstacle
     {
 
         line1 = new Line(550, 350+y, 750, 550+y);
-        line1.setStrokeWidth(10);
+        line1.setStrokeWidth(15);
         line1.setFill(null);
         line2 = new Line(550, 350+y, 750, 150+y);
-        line2.setStrokeWidth(10);
+        line2.setStrokeWidth(15);
         line2.setFill(null);
         line3 = new Line(750, 550+y, 950, 350+y);
-        line3.setStrokeWidth(10);
+        line3.setStrokeWidth(15);
         line3.setFill(null);
         line4 = new Line(750, 150+y, 950, 350+y);
-        line4.setStrokeWidth(10);
+        line4.setStrokeWidth(15);
         line4.setFill(null);
 
         line1.setStroke(Color.rgb(144, 13, 255));

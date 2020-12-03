@@ -44,6 +44,7 @@ class Triangle extends Obstacle
 
     public static boolean isCollide(Circle x, Line y)
     {
+//        System.out.println(y);
         Shape intersect = Shape.intersect(x,y);
         boolean b = false;
         if (intersect.getBoundsInLocal().getWidth() != -1)
@@ -55,7 +56,10 @@ class Triangle extends Obstacle
 
     public void blast(Circle ball)
     {
-
+//        System.out.println(ball);
+//        System.out.println(line1);
+//        System.out.println(line2);
+//        System.out.println(line3);
         if (isCollide(ball, line1))
         {
 //            System.out.println(ball.getColor());
@@ -86,14 +90,14 @@ class Triangle extends Obstacle
     }
     public void show( long y)
     {
-        Line line1 = new Line(200, 200+y, 376, 301.734+y);
-        line1.setStrokeWidth(5);
+        line1 = new Line(200+400, 200+y, 376+400, 301.734+y);
+        line1.setStrokeWidth(10);
         line1.setFill(null);
-        Line line2 = new Line(200, 200+y, 376, 98.266+y);
-        line2.setStrokeWidth(5);
+        line2 = new Line(200+400, 200+y, 376+400, 98.266+y);
+        line2.setStrokeWidth(10);
         line2.setFill(null);
-        Line line3 = new Line(376, 301.734+y, 376, 98.266+y);
-        line3.setStrokeWidth(5);
+        line3 = new Line(376+400, 301.734+y, 376+400, 98.266+y);
+        line3.setStrokeWidth(10);
         line3.setFill(null);
 
         line1.setStroke(Color.rgb(144, 13, 255));
@@ -106,8 +110,8 @@ class Triangle extends Obstacle
 
         Rotate r = new Rotate();
         root.getTransforms().add(r);
-        r.setPivotX(317.3);
-        r.setPivotY(200);
+        r.setPivotX(317.3+400);
+        r.setPivotY(200+y);
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
