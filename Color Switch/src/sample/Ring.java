@@ -27,6 +27,10 @@ class Ring extends Obstacle
     Shape shape1, shape2, shape3, shape4;
     Arc arc12, arc22, arc32, arc42;
 
+    public Ring()
+    {
+        this.root= new Group();
+    }
     public void setRoot(Group root)
     {
         this.root = root;
@@ -34,7 +38,8 @@ class Ring extends Obstacle
 
     public Group getRoot()
     {
-        return root;
+
+        System.out.println("Ring");return root;
     }
 
     public static boolean isCollide(Circle x, Shape y)
@@ -96,41 +101,41 @@ class Ring extends Obstacle
         }
     }
 
-    public Group show()
+    public void show(long y)
     {
-        Arc arc11 = new Arc(700, 400, 110, 110, 0, 90);
+        Arc arc11 = new Arc(700, 400+y, 110, 110, 0, 90);
         arc11.setType(ArcType.ROUND);
         arc11.setFill(Color.VIOLET);
 //        arc11.setFill(null);
-        arc12 = new Arc(700, 400, 90, 90, 0, 90);
+        arc12 = new Arc(700, 400+y, 90, 90, 0, 90);
         arc12.setType(ArcType.ROUND);
         arc12.setFill(Color.VIOLET);
 //        arc12.setFill(null);
 
 
-        Arc arc21 = new Arc(700, 400, 110, 110, 90, 90);
+        Arc arc21 = new Arc(700, 400+y, 110, 110, 90, 90);
         arc21.setType(ArcType.ROUND);
         arc21.setFill(Color.BLUE);
 //        arc21.setFill(null);
-        arc22 = new Arc(700, 400, 90, 90, 90, 90);
+        arc22 = new Arc(700, 400+y, 90, 90, 90, 90);
         arc22.setType(ArcType.ROUND);
         arc22.setFill(Color.BLUE);
 //        arc22.setFill(null);
 
-        Arc arc31 = new Arc(700, 400, 110, 110, 180, 90);
+        Arc arc31 = new Arc(700, 400+y, 110, 110, 180, 90);
         arc31.setType(ArcType.ROUND);
         arc31.setFill(Color.RED);
 //        arc31.setFill(null);
-        arc32 = new Arc(700, 400, 90, 90, 180, 90);
+        arc32 = new Arc(700, 400+y, 90, 90, 180, 90);
         arc32.setType(ArcType.ROUND);
         arc32.setFill(Color.RED);
 //        arc32.setFill(null);
 
-        Arc arc41 = new Arc(700, 400, 110, 110, 270, 90);
+        Arc arc41 = new Arc(700, 400+y, 110, 110, 270, 90);
         arc41.setType(ArcType.ROUND);
         arc41.setFill(Color.YELLOW);
 //        arc41.setFill(null);
-        arc42 = new Arc(700, 400, 90, 90, 270, 90);
+        arc42 = new Arc(700, 400+y, 90, 90, 270, 90);
         arc42.setType(ArcType.ROUND);
         arc42.setFill(Color.YELLOW);
 //        arc42.setFill(null);
@@ -155,7 +160,7 @@ class Ring extends Obstacle
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.play();
 
-        return root;
+        return ;
 
     }
 }

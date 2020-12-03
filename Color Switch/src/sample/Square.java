@@ -26,7 +26,7 @@ class Square extends Obstacle
     Line line1, line2, line3, line4;
     public Square()
     {
-//        this.root = new Group();
+        this.root = new Group();
     }
 
     public void setRoot(Group root)
@@ -36,7 +36,8 @@ class Square extends Obstacle
 
     public Group getRoot()
     {
-        return this.root;
+
+        System.out.println("square");return this.root;
     }
 
 //    public static boolean isCollide(Circle x, Line y)

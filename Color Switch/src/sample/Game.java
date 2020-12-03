@@ -82,6 +82,7 @@ public class Game implements Serializable {
         scene2 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
+        this.obstacles = new ArrayList<Obstacle>();
         show();
     }
     public void play() throws FileNotFoundException
@@ -115,44 +116,46 @@ public class Game implements Serializable {
         Group root_ball = ball.getRoot();
         //Circle c = ball.getRoot().getChildren().get(0);
 
-//        Random rand = new Random();
-//        String tempO[] = {"Ring", "Square", "TwoCircles", "Triangle" };
-//        int y=0;
-//        for(int i=0;i<5;i++)
-//        {
-//            int ind = rand.nextInt(4);
-//            Obstacle o = new Obstacle();
-//            if(!tempO[ind].equals("Ring"))
-//            {
-//                o = new Ring();
-//            }
-//            if(!tempO[ind].equals("Square"))
-//            {
-//                o = new Square();
-//            }
+        Random rand = new Random();
+        String tempO[] = {"Ring", "Square", "Triangle" };
+        ArrayList<Group> root_list = new ArrayList<Group>();
+        long y=0;
+        for(int i=0;i<5;i++)
+        {
+            int ind = rand.nextInt(3);
+//            int ind = 0;
+            Obstacle o = new Obstacle();
+            if(tempO[ind].equals("Ring"))
+            {
+                o = new Ring();
+            }
+            if(tempO[ind].equals("Square"))
+            {
+                o = new Square();
+            }
 //            if(!tempO[ind].equals("TwoCircles"))
 //            {
 //                o = new TwoCircles();
 //            }
-//            if(!tempO[ind].equals("Triangle"))
-//            {
-//                o = new Triangle();
-//            }
-//            o.show(y);
-//            y-=100;
-//            obstacles.add(o);
-//            Group root_square = o.getRoot();
-//            root.getChildren().add(root_square);
-//
-//        }
+            if(tempO[ind].equals("Triangle"))
+            {
+                o = new Triangle();
+            }
+            o.show((long)y);
+            y-=500;
+            obstacles.add(o);
+            Group root_square = o.getRoot();
+            root.getChildren().add(root_square);
+            root_list.add(root_square);
+        }
         // Obstacle 1 -> ring
-        Ring ring = new Ring();
-        ring.show();
-        Group root_ring = ring.getRoot();
-        root.getChildren().add(root_ring);
-
+//        Ring ring = new Ring();
+//        ring.show(-(long)100);
+//        Group root_ring = ring.getRoot();
+//        root.getChildren().add(root_ring);
+//
 //        Square square = new Square();
-//        square.show((long)500);
+//        square.show(-(long)500);
 //        Group root_square = square.getRoot();
 //        root.getChildren().add(root_square);
 //
@@ -198,7 +201,7 @@ public class Game implements Serializable {
 
                         ball.setLayoutY(dy);
 
-                        ring.blast(ball_c);
+                        obstacles.get(0).blast(ball_c);
 
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {
@@ -250,9 +253,14 @@ public class Game implements Serializable {
                     double dy = -10; //Step on y
                     @Override
                     public void handle(ActionEvent t) {
+                        for(int i=0;i<5;i++)
+                        {
+                            double dey = root_list.get(i).getLayoutY();
+                            root_list.get(i).setLayoutY(dey-dy);
+                        }
                         ball.setLayoutY( dy);
                         Bounds bounds = root.getBoundsInLocal();
-                        ring.blast(ball_c);
+                        obstacles.get(0).blast(ball_c);
 
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {

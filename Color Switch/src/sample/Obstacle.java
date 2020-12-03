@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.scene.Group;
+import javafx.scene.shape.Circle;
 
 import java.io.Serializable;
 
@@ -46,13 +47,19 @@ public class Obstacle implements Serializable
         this.x = x;
     }
 
-    public void show(int y)
+    public void show(long y)
     {
 
     }
     public Group getRoot()
     {
+        System.out.println("asdas");
         return new Group();
+    }
+
+    public void blast(Circle ball)
+    {
+
     }
 }
 
