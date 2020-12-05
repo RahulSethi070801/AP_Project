@@ -19,26 +19,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="second">
-      <change afterPath="$PROJECT_DIR$/src/sample/HorizontalLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/TwoPlus.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="scrollable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/MainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/MainPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Star.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Star.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Plus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Obstacles/TwoPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Obstacles/TwoPlus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Triangle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +166,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="Color Switch" />
-      <option name="VM_PARAMETERS" value="--module-path F:\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Tushar\Downloads\javafx-sdk-15.0.1\lib --add-modules javafx.controls,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
       <extension name="coverage">
         <pattern>
@@ -217,7 +218,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -237,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605509056523</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="scrollable">
+      <created>1606998003092</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606998003092</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -248,29 +256,36 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="second" />
-    <option name="LAST_COMMIT_MESSAGE" value="second" />
+    <MESSAGE value="scrollable" />
+    <option name="LAST_COMMIT_MESSAGE" value="scrollable" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1606235154878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606235154878" />
+<<<<<<< HEAD
     <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606679327501">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606679327501" />
+=======
+    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606949286749">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606949286749" />
+>>>>>>> 013ca2b61cf3b3777d3decd8fae0aaf79604ca25
     <state x="954" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1606380737564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -283,6 +298,7 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="397" y="5" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605509054881" />
+<<<<<<< HEAD
     <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1606762958365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -304,30 +320,69 @@
     </state>
     <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607159974084" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606242403010">
+=======
+    <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1606598388727">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606242403010" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1606242403010">
+    <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606598388727" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606998750204">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606242403010" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1606242403010">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606998750204" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1606998750204">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606242403010" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1606242403010">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606998750204" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1606998750204">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606998750204" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1606998750204">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606998750204" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606994333489">
+>>>>>>> 013ca2b61cf3b3777d3decd8fae0aaf79604ca25
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606994333489" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1606994333488">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606994333488" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1606994333488">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606994333488" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1606994333489">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+<<<<<<< HEAD
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606242403010" />
     <state x="498" y="0" key="SettingsEditor" timestamp="1606598396000">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606598396000" />
+=======
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606994333488" />
+    <state x="498" y="0" key="SettingsEditor" timestamp="1606949296721">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606949296721" />
+>>>>>>> 013ca2b61cf3b3777d3decd8fae0aaf79604ca25
     <state x="618" y="327" key="VCS.ChangelistChooser" timestamp="1605509077399">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="327" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1605509077399" />
+<<<<<<< HEAD
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1607195774676">
+=======
+    <state x="360" y="144" key="Vcs.Push.Dialog.v2" timestamp="1606998014557">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="360" y="144" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606998014557" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1606656421271">
+>>>>>>> 013ca2b61cf3b3777d3decd8fae0aaf79604ca25
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1607195774676" />

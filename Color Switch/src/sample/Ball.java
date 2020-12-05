@@ -255,6 +255,11 @@ public class Ball
         this.ball.setLayoutY(this.ball.getLayoutY()+y);
     }
 
+    public double getLayoutY()
+    {
+        return this.ball.getLayoutY();
+    }
+
     public void setFill(Color color)
     {
         this.ball.setFill(color);

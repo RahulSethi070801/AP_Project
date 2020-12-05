@@ -30,6 +30,10 @@ class Square extends Obstacle
 {
     Group root;
     Line line1, line2, line3, line4;
+    public Square()
+    {
+        this.root = new Group();
+    }
 
     public void setRoot(Group root)
     {
@@ -38,7 +42,8 @@ class Square extends Obstacle
 
     public Group getRoot()
     {
-        return root;
+
+        System.out.println("square");return this.root;
     }
 
     public static boolean isCollide(Circle x, Line y)
@@ -55,7 +60,8 @@ class Square extends Obstacle
 
     public void blast(Circle ball)
     {
-
+        System.out.println(ball);
+        System.out.println(line1);
         if (isCollide(ball, line1))
         {
 //            System.out.println(ball.getColor());
@@ -141,20 +147,20 @@ class Square extends Obstacle
         }.start();
     }
 
-    public void show()
+    public void show(long y)
     {
 
-        line1 = new Line(550, 350, 750, 550);
-        line1.setStrokeWidth(10);
+        line1 = new Line(550, 350+y, 750, 550+y);
+        line1.setStrokeWidth(15);
         line1.setFill(null);
-        line2 = new Line(550, 350, 750, 150);
-        line2.setStrokeWidth(10);
+        line2 = new Line(550, 350+y, 750, 150+y);
+        line2.setStrokeWidth(15);
         line2.setFill(null);
-        line3 = new Line(750, 550, 950, 350);
-        line3.setStrokeWidth(10);
+        line3 = new Line(750, 550+y, 950, 350+y);
+        line3.setStrokeWidth(15);
         line3.setFill(null);
-        line4 = new Line(750, 150, 950, 350);
-        line4.setStrokeWidth(10);
+        line4 = new Line(750, 150+y, 950, 350+y);
+        line4.setStrokeWidth(15);
         line4.setFill(null);
 
         line1.setStroke(Color.rgb(144, 13, 255));
@@ -162,8 +168,9 @@ class Square extends Obstacle
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
 
-        root = new Group(line1, line2, line3, line4);
+        this.root = new Group(line1, line2, line3, line4);
 
+        System.out.println(root);
         RotateTransition rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);
