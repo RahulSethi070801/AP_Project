@@ -55,7 +55,7 @@ public class Main extends Application {
 
 /*
 
---module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml
+--module-path F:\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml
 --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED
 
  */

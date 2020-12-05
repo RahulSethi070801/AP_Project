@@ -20,35 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="second">
-      <change afterPath="$PROJECT_DIR$/src/sample/ConcentricCircles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/HorizontalCircles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Plus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/HorizontalLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/TwoPlus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Help$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Help$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Help.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Help.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/MainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/MainPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/PauseMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/PauseMenu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/PauseMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/PauseMenu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/PauseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/PauseMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Ring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Ring.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Sqaure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Star.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Star.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Plus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Obstacles/TwoPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Obstacles/TwoPlus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,17 +267,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606235154878" />
-<<<<<<< HEAD
-    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606598016634">
+    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606679327501">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606598016634" />
-=======
-    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606598409040">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606598409040" />
->>>>>>> 0759c9b9e2044a9370976d1ca2d83cb69433e701
+    <state x="264" y="54" width="1089" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606679327501" />
     <state x="954" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1606380737564">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -300,46 +283,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="397" y="5" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605509054881" />
-    <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1606598388727">
+    <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1606762958365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-<<<<<<< HEAD
-    <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606571168425" />
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1606664868203">
+    <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606762958365" />
+    <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1607159974084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606664868203" />
-    <state width="1493" height="2" key="GridCell.Tab.0.center" timestamp="1606664868202">
+    <state width="1493" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607159974084" />
+    <state width="1493" height="2" key="GridCell.Tab.0.center" timestamp="1607159974084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606664868202" />
-    <state width="1493" height="2" key="GridCell.Tab.0.left" timestamp="1606664868202">
+    <state width="1493" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607159974084" />
+    <state width="1493" height="2" key="GridCell.Tab.0.left" timestamp="1607159974084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606664868202" />
-    <state width="1493" height="2" key="GridCell.Tab.0.right" timestamp="1606664868203">
+    <state width="1493" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607159974084" />
+    <state width="1493" height="2" key="GridCell.Tab.0.right" timestamp="1607159974084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606664868203" />
-=======
-    <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606598388727" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1606599020526">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1606599020526">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1606599020526">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1606599020526">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606599020526" />
->>>>>>> 0759c9b9e2044a9370976d1ca2d83cb69433e701
+    <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607159974084" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606242403010">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -356,33 +319,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606242403010" />
-<<<<<<< HEAD
-    <state x="498" y="0" key="SettingsEditor" timestamp="1606598003897">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606598003897" />
-=======
     <state x="498" y="0" key="SettingsEditor" timestamp="1606598396000">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606598396000" />
->>>>>>> 0759c9b9e2044a9370976d1ca2d83cb69433e701
     <state x="618" y="327" key="VCS.ChangelistChooser" timestamp="1605509077399">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="618" y="327" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1605509077399" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1606656421271">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1607195774676">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1606656421271" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1607195774676" />
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605829336553">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605829336553" />
-    <state x="209" y="114" key="new project wizard" timestamp="1606061084409">
+    <state x="209" y="114" key="new project wizard" timestamp="1606762968868">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1606061084409" />
+    <state x="209" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1606762968868" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1605989760387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -402,10 +358,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Color_Switch$Main.ic" NAME="Main Coverage Results" MODIFIED="1606241939509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>sample.*</FILTER>
-    </SUITE>
   </component>
 </project>
