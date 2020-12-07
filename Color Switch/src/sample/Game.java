@@ -117,18 +117,18 @@ public class Game implements Serializable {
         //Circle c = ball.getRoot().getChildren().get(0);
 
         Random rand = new Random();
-        String tempO[] = {"Ring", "Square", "Triangle" };
+        String tempO[] = {"Ring", "Square", "Triangle", "Concentric", "HorizontalCircles" };
         ArrayList<Group> root_list = new ArrayList<Group>();
         long y=0;
-        Obstacle Ccircle = new ConcentricCircles();
-        Ccircle.show(y);
-        y-=500;
-        obstacles.add(Ccircle);
-        root.getChildren().add(Ccircle.getRoot());
-        root_list.add(Ccircle.getRoot());
+//        Obstacle Ccircle = new ConcentricCircles();
+//        Ccircle.show(y);
+//        y-=500;
+//        obstacles.add(Ccircle);
+//        root.getChildren().add(Ccircle.getRoot());
+//        root_list.add(Ccircle.getRoot());
         for(int i=0;i<100;i++)
         {
-            int ind = rand.nextInt(3);
+            int ind = rand.nextInt(5);
 //            int ind = 0;
             Obstacle o = new Obstacle();
             if(tempO[ind].equals("Ring"))
@@ -139,10 +139,14 @@ public class Game implements Serializable {
             {
                 o = new Square();
             }
-//            if(!tempO[ind].equals("TwoCircles"))
-//            {
-//                o = new TwoCircles();
-//            }
+            if(tempO[ind].equals("HorizontalCircles"))
+            {
+                o = new HorizontalCircles();
+            }
+            if(tempO[ind].equals("Concentric"))
+            {
+                o = new ConcentricCircles();
+            }
             if(tempO[ind].equals("Triangle"))
             {
                 o = new Triangle();
