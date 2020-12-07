@@ -43,6 +43,12 @@ public class Game implements Serializable {
     long score = 0;
     long difficulty = 0;
     String name;
+    // TODO : Add difficulty -> Tushar
+    // TODO : Add revive -> Tushar
+    // TODO : beautify pause menu -> Tushar nad Rahul
+    // TODO : animation on collision -> Rahul
+    // TODO : loading game animation -> Tushar and Rahul
+    // TODO : sound -> Rahul
     public void resumeGame(){}
     public void pauseGame(){}
 //    public Ball getBall(){}
@@ -224,13 +230,6 @@ public class Game implements Serializable {
         root.getChildren().add(root_text);
 
         String localDir = System.getProperty("user.dir");
-        // collectable star
-//        Star star = new Star();
-//        Group root6 = star.show(675.0, 375.0);
-//
-//        ColorSwitch c1 = new ColorSwitch();
-//        Group root5 = c1.show(0);
-//        root.getChildren().add(root5);
 
         // timeline for ball
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
