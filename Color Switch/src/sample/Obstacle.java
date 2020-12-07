@@ -73,6 +73,8 @@ public class Obstacle implements Serializable
         return new Group();
     }
 
+
+
     public void blast(Circle ball)
     {
 

@@ -116,6 +116,12 @@ public class Game implements Serializable {
 
         return RectB.intersects(RectA);
     }
+
+    public void addObstacle(Obstacle o, long y)
+    {
+
+    }
+
     public void show() throws FileNotFoundException
     {
 
@@ -242,6 +248,16 @@ public class Game implements Serializable {
                     public void handle(ActionEvent t) {
 
                         ball.setLayoutY(dy);
+
+                        double curr = ball.getLayY();
+
+                        if (obstacles.get(0).getLayoutY() > curr + 800)
+                        {
+                            obstacles.remove(0);
+                            obstacles.add
+                        }
+
+
 
                         obstacles.get(0).blast(ball_c);
                         obstacles.get(1).blast(ball_c);
