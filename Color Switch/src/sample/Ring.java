@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.AnimationTimer;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
@@ -10,15 +11,13 @@ import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.ArcType;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Shape;
+import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.sql.Time;
+import java.util.Random;
 
 
 class Ring extends Obstacle
@@ -70,7 +69,7 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape1.getFill()))
                 {}
             else
-                System.out.println("blast");
+                explode();
         }
         if (isCollide(ball, shape2))
         {
@@ -79,7 +78,7 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape2.getFill()))
                 {}
             else
-                System.out.println("blast");
+                explode();
         }
         if (isCollide(ball, shape3))
         {
@@ -88,7 +87,7 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape3.getFill()))
                 {}
             else
-                System.out.println("blast");
+                explode();
         }
         if (isCollide(ball, shape4))
         {
@@ -97,8 +96,63 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape4.getFill()))
                 {}
             else
-                System.out.println("blast");
+                explode();
         }
+    }
+
+    public void explode()
+    {
+        final int size = 400;
+        final Rectangle[] rectangles = new Rectangle[size];
+        final long[] delays = new long[size];
+        final double[] angles = new double[size];
+        final double duration = Duration.seconds(3).toSeconds()*1000000;
+        final Random random = new Random();
+
+        for (int i = 0; i < size; i++) {
+            rectangles[i] = new Rectangle(5, 5, Color.hsb(random.nextInt(360), 1, 1));
+            delays[i] = (long) (Math.random()*duration);
+            angles[i] = 2 * Math.PI * random.nextDouble();
+        }
+//        stage.setScene(new Scene(new Pane(rectangles), 500, 500, Color.BLACK));
+//        stage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
+//        stage.show();
+
+//        Group root1 = new Group(rectangles);
+//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
+//        Main.stage.setScene(scene3);
+//        Main.stage.setFullScreen(true);
+        //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
+        show(100);
+        //root.getChildren().add(root1);
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+                final double width = 0.5 * 1200;//stage.getWidth();
+                final double height = 0.5 * 800;//stage.getHeight();
+                final double radius = Math.sqrt(2) * Math.max(width, height);
+
+                for (int i = 0; i < size; i++) {
+                    Rectangle r = rectangles[i];
+                    double angle = angles[i];
+                    double t = (now - delays[i]) % duration;
+                    double d = t*radius/duration;
+
+                    r.setOpacity((duration - t)/(double)duration);
+                    r.setTranslateX(Math.cos(angle)*d + width);
+                    r.setTranslateY(Math.sin(angle)*d + height);
+                }
+                root.getChildren().add(new Group(rectangles));
+            }
+        }.start();
+
+//        Group root1 = new Group(rectangles);
+//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
+//        Main.stage.setScene(scene3);
+//        Main.stage.setFullScreen(true);
+
     }
 
     public void show(long y)

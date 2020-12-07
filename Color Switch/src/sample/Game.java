@@ -255,18 +255,20 @@ public class Game implements Serializable {
                         if (obstacles.get(0).getLayoutY() > curr + 800)
                         {
                             obstacles.remove(0);
-                            obstacles.add
+                            obstacles.addObstacle();
+                        }
+                        for (int i=0; i<10; i++)
+                        {
+                            obstacles.get(i).blast(ball_c);
                         }
 
-
-
-                        obstacles.get(0).blast(ball_c);
-                        obstacles.get(1).blast(ball_c);
-                        obstacles.get(2).blast(ball_c);
-                        obstacles.get(3).blast(ball_c);
-                        obstacles.get(4).blast(ball_c);
-                        obstacles.get(5).blast(ball_c);
-                        obstacles.get(6).blast(ball_c);
+//                        obstacles.get(0).blast(ball_c);
+//                        obstacles.get(1).blast(ball_c);
+//                        obstacles.get(2).blast(ball_c);
+//                        obstacles.get(3).blast(ball_c);
+//                        obstacles.get(4).blast(ball_c);
+//                        obstacles.get(5).blast(ball_c);
+//                        obstacles.get(6).blast(ball_c);
 
 
                         if (isCollide(ball, colorSwitches.get(0).getRoot()))
@@ -332,7 +334,17 @@ public class Game implements Serializable {
                             }
                         }
                         Bounds bounds = root.getBoundsInLocal();
-                        obstacles.get(0).blast(ball_c);
+                        double curr = ball.getLayY();
+
+                        if (obstacles.get(0).getLayoutY() > curr + 800)
+                        {
+                            obstacles.remove(0);
+                            obstacles.addObstacle();
+                        }
+                        for (int i=0; i<10; i++)
+                        {
+                            obstacles.get(i).blast(ball_c);
+                        }
 
                         if (isCollide(ball, colorSwitches.get(0).getRoot()))
                         {
