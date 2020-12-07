@@ -255,7 +255,8 @@ public class Ball
         this.ball.setLayoutY(this.ball.getLayoutY()+y);
     }
 
-    public double getLayoutY()
+    
+    public double getLayY()
     {
         return this.ball.getLayoutY();
     }

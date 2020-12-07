@@ -255,8 +255,8 @@ public class Game implements Serializable {
                     public void handle(ActionEvent t) {
 
                         ball.setLayoutY( dy);
-                        ball.getLayoutY();
-                        if(ball.getLayoutY()<500) {
+                        ball.getLayY();
+                        if(ball.getLayY()<500) {
                             for (int i = 0; i < 100; i++) {
                                 double dey = root_list.get(i).getLayoutY();
                                 root_list.get(i).setLayoutY(dey - dy);
