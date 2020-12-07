@@ -41,11 +41,11 @@ public class ColorSwitch {
     {
         return root;
     }
-    public Group show()
+    public Group show(long y)
     {
         Arc arc1 = new Arc();
         arc1.setCenterX(700.0f);
-        arc1.setCenterY(175.0f);
+        arc1.setCenterY(400.0f+y);
         arc1.setRadiusX(15.0f);
         arc1.setRadiusY(15.0f);
         arc1.setStartAngle(0.0f);
@@ -54,7 +54,7 @@ public class ColorSwitch {
 
         Arc arc2 = new Arc();
         arc2.setCenterX(700.0f);
-        arc2.setCenterY(175.0f);
+        arc2.setCenterY(400.0f+y);
         arc2.setRadiusX(15.0f);
         arc2.setRadiusY(15.0f);
         arc2.setStartAngle(90.0f);
@@ -63,7 +63,7 @@ public class ColorSwitch {
 
         Arc arc3 = new Arc();
         arc3.setCenterX(700.0f);
-        arc3.setCenterY(175.0f);
+        arc3.setCenterY(400.0f+y);
         arc3.setRadiusX(15.0f);
         arc3.setRadiusY(15.0f);
         arc3.setStartAngle(180.0f);
@@ -72,7 +72,7 @@ public class ColorSwitch {
 
         Arc arc4 = new Arc();
         arc4.setCenterX(700.0f);
-        arc4.setCenterY(175.0f);
+        arc4.setCenterY(400.0f+y);
         arc4.setRadiusX(15.0f);
         arc4.setRadiusY(15.0f);
         arc4.setStartAngle(270.0f);

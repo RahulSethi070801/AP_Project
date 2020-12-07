@@ -30,6 +30,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Game implements Serializable {
@@ -37,6 +38,7 @@ public class Game implements Serializable {
     Scene scene2;
     ArrayList<Obstacle> obstacles;
     ArrayList<Star> stars;
+    ArrayList<ColorSwitch> colorSwitches;
     User user;
     long score = 0;
     long difficulty = 0;
@@ -114,6 +116,9 @@ public class Game implements Serializable {
         Ball ball = new Ball(); // ball is the object of Ball Class
         Circle ball_c = ball.show();
         Group root_ball = ball.getRoot();
+        stars = new ArrayList<Star>();
+        colorSwitches = new ArrayList<ColorSwitch>();
+
         //Circle c = ball.getRoot().getChildren().get(0);
 
         Random rand = new Random();
@@ -127,6 +132,8 @@ public class Game implements Serializable {
                 "2Plus",
                 "Plus"
         };
+//        HashMap<String, Obstacle> hash = new HashMap<String, Obstacle>();
+//        hash.put("Ring", new Ring());
         ArrayList<Group> root_list = new ArrayList<Group>();
         long y=0;
 //        Obstacle Ccircle = new ConcentricCircles();
@@ -140,25 +147,37 @@ public class Game implements Serializable {
             int ind = rand.nextInt(8);
 //            int ind = 0;
             Obstacle o = new Obstacle();
+            Star star = new Star();
+            ColorSwitch colorswitch = new ColorSwitch();
             if(tempO[ind].equals("Ring"))
             {
                 o = new Ring();
+                star.show((double)700, (double)y);
+//                star = new Star();
             }
             if(tempO[ind].equals("Square"))
             {
                 o = new Square();
+                star.show((double)700, (double)y);
+
             }
             if(tempO[ind].equals("HorizontalCircles"))
             {
                 o = new HorizontalCircles();
+                star.show((double)700, (double)y);
+
             }
             if(tempO[ind].equals("Concentric"))
             {
                 o = new ConcentricCircles();
+                star.show((double)700, (double)y);
+
             }
             if(tempO[ind].equals("Triangle"))
             {
                 o = new Triangle();
+                star.show((double)700, (double)y);
+
             }
             if(tempO[ind].equals("Lines"))
             {
@@ -167,10 +186,13 @@ public class Game implements Serializable {
             if(tempO[ind].equals("2Plus"))
             {
                 o = new TwoPlus();
+                star.show((double)700, (double)y);
+
             }
             if(tempO[ind].equals("Plus"))
             {
                 o = new Plus();
+                star.show((double)700, (double)y);
             }
             o.show(y);
             y-=500;
@@ -197,7 +219,7 @@ public class Game implements Serializable {
         Group root6 = star.show(675.0, 375.0);
 
         ColorSwitch c1 = new ColorSwitch();
-        Group root5 = c1.show();
+        Group root5 = c1.show(0);
         root.getChildren().add(root5);
 
         // timeline for ball

@@ -102,13 +102,13 @@ public class TwoPlus extends Obstacle
 
     public void show(long y)
     {
-        line1 = new Line(100+150, 200+y, 200+150, 200+y);
+        line1 = new Line(100+400, 400+y, 200+400, 400+y);
         line1.setStrokeWidth(10);
-        line2 = new Line(200+150, 200+y, 300+150, 200+y);
+        line2 = new Line(200+400, 400+y, 300+400, 400+y);
         line2.setStrokeWidth(10);
-        line3 = new Line(200+150, 200+y, 200+150, 300+y);
+        line3 = new Line(200+400, 400+y, 200+400, 500+y);
         line3.setStrokeWidth(10);
-        line4 = new Line(200+150, 200+y, 200+150, 100+y);
+        line4 = new Line(200+400, 400+y, 200+400, 300+y);
         line4.setStrokeWidth(10);
 
         line1.setStroke(Color.rgb(144, 13, 255));
@@ -116,13 +116,13 @@ public class TwoPlus extends Obstacle
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
 
-        line5 = new Line(400+150, 200+y, 500+150, 200+y);
+        line5 = new Line(400+400, 400+y, 500+400, 400+y);
         line5.setStrokeWidth(10);
-        line6 = new Line(400+150, 200+y, 300+150, 200+y);
+        line6 = new Line(400+400, 400+y, 300+400, 400+y);
         line6.setStrokeWidth(10);
-        line7 = new Line(400+150, 200+y, 400+150, 300+y);
+        line7 = new Line(400+400, 400+y, 400+400, 500+y);
         line7.setStrokeWidth(10);
-        line8 = new Line(400+150, 200+y, 400+150, 100+y);
+        line8 = new Line(400+400, 400+y, 400+400, 300+y);
         line8.setStrokeWidth(10);
 
         line5.setStroke(Color.rgb(144, 13, 255));
