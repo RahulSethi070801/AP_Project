@@ -43,7 +43,8 @@ class Square extends Obstacle
     public Group getRoot()
     {
 
-        System.out.println("square");return this.root;
+        //System.out.println("square");
+        return this.root;
     }
 
     public static boolean isCollide(Circle x, Line y)
@@ -61,13 +62,17 @@ class Square extends Obstacle
     public void blast(Circle ball)
     {
         //System.out.println("plssss");
+<<<<<<< HEAD
 //        System.out.println(line1);
+=======
+        //System.out.println(line1);
+>>>>>>> 3bc95d00d6b3623f624cd94461cc5da63583bfad
         if (isCollide(ball, line1))
         {
 //            System.out.println(ball.getColor());
 //            System.out.println(shape1.getFill());
             if (ball.getFill().equals(line1.getStroke()))
-                System.out.println("same color");
+            {}
             else
                 explode();
         }
@@ -76,7 +81,7 @@ class Square extends Obstacle
 //            System.out.println(ball.getColor());
 //            System.out.println(shape2.getFill());
             if (ball.getFill().equals(line2.getStroke()))
-                System.out.println("same color");
+                {}
             else
                 explode();
         }
@@ -85,7 +90,7 @@ class Square extends Obstacle
 //            System.out.println(ball.getColor());
 //            System.out.println(shape3.getFill());
             if (ball.getFill().equals(line3.getStroke()))
-                System.out.println("same color");
+                {}
             else
                 explode();
         }
@@ -94,7 +99,7 @@ class Square extends Obstacle
 //            System.out.println(ball.getColor());
 //            System.out.println(shape4.getFill());
             if (ball.getFill().equals(line4.getStroke()))
-                System.out.println("same color");
+                {}
             else
                 explode();
         }
@@ -129,7 +134,11 @@ class Square extends Obstacle
         new AnimationTimer() {
             @Override
             public void handle(long now) {
+<<<<<<< HEAD
 //                System.out.println("printttt");
+=======
+                //System.out.println("printttt");
+>>>>>>> 3bc95d00d6b3623f624cd94461cc5da63583bfad
                 final double width = 0.5 * 1200;//stage.getWidth();
                 final double height = 0.5 * 800;//stage.getHeight();
                 final double radius = Math.sqrt(2) * Math.max(width, height);
