@@ -20,21 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="second">
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$4.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameEngine.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Ball.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/TwoCircles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/TwoCircles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Square$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Square$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Square.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
