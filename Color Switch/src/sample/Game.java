@@ -120,6 +120,12 @@ public class Game implements Serializable {
         String tempO[] = {"Ring", "Square", "Triangle" };
         ArrayList<Group> root_list = new ArrayList<Group>();
         long y=0;
+        Obstacle Ccircle = new ConcentricCircles();
+        Ccircle.show(y);
+        y-=500;
+        obstacles.add(Ccircle);
+        root.getChildren().add(Ccircle.getRoot());
+        root_list.add(Ccircle.getRoot());
         for(int i=0;i<100;i++)
         {
             int ind = rand.nextInt(3);
@@ -148,26 +154,6 @@ public class Game implements Serializable {
             root.getChildren().add(root_square);
             root_list.add(root_square);
         }
-        // Obstacle 1 -> ring
-//        Ring ring = new Ring();
-//        ring.show(-(long)100);
-//        Group root_ring = ring.getRoot();
-//        root.getChildren().add(root_ring);
-//
-//        Square square = new Square();
-//        square.show(-(long)500);
-//        Group root_square = square.getRoot();
-//        root.getChildren().add(root_square);
-//
-//        Triangle triangle = new Triangle();
-//        triangle.show((long)0);
-//        Group root_triangle = triangle.getRoot();
-//        root.getChildren().add(root_triangle);
-
-//        Ring ring = new Ring();
-//        ring.show();
-//        Group root_ring = ring.getRoot();
-//        root.getChildren().add(root_ring);
 
         // Score count
         Text text1 = new Text();
