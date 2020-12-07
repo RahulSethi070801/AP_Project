@@ -141,7 +141,7 @@ public class Game implements Serializable {
             {
                 o = new Triangle();
             }
-            o.show((long)y);
+            o.show(y);
             y-=500;
             obstacles.add(o);
             Group root_square = o.getRoot();
@@ -255,7 +255,7 @@ public class Game implements Serializable {
                     public void handle(ActionEvent t) {
 
                         ball.setLayoutY( dy);
-
+                        ball.getLayoutY();
                         if(ball.getLayoutY()<500) {
                             for (int i = 0; i < 100; i++) {
                                 double dey = root_list.get(i).getLayoutY();
