@@ -150,16 +150,16 @@ class Square extends Obstacle
     public void show(long y)
     {
 
-        line1 = new Line(550, 350+y, 750, 550+y);
+        line1 = new Line(500, 400+y, 700, 600+y);
         line1.setStrokeWidth(15);
         line1.setFill(null);
-        line2 = new Line(550, 350+y, 750, 150+y);
+        line2 = new Line(500, 400+y, 700, 200+y);
         line2.setStrokeWidth(15);
         line2.setFill(null);
-        line3 = new Line(750, 550+y, 950, 350+y);
+        line3 = new Line(700, 600+y, 900, 400+y);
         line3.setStrokeWidth(15);
         line3.setFill(null);
-        line4 = new Line(750, 150+y, 950, 350+y);
+        line4 = new Line(700, 200+y, 900, 400+y);
         line4.setStrokeWidth(15);
         line4.setFill(null);
 
