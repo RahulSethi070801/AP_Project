@@ -60,7 +60,7 @@ class Square extends Obstacle
 
     public void blast(Circle ball)
     {
-        System.out.println(ball);
+        //System.out.println("plssss");
         System.out.println(line1);
         if (isCollide(ball, line1))
         {
@@ -68,8 +68,8 @@ class Square extends Obstacle
 //            System.out.println(shape1.getFill());
             if (ball.getFill().equals(line1.getStroke()))
                 System.out.println("same color");
-            else{}
-                //explode();
+            else
+                explode();
         }
         if (isCollide(ball, line2))
         {
@@ -77,8 +77,8 @@ class Square extends Obstacle
 //            System.out.println(shape2.getFill());
             if (ball.getFill().equals(line2.getStroke()))
                 System.out.println("same color");
-            else{}
-                //explode();
+            else
+                explode();
         }
         if (isCollide(ball, line3))
         {
@@ -86,8 +86,8 @@ class Square extends Obstacle
 //            System.out.println(shape3.getFill());
             if (ball.getFill().equals(line3.getStroke()))
                 System.out.println("same color");
-            else{}
-                //explode();
+            else
+                explode();
         }
         if (isCollide(ball, line4))
         {
@@ -95,8 +95,8 @@ class Square extends Obstacle
 //            System.out.println(shape4.getFill());
             if (ball.getFill().equals(line4.getStroke()))
                 System.out.println("same color");
-            else{}
-                //explode();
+            else
+                explode();
         }
     }
 
@@ -106,7 +106,7 @@ class Square extends Obstacle
         final Rectangle[] rectangles = new Rectangle[size];
         final long[] delays = new long[size];
         final double[] angles = new double[size];
-        final double duration = Duration.seconds(3).toSeconds()*10;
+        final double duration = Duration.seconds(3).toSeconds()*1000000;
         final Random random = new Random();
 
         for (int i = 0; i < size; i++) {
@@ -118,10 +118,10 @@ class Square extends Obstacle
 //        stage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
 //        stage.show();
 
-        Group root1 = new Group(rectangles);
-        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
-        Main.stage.setScene(scene3);
-        Main.stage.setFullScreen(true);
+//        Group root1 = new Group(rectangles);
+//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
+//        Main.stage.setScene(scene3);
+//        Main.stage.setFullScreen(true);
         //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
         show(100);
         //root.getChildren().add(root1);
@@ -129,6 +129,7 @@ class Square extends Obstacle
         new AnimationTimer() {
             @Override
             public void handle(long now) {
+                System.out.println("printttt");
                 final double width = 0.5 * 1200;//stage.getWidth();
                 final double height = 0.5 * 800;//stage.getHeight();
                 final double radius = Math.sqrt(2) * Math.max(width, height);
@@ -143,8 +144,15 @@ class Square extends Obstacle
                     r.setTranslateX(Math.cos(angle)*d + width);
                     r.setTranslateY(Math.sin(angle)*d + height);
                 }
+                root.getChildren().add(new Group(rectangles));
             }
         }.start();
+
+//        Group root1 = new Group(rectangles);
+//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
+//        Main.stage.setScene(scene3);
+//        Main.stage.setFullScreen(true);
+
     }
 
     public void show(long y)
