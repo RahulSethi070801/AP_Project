@@ -234,6 +234,12 @@ public class Game implements Serializable {
 
                         ball.setLayoutY(dy);
 
+                        double curr = ball.getLayY();
+
+                        if (obstacles.get(0).getY() > curr + 800)
+
+
+
                         obstacles.get(0).blast(ball_c);
                         obstacles.get(1).blast(ball_c);
                         obstacles.get(2).blast(ball_c);
