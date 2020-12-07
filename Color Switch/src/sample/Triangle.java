@@ -26,7 +26,7 @@ import java.util.Random;
 
 class Triangle extends Obstacle
 {
-    Group root;
+//    Group root;
     Line line1, line2, line3;
 
     public Triangle()

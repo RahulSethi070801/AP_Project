@@ -18,7 +18,7 @@ import javafx.animation.Timeline;
 
 public class HorizontalLine extends Obstacle
 {
-    Group root;
+//    Group root;
     Line line1, line2, line3, line4;
 
     public void setRoot(Group root)
@@ -144,5 +144,21 @@ public class HorizontalLine extends Obstacle
 
 
         return root;
+    }
+    public void setLayoutY(double y)
+    {
+        this.root.setLayoutY(y);
+    }
+    public void setLayoutX(double x)
+    {
+        this.root.setLayoutX(x);
+    }
+    public double getLayoutY()
+    {
+        return this.root.getLayoutY();
+    }
+    public double getLayoutX()
+    {
+        return this.root.getLayoutX();
     }
 }

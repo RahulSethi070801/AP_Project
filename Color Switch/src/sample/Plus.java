@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class Plus extends Obstacle
 {
-    Group root;
+//    Group root;
     Line line1, line2, line3, line4;
 
     public void setRoot(Group root)

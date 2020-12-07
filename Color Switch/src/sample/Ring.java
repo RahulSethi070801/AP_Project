@@ -22,7 +22,7 @@ import java.util.Random;
 
 class Ring extends Obstacle
 {
-    Group root;
+//    Group root;
     Shape shape1, shape2, shape3, shape4;
     Arc arc12, arc22, arc32, arc42;
 
