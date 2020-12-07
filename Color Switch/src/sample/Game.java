@@ -202,7 +202,7 @@ public class Game implements Serializable {
 
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {
-                            System.out.println("touch");
+                            //System.out.println("touch");
                             while (true)
                             {
                                 if (getRandom(4) == 0)
@@ -264,7 +264,7 @@ public class Game implements Serializable {
 
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {
-                            System.out.println("touch");
+                            //System.out.println("touch");
                             while (true)
                             {
                                 if (getRandom(4) == 0)
@@ -293,7 +293,7 @@ public class Game implements Serializable {
                         }
                         if (root.getChildren().contains(root6) && isCollide(ball, root6))
                         {
-                            System.out.println("touch");
+                            //System.out.println("touch");
                             root.getChildren().remove(root6);
                             text1.setText(String.valueOf(++score));
                         }
@@ -309,7 +309,7 @@ public class Game implements Serializable {
         // event handler for user control of ball
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A) {
-                System.out.println("A key was pressed");
+                //System.out.println("A key was pressed");
                 timeline.play();
                 timeline1.play();
             }
@@ -328,7 +328,7 @@ public class Game implements Serializable {
             @Override
             public void handle(MouseEvent e) {
 //                Bounds bounds = root.getBoundsInParent();
-                System.out.println("Pause");
+                //System.out.println("Pause");
 //                polygon.setFill(Color.DARKSLATEBLUE);
                 try {
                     timeline.pause();

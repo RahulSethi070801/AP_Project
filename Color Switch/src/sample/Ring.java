@@ -68,7 +68,7 @@ class Ring extends Obstacle
 //            System.out.println(ball.getColor());
 //            System.out.println(shape1.getFill());
             if (ball.getFill().equals(shape1.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
@@ -77,7 +77,7 @@ class Ring extends Obstacle
 //            System.out.println(ball.getColor());
 //            System.out.println(shape2.getFill());
             if (ball.getFill().equals(shape2.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
@@ -86,7 +86,7 @@ class Ring extends Obstacle
 //            System.out.println(ball.getColor());
 //            System.out.println(shape3.getFill());
             if (ball.getFill().equals(shape3.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
@@ -95,7 +95,7 @@ class Ring extends Obstacle
 //            System.out.println(ball.getColor());
 //            System.out.println(shape4.getFill());
             if (ball.getFill().equals(shape4.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }

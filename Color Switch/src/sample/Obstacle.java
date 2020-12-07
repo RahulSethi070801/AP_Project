@@ -53,7 +53,7 @@ public class Obstacle implements Serializable
     }
     public Group getRoot()
     {
-        System.out.println("asdas");
+        //System.out.println("asdas");
         return new Group();
     }
 

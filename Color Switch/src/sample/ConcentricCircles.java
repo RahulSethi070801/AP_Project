@@ -49,56 +49,56 @@ public class ConcentricCircles extends Obstacle
         if (isCollide(ball, shape1))
         {
             if (ball.getFill().equals(shape1.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
         if (isCollide(ball, shape2))
         {
             if (ball.getFill().equals(shape2.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
         if (isCollide(ball, shape3))
         {
             if (ball.getFill().equals(shape3.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
         if (isCollide(ball, shape4))
         {
             if (ball.getFill().equals(shape4.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
         if (isCollide(ball, shape5))
         {
             if (ball.getFill().equals(shape4.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
         if (isCollide(ball, shape6))
         {
             if (ball.getFill().equals(shape4.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
         if (isCollide(ball, shape7))
         {
             if (ball.getFill().equals(shape4.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
         if (isCollide(ball, shape8))
         {
             if (ball.getFill().equals(shape4.getFill()))
-                System.out.println("same color");
+                {}
             else
                 System.out.println("blast");
         }
