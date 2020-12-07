@@ -90,13 +90,13 @@ class Triangle extends Obstacle
     }
     public void show( long y)
     {
-        line1 = new Line(200+400, 200+y, 376+400, 301.734+y);
+        line1 = new Line(200+380, 200+y+200, 376+380, 301.734+y+200);
         line1.setStrokeWidth(10);
         line1.setFill(null);
-        line2 = new Line(200+400, 200+y, 376+400, 98.266+y);
+        line2 = new Line(200+380, 200+y+200, 376+380, 98.266+y+200);
         line2.setStrokeWidth(10);
         line2.setFill(null);
-        line3 = new Line(376+400, 301.734+y, 376+400, 98.266+y);
+        line3 = new Line(376+380, 301.734+y+200, 376+380, 98.266+y+200);
         line3.setStrokeWidth(10);
         line3.setFill(null);
 
@@ -110,8 +110,8 @@ class Triangle extends Obstacle
 
         Rotate r = new Rotate();
         root.getTransforms().add(r);
-        r.setPivotX(317.3+400);
-        r.setPivotY(200+y);
+        r.setPivotX(317.3+380);
+        r.setPivotY(200+y+200);
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
