@@ -73,18 +73,18 @@ public class Plus extends Obstacle
         }
 }
 
-    public void show()
+    public void show(long y)
     {
-        Line line1 = new Line(100, 200, 200, 200);
+        line1 = new Line(100+150, 200+y, 200+150, 200+y);
         line1.setStrokeWidth(10);
         line1.setFill(null);
-        Line line2 = new Line(200, 200, 300, 200);
+        line2 = new Line(200+150, 200+y, 300+150, 200+y);
         line2.setStrokeWidth(10);
         line2.setFill(null);
-        Line line3 = new Line(200, 200, 200, 300);
+        line3 = new Line(200+150, 200+y, 200+150, 300+y);
         line3.setStrokeWidth(10);
         line3.setFill(null);
-        Line line4 = new Line(200, 200, 200, 100);
+        line4 = new Line(200+150, 200+y, 200+150, 100+y);
         line4.setStrokeWidth(10);
         line4.setFill(null);
 
@@ -93,7 +93,7 @@ public class Plus extends Obstacle
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
 
-        Group root = new Group(line1, line2, line3, line4);
+        root = new Group(line1, line2, line3, line4);
 
         RotateTransition rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));

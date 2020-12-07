@@ -100,15 +100,15 @@ public class TwoPlus extends Obstacle
         }
     }
 
-    public void show()
+    public void show(long y)
     {
-        Line line1 = new Line(100, 200, 200, 200);
+        line1 = new Line(100+150, 200+y, 200+150, 200+y);
         line1.setStrokeWidth(10);
-        Line line2 = new Line(200, 200, 300, 200);
+        line2 = new Line(200+150, 200+y, 300+150, 200+y);
         line2.setStrokeWidth(10);
-        Line line3 = new Line(200, 200, 200, 300);
+        line3 = new Line(200+150, 200+y, 200+150, 300+y);
         line3.setStrokeWidth(10);
-        Line line4 = new Line(200, 200, 200, 100);
+        line4 = new Line(200+150, 200+y, 200+150, 100+y);
         line4.setStrokeWidth(10);
 
         line1.setStroke(Color.rgb(144, 13, 255));
@@ -116,13 +116,13 @@ public class TwoPlus extends Obstacle
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
 
-        Line line5 = new Line(400, 200, 500, 200);
+        line5 = new Line(400+150, 200+y, 500+150, 200+y);
         line5.setStrokeWidth(10);
-        Line line6 = new Line(400, 200, 300, 200);
+        line6 = new Line(400+150, 200+y, 300+150, 200+y);
         line6.setStrokeWidth(10);
-        Line line7 = new Line(400, 200, 400, 300);
+        line7 = new Line(400+150, 200+y, 400+150, 300+y);
         line7.setStrokeWidth(10);
-        Line line8 = new Line(400, 200, 400, 100);
+        line8 = new Line(400+150, 200+y, 400+150, 100+y);
         line8.setStrokeWidth(10);
 
         line5.setStroke(Color.rgb(144, 13, 255));
@@ -133,10 +133,10 @@ public class TwoPlus extends Obstacle
 
         Group root1 = new Group(line1, line2, line3, line4);
         Group root2 = new Group(line5, line6, line7, line8);
-        Group root3 = new Group();
+        root = new Group();
 
-        root3.getChildren().add(root2);
-        root3.getChildren().add(root1);
+        root.getChildren().add(root2);
+        root.getChildren().add(root1);
 
         RotateTransition rotateTransition1 = new RotateTransition();
         rotateTransition1.setDuration(Duration.millis(4000));

@@ -117,7 +117,16 @@ public class Game implements Serializable {
         //Circle c = ball.getRoot().getChildren().get(0);
 
         Random rand = new Random();
-        String tempO[] = {"Ring", "Square", "Triangle", "Concentric", "HorizontalCircles" };
+        String tempO[] = {
+                "Ring",
+                "Square",
+                "Triangle",
+                "Concentric",
+                "HorizontalCircles",
+                "Lines",
+                "2Plus",
+                "Plus"
+        };
         ArrayList<Group> root_list = new ArrayList<Group>();
         long y=0;
 //        Obstacle Ccircle = new ConcentricCircles();
@@ -128,7 +137,7 @@ public class Game implements Serializable {
 //        root_list.add(Ccircle.getRoot());
         for(int i=0;i<100;i++)
         {
-            int ind = rand.nextInt(5);
+            int ind = rand.nextInt(8);
 //            int ind = 0;
             Obstacle o = new Obstacle();
             if(tempO[ind].equals("Ring"))
@@ -150,6 +159,18 @@ public class Game implements Serializable {
             if(tempO[ind].equals("Triangle"))
             {
                 o = new Triangle();
+            }
+            if(tempO[ind].equals("Lines"))
+            {
+                o = new HorizontalLine();
+            }
+            if(tempO[ind].equals("2Plus"))
+            {
+                o = new TwoPlus();
+            }
+            if(tempO[ind].equals("Plus"))
+            {
+                o = new Plus();
             }
             o.show(y);
             y-=500;

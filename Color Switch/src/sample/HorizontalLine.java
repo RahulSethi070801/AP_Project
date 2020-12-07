@@ -74,7 +74,7 @@ public class HorizontalLine extends Obstacle
         }
     }
 
-    public void show()
+    public void show(long y)
     {
         double X = -8000;
         Group figure = new Group();
@@ -82,20 +82,21 @@ public class HorizontalLine extends Obstacle
         for(int i=0; i<100; i++)
         {
             Group oneLine;
-            oneLine = makeOneLine(X+=800);
+            oneLine = makeOneLine(X+=800, y);
             figure.getChildren().add(oneLine);
         }
+        root = figure;
     }
 
-    public Group makeOneLine(double x)
+    public Group makeOneLine(double x, long y)
     {
-        Line line1 = new Line(x-400, 200, x-200, 200);
+        line1 = new Line(x-400, 400+y, x-200, 400+y);
         line1.setStrokeWidth(10);
-        Line line2 = new Line(x-200, 200, x, 200);
+        line2 = new Line(x-200, 400+y, x, 400+y);
         line2.setStrokeWidth(10);
-        Line line3 = new Line(x, 200, x+200, 200);
+        line3 = new Line(x, 400+y, x+200, 400+y);
         line3.setStrokeWidth(10);
-        Line line4 = new Line(x+200, 200, x+400, 200);
+        line4 = new Line(x+200, 400+y, x+400, 400+y);
         line4.setStrokeWidth(10);
 
         line1.setStroke(Color.rgb(144, 13, 255));

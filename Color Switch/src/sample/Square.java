@@ -61,7 +61,7 @@ class Square extends Obstacle
     public void blast(Circle ball)
     {
         //System.out.println("plssss");
-        System.out.println(line1);
+//        System.out.println(line1);
         if (isCollide(ball, line1))
         {
 //            System.out.println(ball.getColor());
@@ -129,7 +129,7 @@ class Square extends Obstacle
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                System.out.println("printttt");
+//                System.out.println("printttt");
                 final double width = 0.5 * 1200;//stage.getWidth();
                 final double height = 0.5 * 800;//stage.getHeight();
                 final double radius = Math.sqrt(2) * Math.max(width, height);
