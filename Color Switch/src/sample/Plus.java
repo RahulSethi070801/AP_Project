@@ -39,12 +39,10 @@ public class Plus extends Obstacle
             b = true;
         }
         return b;
-        //return x.getBoundsInParent().intersects(y.getBoundsInParent());
     }
 
     public void blast(Circle ball)
     {
-
         if (isCollide(ball, line1))
         {
             if (ball.getFill().equals(line1.getStroke()))
@@ -73,7 +71,7 @@ public class Plus extends Obstacle
             else
                 System.out.println("blast");
         }
-    }
+}
 
     public void show()
     {
