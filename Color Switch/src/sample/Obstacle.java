@@ -12,7 +12,7 @@ public class Obstacle implements Serializable
     protected long x;
     protected long y;
     protected double thickness;
-
+    protected Group root;
     public void move()
     {
 
@@ -50,6 +50,22 @@ public class Obstacle implements Serializable
     public void show(long y)
     {
 
+    }
+    public void setLayoutY(double y)
+    {
+        this.root.setLayoutY(y);
+    }
+    public void setLayoutX(double x)
+    {
+        this.root.setLayoutX(x);
+    }
+    public double getLayoutY()
+    {
+        return this.root.getLayoutY();
+    }
+    public double getLayoutX()
+    {
+        return this.root.getLayoutX();
     }
     public Group getRoot()
     {
