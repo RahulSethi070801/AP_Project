@@ -68,8 +68,8 @@ class Square extends Obstacle
 //            System.out.println(shape1.getFill());
             if (ball.getFill().equals(line1.getStroke()))
                 System.out.println("same color");
-            else
-                explode();
+            else{}
+                //explode();
         }
         if (isCollide(ball, line2))
         {
@@ -77,8 +77,8 @@ class Square extends Obstacle
 //            System.out.println(shape2.getFill());
             if (ball.getFill().equals(line2.getStroke()))
                 System.out.println("same color");
-            else
-                explode();
+            else{}
+                //explode();
         }
         if (isCollide(ball, line3))
         {
@@ -86,8 +86,8 @@ class Square extends Obstacle
 //            System.out.println(shape3.getFill());
             if (ball.getFill().equals(line3.getStroke()))
                 System.out.println("same color");
-            else
-                explode();
+            else{}
+                //explode();
         }
         if (isCollide(ball, line4))
         {
@@ -95,8 +95,8 @@ class Square extends Obstacle
 //            System.out.println(shape4.getFill());
             if (ball.getFill().equals(line4.getStroke()))
                 System.out.println("same color");
-            else
-                explode();
+            else{}
+                //explode();
         }
     }
 
@@ -123,7 +123,7 @@ class Square extends Obstacle
         Main.stage.setScene(scene3);
         Main.stage.setFullScreen(true);
         //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
-        show();
+        //show();
         //root.getChildren().add(root1);
 
         new AnimationTimer() {
