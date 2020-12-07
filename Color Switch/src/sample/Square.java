@@ -66,6 +66,7 @@ class Square extends Obstacle
 //        System.out.println(line1);
         //System.out.println(line1);
 
+
         if (isCollide(ball, line1))
         {
 //            System.out.println(ball.getColor());
@@ -133,8 +134,10 @@ class Square extends Obstacle
         new AnimationTimer() {
             @Override
             public void handle(long now) {
+
 //                System.out.println("printttt");
                 //System.out.println("printttt");
+
 
                 final double width = 0.5 * 1200;//stage.getWidth();
                 final double height = 0.5 * 800;//stage.getHeight();
@@ -184,7 +187,7 @@ class Square extends Obstacle
 
         this.root = new Group(line1, line2, line3, line4);
 
-        System.out.println(root);
+        // System.out.println(root);
         RotateTransition rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);

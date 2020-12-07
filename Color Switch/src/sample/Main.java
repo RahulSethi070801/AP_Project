@@ -59,3 +59,6 @@ public class Main extends Application {
 --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED
 
  */
+/*
+C:\Users\Tushar\Downloads\javafx-sdk-15.0.1\lib
+ */
