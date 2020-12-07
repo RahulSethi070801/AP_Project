@@ -202,6 +202,13 @@ public class Game implements Serializable {
                         ball.setLayoutY(dy);
 
                         obstacles.get(0).blast(ball_c);
+                        obstacles.get(1).blast(ball_c);
+                        obstacles.get(2).blast(ball_c);
+                        obstacles.get(3).blast(ball_c);
+                        obstacles.get(4).blast(ball_c);
+                        obstacles.get(5).blast(ball_c);
+                        obstacles.get(6).blast(ball_c);
+
 
                         if (root.getChildren().contains(root5) && isCollide(ball, root5))
                         {
