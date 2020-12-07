@@ -39,7 +39,7 @@ class Ring extends Obstacle
     public Group getRoot()
     {
 
-        System.out.println("Ring");return root;
+        return root;
     }
 
     public static boolean isCollide(Circle x, Shape y)
