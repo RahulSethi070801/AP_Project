@@ -152,31 +152,31 @@ public class Game implements Serializable {
             if(tempO[ind].equals("Ring"))
             {
                 o = new Ring();
-                star.show((double)700, (double)y);
+//                star.show((double)700, (double)y);
 //                star = new Star();
             }
             if(tempO[ind].equals("Square"))
             {
                 o = new Square();
-                star.show((double)700, (double)y);
+//                star.show((double)700, (double)y);
 
             }
             if(tempO[ind].equals("HorizontalCircles"))
             {
                 o = new HorizontalCircles();
-                star.show((double)700, (double)y);
+//                star.show((double)700, (double)y);
 
             }
             if(tempO[ind].equals("Concentric"))
             {
                 o = new ConcentricCircles();
-                star.show((double)700, (double)y);
+//                star.show((double)700, (double)y);
 
             }
             if(tempO[ind].equals("Triangle"))
             {
                 o = new Triangle();
-                star.show((double)700, (double)y);
+//                star.show((double)700, (double)y);
 
             }
             if(tempO[ind].equals("Lines"))
@@ -186,20 +186,30 @@ public class Game implements Serializable {
             if(tempO[ind].equals("2Plus"))
             {
                 o = new TwoPlus();
-                star.show((double)700, (double)y);
+//                star.show((double)700, (double)y);
 
             }
             if(tempO[ind].equals("Plus"))
             {
                 o = new Plus();
-                star.show((double)700, (double)y);
+
             }
             o.show(y);
-            y-=500;
+
             obstacles.add(o);
             Group root_square = o.getRoot();
             root.getChildren().add(root_square);
             root_list.add(root_square);
+            if(!tempO[ind].equals("Lines"))
+            {
+                root.getChildren().add(star.show((double)675, (double)y+375));
+                root_list.add(star.getRoot());
+                stars.add(star);
+            }
+            root.getChildren().add(colorswitch.show(y-500));
+            root_list.add(colorswitch.getRoot());
+            colorSwitches.add(colorswitch);
+            y-=1000;
         }
 
         // Score count
@@ -215,12 +225,12 @@ public class Game implements Serializable {
 
         String localDir = System.getProperty("user.dir");
         // collectable star
-        Star star = new Star();
-        Group root6 = star.show(675.0, 375.0);
-
-        ColorSwitch c1 = new ColorSwitch();
-        Group root5 = c1.show(0);
-        root.getChildren().add(root5);
+//        Star star = new Star();
+//        Group root6 = star.show(675.0, 375.0);
+//
+//        ColorSwitch c1 = new ColorSwitch();
+//        Group root5 = c1.show(0);
+//        root.getChildren().add(root5);
 
         // timeline for ball
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
@@ -243,7 +253,7 @@ public class Game implements Serializable {
                         obstacles.get(6).blast(ball_c);
 
 
-                        if (root.getChildren().contains(root5) && isCollide(ball, root5))
+                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
                         {
                             //System.out.println("touch");
                             while (true)
@@ -256,23 +266,26 @@ public class Game implements Serializable {
                                 {
                                     ball.setFill(Color.rgb (250, 225, 0));
                                     ball.setColor(Color.rgb (250, 225, 0));
-                                    root.getChildren().remove(root5);
+//                                    root.getChildren().remove(root5);
                                     break;
                                 }
                                 if (getRandom(4) == 2)
                                 {
                                     ball.setFill(Color.rgb(50, 219, 240));
                                     ball.setColor(Color.rgb(50, 219, 240));
-                                    root.getChildren().remove(root5);
+//                                    root.getChildren().remove(root5);
                                     break;
                                 }
                                 if (getRandom(4) == 3)
                                 {
                                     ball.setFill(Color.rgb(255, 1, 129));
                                     ball.setColor(Color.rgb(255, 1, 129));
-                                    root.getChildren().remove(root5);
+//                                    root.getChildren().remove(root5);
                                     break;
                                 }
+                                root.getChildren().remove(colorSwitches.get(0).getRoot());
+                                root_list.remove(colorSwitches.get(0).getRoot());
+                                colorSwitches.remove(0);
                             }
                         }
                         //Bounds bounds = root.getBoundsInParent();
@@ -297,7 +310,7 @@ public class Game implements Serializable {
                         ball.setLayoutY( dy);
                         ball.getLayY();
                         if(ball.getLayY()<500) {
-                            for (int i = 0; i < 100; i++) {
+                            for (int i = 0; i < root_list.size(); i++) {
                                 double dey = root_list.get(i).getLayoutY();
                                 root_list.get(i).setLayoutY(dey - dy);
                             }
@@ -305,7 +318,7 @@ public class Game implements Serializable {
                         Bounds bounds = root.getBoundsInLocal();
                         obstacles.get(0).blast(ball_c);
 
-                        if (root.getChildren().contains(root5) && isCollide(ball, root5))
+                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
                         {
                             //System.out.println("touch");
                             while (true)
@@ -317,27 +330,32 @@ public class Game implements Serializable {
                                 if (getRandom(4) == 1)
                                 {
                                     ball.setFill(Color.rgb (250, 225, 0));
-                                    root.getChildren().remove(root5);
+//                                    root.getChildren().remove(root5);
                                     break;
                                 }
                                 if (getRandom(4) == 2)
                                 {
                                     ball.setFill(Color.rgb(50, 219, 240));
-                                    root.getChildren().remove(root5);
+//                                    root.getChildren().remove(root5);
                                     break;
                                 }
                                 if (getRandom(4) == 3)
                                 {
                                     ball.setFill(Color.rgb(255, 1, 129));
-                                    root.getChildren().remove(root5);
+//                                    root.getChildren().remove(root5);
                                     break;
                                 }
+                                root.getChildren().remove(colorSwitches.get(0).getRoot());
+                                root_list.remove(colorSwitches.get(0).getRoot());
+                                colorSwitches.remove(0);
                             }
                         }
-                        if (root.getChildren().contains(root6) && isCollide(ball, root6))
+                        if (isCollide(ball, stars.get(0).getRoot()))
                         {
                             //System.out.println("touch");
-                            root.getChildren().remove(root6);
+                            root.getChildren().remove(stars.get(0).getRoot());
+                            root_list.remove(stars.get(0).getRoot());
+                            stars.remove(0);
                             text1.setText(String.valueOf(++score));
                         }
 //                                if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
@@ -468,7 +486,7 @@ public class Game implements Serializable {
         root.getChildren().add(root2);
 
 
-        root.getChildren().add(root6);
+//        root.getChildren().add(root6);
 
 
         root.getChildren().add(root_ball);

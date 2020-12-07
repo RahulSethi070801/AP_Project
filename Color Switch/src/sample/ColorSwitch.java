@@ -88,4 +88,13 @@ public class ColorSwitch {
         root = new Group(arc1, arc2, arc3, arc4);
         return root;
     }
+
+    public void setLayoutY(double y)
+    {
+        root.setLayoutY(y);
+    }
+    public double getLayoutY()
+    {
+        return root.getLayoutY();
+    }
 }

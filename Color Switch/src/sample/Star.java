@@ -26,4 +26,17 @@ public class Star implements Serializable {
         root = new Group(imageView3);
         return root;
     }
+    public Group getRoot()
+    {
+        return root;
+    }
+
+    public void setLayoutY(double y)
+    {
+        root.setLayoutY(y);
+    }
+    public double getLayoutY()
+    {
+        return root.getLayoutY();
+    }
 }
