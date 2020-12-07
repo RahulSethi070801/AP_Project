@@ -42,6 +42,7 @@ public class Game implements Serializable {
     User user;
     long score = 0;
     long difficulty = 0;
+    long y=0;
     String name;
     // TODO : Add difficulty -> Tushar
     // TODO : Add revive -> Tushar
@@ -49,6 +50,18 @@ public class Game implements Serializable {
     // TODO : animation on collision -> Rahul
     // TODO : loading game animation -> Tushar and Rahul
     // TODO : sound -> Rahul
+    Random rand = new Random();
+    String tempO[] = {
+            "Ring",
+            "Square",
+            "Triangle",
+            "Concentric",
+            "HorizontalCircles",
+            "Lines",
+            "2Plus",
+            "Plus"
+    };
+    ArrayList<Group> root_list = new ArrayList<Group>();
     public void resumeGame(){}
     public void pauseGame(){}
 //    public Ball getBall(){}
@@ -93,6 +106,64 @@ public class Game implements Serializable {
         this.obstacles = new ArrayList<Obstacle>();
         show();
     }
+    public void addObstacle() throws FileNotFoundException
+    {
+        int ind = rand.nextInt(8);
+//            int ind = 0;
+        Obstacle o = new Obstacle();
+        Star star = new Star();
+        ColorSwitch colorswitch = new ColorSwitch();
+        if(tempO[ind].equals("Ring"))
+        {
+            o = new Ring();
+        }
+        if(tempO[ind].equals("Square"))
+        {
+            o = new Square();
+
+        }
+        if(tempO[ind].equals("HorizontalCircles"))
+        {
+            o = new HorizontalCircles();
+        }
+        if(tempO[ind].equals("Concentric"))
+        {
+            o = new ConcentricCircles();
+        }
+        if(tempO[ind].equals("Triangle"))
+        {
+            o = new Triangle();
+        }
+        if(tempO[ind].equals("Lines"))
+        {
+            o = new HorizontalLine();
+        }
+        if(tempO[ind].equals("2Plus"))
+        {
+            o = new TwoPlus();
+        }
+        if(tempO[ind].equals("Plus"))
+        {
+            o = new Plus();
+        }
+        o.show(y);
+
+        obstacles.add(o);
+        Group root_square = o.getRoot();
+        root.getChildren().add(root_square);
+        root_list.add(root_square);
+        if(!tempO[ind].equals("Lines"))
+        {
+            root.getChildren().add(star.show((double)675, (double)y+375));
+            root_list.add(star.getRoot());
+            stars.add(star);
+        }
+        root.getChildren().add(colorswitch.show(y-500));
+        root_list.add(colorswitch.getRoot());
+        colorSwitches.add(colorswitch);
+        y-=1000;
+//        return y;
+    }
     public void play() throws FileNotFoundException
     {
         Main.stage.setScene(scene2);
@@ -117,10 +188,6 @@ public class Game implements Serializable {
         return RectB.intersects(RectA);
     }
 
-    public void addObstacle(Obstacle o, long y)
-    {
-
-    }
 
     public void show() throws FileNotFoundException
     {
@@ -133,21 +200,11 @@ public class Game implements Serializable {
 
         //Circle c = ball.getRoot().getChildren().get(0);
 
-        Random rand = new Random();
-        String tempO[] = {
-                "Ring",
-                "Square",
-                "Triangle",
-                "Concentric",
-                "HorizontalCircles",
-                "Lines",
-                "2Plus",
-                "Plus"
-        };
+
 //        HashMap<String, Obstacle> hash = new HashMap<String, Obstacle>();
 //        hash.put("Ring", new Ring());
-        ArrayList<Group> root_list = new ArrayList<Group>();
-        long y=0;
+
+
 //        Obstacle Ccircle = new ConcentricCircles();
 //        Ccircle.show(y);
 //        y-=500;
@@ -156,7 +213,7 @@ public class Game implements Serializable {
 //        root_list.add(Ccircle.getRoot());
         for(int i=0;i<100;i++)
         {
-            int ind = rand.nextInt(8);
+            /*int ind = rand.nextInt(8);
 //            int ind = 0;
             Obstacle o = new Obstacle();
             Star star = new Star();
@@ -221,7 +278,8 @@ public class Game implements Serializable {
             root.getChildren().add(colorswitch.show(y-500));
             root_list.add(colorswitch.getRoot());
             colorSwitches.add(colorswitch);
-            y-=1000;
+            y-=1000;*/
+            addObstacle();
         }
 
         // Score count
@@ -254,7 +312,12 @@ public class Game implements Serializable {
                         if (obstacles.get(0).getLayoutY() > curr + 800)
                         {
                             obstacles.remove(0);
-                            obstacles.add
+//                            final long yy = y;
+                            try {
+                                addObstacle();
+                            }catch(Exception e)
+                            {
+                            }
                         }
 
 

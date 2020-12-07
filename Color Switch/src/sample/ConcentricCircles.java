@@ -19,7 +19,7 @@ import javafx.animation.Interpolator;
 
 public class ConcentricCircles extends Obstacle
 {
-    Group root;
+//    Group root;
     Shape shape1, shape2, shape3, shape4, shape5, shape6, shape7, shape8;
 
 
@@ -210,5 +210,21 @@ public class ConcentricCircles extends Obstacle
         rotate.play();
 
 
+    }
+    public void setLayoutY(double y)
+    {
+        this.root.setLayoutY(y);
+    }
+    public void setLayoutX(double x)
+    {
+        this.root.setLayoutX(x);
+    }
+    public double getLayoutY()
+    {
+        return this.root.getLayoutY();
+    }
+    public double getLayoutX()
+    {
+        return this.root.getLayoutX();
     }
 }

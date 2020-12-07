@@ -28,7 +28,7 @@ import java.util.Random;
 
 class Square extends Obstacle
 {
-    Group root;
+//    Group root;
     Line line1, line2, line3, line4;
     public Square()
     {
