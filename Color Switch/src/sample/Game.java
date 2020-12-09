@@ -211,7 +211,7 @@ public class Game implements Serializable {
 //        obstacles.add(Ccircle);
 //        root.getChildren().add(Ccircle.getRoot());
 //        root_list.add(Ccircle.getRoot());
-        for(int i=0;i<100;i++)
+        for(int i=0;i<10;i++)
         {
             /*int ind = rand.nextInt(8);
 //            int ind = 0;
@@ -307,28 +307,22 @@ public class Game implements Serializable {
 
                         ball.setLayoutY(dy);
 
-                        double curr = ball.getLayY();
+                        //double curr = ball.getLayY();
 
-                        if (obstacles.get(0).getLayoutY() > curr + 800)
+                        if (obstacles.get(0).getLayoutY() >  1200)
                         {
                             obstacles.remove(0);
-//                            final long yy = y;
                             try {
                                 addObstacle();
-                            }catch(Exception e)
-                            {
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
                             }
                         }
+//                        for (int i=0; i<3; i++)
+//                        {
+//                            obstacles.get(i).blast(ball_c);
+//                        }
 
-
-
-                        obstacles.get(0).blast(ball_c);
-                        obstacles.get(1).blast(ball_c);
-                        obstacles.get(2).blast(ball_c);
-                        obstacles.get(3).blast(ball_c);
-                        obstacles.get(4).blast(ball_c);
-                        obstacles.get(5).blast(ball_c);
-                        obstacles.get(6).blast(ball_c);
 
 
                         if (isCollide(ball, colorSwitches.get(0).getRoot()))
@@ -391,10 +385,29 @@ public class Game implements Serializable {
                             for (int i = 0; i < root_list.size(); i++) {
                                 double dey = root_list.get(i).getLayoutY();
                                 root_list.get(i).setLayoutY(dey - dy);
+//                                if (root_list.get(i).getLayoutY() > 1200)
+//                                {
+//                                    root_list.remove(i);
+//                                }
                             }
                         }
                         Bounds bounds = root.getBoundsInLocal();
-                        obstacles.get(0).blast(ball_c);
+                        double curr = ball.getLayY();
+
+                        if (obstacles.get(0).getLayoutY() > curr + 800)
+                        {
+                            System.out.println("out");
+                            obstacles.remove(0);
+                            try {
+                                addObstacle();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        for (int i=0; i<2; i++)
+                        {
+                            obstacles.get(i).blast(ball_c);
+                        }
 
                         if (isCollide(ball, colorSwitches.get(0).getRoot()))
                         {

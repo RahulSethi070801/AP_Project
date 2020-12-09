@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.AnimationTimer;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
@@ -13,6 +14,8 @@ import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+
+import java.util.Random;
 
 public class TwoPlus extends Obstacle
 {
@@ -47,57 +50,112 @@ public class TwoPlus extends Obstacle
             if (ball.getFill().equals(line1.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);}
         }
         if (isCollide(ball, line2))
         {
             if (ball.getFill().equals(line2.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);}
         }
         if (isCollide(ball, line3))
         {
             if (ball.getFill().equals(line3.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);};
         }
         if (isCollide(ball, line4))
         {
             if (ball.getFill().equals(line4.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);}
         }
         if (isCollide(ball, line5))
         {
             if (ball.getFill().equals(line5.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);}
         }
         if (isCollide(ball, line6))
         {
             if (ball.getFill().equals(line5.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);}
         }
         if (isCollide(ball, line7))
         {
             if (ball.getFill().equals(line7.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);}
         }
         if (isCollide(ball, line8))
         {
             if (ball.getFill().equals(line8.getStroke()))
                 System.out.println("same color");
             else
-                System.out.println("blast");
+            {System.exit(0);}
         }
+    }
+
+    public void explode()
+    {
+        final int size = 400;
+        final Rectangle[] rectangles = new Rectangle[size];
+        final long[] delays = new long[size];
+        final double[] angles = new double[size];
+        final double duration = Duration.seconds(3).toSeconds()*1000000;
+        final Random random = new Random();
+
+        for (int i = 0; i < size; i++) {
+            rectangles[i] = new Rectangle(5, 5, Color.hsb(random.nextInt(360), 1, 1));
+            delays[i] = (long) (Math.random()*duration);
+            angles[i] = 2 * Math.PI * random.nextDouble();
+        }
+//        stage.setScene(new Scene(new Pane(rectangles), 500, 500, Color.BLACK));
+//        stage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
+//        stage.show();
+
+//        Group root1 = new Group(rectangles);
+//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
+//        Main.stage.setScene(scene3);
+//        Main.stage.setFullScreen(true);
+        //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
+        show(100);
+        //root.getChildren().add(root1);
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+                final double width = 0.5 * 1200;//stage.getWidth();
+                final double height = 0.5 * 800;//stage.getHeight();
+                final double radius = Math.sqrt(2) * Math.max(width, height);
+
+                for (int i = 0; i < size; i++) {
+                    Rectangle r = rectangles[i];
+                    double angle = angles[i];
+                    double t = (now - delays[i]) % duration;
+                    double d = t*radius/duration;
+
+                    r.setOpacity((duration - t)/(double)duration);
+                    r.setTranslateX(Math.cos(angle)*d + width);
+                    r.setTranslateY(Math.sin(angle)*d + height);
+                }
+                root.getChildren().add(new Group(rectangles));
+            }
+        }.start();
+
+//        Group root1 = new Group(rectangles);
+//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
+//        Main.stage.setScene(scene3);
+//        Main.stage.setFullScreen(true);
+
     }
 
     public void show(long y)
