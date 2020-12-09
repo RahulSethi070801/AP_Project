@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -39,6 +40,7 @@ public class Game implements Serializable {
     ArrayList<Obstacle> obstacles;
     ArrayList<Star> stars;
     ArrayList<ColorSwitch> colorSwitches;
+    Ball ball;
     User user;
     long score = 0;
     long difficulty = 0;
@@ -61,6 +63,9 @@ public class Game implements Serializable {
             "2Plus",
             "Plus"
     };
+    Text text1;
+    double g = 1500;
+    double speed = 0.0;
     ArrayList<Group> root_list = new ArrayList<Group>();
     public void resumeGame(){}
     public void pauseGame(){}
@@ -188,102 +193,89 @@ public class Game implements Serializable {
         return RectB.intersects(RectA);
     }
 
+    public void update(double time)
+    {
+        // s = ut+0.5at^2
+//        System.out.println(time);
+        time/=Math.pow(10,9);
+        this.speed += this.g*time;
+        double s = (this.speed*time + 0.5*this.g*Math.pow(time,2));
+//        System.out.println(this.ball.getLayY()+" "+s);
+        if(this.ball.getLayY()+s<=710)
+            this.ball.setLayoutY(s);
 
+        if (isCollide(ball, colorSwitches.get(0).getRoot()))
+        {
+            //System.out.println("touch");
+            while (true)
+            {
+                if (getRandom(4) == 0)
+                {
+                    continue;
+                }
+                if (getRandom(4) == 1)
+                {
+                    ball.setFill(Color.rgb (250, 225, 0));
+//                                    root.getChildren().remove(root5);
+                    break;
+                }
+                if (getRandom(4) == 2)
+                {
+                    ball.setFill(Color.rgb(50, 219, 240));
+//                                    root.getChildren().remove(root5);
+                    break;
+                }
+                if (getRandom(4) == 3)
+                {
+                    ball.setFill(Color.rgb(255, 1, 129));
+//                                    root.getChildren().remove(root5);
+                    break;
+                }
+                root.getChildren().remove(colorSwitches.get(0).getRoot());
+                root_list.remove(colorSwitches.get(0).getRoot());
+                colorSwitches.remove(0);
+            }
+        }
+        if (isCollide(ball, stars.get(0).getRoot()))
+        {
+            //System.out.println("touch");
+            root.getChildren().remove(stars.get(0).getRoot());
+            root_list.remove(stars.get(0).getRoot());
+            stars.remove(0);
+            text1.setText(String.valueOf(++score));
+        }
+    }
+
+    public void tapBall()
+    {
+        this.speed = -400;
+
+    }
+    public void scroll()
+    {
+        if(ball.getLayY()<375) {
+            for (int i = 0; i < root_list.size(); i++) {
+                double dey = root_list.get(i).getLayoutY();
+                root_list.get(i).setLayoutY(dey + 5);
+            }
+        }
+    }
     public void show() throws FileNotFoundException
     {
 
-        Ball ball = new Ball(); // ball is the object of Ball Class
+        ball = new Ball(); // ball is the object of Ball Class
         Circle ball_c = ball.show();
         Group root_ball = ball.getRoot();
         stars = new ArrayList<Star>();
         colorSwitches = new ArrayList<ColorSwitch>();
 
-        //Circle c = ball.getRoot().getChildren().get(0);
-
-
-//        HashMap<String, Obstacle> hash = new HashMap<String, Obstacle>();
-//        hash.put("Ring", new Ring());
-
-
-//        Obstacle Ccircle = new ConcentricCircles();
-//        Ccircle.show(y);
-//        y-=500;
-//        obstacles.add(Ccircle);
-//        root.getChildren().add(Ccircle.getRoot());
-//        root_list.add(Ccircle.getRoot());
         for(int i=0;i<10;i++)
         {
-            /*int ind = rand.nextInt(8);
-//            int ind = 0;
-            Obstacle o = new Obstacle();
-            Star star = new Star();
-            ColorSwitch colorswitch = new ColorSwitch();
-            if(tempO[ind].equals("Ring"))
-            {
-                o = new Ring();
-//                star.show((double)700, (double)y);
-//                star = new Star();
-            }
-            if(tempO[ind].equals("Square"))
-            {
-                o = new Square();
-//                star.show((double)700, (double)y);
-
-            }
-            if(tempO[ind].equals("HorizontalCircles"))
-            {
-                o = new HorizontalCircles();
-//                star.show((double)700, (double)y);
-
-            }
-            if(tempO[ind].equals("Concentric"))
-            {
-                o = new ConcentricCircles();
-//                star.show((double)700, (double)y);
-
-            }
-            if(tempO[ind].equals("Triangle"))
-            {
-                o = new Triangle();
-//                star.show((double)700, (double)y);
-
-            }
-            if(tempO[ind].equals("Lines"))
-            {
-                o = new HorizontalLine();
-            }
-            if(tempO[ind].equals("2Plus"))
-            {
-                o = new TwoPlus();
-//                star.show((double)700, (double)y);
-
-            }
-            if(tempO[ind].equals("Plus"))
-            {
-                o = new Plus();
-
-            }
-            o.show(y);
-
-            obstacles.add(o);
-            Group root_square = o.getRoot();
-            root.getChildren().add(root_square);
-            root_list.add(root_square);
-            if(!tempO[ind].equals("Lines"))
-            {
-                root.getChildren().add(star.show((double)675, (double)y+375));
-                root_list.add(star.getRoot());
-                stars.add(star);
-            }
-            root.getChildren().add(colorswitch.show(y-500));
-            root_list.add(colorswitch.getRoot());
-            colorSwitches.add(colorswitch);
-            y-=1000;*/
             addObstacle();
         }
 
         // Score count
-        Text text1 = new Text();
+        text1 = new Text();
         text1.setText(String.valueOf(score));
         text1.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
         text1.setFill(Color.WHITE);
@@ -307,6 +299,16 @@ public class Game implements Serializable {
 
                         ball.setLayoutY(dy);
 
+                        if(ball.getLayY()<500) {
+                            for (int i = 0; i < root_list.size(); i++) {
+                                double dey = root_list.get(i).getLayoutY();
+                                root_list.get(i).setLayoutY(dey + dy);
+//                                if (root_list.get(i).getLayoutY() > 1200)
+//                                {
+//                                    root_list.remove(i);
+//                                }
+                            }
+                        }
                         //double curr = ball.getLayY();
 
                         if (obstacles.get(0).getLayoutY() >  1200)
@@ -322,8 +324,6 @@ public class Game implements Serializable {
 //                        {
 //                            obstacles.get(i).blast(ball_c);
 //                        }
-
-
 
                         if (isCollide(ball, colorSwitches.get(0).getRoot()))
                         {
@@ -373,7 +373,30 @@ public class Game implements Serializable {
                 }));
         timeline.setCycleCount(Timeline.INDEFINITE);
 
-        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
+        AnimationTimer t = new AnimationTimer(){
+            long lastUpdate;
+            int i;
+            @Override
+            public void start(){
+                lastUpdate = System.nanoTime();
+                super.start();
+            }
+            @Override
+            public void handle(long now){
+
+                //Ball Update
+                long elapsed = now - lastUpdate;
+                update(elapsed);
+
+                scroll();
+//                checkCollisions();
+//                generalGenerate();
+
+                lastUpdate = now;
+            }
+        };
+
+  /*      Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
                 new EventHandler<ActionEvent>() {
                     double dy = -10; //Step on y
                     @Override
@@ -457,16 +480,15 @@ public class Game implements Serializable {
                     }
                 }));
         timeline1.setCycleCount(20);
-
+*/
         // event handler for user control of ball
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A) {
-                //System.out.println("A key was pressed");
-                timeline.play();
-                timeline1.play();
+                tapBall();
             }
         });
 
+        t.start();
         // Show Pause button
         InputStream stream1 = new FileInputStream(localDir+"\\Pause.png");
         Image image1 = new Image(stream1);
@@ -484,7 +506,7 @@ public class Game implements Serializable {
 //                polygon.setFill(Color.DARKSLATEBLUE);
                 try {
                     timeline.pause();
-                    timeline1.pause();
+//                    timeline1.pause();
                     new PauseMenu();
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();

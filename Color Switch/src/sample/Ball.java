@@ -88,6 +88,7 @@ public class Ball
 
     public void setLayoutY(double y)
     {
+//        System.out.println(y);
         this.ball.setLayoutY(this.ball.getLayoutY()+y);
     }
 

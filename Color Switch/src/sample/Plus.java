@@ -133,16 +133,16 @@ public class Plus extends Obstacle
 
     public void show(long y)
     {
-        line1 = new Line(100+150, 400+y, 200+150, 400+y);
+        line1 = new Line(100+250, 400+y, 200+250, 400+y);
         line1.setStrokeWidth(10);
         line1.setFill(null);
-        line2 = new Line(200+150, 400+y, 300+150, 400+y);
+        line2 = new Line(200+250, 400+y, 300+250, 400+y);
         line2.setStrokeWidth(10);
         line2.setFill(null);
-        line3 = new Line(200+150, 400+y, 200+150, 500+y);
+        line3 = new Line(200+250, 400+y, 200+250, 500+y);
         line3.setStrokeWidth(10);
         line3.setFill(null);
-        line4 = new Line(200+150, 400+y, 200+150, 300+y);
+        line4 = new Line(200+250, 400+y, 200+250, 300+y);
         line4.setStrokeWidth(10);
         line4.setFill(null);
 
