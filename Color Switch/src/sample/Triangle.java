@@ -69,7 +69,7 @@ class Triangle extends Obstacle
             if (ball.getFill().equals(line1.getStroke()))
                 System.out.println("same color");
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line2))
         {
@@ -78,7 +78,7 @@ class Triangle extends Obstacle
             if (ball.getFill().equals(line2.getStroke()))
                 System.out.println("same color");
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line3))
         {
@@ -87,7 +87,7 @@ class Triangle extends Obstacle
             if (ball.getFill().equals(line3.getStroke()))
                 System.out.println("same color");
             else
-                explode();
+            {System.exit(0);}
         }
     }
 

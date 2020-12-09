@@ -51,28 +51,28 @@ public class Plus extends Obstacle
             if (ball.getFill().equals(line1.getStroke()))
                 System.out.println("same color");
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line2))
         {
             if (ball.getFill().equals(line2.getStroke()))
                 System.out.println("same color");
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line3))
         {
             if (ball.getFill().equals(line3.getStroke()))
                 System.out.println("same color");
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line4))
         {
             if (ball.getFill().equals(line4.getStroke()))
                 System.out.println("same color");
             else
-                explode();
+            {System.exit(0);}
         }
     }
 

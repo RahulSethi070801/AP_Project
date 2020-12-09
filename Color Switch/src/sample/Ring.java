@@ -62,6 +62,7 @@ class Ring extends Obstacle
 
     public void blast(Circle ball)
     {
+        //System.out.println("Ringggg");
         if (isCollide(ball, shape1))
         {
 //            System.out.println(ball.getColor());
@@ -69,7 +70,8 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape1.getFill()))
                 {}
             else
-                explode();
+            {System.exit(0);}
+                //explode();
         }
         if (isCollide(ball, shape2))
         {
@@ -78,7 +80,8 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape2.getFill()))
                 {}
             else
-                explode();
+            {System.exit(0);}
+                //explode();
         }
         if (isCollide(ball, shape3))
         {
@@ -87,7 +90,7 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape3.getFill()))
                 {}
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, shape4))
         {
@@ -96,12 +99,13 @@ class Ring extends Obstacle
             if (ball.getFill().equals(shape4.getFill()))
                 {}
             else
-                explode();
+            {System.exit(0);}
         }
     }
 
     public void explode()
     {
+        System.out.println("explode");
         final int size = 400;
         final Rectangle[] rectangles = new Rectangle[size];
         final long[] delays = new long[size];

@@ -68,7 +68,7 @@ class Square extends Obstacle
             if (ball.getFill().equals(line1.getStroke()))
             {}
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line2))
         {
@@ -77,7 +77,7 @@ class Square extends Obstacle
             if (ball.getFill().equals(line2.getStroke()))
                 {}
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line3))
         {
@@ -86,7 +86,7 @@ class Square extends Obstacle
             if (ball.getFill().equals(line3.getStroke()))
                 {}
             else
-                explode();
+            {System.exit(0);}
         }
         if (isCollide(ball, line4))
         {
@@ -95,7 +95,7 @@ class Square extends Obstacle
             if (ball.getFill().equals(line4.getStroke()))
                 {}
             else
-                explode();
+            {System.exit(0);}
         }
     }
 
