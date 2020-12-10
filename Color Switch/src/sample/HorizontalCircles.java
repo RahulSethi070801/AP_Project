@@ -74,28 +74,28 @@ public class HorizontalCircles extends Obstacle
         }
         if (isCollide(ball, shape5))
         {
-            if (ball.getFill().equals(shape4.getFill()))
+            if (ball.getFill().equals(shape5.getFill()))
                 {}
             else
             {System.exit(0);}
         }
         if (isCollide(ball, shape6))
         {
-            if (ball.getFill().equals(shape4.getFill()))
+            if (ball.getFill().equals(shape6.getFill()))
                 {}
             else
             {System.exit(0);}
         }
         if (isCollide(ball, shape7))
         {
-            if (ball.getFill().equals(shape4.getFill()))
+            if (ball.getFill().equals(shape7.getFill()))
                 {}
             else
             {System.exit(0);};
         }
         if (isCollide(ball, shape8))
         {
-            if (ball.getFill().equals(shape4.getFill()))
+            if (ball.getFill().equals(shape8.getFill()))
                 {}
             else
             {System.exit(0);}
@@ -161,60 +161,60 @@ public class HorizontalCircles extends Obstacle
     {
         Arc arc11 = new Arc(590, 400+y, 110, 110, 0, 90);
         arc11.setType(ArcType.ROUND);
-        arc11.setFill(Color.VIOLET);
+//        arc11.setFill(Color.VIOLET);
         Arc arc12 = new Arc(590, 400+y, 90, 90, 0, 90);
         arc12.setType(ArcType.ROUND);
-        arc12.setFill(Color.VIOLET);
+//        arc12.setFill(Color.VIOLET);
 
         Arc arc21 = new Arc(590, 400+y, 110, 110, 90, 90);
         arc21.setType(ArcType.ROUND);
-        arc21.setFill(Color.BLUE);
+//        arc21.setFill(Color.BLUE);
         Arc arc22 = new Arc(590, 400+y, 90, 90, 90, 90);
         arc22.setType(ArcType.ROUND);
-        arc22.setFill(Color.BLUE);
+//        arc22.setFill(Color.BLUE);
 
         Arc arc31 = new Arc(590, 400+y, 110, 110, 180, 90);
         arc31.setType(ArcType.ROUND);
-        arc31.setFill(Color.RED);
+//        arc31.setFill(Color.RED);
         Arc arc32 = new Arc(590, 400+y, 90, 90, 180, 90);
         arc32.setType(ArcType.ROUND);
-        arc32.setFill(Color.RED);
+//        arc32.setFill(Color.RED);
 
         Arc arc41 = new Arc(590, 400+y, 110, 110, 270, 90);
         arc41.setType(ArcType.ROUND);
-        arc41.setFill(Color.YELLOW);
+//        arc41.setFill(Color.YELLOW);
         Arc arc42 = new Arc(590, 400+y, 90, 90, 270, 90);
         arc42.setType(ArcType.ROUND);
-        arc42.setFill(Color.YELLOW);
+//        arc42.setFill(Color.YELLOW);
 
 
         Arc arc51 = new Arc(810, 400+y, 110, 110, 90, 90);
         arc51.setType(ArcType.ROUND);
-        arc51.setFill(Color.VIOLET);
+//        arc51.setFill(Color.VIOLET);
         Arc arc52 = new Arc(810, 400+y, 90, 90, 90, 90);
         arc52.setType(ArcType.ROUND);
-        arc52.setFill(Color.VIOLET);
+//        arc52.setFill(Color.VIOLET);
 
         Arc arc61 = new Arc(810, 400+y, 110, 110, 0, 90);
         arc61.setType(ArcType.ROUND);
-        arc61.setFill(Color.BLUE);
+//        arc61.setFill(Color.BLUE);
         Arc arc62 = new Arc(810, 400+y, 90, 90, 0, 90);
         arc62.setType(ArcType.ROUND);
-        arc62.setFill(Color.BLUE);
+//        arc62.setFill(Color.BLUE);
 
         Arc arc71 = new Arc(810, 400+y, 110, 110, 270, 90);
         arc71.setType(ArcType.ROUND);
-        arc71.setFill(Color.RED);
+//        arc71.setFill(Color.RED);
         Arc arc72 = new Arc(810, 400+y, 90, 90, 270, 90);
         arc72.setType(ArcType.ROUND);
-        arc72.setFill(Color.RED);
+//        arc72.setFill(Color.RED);
 
         Arc arc81 = new Arc(810, 400+y, 110, 110, 180, 90);
         arc81.setType(ArcType.ROUND);
-        arc81.setFill(Color.YELLOW);
+//        arc81.setFill(Color.YELLOW);
         Arc arc82 = new Arc(810, 400+y, 90, 90, 180, 90);
         arc82.setType(ArcType.ROUND);
-        arc82.setFill(Color.YELLOW);
+//        arc82.setFill(Color.YELLOW);
 
 
         shape1 = Shape.subtract(arc11, arc12);
