@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,9 +50,9 @@ public class Game implements Serializable {
     long y=0;
     AnimationTimer t;
     String name;
-    // TODO : Add difficulty -> Tushar
-    // DONE : Add revive -> Tushar
-    // TODO : beautify pause menu -> Tushar nad Rahul
+    // TODO : Add difficulty -> Tushar DONE
+    // TODO : Add revive -> Tushar DONE
+    // TODO : beautify pause menu -> Tushar nad Rahul DONE
     // TODO : animation on collision -> Rahul
     // TODO : loading game animation -> Tushar and Rahul
     // TODO : sound -> Rahul(Done)
@@ -163,7 +164,7 @@ public class Game implements Serializable {
         Group root_square = o.getRoot();
         root.getChildren().add(root_square);
         root_list.add(root_square);
-        if(!tempO[ind].equals("Lines"))
+        if(!tempO[ind].equals("qwe"))
         {
             root.getChildren().add(star.show((double)675, (double)y+375));
             root_list.add(star.getRoot());
@@ -250,6 +251,11 @@ public class Game implements Serializable {
         if (isCollide(ball, stars.get(0).getRoot()))
         {
             //System.out.println("touch");
+            difficulty+=10;
+            for(int j=0;j<obstacles.size();j++)
+            {
+                obstacles.get(j).increaseDifficulty(difficulty);
+            }
             root.getChildren().remove(stars.get(0).getRoot());
             root_list.remove(stars.get(0).getRoot());
             stars.remove(0);
@@ -271,20 +277,27 @@ public class Game implements Serializable {
         for (int i=0; i<obstacles.size(); i++)
         {
             if (obstacles.get(i).blast(ball_c))
-                if(score>=5) {
+                if(score>=0) {
                     t.stop();
                     root.setEffect(new GaussianBlur());
 //                    System.out.println("REviev");
                     HBox pauseRoot = new HBox(40);
                     pauseRoot.setFillHeight(true);
-                    pauseRoot.getChildren().add(new Label("Paused"));
-                    pauseRoot.setStyle("-fx-background-color: rgba(255, 255, 255, 0.8);");
+                    String  style= getClass().getResource("styles.css").toExternalForm();
+                    pauseRoot.getStylesheets().add(style);
+                    Label label = new Label("Revive");
+                    label.setId("paused");
+                    pauseRoot.setId("menu");
+                    pauseRoot.getChildren().add(label);
                     pauseRoot.setAlignment(Pos.CENTER);
                     pauseRoot.setPadding(new Insets(20));
 
                     Button revive = new Button("Revive");
                     Button restart = new Button("Restart ");
                     Button exit=new Button("Exit");
+                    revive.setId("resume");
+                    restart.setId("save");
+                    exit.setId("exit");
                     pauseRoot.getChildren().add(revive);
                     pauseRoot.getChildren().add(exit);
                     pauseRoot.getChildren().add(restart);
@@ -296,7 +309,7 @@ public class Game implements Serializable {
                     revive.setOnAction(event -> {
                         root.setEffect(null);
 //                    timeline.play();
-                        score-=5;
+                        score-=1;
                         double minDis=100000;
                         int ind=-1;
                         for(int k=0;k<obstacles.size();k++)
@@ -490,18 +503,38 @@ public class Game implements Serializable {
             {
 //                t.pause();
 //                timeline1.pause();
+                t.stop();
                 root.setEffect(new GaussianBlur());
 
                 HBox pauseRoot = new HBox(40);
+
+
+                String  style= getClass().getResource("styles.css").toExternalForm();
+                pauseRoot.getStylesheets().add(style);
+//                pauseRoot.getStylesheets().add(getClass().getResource(localDir+"styles.css").toExternalForm());
+
                 pauseRoot.setFillHeight(true);
-                pauseRoot.getChildren().add(new Label("Paused"));
-                pauseRoot.setStyle("-fx-background-color: rgba(255, 255, 255, 0.8);");
+                Label paused = new Label("Paused");
+                paused.setId("paused");
+                pauseRoot.getChildren().add(paused);
+//                pauseRoot.setStyle(
+//
+//                );
+                pauseRoot.setId("menu");
                 pauseRoot.setAlignment(Pos.CENTER);
                 pauseRoot.setPadding(new Insets(20));
+
+                pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
 
                 Button resume = new Button("Resume");
                 Button exit=new Button("Exit");
                 Button save_game=new Button("Save and exit");
+                resume.setId("resume");
+                exit.setId("exit");
+                exit.setEffect(new DropShadow(20, Color.BLACK));
+                resume.setEffect(new DropShadow(20, Color.BLACK));
+                save_game.setEffect(new DropShadow(20, Color.BLACK));
+                save_game.setId("save");
                 pauseRoot.getChildren().add(resume);
                 pauseRoot.getChildren().add(exit);
                 pauseRoot.getChildren().add(save_game);
@@ -510,18 +543,23 @@ public class Game implements Serializable {
                 popupStage.initModality(Modality.APPLICATION_MODAL);
                 popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
 
+                popupStage.setX(500);
+                popupStage.setY(300);
                 resume.setOnAction(event -> {
                     root.setEffect(null);
 //                    timeline.play();
+                    t.start();
                     popupStage.hide();
                 });
 
                 save_game.setOnAction(event -> {
 
                     pauseRoot.getChildren().clear();
-                    Label label = new Label("Enter name for the game");
+                    Label label = new Label("Enter Name");
+                    label.setId("paused");
                     TextField textField = new TextField();
                     Button but = new Button("Save");
+                    but.setId("save");
                     pauseRoot.getChildren().add(label);
                     pauseRoot.getChildren().add(textField);
                     pauseRoot.getChildren().add(but);

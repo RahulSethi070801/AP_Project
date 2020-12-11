@@ -1,0 +1,35 @@
+#menu{
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-background-radius: 10px;
+    -fx-padding: 50px;
+    -fx-font-size: 17px;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-font-family: 'Comic Sans MS';
+}
+#resume
+{
+    -fx-background-color: blue;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+#exit
+{
+    -fx-background-color: red;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+#save
+{
+    -fx-background-color: green;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+
+#paused
+{
+    -fx-text-fill: rgb(255,255,255);
+    -fx-font-size : 20px;
+}

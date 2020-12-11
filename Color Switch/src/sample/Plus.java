@@ -148,17 +148,17 @@ public class Plus extends Obstacle implements Blast
 
     public void show(long y)
     {
-        line1 = new Line(100+250, 400+y, 200+250, 400+y);
-        line1.setStrokeWidth(10);
+        line1 = new Line(100+400, 400+y, 200+400, 400+y);
+        line1.setStrokeWidth(20);
         line1.setFill(null);
-        line2 = new Line(200+250, 400+y, 300+250, 400+y);
-        line2.setStrokeWidth(10);
+        line2 = new Line(200+400, 400+y, 300+400, 400+y);
+        line2.setStrokeWidth(20);
         line2.setFill(null);
-        line3 = new Line(200+250, 400+y, 200+250, 500+y);
-        line3.setStrokeWidth(10);
+        line3 = new Line(200+400, 400+y, 200+400, 500+y);
+        line3.setStrokeWidth(20);
         line3.setFill(null);
-        line4 = new Line(200+250, 400+y, 200+250, 300+y);
-        line4.setStrokeWidth(10);
+        line4 = new Line(200+400, 400+y, 200+400, 300+y);
+        line4.setStrokeWidth(20);
         line4.setFill(null);
 
         line1.setStroke(Color.rgb(144, 13, 255));
@@ -169,7 +169,7 @@ public class Plus extends Obstacle implements Blast
         root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
 
-        RotateTransition rotateTransition = new RotateTransition();
+        rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);

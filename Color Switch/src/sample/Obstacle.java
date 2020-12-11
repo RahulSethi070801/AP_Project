@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -18,6 +19,8 @@ public abstract class Obstacle implements Serializable
     protected long y;
     protected double thickness;
     protected Group root;
+    protected RotateTransition rotateTransition;
+    protected long duration = 5000;
     public void move()
     {
 
@@ -139,6 +142,10 @@ public abstract class Obstacle implements Serializable
     public abstract boolean blast(Circle ball_c);
 
 
+    public void increaseDifficulty(long difficulty)
+    {
+        rotateTransition.setDuration(Duration.millis(duration-difficulty));
+    }
 //    public boolean blast(Circle ball_c) {
 //        return false;
 //    }

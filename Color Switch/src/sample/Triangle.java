@@ -194,5 +194,9 @@ class Triangle extends Obstacle implements Blast
         };
         timer.start();
     }
+    public void increaseDifficulty(long difficulty)
+    {
+
+    }
 
 }
