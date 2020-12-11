@@ -1,8 +1,7 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import com.sun.media.jfxmediaimpl.platform.Platform;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
@@ -23,14 +22,18 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Translate;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +51,7 @@ public class Game implements Serializable {
     long difficulty = 0;
     long y=0;
     String name;
+    AnimationTimer at;
     // TODO : Add difficulty -> Tushar
     // TODO : Add revive -> Tushar
     // TODO : beautify pause menu -> Tushar nad Rahul
@@ -270,8 +274,119 @@ public class Game implements Serializable {
         for (int i=0; i<obstacles.size(); i++)
         {
             if (obstacles.get(i).blast(ball_c))
-                System.exit(0);
+            {
+                new PauseMenu();
+                break;
+            }
+
         }
+    }
+
+    public void stopp() throws FileNotFoundException {
+        at.stop();
+        System.out.println("stop");
+        new PauseMenu();
+        //System.exit(0);
+        return;
+    }
+
+    public void explode() throws FileNotFoundException
+    {
+        final int size = 40;
+        final Rectangle[] rectangles = new Rectangle[size];
+        final long[] delays = new long[size];
+        final double[] angles = new double[size];
+        final double duration = Duration.seconds(3).toSeconds()*1000000000;
+        final Random random = new Random();
+
+        for (int i = 0; i < size; i++) {
+            rectangles[i] = new Rectangle(5, 5, Color.hsb(random.nextInt(360), 1, 1));
+            delays[i] = (long) (Math.random()*duration);
+            angles[i] = 2 * Math.PI * random.nextDouble();
+        }
+        //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
+        Group root5 = new Group(rectangles);
+        root.getChildren().add(root5);
+        show();
+
+        ParallelTransition pt = new ParallelTransition();
+
+        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(20),
+                new EventHandler<ActionEvent>() {
+
+                    @Override
+                    public void handle(ActionEvent t) {
+//                        System.out.println("timelne");
+
+                        final double width = 0.5 * 1200;//stage.getWidth();
+                        final double height = 0.5 * 800;//stage.getHeight();
+                        final double radius = Math.sqrt(2) * Math.max(width, height);
+
+
+                        long now = System.nanoTime();
+                        for (int i = 0; i < size; i++) {
+                            Rectangle r = rectangles[i];
+                            double angle = angles[i];
+                            double tt = (now - delays[i]) % duration;
+                            double d = tt*radius/duration;
+
+                            r.setOpacity((duration - tt)/(double)duration);
+                            r.setTranslateX(Math.cos(angle)*d + width);
+                            r.setTranslateY(Math.sin(angle)*d + height);
+                            //pt.getChildren().add(Translate);
+                        }
+                        root.getChildren().add(new Group(rectangles));
+
+
+                    }
+                }));
+
+        timeline1.play();
+        timeline1.setOnFinished(actionEvent -> timeline1.stop());
+
+        //new PauseMenu();
+
+//        at = new AnimationTimer(){
+//            long lastUpdate;
+//            int count = 0;
+//            @Override
+//            public void start(){
+//                lastUpdate = System.nanoTime();
+//                super.start();
+//            }
+//            @Override
+//            public void handle(long now) {
+//                count++;
+//                if ((now - lastUpdate)/Math.pow(10, 9) >= 1)
+//                {
+//                    try {
+//                        //super.s;
+//                        stopp();
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//
+//                final double width = 0.5 * 1200;//stage.getWidth();
+//                final double height = 0.5 * 800;//stage.getHeight();
+//                final double radius = Math.sqrt(2) * Math.max(width, height);
+//
+//                for (int i = 0; i < size; i++) {
+//                    Rectangle r = rectangles[i];
+//                    double angle = angles[i];
+//                    double t = (now - delays[i]) % duration;
+//                    double d = t*radius/duration;
+//
+//                    r.setOpacity((duration - t)/(double)duration);
+//                    r.setTranslateX(Math.cos(angle)*d + width);
+//                    r.setTranslateY(Math.sin(angle)*d + height);
+//                }
+//                root.getChildren().add(new Group(rectangles));
+//            }
+//        };
+//        at.start();
+
     }
 
     public void tapBall()

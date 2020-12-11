@@ -43,7 +43,8 @@ public class Main extends Application {
     public void start(Stage stage1) throws Exception
     {
         stage.show();
-        new MainPage();
+        new StartingGame();
+        //new MainPage();
     }
 
 
