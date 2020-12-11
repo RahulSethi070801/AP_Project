@@ -108,7 +108,7 @@ public class PauseMenu
                     {
                         try {
                             new MainPage();
-                        } catch (FileNotFoundException ex) {
+                        } catch (FileNotFoundException | InterruptedException ex) {
                             ex.printStackTrace();
                         }
                     }

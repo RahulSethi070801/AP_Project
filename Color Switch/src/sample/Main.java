@@ -32,6 +32,7 @@ public class Main extends Application {
 
     public static Stage stage;
     public static Stage stage2;
+    public static boolean sound = true;
 
     public Main() {
         stage = new Stage();

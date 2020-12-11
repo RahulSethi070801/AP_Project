@@ -25,13 +25,15 @@ class StartingGame
 {
     Group root;
 
-    public StartingGame() throws FileNotFoundException {
+    public StartingGame() throws FileNotFoundException, InterruptedException {
         this.root= new Group();
         Scene scene0 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene0);
         Main.stage.setFullScreen(true);
 
         show();
+
+
 
     }
     public void setRoot(Group root)
@@ -45,7 +47,7 @@ class StartingGame
         return root;
     }
 
-    public void show() throws FileNotFoundException {
+    public void show() throws FileNotFoundException, InterruptedException {
 
         Ring r = new Ring();
         r.show(0);
@@ -61,11 +63,18 @@ class StartingGame
         translateTransition1.setCycleCount(1);
         //translateTransition1.setAutoReverse(true);
 
-        String localDir = System.getProperty("user.dir");
-        String path = localDir+"\\jump.wav";
-        Media media = new Media(new File(path).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
+
+        for (int i=0; i<2; i++)
+        {
+            Main.sound = true;
+            String localDir = System.getProperty("user.dir");
+            String path = localDir+"\\jump.wav";
+            Media media = new Media(new File(path).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(Main.sound);
+            Main.sound = false;
+        }
+
 
         TranslateTransition translateTransition2 = new TranslateTransition(Duration.millis(500), root2);
         //translateTransition2.setFromY(400);
@@ -93,7 +102,7 @@ class StartingGame
         translateTransition5.setCycleCount(1);
         translateTransition5.setAutoReverse(true);
 
-        mediaPlayer.seek(mediaPlayer.getStartTime());
+
 
 //        TranslateTransition translateTransition6 = new TranslateTransition(Duration.millis(500), root2);
 //        //translateTransition4.setFromY(400);
@@ -107,6 +116,15 @@ class StartingGame
         sequentialTransition.setInterpolator(Interpolator.LINEAR);
         //sequentialTransition.setAutoReverse(true);
         sequentialTransition.play();
+        sequentialTransition.setOnFinished(actionEvent -> {
+            try {
+                new MainPage();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
         root.getChildren().addAll(root1, root2);
 

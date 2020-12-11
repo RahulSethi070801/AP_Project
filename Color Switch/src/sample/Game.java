@@ -53,16 +53,16 @@ public class Game implements Serializable {
     long y=0;
     AnimationTimer t;
     String name;
-<<<<<<< HEAD
+
     AnimationTimer at;
     // TODO : Add difficulty -> Tushar
     // TODO : Add revive -> Tushar
     // TODO : beautify pause menu -> Tushar nad Rahul
-=======
+
     // TODO : Add difficulty -> Tushar DONE
     // TODO : Add revive -> Tushar DONE
     // TODO : beautify pause menu -> Tushar nad Rahul DONE
->>>>>>> f9fd3b249096a1dad8d4c3e50f9012d9b6a3ada5
+
     // TODO : animation on collision -> Rahul
     // TODO : loading game animation -> Tushar and Rahul
     // TODO : sound -> Rahul(Done)
@@ -367,7 +367,7 @@ public class Game implements Serializable {
                         popupStage.hide();
                         try {
                             new MainPage();
-                        } catch (FileNotFoundException ex) {
+                        } catch (FileNotFoundException | InterruptedException ex) {
                             ex.printStackTrace();
                         }
 //                        System.exit(0);
@@ -381,7 +381,7 @@ public class Game implements Serializable {
                     t.stop();
                     try {
                         new MainPage();
-                    } catch (FileNotFoundException ex) {
+                    } catch (FileNotFoundException | InterruptedException ex) {
                         ex.printStackTrace();
                     }
 
@@ -400,44 +400,44 @@ public class Game implements Serializable {
                 }
         }
         //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
-        Group root5 = new Group(rectangles);
-        root.getChildren().add(root5);
-        show();
-
-        ParallelTransition pt = new ParallelTransition();
-
-        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(20),
-                new EventHandler<ActionEvent>() {
-
-                    @Override
-                    public void handle(ActionEvent t) {
-//                        System.out.println("timelne");
-
-                        final double width = 0.5 * 1200;//stage.getWidth();
-                        final double height = 0.5 * 800;//stage.getHeight();
-                        final double radius = Math.sqrt(2) * Math.max(width, height);
-
-
-                        long now = System.nanoTime();
-                        for (int i = 0; i < size; i++) {
-                            Rectangle r = rectangles[i];
-                            double angle = angles[i];
-                            double tt = (now - delays[i]) % duration;
-                            double d = tt*radius/duration;
-
-                            r.setOpacity((duration - tt)/(double)duration);
-                            r.setTranslateX(Math.cos(angle)*d + width);
-                            r.setTranslateY(Math.sin(angle)*d + height);
-                            //pt.getChildren().add(Translate);
-                        }
-                        root.getChildren().add(new Group(rectangles));
-
-
-                    }
-                }));
-
-        timeline1.play();
-        timeline1.setOnFinished(actionEvent -> timeline1.stop());
+//        Group root5 = new Group(rectangles);
+//        root.getChildren().add(root5);
+//        show();
+//
+//        ParallelTransition pt = new ParallelTransition();
+//
+//        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(20),
+//                new EventHandler<ActionEvent>() {
+//
+//                    @Override
+//                    public void handle(ActionEvent t) {
+////                        System.out.println("timelne");
+//
+//                        final double width = 0.5 * 1200;//stage.getWidth();
+//                        final double height = 0.5 * 800;//stage.getHeight();
+//                        final double radius = Math.sqrt(2) * Math.max(width, height);
+//
+//
+//                        long now = System.nanoTime();
+//                        for (int i = 0; i < size; i++) {
+//                            Rectangle r = rectangles[i];
+//                            double angle = angles[i];
+//                            double tt = (now - delays[i]) % duration;
+//                            double d = tt*radius/duration;
+//
+//                            r.setOpacity((duration - tt)/(double)duration);
+//                            r.setTranslateX(Math.cos(angle)*d + width);
+//                            r.setTranslateY(Math.sin(angle)*d + height);
+//                            //pt.getChildren().add(Translate);
+//                        }
+//                        root.getChildren().add(new Group(rectangles));
+//
+//
+//                    }
+//                }));
+//
+//        timeline1.play();
+//        timeline1.setOnFinished(actionEvent -> timeline1.stop());
 
         //new PauseMenu();
 
@@ -670,7 +670,7 @@ public class Game implements Serializable {
                     popupStage.hide();
                     try {
                         new MainPage();
-                    } catch (FileNotFoundException ex) {
+                    } catch (FileNotFoundException | InterruptedException ex) {
                         ex.printStackTrace();
                     }
                 });
