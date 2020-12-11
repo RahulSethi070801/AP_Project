@@ -82,7 +82,7 @@ public class TwoPlus extends Obstacle
         }
         if (isCollide(ball, line6))
         {
-            if (ball.getFill().equals(line5.getStroke()))
+            if (ball.getFill().equals(line6.getStroke()))
                 System.out.println("same color");
             else
             {System.exit(0);}

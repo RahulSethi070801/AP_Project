@@ -19,6 +19,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -51,7 +53,8 @@ public class Game implements Serializable {
     // TODO : beautify pause menu -> Tushar nad Rahul
     // TODO : animation on collision -> Rahul
     // TODO : loading game animation -> Tushar and Rahul
-    // TODO : sound -> Rahul
+    // TODO : sound -> Rahul(Done)
+    // TODO : Perfect Collision(75%done)
     Random rand = new Random();
     String tempO[] = {
             "Ring",
@@ -193,8 +196,7 @@ public class Game implements Serializable {
         return RectB.intersects(RectA);
     }
 
-    public void update(double time)
-    {
+    public void update(double time, Circle ball_c) throws FileNotFoundException {
         // s = ut+0.5at^2
 //        System.out.println(time);
         time/=Math.pow(10,9);
@@ -231,10 +233,16 @@ public class Game implements Serializable {
 //                                    root.getChildren().remove(root5);
                     break;
                 }
-                root.getChildren().remove(colorSwitches.get(0).getRoot());
-                root_list.remove(colorSwitches.get(0).getRoot());
-                colorSwitches.remove(0);
             }
+            String localDir = System.getProperty("user.dir");
+            String path = localDir+"\\colorswitch.wav";
+            Media media = new Media(new File(path).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(true);
+
+            root.getChildren().remove(colorSwitches.get(0).getRoot());
+            root_list.remove(colorSwitches.get(0).getRoot());
+            colorSwitches.remove(0);
         }
         if (isCollide(ball, stars.get(0).getRoot()))
         {
@@ -243,12 +251,35 @@ public class Game implements Serializable {
             root_list.remove(stars.get(0).getRoot());
             stars.remove(0);
             text1.setText(String.valueOf(++score));
+
+            String localDir = System.getProperty("user.dir");
+            String path = localDir+"\\star.wav";
+            Media media = new Media(new File(path).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(true);
+        }
+        /*if (obstacles.get(0).getLayoutY() > 800)
+        {
+            System.out.println("a");
+            obstacles.remove(0);
+            addObstacle();
+        }*/
+        //System.out.println(obstacles.size());
+        for (int i=0; i<obstacles.size(); i++)
+        {
+            obstacles.get(i).blast(ball_c);
         }
     }
 
     public void tapBall()
     {
         this.speed = -400;
+
+        String localDir = System.getProperty("user.dir");
+        String path = localDir+"\\jump.wav";
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(true);
 
     }
     public void scroll()
@@ -311,15 +342,15 @@ public class Game implements Serializable {
                         }
                         //double curr = ball.getLayY();
 
-                        if (obstacles.get(0).getLayoutY() >  1200)
-                        {
-                            obstacles.remove(0);
-                            try {
-                                addObstacle();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
+//                        if (obstacles.get(0).getLayoutY() >  1200)
+//                        {
+//                            obstacles.remove(0);
+//                            try {
+//                                addObstacle();
+//                            } catch (FileNotFoundException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
 //                        for (int i=0; i<3; i++)
 //                        {
 //                            obstacles.get(i).blast(ball_c);
@@ -386,7 +417,11 @@ public class Game implements Serializable {
 
                 //Ball Update
                 long elapsed = now - lastUpdate;
-                update(elapsed);
+                try {
+                    update(elapsed, ball_c);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 scroll();
 //                checkCollisions();
@@ -482,6 +517,10 @@ public class Game implements Serializable {
         timeline1.setCycleCount(20);
 */
         // event handler for user control of ball
+
+
+
+
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A) {
                 tapBall();
