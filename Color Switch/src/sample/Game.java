@@ -91,12 +91,12 @@ public class Game implements Serializable {
     public void getStars(){}
     public void reviveGame(){}
     public void saveAndExitGame(){}
-    Game( Group root, Scene scene, ArrayList<Obstacle> obstalces,
+    Game( Group root, Scene scene, ArrayList<Obstacle> obstacles,
           ArrayList<Star> stars, User user, long score, long difficulty, String name)
     {
         this.root=root;
         this.scene2=scene;
-        this.obstacles=obstalces;
+        this.obstacles=obstacles;
         this.stars = stars;
         this.user = user;
         this.score = score;
@@ -118,42 +118,44 @@ public class Game implements Serializable {
     {
         int ind = rand.nextInt(8);
 //            int ind = 0;
-        Obstacle o = new Obstacle();
+        Obstacle o;// = new Obstacle();
         Star star = new Star();
         ColorSwitch colorswitch = new ColorSwitch();
         if(tempO[ind].equals("Ring"))
         {
             o = new Ring();
         }
-        if(tempO[ind].equals("Square"))
+        else if(tempO[ind].equals("Square"))
         {
             o = new Square();
 
         }
-        if(tempO[ind].equals("HorizontalCircles"))
+        else if(tempO[ind].equals("HorizontalCircles"))
         {
             o = new HorizontalCircles();
         }
-        if(tempO[ind].equals("Concentric"))
+        else if(tempO[ind].equals("Concentric"))
         {
             o = new ConcentricCircles();
         }
-        if(tempO[ind].equals("Triangle"))
+        else if(tempO[ind].equals("Triangle"))
         {
             o = new Triangle();
         }
-        if(tempO[ind].equals("Lines"))
-        {
-            o = new HorizontalLine();
-        }
-        if(tempO[ind].equals("2Plus"))
+//        else if(tempO[ind].equals("Lines"))
+//        {
+//            o = new HorizontalLine();
+//        }
+        else if(tempO[ind].equals("2Plus"))
         {
             o = new TwoPlus();
         }
-        if(tempO[ind].equals("Plus"))
+        else if(tempO[ind].equals("Plus"))
         {
             o = new Plus();
         }
+        else
+            o = new Ring();
         o.show(y);
 
         obstacles.add(o);
@@ -267,7 +269,8 @@ public class Game implements Serializable {
         //System.out.println(obstacles.size());
         for (int i=0; i<obstacles.size(); i++)
         {
-            obstacles.get(i).blast(ball_c);
+            if (obstacles.get(i).blast(ball_c))
+                System.exit(0);
         }
     }
 

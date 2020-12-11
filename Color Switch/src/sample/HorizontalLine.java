@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import javafx.animation.Timeline;
 
-public class HorizontalLine extends Obstacle
+public class HorizontalLine extends Obstacle implements Blast
 {
 //    Group root;
     Line line1, line2, line3, line4;
@@ -31,7 +31,7 @@ public class HorizontalLine extends Obstacle
         return root;
     }
 
-    public static boolean isCollide(Circle x, Line y)
+    public static boolean isCollide(Circle x, Shape y)
     {
         Shape intersect = Shape.intersect(x,y);
         boolean b = false;
@@ -42,37 +42,52 @@ public class HorizontalLine extends Obstacle
         return b;
     }
 
-    public void blast(Circle ball)
+    @Override
+    public boolean blast(Circle ball)
     {
-        if (isCollide(ball, line1))
+        for(int i=0;i<root.getChildren().size();i++)
         {
-            if (ball.getFill().equals(line1.getStroke()))
-                {}
-            else
-                System.out.println("blast");
+
+            if (isCollide(ball, (Shape)root.getChildren().get(i)) && ((Shape) root.getChildren().get(i)).getStroke().equals(ball.getFill()))
+            {
+                return true;
+            }
+
         }
-        if (isCollide(ball, line2))
-        {
-            if (ball.getFill().equals(line2.getStroke()))
-                {}
-            else
-                System.out.println("blast");
-        }
-        if (isCollide(ball, line3))
-        {
-            if (ball.getFill().equals(line3.getStroke()))
-                {}
-            else
-                System.out.println("blast");
-        }
-        if (isCollide(ball, line4))
-        {
-            if (ball.getFill().equals(line4.getStroke()))
-                {}
-            else
-                System.out.println("blast");
-        }
+        return false;
     }
+
+//    public void blast(Circle ball)
+//    {
+//        if (isCollide(ball, line1))
+//        {
+//            if (ball.getFill().equals(line1.getStroke()))
+//                {}
+//            else
+//                System.out.println("blast");
+//        }
+//        if (isCollide(ball, line2))
+//        {
+//            if (ball.getFill().equals(line2.getStroke()))
+//                {}
+//            else
+//                System.out.println("blast");
+//        }
+//        if (isCollide(ball, line3))
+//        {
+//            if (ball.getFill().equals(line3.getStroke()))
+//                {}
+//            else
+//                System.out.println("blast");
+//        }
+//        if (isCollide(ball, line4))
+//        {
+//            if (ball.getFill().equals(line4.getStroke()))
+//                {}
+//            else
+//                System.out.println("blast");
+//        }
+//    }
 
     public void show(long y)
     {
@@ -104,7 +119,8 @@ public class HorizontalLine extends Obstacle
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
 
-        Group root = new Group(line1, line2, line3, line4);
+        Group root = new Group();
+        root.getChildren().addAll(line1, line2, line3, line4);
 
         TranslateTransition translateTransition1 = new TranslateTransition();
         translateTransition1.setDuration(Duration.millis(5000));

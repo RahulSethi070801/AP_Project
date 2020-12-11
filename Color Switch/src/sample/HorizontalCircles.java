@@ -15,7 +15,7 @@ import javafx.animation.Timeline;
 
 import java.util.Random;
 
-public class HorizontalCircles extends Obstacle
+public class HorizontalCircles extends Obstacle implements Blast
 {
 //    Group root;
     Shape shape1, shape2, shape3, shape4, shape5, shape6, shape7, shape8;
@@ -42,65 +42,82 @@ public class HorizontalCircles extends Obstacle
         return b;
     }
 
-    public void blast(Circle ball)
+    @Override
+    public boolean blast(Circle ball)
     {
-        if (isCollide(ball, shape1))
+        for(int i=0;i<root.getChildren().size();i++)
         {
-            if (ball.getFill().equals(shape1.getFill()))
-                {}
-            else
-            {System.exit(0);}
+            Group temp= (Group)root.getChildren().get(i);
+            for(int j=0; j<temp.getChildren().size(); j++)
+            {
+                if (isCollide(ball, (Shape)temp.getChildren().get(j)) && !((Shape) temp.getChildren().get(j)).getFill().equals(ball.getFill()))
+                {
+                    return true;
+                }
+            }
         }
-        if (isCollide(ball, shape2))
-        {
-            if (ball.getFill().equals(shape2.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape3))
-        {
-            if (ball.getFill().equals(shape3.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape4))
-        {
-            if (ball.getFill().equals(shape4.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape5))
-        {
-            if (ball.getFill().equals(shape5.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape6))
-        {
-            if (ball.getFill().equals(shape6.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape7))
-        {
-            if (ball.getFill().equals(shape7.getFill()))
-                {}
-            else
-            {System.exit(0);};
-        }
-        if (isCollide(ball, shape8))
-        {
-            if (ball.getFill().equals(shape8.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
+        return false;
     }
+
+//    public void blast(Circle ball)
+//    {
+//        if (isCollide(ball, shape1))
+//        {
+//            if (ball.getFill().equals(shape1.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape2))
+//        {
+//            if (ball.getFill().equals(shape2.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape3))
+//        {
+//            if (ball.getFill().equals(shape3.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape4))
+//        {
+//            if (ball.getFill().equals(shape4.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape5))
+//        {
+//            if (ball.getFill().equals(shape5.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape6))
+//        {
+//            if (ball.getFill().equals(shape6.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape7))
+//        {
+//            if (ball.getFill().equals(shape7.getFill()))
+//                {}
+//            else
+//            {System.exit(0);};
+//        }
+//        if (isCollide(ball, shape8))
+//        {
+//            if (ball.getFill().equals(shape8.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//    }
 
     public void explode()
     {
@@ -238,8 +255,10 @@ public class HorizontalCircles extends Obstacle
 
 
         root = new Group();
-        Group root1 = new Group(shape1, shape2, shape3, shape4);
-        Group root2 = new Group(shape6, shape5, shape8, shape7);
+        Group root1 = new Group();
+        root1.getChildren().addAll(shape1, shape2, shape3, shape4);
+        Group root2 = new Group();
+        root2.getChildren().addAll(shape6, shape5, shape8, shape7);
 
         RotateTransition rotate = new RotateTransition();
         rotate.setAxis(Rotate.Z_AXIS);

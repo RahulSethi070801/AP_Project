@@ -26,7 +26,7 @@ import javafx.util.Duration;
 import java.awt.*;
 import java.util.Random;
 
-class Square extends Obstacle
+class Square extends Obstacle implements Blast
 {
 //    Group root;
     Line line1, line2, line3, line4;
@@ -47,7 +47,7 @@ class Square extends Obstacle
         return this.root;
     }
 
-    public static boolean isCollide(Circle x, Line y)
+    public static boolean isCollide(Circle x, Shape y)
     {
         Shape intersect = Shape.intersect(x,y);
         boolean b = false;
@@ -59,45 +59,60 @@ class Square extends Obstacle
         //return x.getBoundsInParent().intersects(y.getBoundsInParent());
     }
 
-    public void blast(Circle ball)
+    @Override
+    public boolean blast(Circle ball)
     {
-        if (isCollide(ball, line1))
+        for(int i=0;i<root.getChildren().size();i++)
         {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape1.getFill());
-            if (ball.getFill().equals(line1.getStroke()))
-            {}
-            else
-            {System.exit(0);}
+
+            if (isCollide(ball, (Shape)root.getChildren().get(i)) && !((Shape) root.getChildren().get(i)).getStroke().equals(ball.getFill()))
+            {
+                return true;
+            }
+
         }
-        if (isCollide(ball, line2))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape2.getFill());
-            if (ball.getFill().equals(line2.getStroke()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line3))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape3.getFill());
-            if (ball.getFill().equals(line3.getStroke()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line4))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape4.getFill());
-            if (ball.getFill().equals(line4.getStroke()))
-                {}
-            else
-            {System.exit(0);}
-        }
+        return false;
     }
+
+//    public void blast(Circle ball)
+//    {
+//        if (isCollide(ball, line1))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape1.getFill());
+//            if (ball.getFill().equals(line1.getStroke()))
+//            {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, line2))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape2.getFill());
+//            if (ball.getFill().equals(line2.getStroke()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, line3))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape3.getFill());
+//            if (ball.getFill().equals(line3.getStroke()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, line4))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape4.getFill());
+//            if (ball.getFill().equals(line4.getStroke()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//    }
 
     public void explode()
     {
@@ -175,7 +190,8 @@ class Square extends Obstacle
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
 
-        this.root = new Group(line1, line2, line3, line4);
+        this.root = new Group();
+        root.getChildren().addAll(line1, line2, line3, line4);
 
         // System.out.println(root);
         RotateTransition rotateTransition = new RotateTransition();

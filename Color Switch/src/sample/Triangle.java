@@ -24,7 +24,7 @@ import javafx.util.Duration;
 import java.util.Random;
 
 
-class Triangle extends Obstacle
+class Triangle extends Obstacle implements Blast
 {
 //    Group root;
     Line line1, line2, line3;
@@ -44,7 +44,7 @@ class Triangle extends Obstacle
         return root;
     }
 
-    public static boolean isCollide(Circle x, Line y)
+    public static boolean isCollide(Circle x, Shape y)
     {
 //        System.out.println(y);
         Shape intersect = Shape.intersect(x,y);
@@ -56,40 +56,55 @@ class Triangle extends Obstacle
         return b;
     }
 
-    public void blast(Circle ball)
+    @Override
+    public boolean blast(Circle ball)
     {
-//        System.out.println(ball);
-//        System.out.println(line1);
-//        System.out.println(line2);
-//        System.out.println(line3);
-        if (isCollide(ball, line1))
+        for(int i=0;i<root.getChildren().size();i++)
         {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape1.getFill());
-            if (ball.getFill().equals(line1.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
+
+            if (isCollide(ball, (Shape)root.getChildren().get(i)) && !((Shape) root.getChildren().get(i)).getStroke().equals(ball.getFill()))
+            {
+                return true;
+            }
+
         }
-        if (isCollide(ball, line2))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape2.getFill());
-            if (ball.getFill().equals(line2.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line3))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape3.getFill());
-            if (ball.getFill().equals(line3.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
+        return false;
     }
+
+//    public void blast(Circle ball)
+//    {
+////        System.out.println(ball);
+////        System.out.println(line1);
+////        System.out.println(line2);
+////        System.out.println(line3);
+//        if (isCollide(ball, line1))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape1.getFill());
+//            if (ball.getFill().equals(line1.getStroke()))
+//                System.out.println("same color");
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, line2))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape2.getFill());
+//            if (ball.getFill().equals(line2.getStroke()))
+//                System.out.println("same color");
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, line3))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape3.getFill());
+//            if (ball.getFill().equals(line3.getStroke()))
+//                System.out.println("same color");
+//            else
+//            {System.exit(0);}
+//        }
+//    }
 
     public void explode()
     {
@@ -163,8 +178,8 @@ class Triangle extends Obstacle
         line3.setStroke(Color.rgb(50, 219, 240));
 
 
-        root = new Group(line2, line1, line3);
-        //root.getChildren().addAll(line1, line2, line3);
+        root = new Group();
+        root.getChildren().addAll(line1, line2, line3);
 
         Rotate r = new Rotate();
         root.getTransforms().add(r);

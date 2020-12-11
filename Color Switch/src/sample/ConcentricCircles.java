@@ -20,7 +20,7 @@ import javafx.animation.Interpolator;
 import java.util.Random;
 
 
-public class ConcentricCircles extends Obstacle
+public class ConcentricCircles extends Obstacle implements Blast
 {
 //    Group root;
     Shape shape1, shape2, shape3, shape4, shape5, shape6, shape7, shape8;
@@ -47,65 +47,80 @@ public class ConcentricCircles extends Obstacle
         return b;
     }
 
-    public void blast(Circle ball)
+    @Override
+    public boolean blast(Circle ball)
     {
-        if (isCollide(ball, shape1))
+        for(int i=0;i<root.getChildren().size();i++)
         {
-            if (ball.getFill().equals(shape1.getFill()))
-                {}
-            else
-            {System.exit(0);}
+
+            if (isCollide(ball, (Shape)root.getChildren().get(i)) && !((Shape) root.getChildren().get(i)).getFill().equals(ball.getFill()))
+            {
+                return true;
+            }
+
         }
-        if (isCollide(ball, shape2))
-        {
-            if (ball.getFill().equals(shape2.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape3))
-        {
-            if (ball.getFill().equals(shape3.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape4))
-        {
-            if (ball.getFill().equals(shape4.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape5))
-        {
-            if (ball.getFill().equals(shape5.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape6))
-        {
-            if (ball.getFill().equals(shape6.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape7))
-        {
-            if (ball.getFill().equals(shape7.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape8))
-        {
-            if (ball.getFill().equals(shape8.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
+        return false;
     }
+
+//    public void blast(Circle ball)
+//    {
+//        if (isCollide(ball, shape1))
+//        {
+//            if (ball.getFill().equals(shape1.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape2))
+//        {
+//            if (ball.getFill().equals(shape2.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape3))
+//        {
+//            if (ball.getFill().equals(shape3.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape4))
+//        {
+//            if (ball.getFill().equals(shape4.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape5))
+//        {
+//            if (ball.getFill().equals(shape5.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape6))
+//        {
+//            if (ball.getFill().equals(shape6.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape7))
+//        {
+//            if (ball.getFill().equals(shape7.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape8))
+//        {
+//            if (ball.getFill().equals(shape8.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//    }
 
     public void explode()
     {
@@ -252,7 +267,8 @@ public class ConcentricCircles extends Obstacle
         shape8 = Shape.subtract(arc43, arc44);
         shape8.setFill(Color.rgb(255, 1, 129));
 
-        this.root = new Group(shape1,shape2,shape3,shape4, shape5, shape6, shape7, shape8);
+        this.root = new Group();
+        root.getChildren().addAll(shape1,shape2,shape3,shape4, shape5, shape6, shape7, shape8);
 
         RotateTransition rotate = new RotateTransition();
         //rotate.setAxis(Rotate.Z_AXIS);

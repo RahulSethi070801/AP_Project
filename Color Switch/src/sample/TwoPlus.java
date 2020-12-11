@@ -17,7 +17,7 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-public class TwoPlus extends Obstacle
+public class TwoPlus extends Obstacle implements Blast
 {
 //    Group root;
     Line line1, line2, line3, line4, line5, line6, line7, line8;
@@ -32,7 +32,7 @@ public class TwoPlus extends Obstacle
         return root;
     }
 
-    public static boolean isCollide(Circle x, Line y)
+    public static boolean isCollide(Circle x, Shape y)
     {
         Shape intersect = Shape.intersect(x,y);
         boolean b = false;
@@ -43,65 +43,68 @@ public class TwoPlus extends Obstacle
         return b;
     }
 
-    public void blast(Circle ball)
+    @Override
+    public boolean blast(Circle ball)
     {
-        if (isCollide(ball, line1))
+        for(int i=0;i<root.getChildren().size();i++)
         {
-            if (ball.getFill().equals(line1.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
+            Group temp= (Group)root.getChildren().get(i);
+            for(int j=0; j<temp.getChildren().size(); j++)
+            {
+                if (isCollide(ball, (Shape)temp.getChildren().get(j)) && !((Shape) temp.getChildren().get(j)).getStroke().equals(ball.getFill()))
+                {
+                    return true;
+                }
+            }
         }
-        if (isCollide(ball, line2))
-        {
-            if (ball.getFill().equals(line2.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line3))
-        {
-            if (ball.getFill().equals(line3.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);};
-        }
-        if (isCollide(ball, line4))
-        {
-            if (ball.getFill().equals(line4.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line5))
-        {
-            if (ball.getFill().equals(line5.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line6))
-        {
-            if (ball.getFill().equals(line6.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line7))
-        {
-            if (ball.getFill().equals(line7.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, line8))
-        {
-            if (ball.getFill().equals(line8.getStroke()))
-                System.out.println("same color");
-            else
-            {System.exit(0);}
-        }
+        return false;
     }
+
+//    public boolean blast(Circle ball)
+//    {
+//        if (isCollide(ball, line1) && !ball.getFill().equals(line1.getStroke()))
+//        {
+//            if ()
+//            {return  true;}
+//        }
+//        if (isCollide(ball, line2))
+//        {
+//            if (!ball.getFill().equals(line2.getStroke()))
+//            {return  true;}
+//        }
+//        if (isCollide(ball, line3))
+//        {
+//            if (!ball.getFill().equals(line3.getStroke()))
+//            {return  true;};
+//        }
+//        if (isCollide(ball, line4))
+//        {
+//            if (!ball.getFill().equals(line4.getStroke()))
+//            {return  true;}
+//        }
+//        if (!isCollide(ball, line5))
+//        {
+//            if (!ball.getFill().equals(line5.getStroke()))
+//            {return  true;}
+//        }
+//        if (!isCollide(ball, line6))
+//        {
+//            if (ball.getFill().equals(line6.getStroke()))
+//            {return  true;}
+//        }
+//        if (!isCollide(ball, line7))
+//        {
+//            if (ball.getFill().equals(line7.getStroke()))
+//            {return  true;}
+//        }
+//        if (!isCollide(ball, line8))
+//        {
+//            if (ball.getFill().equals(line8.getStroke()))
+//
+//            {return  true;}
+//        }
+//        return  false;
+//    }
 
     public void explode()
     {
@@ -189,8 +192,10 @@ public class TwoPlus extends Obstacle
         line8.setStroke(Color.rgb(255, 1, 129));
 
 
-        Group root1 = new Group(line1, line2, line3, line4);
-        Group root2 = new Group(line5, line6, line7, line8);
+        Group root1 = new Group();
+        root1.getChildren().addAll(line1, line2, line3, line4);
+        Group root2 = new Group();
+        root2.getChildren().addAll(line5, line6, line7, line8);
         root = new Group();
 
         root.getChildren().add(root2);
@@ -215,4 +220,5 @@ public class TwoPlus extends Obstacle
         rotateTransition2.play();
 
     }
+
 }

@@ -20,7 +20,7 @@ import java.sql.Time;
 import java.util.Random;
 
 
-class Ring extends Obstacle
+class Ring extends Obstacle implements Blast
 {
 //    Group root;
     Shape shape1, shape2, shape3, shape4;
@@ -52,56 +52,63 @@ class Ring extends Obstacle
         return b;
     }
 
-//    public static boolean isCollide1(Ball x, Arc y)
-//    {
-//        Bounds RectA = x.localToScene();
-//        Bounds RectB = y.localToScene(y.getBoundsInLocal());
-//
-//        return RectB.intersects(RectA);
-//    }
-
-    public void blast(Circle ball)
+    @Override
+    public boolean blast(Circle ball)
     {
-        //System.out.println("Ringggg");
-        if (isCollide(ball, shape1))
+        for(int i=0;i<root.getChildren().size();i++)
         {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape1.getFill());
-            if (ball.getFill().equals(shape1.getFill()))
-                {}
-            else
-            {System.exit(0);}
-                //explode();
+
+            if (isCollide(ball, (Shape)root.getChildren().get(i)) && !((Shape) root.getChildren().get(i)).getFill().equals(ball.getFill()))
+            {
+                return true;
+            }
+
         }
-        if (isCollide(ball, shape2))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape2.getFill());
-            if (ball.getFill().equals(shape2.getFill()))
-                {}
-            else
-            {System.exit(0);}
-                //explode();
-        }
-        if (isCollide(ball, shape3))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape3.getFill());
-            if (ball.getFill().equals(shape3.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
-        if (isCollide(ball, shape4))
-        {
-//            System.out.println(ball.getColor());
-//            System.out.println(shape4.getFill());
-            if (ball.getFill().equals(shape4.getFill()))
-                {}
-            else
-            {System.exit(0);}
-        }
+        return false;
     }
+
+//    public void blast(Circle ball)
+//    {
+//        //System.out.println("Ringggg");
+//        if (isCollide(ball, shape1))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape1.getFill());
+//            if (ball.getFill().equals(shape1.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//                //explode();
+//        }
+//        if (isCollide(ball, shape2))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape2.getFill());
+//            if (ball.getFill().equals(shape2.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//                //explode();
+//        }
+//        if (isCollide(ball, shape3))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape3.getFill());
+//            if (ball.getFill().equals(shape3.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//        if (isCollide(ball, shape4))
+//        {
+////            System.out.println(ball.getColor());
+////            System.out.println(shape4.getFill());
+//            if (ball.getFill().equals(shape4.getFill()))
+//                {}
+//            else
+//            {System.exit(0);}
+//        }
+//    }
 
     public void explode()
     {
@@ -207,7 +214,8 @@ class Ring extends Obstacle
         shape4 = Shape.subtract(arc41, arc42);
         shape4.setFill(Color.rgb(255, 1, 129));
 
-        root = new Group(shape1,shape2,shape3,shape4);
+        root = new Group();
+        root.getChildren().addAll(shape1,shape2,shape3,shape4);
 
         RotateTransition rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
