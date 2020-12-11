@@ -47,9 +47,10 @@ public class Game implements Serializable {
     long score = 0;
     long difficulty = 0;
     long y=0;
+    AnimationTimer t;
     String name;
     // TODO : Add difficulty -> Tushar
-    // TODO : Add revive -> Tushar
+    // DONE : Add revive -> Tushar
     // TODO : beautify pause menu -> Tushar nad Rahul
     // TODO : animation on collision -> Rahul
     // TODO : loading game animation -> Tushar and Rahul
@@ -270,7 +271,110 @@ public class Game implements Serializable {
         for (int i=0; i<obstacles.size(); i++)
         {
             if (obstacles.get(i).blast(ball_c))
-                System.exit(0);
+                if(score>=5) {
+                    t.stop();
+                    root.setEffect(new GaussianBlur());
+//                    System.out.println("REviev");
+                    HBox pauseRoot = new HBox(40);
+                    pauseRoot.setFillHeight(true);
+                    pauseRoot.getChildren().add(new Label("Paused"));
+                    pauseRoot.setStyle("-fx-background-color: rgba(255, 255, 255, 0.8);");
+                    pauseRoot.setAlignment(Pos.CENTER);
+                    pauseRoot.setPadding(new Insets(20));
+
+                    Button revive = new Button("Revive");
+                    Button restart = new Button("Restart ");
+                    Button exit=new Button("Exit");
+                    pauseRoot.getChildren().add(revive);
+                    pauseRoot.getChildren().add(exit);
+                    pauseRoot.getChildren().add(restart);
+                    Stage popupStage = new Stage(StageStyle.TRANSPARENT);
+                    popupStage.initOwner(Main.stage);
+                    popupStage.initModality(Modality.APPLICATION_MODAL);
+                    popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
+
+                    revive.setOnAction(event -> {
+                        root.setEffect(null);
+//                    timeline.play();
+                        score-=5;
+                        double minDis=100000;
+                        int ind=-1;
+                        for(int k=0;k<obstacles.size();k++)
+                        {
+                            double diff = ball.getLayY()-obstacles.get(k).getLayoutY();
+                            if (diff<minDis) {
+                                minDis = diff;
+                                ind = k;
+                            }
+                        }
+
+                        if(obstacles.get(ind).getLayoutY()>400)
+                        {
+                            for(int k=0;k<ind-1;k++) {
+                                obstacles.remove(0);
+                            }
+                        }
+                        else{
+                            for(int k=0;k<ind;k++) {
+                                obstacles.remove(0);
+                            }
+                        }
+                        text1.setText(String.valueOf(score));
+                        ball.setLayY(711);
+                        popupStage.hide();
+                        t.start();
+                    });
+
+                    restart .setOnAction(event -> {
+                        root.setEffect(null);
+//                    timeline.play();
+                        try {
+                            popupStage.hide();
+                            new Game();
+                        }
+                        catch(Exception e)
+                        {
+                        }
+                        popupStage.hide();
+
+                    });
+                    exit.setOnAction(event -> {
+                        root.setEffect(null);
+//                    timeline.play();
+                        popupStage.hide();
+                        try {
+                            new MainPage();
+                        } catch (FileNotFoundException ex) {
+                            ex.printStackTrace();
+                        }
+//                        System.exit(0);
+                    });
+                    popupStage.show();
+                }
+                else {
+                    root.setEffect(null);
+//                    timeline.play();
+//                    popupStage.hide();
+                    t.stop();
+                    try {
+                        new MainPage();
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+                    System.out.println("qwebo");
+//                    System.exit(0);
+//                    root.setEffect(null);
+////                    timeline.play();
+//                    try {
+////                        popupStage.hide();
+//                        new Game();
+//                    }
+//                    catch(Exception e)
+//                    {
+//                    }
+//                    popupStage.hide();
+                }
         }
     }
 
@@ -321,93 +425,7 @@ public class Game implements Serializable {
 
         String localDir = System.getProperty("user.dir");
 
-        // timeline for ball
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
-                new EventHandler<ActionEvent>() {
-
-                    double dx = 7; //Step on x or velocity
-                    double dy = 7; //Step on y
-
-                    @Override
-                    public void handle(ActionEvent t) {
-
-                        ball.setLayoutY(dy);
-
-                        if(ball.getLayY()<500) {
-                            for (int i = 0; i < root_list.size(); i++) {
-                                double dey = root_list.get(i).getLayoutY();
-                                root_list.get(i).setLayoutY(dey + dy);
-//                                if (root_list.get(i).getLayoutY() > 1200)
-//                                {
-//                                    root_list.remove(i);
-//                                }
-                            }
-                        }
-                        //double curr = ball.getLayY();
-
-//                        if (obstacles.get(0).getLayoutY() >  1200)
-//                        {
-//                            obstacles.remove(0);
-//                            try {
-//                                addObstacle();
-//                            } catch (FileNotFoundException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                        for (int i=0; i<3; i++)
-//                        {
-//                            obstacles.get(i).blast(ball_c);
-//                        }
-
-                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
-                        {
-                            //System.out.println("touch");
-                            while (true)
-                            {
-                                if (getRandom(4) == 0)
-                                {
-                                    continue;
-                                }
-                                if (getRandom(4) == 1)
-                                {
-                                    ball.setFill(Color.rgb (250, 225, 0));
-                                    ball.setColor(Color.rgb (250, 225, 0));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                if (getRandom(4) == 2)
-                                {
-                                    ball.setFill(Color.rgb(50, 219, 240));
-                                    ball.setColor(Color.rgb(50, 219, 240));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                if (getRandom(4) == 3)
-                                {
-                                    ball.setFill(Color.rgb(255, 1, 129));
-                                    ball.setColor(Color.rgb(255, 1, 129));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                root.getChildren().remove(colorSwitches.get(0).getRoot());
-                                root_list.remove(colorSwitches.get(0).getRoot());
-                                colorSwitches.remove(0);
-                            }
-                        }
-                        //Bounds bounds = root.getBoundsInParent();
-//                        System.out.println(bounds);
-//
-//                        if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
-//                                (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius()))){
-//                            System.out.println("Hello");
-//                            dy = -dy;
-//
-//                        }
-                    }
-                }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-
-        AnimationTimer t = new AnimationTimer(){
+        t = new AnimationTimer(){
             long lastUpdate;
             int i;
             @Override
@@ -434,96 +452,6 @@ public class Game implements Serializable {
             }
         };
 
-  /*      Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
-                new EventHandler<ActionEvent>() {
-                    double dy = -10; //Step on y
-                    @Override
-                    public void handle(ActionEvent t) {
-
-                        ball.setLayoutY( dy);
-                        ball.getLayY();
-                        if(ball.getLayY()<500) {
-                            for (int i = 0; i < root_list.size(); i++) {
-                                double dey = root_list.get(i).getLayoutY();
-                                root_list.get(i).setLayoutY(dey - dy);
-//                                if (root_list.get(i).getLayoutY() > 1200)
-//                                {
-//                                    root_list.remove(i);
-//                                }
-                            }
-                        }
-                        Bounds bounds = root.getBoundsInLocal();
-                        double curr = ball.getLayY();
-
-                        if (obstacles.get(0).getLayoutY() > curr + 800)
-                        {
-                            System.out.println("out");
-                            obstacles.remove(0);
-                            try {
-                                addObstacle();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        for (int i=0; i<2; i++)
-                        {
-                            obstacles.get(i).blast(ball_c);
-                        }
-
-                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
-                        {
-                            //System.out.println("touch");
-                            while (true)
-                            {
-                                if (getRandom(4) == 0)
-                                {
-                                    continue;
-                                }
-                                if (getRandom(4) == 1)
-                                {
-                                    ball.setFill(Color.rgb (250, 225, 0));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                if (getRandom(4) == 2)
-                                {
-                                    ball.setFill(Color.rgb(50, 219, 240));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                if (getRandom(4) == 3)
-                                {
-                                    ball.setFill(Color.rgb(255, 1, 129));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                root.getChildren().remove(colorSwitches.get(0).getRoot());
-                                root_list.remove(colorSwitches.get(0).getRoot());
-                                colorSwitches.remove(0);
-                            }
-                        }
-                        if (isCollide(ball, stars.get(0).getRoot()))
-                        {
-                            //System.out.println("touch");
-                            root.getChildren().remove(stars.get(0).getRoot());
-                            root_list.remove(stars.get(0).getRoot());
-                            stars.remove(0);
-                            text1.setText(String.valueOf(++score));
-                        }
-//                                if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
-//                                        (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius()))){
-//
-//                                    dy = -dy;
-//                                } q
-                    }
-                }));
-        timeline1.setCycleCount(20);
-*/
-        // event handler for user control of ball
-
-
-
-
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.A) {
                 tapBall();
@@ -547,7 +475,7 @@ public class Game implements Serializable {
                 //System.out.println("Pause");
 //                polygon.setFill(Color.DARKSLATEBLUE);
                 try {
-                    timeline.pause();
+//                    t.pause();
 //                    timeline1.pause();
                     new PauseMenu();
                 } catch (FileNotFoundException ex) {
@@ -560,7 +488,7 @@ public class Game implements Serializable {
         EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {
             public void handle(MouseEvent e)
             {
-                timeline.pause();
+//                t.pause();
 //                timeline1.pause();
                 root.setEffect(new GaussianBlur());
 
@@ -649,3 +577,180 @@ public class Game implements Serializable {
     }
 
 }
+/*      Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
+                new EventHandler<ActionEvent>() {
+                    double dy = -10; //Step on y
+                    @Override
+                    public void handle(ActionEvent t) {
+
+                        ball.setLayoutY( dy);
+                        ball.getLayY();
+                        if(ball.getLayY()<500) {
+                            for (int i = 0; i < root_list.size(); i++) {
+                                double dey = root_list.get(i).getLayoutY();
+                                root_list.get(i).setLayoutY(dey - dy);
+//                                if (root_list.get(i).getLayoutY() > 1200)
+//                                {
+//                                    root_list.remove(i);
+//                                }
+                            }
+                        }
+                        Bounds bounds = root.getBoundsInLocal();
+                        double curr = ball.getLayY();
+
+                        if (obstacles.get(0).getLayoutY() > curr + 800)
+                        {
+                            System.out.println("out");
+                            obstacles.remove(0);
+                            try {
+                                addObstacle();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        for (int i=0; i<2; i++)
+                        {
+                            obstacles.get(i).blast(ball_c);
+                        }
+
+                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
+                        {
+                            //System.out.println("touch");
+                            while (true)
+                            {
+                                if (getRandom(4) == 0)
+                                {
+                                    continue;
+                                }
+                                if (getRandom(4) == 1)
+                                {
+                                    ball.setFill(Color.rgb (250, 225, 0));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 2)
+                                {
+                                    ball.setFill(Color.rgb(50, 219, 240));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 3)
+                                {
+                                    ball.setFill(Color.rgb(255, 1, 129));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                root.getChildren().remove(colorSwitches.get(0).getRoot());
+                                root_list.remove(colorSwitches.get(0).getRoot());
+                                colorSwitches.remove(0);
+                            }
+                        }
+                        if (isCollide(ball, stars.get(0).getRoot()))
+                        {
+                            //System.out.println("touch");
+                            root.getChildren().remove(stars.get(0).getRoot());
+                            root_list.remove(stars.get(0).getRoot());
+                            stars.remove(0);
+                            text1.setText(String.valueOf(++score));
+                        }
+//                                if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
+//                                        (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius()))){
+//
+//                                    dy = -dy;
+//                                } q
+                    }
+                }));
+        timeline1.setCycleCount(20);
+*/
+// event handler for user control of
+// ball
+
+/*
+// timeline for ball
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
+                new EventHandler<ActionEvent>() {
+
+                    double dx = 7; //Step on x or velocity
+                    double dy = 7; //Step on y
+
+                    @Override
+                    public void handle(ActionEvent t) {
+
+                        ball.setLayoutY(dy);
+
+                        if(ball.getLayY()<500) {
+                            for (int i = 0; i < root_list.size(); i++) {
+                                double dey = root_list.get(i).getLayoutY();
+                                root_list.get(i).setLayoutY(dey + dy);
+//                                if (root_list.get(i).getLayoutY() > 1200)
+//                                {
+//                                    root_list.remove(i);
+//                                }
+                            }
+                        }
+                        //double curr = ball.getLayY();
+
+//                        if (obstacles.get(0).getLayoutY() >  1200)
+//                        {
+//                            obstacles.remove(0);
+//                            try {
+//                                addObstacle();
+//                            } catch (FileNotFoundException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                        for (int i=0; i<3; i++)
+//                        {
+//                            obstacles.get(i).blast(ball_c);
+//                        }
+
+                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
+                        {
+                            //System.out.println("touch");
+                            while (true)
+                            {
+                                if (getRandom(4) == 0)
+                                {
+                                    continue;
+                                }
+                                if (getRandom(4) == 1)
+                                {
+                                    ball.setFill(Color.rgb (250, 225, 0));
+                                    ball.setColor(Color.rgb (250, 225, 0));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 2)
+                                {
+                                    ball.setFill(Color.rgb(50, 219, 240));
+                                    ball.setColor(Color.rgb(50, 219, 240));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 3)
+                                {
+                                    ball.setFill(Color.rgb(255, 1, 129));
+                                    ball.setColor(Color.rgb(255, 1, 129));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                root.getChildren().remove(colorSwitches.get(0).getRoot());
+                                root_list.remove(colorSwitches.get(0).getRoot());
+                                colorSwitches.remove(0);
+                            }
+                        }
+                        //Bounds bounds = root.getBoundsInParent();
+//                        System.out.println(bounds);
+//
+//                        if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
+//                                (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius()))){
+//                            System.out.println("Hello");
+//                            dy = -dy;
+//
+//                        }
+                    }
+                }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+
+
+ */

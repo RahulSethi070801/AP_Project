@@ -87,6 +87,7 @@ public class MainPage
     {
         root = new Group();
 
+        System.out.println(Main.stage);
         Main.stage.setScene(new Scene(root, 800, 800, Color.BLACK));
         Main.stage.setFullScreen(true);
 
