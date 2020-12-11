@@ -22,6 +22,7 @@ public class TwoPlus extends Obstacle implements Blast
 //    Group root;
     Line line1, line2, line3, line4, line5, line6, line7, line8;
 
+    RotateTransition rotateTransition1;
     public void setRoot(Group root)
     {
         this.root = root;
@@ -59,52 +60,6 @@ public class TwoPlus extends Obstacle implements Blast
         }
         return false;
     }
-
-//    public boolean blast(Circle ball)
-//    {
-//        if (isCollide(ball, line1) && !ball.getFill().equals(line1.getStroke()))
-//        {
-//            if ()
-//            {return  true;}
-//        }
-//        if (isCollide(ball, line2))
-//        {
-//            if (!ball.getFill().equals(line2.getStroke()))
-//            {return  true;}
-//        }
-//        if (isCollide(ball, line3))
-//        {
-//            if (!ball.getFill().equals(line3.getStroke()))
-//            {return  true;};
-//        }
-//        if (isCollide(ball, line4))
-//        {
-//            if (!ball.getFill().equals(line4.getStroke()))
-//            {return  true;}
-//        }
-//        if (!isCollide(ball, line5))
-//        {
-//            if (!ball.getFill().equals(line5.getStroke()))
-//            {return  true;}
-//        }
-//        if (!isCollide(ball, line6))
-//        {
-//            if (ball.getFill().equals(line6.getStroke()))
-//            {return  true;}
-//        }
-//        if (!isCollide(ball, line7))
-//        {
-//            if (ball.getFill().equals(line7.getStroke()))
-//            {return  true;}
-//        }
-//        if (!isCollide(ball, line8))
-//        {
-//            if (ball.getFill().equals(line8.getStroke()))
-//
-//            {return  true;}
-//        }
-//        return  false;
-//    }
 
     public void explode()
     {
@@ -201,24 +156,32 @@ public class TwoPlus extends Obstacle implements Blast
         root.getChildren().add(root2);
         root.getChildren().add(root1);
 
-        RotateTransition rotateTransition1 = new RotateTransition();
+        rotateTransition = new RotateTransition();
+        rotateTransition.setDuration(Duration.millis(4000));
+        rotateTransition.setNode(root1);
+        rotateTransition.setByAngle(360);
+        rotateTransition.setCycleCount(Timeline.INDEFINITE);
+        rotateTransition.setAutoReverse(false);
+        rotateTransition.setInterpolator(Interpolator.LINEAR);
+        rotateTransition.play();
+
+        rotateTransition1 = new RotateTransition();
         rotateTransition1.setDuration(Duration.millis(4000));
-        rotateTransition1.setNode(root1);
-        rotateTransition1.setByAngle(360);
+        rotateTransition1.setNode(root2);
+        rotateTransition1.setByAngle(-360);
         rotateTransition1.setCycleCount(Timeline.INDEFINITE);
         rotateTransition1.setAutoReverse(false);
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.play();
 
-        RotateTransition rotateTransition2 = new RotateTransition();
-        rotateTransition2.setDuration(Duration.millis(4000));
-        rotateTransition2.setNode(root2);
-        rotateTransition2.setByAngle(-360);
-        rotateTransition2.setCycleCount(Timeline.INDEFINITE);
-        rotateTransition2.setAutoReverse(false);
-        rotateTransition2.setInterpolator(Interpolator.LINEAR);
-        rotateTransition2.play();
+        duration = 4000;
 
+    }
+
+    public void increaseDifficulty(long difficulty)
+    {
+        rotateTransition.setDuration(Duration.millis(duration-difficulty));
+        rotateTransition1.setDuration(Duration.millis(duration-difficulty));
     }
 
 }

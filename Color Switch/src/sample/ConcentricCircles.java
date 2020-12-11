@@ -270,18 +270,16 @@ public class ConcentricCircles extends Obstacle implements Blast
         this.root = new Group();
         root.getChildren().addAll(shape1,shape2,shape3,shape4, shape5, shape6, shape7, shape8);
 
-        RotateTransition rotate = new RotateTransition();
+        rotateTransition = new RotateTransition();
         //rotate.setAxis(Rotate.Z_AXIS);
-        rotate.setNode(root);
-        rotate.setByAngle(360);
-        rotate.setCycleCount(Timeline.INDEFINITE);
-        rotate.setDuration(Duration.millis(5000));
-        rotate.setAutoReverse(false);
-        rotate.setInterpolator(Interpolator.LINEAR);
-
-
-        rotate.setNode(root);
-        rotate.play();
+        rotateTransition.setNode(root);
+        rotateTransition.setByAngle(360);
+        rotateTransition.setCycleCount(Timeline.INDEFINITE);
+        rotateTransition.setDuration(Duration.millis(5000));
+        rotateTransition.setAutoReverse(false);
+        rotateTransition.setInterpolator(Interpolator.LINEAR);
+        rotateTransition.setNode(root);
+        rotateTransition.play();
 
 
     }

@@ -21,6 +21,11 @@ public class HorizontalLine extends Obstacle implements Blast
 //    Group root;
     Line line1, line2, line3, line4;
 
+    TranslateTransition translateTransition1;
+    TranslateTransition translateTransition2;
+    TranslateTransition translateTransition3;
+    TranslateTransition translateTransition4;
+
     public void setRoot(Group root)
     {
         this.root = root;
@@ -57,37 +62,6 @@ public class HorizontalLine extends Obstacle implements Blast
         return false;
     }
 
-//    public void blast(Circle ball)
-//    {
-//        if (isCollide(ball, line1))
-//        {
-//            if (ball.getFill().equals(line1.getStroke()))
-//                {}
-//            else
-//                System.out.println("blast");
-//        }
-//        if (isCollide(ball, line2))
-//        {
-//            if (ball.getFill().equals(line2.getStroke()))
-//                {}
-//            else
-//                System.out.println("blast");
-//        }
-//        if (isCollide(ball, line3))
-//        {
-//            if (ball.getFill().equals(line3.getStroke()))
-//                {}
-//            else
-//                System.out.println("blast");
-//        }
-//        if (isCollide(ball, line4))
-//        {
-//            if (ball.getFill().equals(line4.getStroke()))
-//                {}
-//            else
-//                System.out.println("blast");
-//        }
-//    }
 
     public void show(long y)
     {
@@ -122,7 +96,7 @@ public class HorizontalLine extends Obstacle implements Blast
         Group root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
 
-        TranslateTransition translateTransition1 = new TranslateTransition();
+        translateTransition1 = new TranslateTransition();
         translateTransition1.setDuration(Duration.millis(5000));
         translateTransition1.setNode(line1);
         translateTransition1.setByX(2000);
@@ -131,7 +105,7 @@ public class HorizontalLine extends Obstacle implements Blast
         translateTransition1.setInterpolator(Interpolator.LINEAR);
         translateTransition1.play();
 
-        TranslateTransition translateTransition2 = new TranslateTransition();
+        translateTransition2 = new TranslateTransition();
         translateTransition2.setDuration(Duration.millis(5000));
         translateTransition2.setNode(line2);
         translateTransition2.setByX(2000);
@@ -140,7 +114,7 @@ public class HorizontalLine extends Obstacle implements Blast
         translateTransition2.setInterpolator(Interpolator.LINEAR);
         translateTransition2.play();
 
-        TranslateTransition translateTransition3 = new TranslateTransition();
+        translateTransition3 = new TranslateTransition();
         translateTransition3.setDuration(Duration.millis(5000));
         translateTransition3.setNode(line3);
         translateTransition3.setByX(2000);
@@ -149,7 +123,7 @@ public class HorizontalLine extends Obstacle implements Blast
         translateTransition3.setInterpolator(Interpolator.LINEAR);
         translateTransition3.play();
 
-        TranslateTransition translateTransition4 = new TranslateTransition();
+        translateTransition4 = new TranslateTransition();
         translateTransition4.setDuration(Duration.millis(5000));
         translateTransition4.setNode(line4);
         translateTransition4.setByX(2000);
@@ -176,5 +150,12 @@ public class HorizontalLine extends Obstacle implements Blast
     public double getLayoutX()
     {
         return this.root.getLayoutX();
+    }
+    public void increaseDifficulty(long difficulty)
+    {
+        translateTransition1.setDuration(Duration.millis(duration-difficulty));
+        translateTransition2.setDuration(Duration.millis(duration-difficulty));
+        translateTransition3.setDuration(Duration.millis(duration-difficulty));
+        translateTransition4.setDuration(Duration.millis(duration-difficulty));
     }
 }

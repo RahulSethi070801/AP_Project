@@ -194,7 +194,7 @@ class Square extends Obstacle implements Blast
         root.getChildren().addAll(line1, line2, line3, line4);
 
         // System.out.println(root);
-        RotateTransition rotateTransition = new RotateTransition();
+        rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);

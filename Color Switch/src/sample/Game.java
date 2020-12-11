@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,11 +51,18 @@ public class Game implements Serializable {
     long score = 0;
     long difficulty = 0;
     long y=0;
+    AnimationTimer t;
     String name;
+<<<<<<< HEAD
     AnimationTimer at;
     // TODO : Add difficulty -> Tushar
     // TODO : Add revive -> Tushar
     // TODO : beautify pause menu -> Tushar nad Rahul
+=======
+    // TODO : Add difficulty -> Tushar DONE
+    // TODO : Add revive -> Tushar DONE
+    // TODO : beautify pause menu -> Tushar nad Rahul DONE
+>>>>>>> f9fd3b249096a1dad8d4c3e50f9012d9b6a3ada5
     // TODO : animation on collision -> Rahul
     // TODO : loading game animation -> Tushar and Rahul
     // TODO : sound -> Rahul(Done)
@@ -166,7 +174,7 @@ public class Game implements Serializable {
         Group root_square = o.getRoot();
         root.getChildren().add(root_square);
         root_list.add(root_square);
-        if(!tempO[ind].equals("Lines"))
+        if(!tempO[ind].equals("qwe"))
         {
             root.getChildren().add(star.show((double)675, (double)y+375));
             root_list.add(star.getRoot());
@@ -253,6 +261,11 @@ public class Game implements Serializable {
         if (isCollide(ball, stars.get(0).getRoot()))
         {
             //System.out.println("touch");
+            difficulty+=10;
+            for(int j=0;j<obstacles.size();j++)
+            {
+                obstacles.get(j).increaseDifficulty(difficulty);
+            }
             root.getChildren().remove(stars.get(0).getRoot());
             root_list.remove(stars.get(0).getRoot());
             stars.remove(0);
@@ -274,35 +287,117 @@ public class Game implements Serializable {
         for (int i=0; i<obstacles.size(); i++)
         {
             if (obstacles.get(i).blast(ball_c))
-            {
-                new PauseMenu();
-                break;
-            }
+                if(score>=0) {
+                    t.stop();
+                    root.setEffect(new GaussianBlur());
+//                    System.out.println("REviev");
+                    HBox pauseRoot = new HBox(40);
+                    pauseRoot.setFillHeight(true);
+                    String  style= getClass().getResource("styles.css").toExternalForm();
+                    pauseRoot.getStylesheets().add(style);
+                    Label label = new Label("Revive");
+                    label.setId("paused");
+                    pauseRoot.setId("menu");
+                    pauseRoot.getChildren().add(label);
+                    pauseRoot.setAlignment(Pos.CENTER);
+                    pauseRoot.setPadding(new Insets(20));
 
-        }
-    }
+                    Button revive = new Button("Revive");
+                    Button restart = new Button("Restart ");
+                    Button exit=new Button("Exit");
+                    revive.setId("resume");
+                    restart.setId("save");
+                    exit.setId("exit");
+                    pauseRoot.getChildren().add(revive);
+                    pauseRoot.getChildren().add(exit);
+                    pauseRoot.getChildren().add(restart);
+                    Stage popupStage = new Stage(StageStyle.TRANSPARENT);
+                    popupStage.initOwner(Main.stage);
+                    popupStage.initModality(Modality.APPLICATION_MODAL);
+                    popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
 
-    public void stopp() throws FileNotFoundException {
-        at.stop();
-        System.out.println("stop");
-        new PauseMenu();
-        //System.exit(0);
-        return;
-    }
+                    revive.setOnAction(event -> {
+                        root.setEffect(null);
+//                    timeline.play();
+                        score-=1;
+                        double minDis=100000;
+                        int ind=-1;
+                        for(int k=0;k<obstacles.size();k++)
+                        {
+                            double diff = ball.getLayY()-obstacles.get(k).getLayoutY();
+                            if (diff<minDis) {
+                                minDis = diff;
+                                ind = k;
+                            }
+                        }
 
-    public void explode() throws FileNotFoundException
-    {
-        final int size = 40;
-        final Rectangle[] rectangles = new Rectangle[size];
-        final long[] delays = new long[size];
-        final double[] angles = new double[size];
-        final double duration = Duration.seconds(3).toSeconds()*1000000000;
-        final Random random = new Random();
+                        if(obstacles.get(ind).getLayoutY()>400)
+                        {
+                            for(int k=0;k<ind-1;k++) {
+                                obstacles.remove(0);
+                            }
+                        }
+                        else{
+                            for(int k=0;k<ind;k++) {
+                                obstacles.remove(0);
+                            }
+                        }
+                        text1.setText(String.valueOf(score));
+                        ball.setLayY(711);
+                        popupStage.hide();
+                        t.start();
+                    });
 
-        for (int i = 0; i < size; i++) {
-            rectangles[i] = new Rectangle(5, 5, Color.hsb(random.nextInt(360), 1, 1));
-            delays[i] = (long) (Math.random()*duration);
-            angles[i] = 2 * Math.PI * random.nextDouble();
+                    restart .setOnAction(event -> {
+                        root.setEffect(null);
+//                    timeline.play();
+                        try {
+                            popupStage.hide();
+                            new Game();
+                        }
+                        catch(Exception e)
+                        {
+                        }
+                        popupStage.hide();
+
+                    });
+                    exit.setOnAction(event -> {
+                        root.setEffect(null);
+//                    timeline.play();
+                        popupStage.hide();
+                        try {
+                            new MainPage();
+                        } catch (FileNotFoundException ex) {
+                            ex.printStackTrace();
+                        }
+//                        System.exit(0);
+                    });
+                    popupStage.show();
+                }
+                else {
+                    root.setEffect(null);
+//                    timeline.play();
+//                    popupStage.hide();
+                    t.stop();
+                    try {
+                        new MainPage();
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+
+                    System.out.println("qwebo");
+//                    System.exit(0);
+//                    root.setEffect(null);
+////                    timeline.play();
+//                    try {
+////                        popupStage.hide();
+//                        new Game();
+//                    }
+//                    catch(Exception e)
+//                    {
+//                    }
+//                    popupStage.hide();
+                }
         }
         //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
         Group root5 = new Group(rectangles);
@@ -436,7 +531,273 @@ public class Game implements Serializable {
 
         String localDir = System.getProperty("user.dir");
 
-        // timeline for ball
+        t = new AnimationTimer(){
+            long lastUpdate;
+            int i;
+            @Override
+            public void start(){
+                lastUpdate = System.nanoTime();
+                super.start();
+            }
+            @Override
+            public void handle(long now){
+
+                //Ball Update
+                long elapsed = now - lastUpdate;
+                try {
+                    update(elapsed, ball_c);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                scroll();
+//                checkCollisions();
+//                generalGenerate();
+
+                lastUpdate = now;
+            }
+        };
+
+        scene2.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.A) {
+                tapBall();
+            }
+        });
+
+        t.start();
+        // Show Pause button
+        InputStream stream1 = new FileInputStream(localDir+"\\Pause.png");
+        Image image1 = new Image(stream1);
+        ImageView imageView1 = new ImageView();
+        imageView1.setImage(image1);
+        imageView1.setX(1400);
+        imageView1.setY(50);
+        imageView1.setFitWidth(100);
+        imageView1.setPreserveRatio(true);
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+//                Bounds bounds = root.getBoundsInParent();
+                //System.out.println("Pause");
+//                polygon.setFill(Color.DARKSLATEBLUE);
+                try {
+//                    t.pause();
+//                    timeline1.pause();
+                    new PauseMenu();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+
+        // pause menu
+        EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {
+            public void handle(MouseEvent e)
+            {
+//                t.pause();
+//                timeline1.pause();
+                t.stop();
+                root.setEffect(new GaussianBlur());
+
+                HBox pauseRoot = new HBox(40);
+
+
+                String  style= getClass().getResource("styles.css").toExternalForm();
+                pauseRoot.getStylesheets().add(style);
+//                pauseRoot.getStylesheets().add(getClass().getResource(localDir+"styles.css").toExternalForm());
+
+                pauseRoot.setFillHeight(true);
+                Label paused = new Label("Paused");
+                paused.setId("paused");
+                pauseRoot.getChildren().add(paused);
+//                pauseRoot.setStyle(
+//
+//                );
+                pauseRoot.setId("menu");
+                pauseRoot.setAlignment(Pos.CENTER);
+                pauseRoot.setPadding(new Insets(20));
+
+                pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
+
+                Button resume = new Button("Resume");
+                Button exit=new Button("Exit");
+                Button save_game=new Button("Save and exit");
+                resume.setId("resume");
+                exit.setId("exit");
+                exit.setEffect(new DropShadow(20, Color.BLACK));
+                resume.setEffect(new DropShadow(20, Color.BLACK));
+                save_game.setEffect(new DropShadow(20, Color.BLACK));
+                save_game.setId("save");
+                pauseRoot.getChildren().add(resume);
+                pauseRoot.getChildren().add(exit);
+                pauseRoot.getChildren().add(save_game);
+                Stage popupStage = new Stage(StageStyle.TRANSPARENT);
+                popupStage.initOwner(Main.stage);
+                popupStage.initModality(Modality.APPLICATION_MODAL);
+                popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
+
+                popupStage.setX(500);
+                popupStage.setY(300);
+                resume.setOnAction(event -> {
+                    root.setEffect(null);
+//                    timeline.play();
+                    t.start();
+                    popupStage.hide();
+                });
+
+                save_game.setOnAction(event -> {
+
+                    pauseRoot.getChildren().clear();
+                    Label label = new Label("Enter Name");
+                    label.setId("paused");
+                    TextField textField = new TextField();
+                    Button but = new Button("Save");
+                    but.setId("save");
+                    pauseRoot.getChildren().add(label);
+                    pauseRoot.getChildren().add(textField);
+                    pauseRoot.getChildren().add(but);
+                    but.setOnAction(eve ->{
+                        root.setEffect(null);
+                        new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, textField.getText()));
+                        popupStage.hide();
+                    });
+//                    popupStage.hide()
+                });
+
+                exit.setOnAction(event -> {
+                    root.setEffect(null);
+//                    timeline.play();
+                    popupStage.hide();
+                    try {
+                        new MainPage();
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+
+                popupStage.show();
+            }
+        };
+        //Registering the event filter
+
+
+        // Score Star
+        InputStream stream2 = new FileInputStream(localDir+"\\Star.jpg");
+        Image image2 = new Image(stream2);
+        ImageView imageView2 = new ImageView();
+        imageView2.setImage(image2);
+        imageView2.setX(30);
+        imageView2.setY(50);
+        imageView2.setFitWidth(80);
+        imageView2.setPreserveRatio(true);
+        Group root_score_star = new Group(imageView2);
+        root.getChildren().add(root_score_star);
+
+
+        Group root2 = new Group(imageView1);
+        root2.addEventFilter(MouseEvent.MOUSE_CLICKED, event);
+
+        root.getChildren().add(root2);
+
+
+//        root.getChildren().add(root6);
+
+
+        root.getChildren().add(root_ball);
+
+    }
+
+}
+/*      Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
+                new EventHandler<ActionEvent>() {
+                    double dy = -10; //Step on y
+                    @Override
+                    public void handle(ActionEvent t) {
+
+                        ball.setLayoutY( dy);
+                        ball.getLayY();
+                        if(ball.getLayY()<500) {
+                            for (int i = 0; i < root_list.size(); i++) {
+                                double dey = root_list.get(i).getLayoutY();
+                                root_list.get(i).setLayoutY(dey - dy);
+//                                if (root_list.get(i).getLayoutY() > 1200)
+//                                {
+//                                    root_list.remove(i);
+//                                }
+                            }
+                        }
+                        Bounds bounds = root.getBoundsInLocal();
+                        double curr = ball.getLayY();
+
+                        if (obstacles.get(0).getLayoutY() > curr + 800)
+                        {
+                            System.out.println("out");
+                            obstacles.remove(0);
+                            try {
+                                addObstacle();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        for (int i=0; i<2; i++)
+                        {
+                            obstacles.get(i).blast(ball_c);
+                        }
+
+                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
+                        {
+                            //System.out.println("touch");
+                            while (true)
+                            {
+                                if (getRandom(4) == 0)
+                                {
+                                    continue;
+                                }
+                                if (getRandom(4) == 1)
+                                {
+                                    ball.setFill(Color.rgb (250, 225, 0));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 2)
+                                {
+                                    ball.setFill(Color.rgb(50, 219, 240));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                if (getRandom(4) == 3)
+                                {
+                                    ball.setFill(Color.rgb(255, 1, 129));
+//                                    root.getChildren().remove(root5);
+                                    break;
+                                }
+                                root.getChildren().remove(colorSwitches.get(0).getRoot());
+                                root_list.remove(colorSwitches.get(0).getRoot());
+                                colorSwitches.remove(0);
+                            }
+                        }
+                        if (isCollide(ball, stars.get(0).getRoot()))
+                        {
+                            //System.out.println("touch");
+                            root.getChildren().remove(stars.get(0).getRoot());
+                            root_list.remove(stars.get(0).getRoot());
+                            stars.remove(0);
+                            text1.setText(String.valueOf(++score));
+                        }
+//                                if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
+//                                        (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius()))){
+//
+//                                    dy = -dy;
+//                                } q
+                    }
+                }));
+        timeline1.setCycleCount(20);
+*/
+// event handler for user control of
+// ball
+
+/*
+// timeline for ball
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
                 new EventHandler<ActionEvent>() {
 
@@ -522,245 +883,5 @@ public class Game implements Serializable {
                 }));
         timeline.setCycleCount(Timeline.INDEFINITE);
 
-        AnimationTimer t = new AnimationTimer(){
-            long lastUpdate;
-            int i;
-            @Override
-            public void start(){
-                lastUpdate = System.nanoTime();
-                super.start();
-            }
-            @Override
-            public void handle(long now){
 
-                //Ball Update
-                long elapsed = now - lastUpdate;
-                try {
-                    update(elapsed, ball_c);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                scroll();
-//                checkCollisions();
-//                generalGenerate();
-
-                lastUpdate = now;
-            }
-        };
-
-  /*      Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
-                new EventHandler<ActionEvent>() {
-                    double dy = -10; //Step on y
-                    @Override
-                    public void handle(ActionEvent t) {
-
-                        ball.setLayoutY( dy);
-                        ball.getLayY();
-                        if(ball.getLayY()<500) {
-                            for (int i = 0; i < root_list.size(); i++) {
-                                double dey = root_list.get(i).getLayoutY();
-                                root_list.get(i).setLayoutY(dey - dy);
-//                                if (root_list.get(i).getLayoutY() > 1200)
-//                                {
-//                                    root_list.remove(i);
-//                                }
-                            }
-                        }
-                        Bounds bounds = root.getBoundsInLocal();
-                        double curr = ball.getLayY();
-
-                        if (obstacles.get(0).getLayoutY() > curr + 800)
-                        {
-                            System.out.println("out");
-                            obstacles.remove(0);
-                            try {
-                                addObstacle();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        for (int i=0; i<2; i++)
-                        {
-                            obstacles.get(i).blast(ball_c);
-                        }
-
-                        if (isCollide(ball, colorSwitches.get(0).getRoot()))
-                        {
-                            //System.out.println("touch");
-                            while (true)
-                            {
-                                if (getRandom(4) == 0)
-                                {
-                                    continue;
-                                }
-                                if (getRandom(4) == 1)
-                                {
-                                    ball.setFill(Color.rgb (250, 225, 0));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                if (getRandom(4) == 2)
-                                {
-                                    ball.setFill(Color.rgb(50, 219, 240));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                if (getRandom(4) == 3)
-                                {
-                                    ball.setFill(Color.rgb(255, 1, 129));
-//                                    root.getChildren().remove(root5);
-                                    break;
-                                }
-                                root.getChildren().remove(colorSwitches.get(0).getRoot());
-                                root_list.remove(colorSwitches.get(0).getRoot());
-                                colorSwitches.remove(0);
-                            }
-                        }
-                        if (isCollide(ball, stars.get(0).getRoot()))
-                        {
-                            //System.out.println("touch");
-                            root.getChildren().remove(stars.get(0).getRoot());
-                            root_list.remove(stars.get(0).getRoot());
-                            stars.remove(0);
-                            text1.setText(String.valueOf(++score));
-                        }
-//                                if((ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())) ||
-//                                        (ball.getLayoutY() <= (bounds.getMinY() + ball.getRadius()))){
-//
-//                                    dy = -dy;
-//                                } q
-                    }
-                }));
-        timeline1.setCycleCount(20);
-*/
-        // event handler for user control of ball
-
-
-
-
-        scene2.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.A) {
-                tapBall();
-            }
-        });
-
-        t.start();
-        // Show Pause button
-        InputStream stream1 = new FileInputStream(localDir+"\\Pause.png");
-        Image image1 = new Image(stream1);
-        ImageView imageView1 = new ImageView();
-        imageView1.setImage(image1);
-        imageView1.setX(1400);
-        imageView1.setY(50);
-        imageView1.setFitWidth(100);
-        imageView1.setPreserveRatio(true);
-        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-//                Bounds bounds = root.getBoundsInParent();
-                //System.out.println("Pause");
-//                polygon.setFill(Color.DARKSLATEBLUE);
-                try {
-                    timeline.pause();
-//                    timeline1.pause();
-                    new PauseMenu();
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        };
-
-        // pause menu
-        EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent e)
-            {
-                timeline.pause();
-//                timeline1.pause();
-                root.setEffect(new GaussianBlur());
-
-                HBox pauseRoot = new HBox(40);
-                pauseRoot.setFillHeight(true);
-                pauseRoot.getChildren().add(new Label("Paused"));
-                pauseRoot.setStyle("-fx-background-color: rgba(255, 255, 255, 0.8);");
-                pauseRoot.setAlignment(Pos.CENTER);
-                pauseRoot.setPadding(new Insets(20));
-
-                Button resume = new Button("Resume");
-                Button exit=new Button("Exit");
-                Button save_game=new Button("Save and exit");
-                pauseRoot.getChildren().add(resume);
-                pauseRoot.getChildren().add(exit);
-                pauseRoot.getChildren().add(save_game);
-                Stage popupStage = new Stage(StageStyle.TRANSPARENT);
-                popupStage.initOwner(Main.stage);
-                popupStage.initModality(Modality.APPLICATION_MODAL);
-                popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
-
-                resume.setOnAction(event -> {
-                    root.setEffect(null);
-//                    timeline.play();
-                    popupStage.hide();
-                });
-
-                save_game.setOnAction(event -> {
-
-                    pauseRoot.getChildren().clear();
-                    Label label = new Label("Enter name for the game");
-                    TextField textField = new TextField();
-                    Button but = new Button("Save");
-                    pauseRoot.getChildren().add(label);
-                    pauseRoot.getChildren().add(textField);
-                    pauseRoot.getChildren().add(but);
-                    but.setOnAction(eve ->{
-                        root.setEffect(null);
-                        new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, textField.getText()));
-                        popupStage.hide();
-                    });
-//                    popupStage.hide()
-                });
-
-                exit.setOnAction(event -> {
-                    root.setEffect(null);
-//                    timeline.play();
-                    popupStage.hide();
-                    try {
-                        new MainPage();
-                    } catch (FileNotFoundException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-
-                popupStage.show();
-            }
-        };
-        //Registering the event filter
-
-
-        // Score Star
-        InputStream stream2 = new FileInputStream(localDir+"\\Star.jpg");
-        Image image2 = new Image(stream2);
-        ImageView imageView2 = new ImageView();
-        imageView2.setImage(image2);
-        imageView2.setX(30);
-        imageView2.setY(50);
-        imageView2.setFitWidth(80);
-        imageView2.setPreserveRatio(true);
-        Group root_score_star = new Group(imageView2);
-        root.getChildren().add(root_score_star);
-
-
-        Group root2 = new Group(imageView1);
-        root2.addEventFilter(MouseEvent.MOUSE_CLICKED, event);
-
-        root.getChildren().add(root2);
-
-
-//        root.getChildren().add(root6);
-
-
-        root.getChildren().add(root_ball);
-
-    }
-
-}
+ */

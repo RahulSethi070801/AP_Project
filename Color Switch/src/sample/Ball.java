@@ -92,6 +92,11 @@ public class Ball
         this.ball.setLayoutY(this.ball.getLayoutY()+y);
     }
 
+    public void setLayY(double y)
+    {
+        this.ball.setLayoutY(y);
+    }
+
     
     public double getLayY()
     {

@@ -217,7 +217,7 @@ class Ring extends Obstacle implements Blast
         root = new Group();
         root.getChildren().addAll(shape1,shape2,shape3,shape4);
 
-        RotateTransition rotateTransition = new RotateTransition();
+        rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
