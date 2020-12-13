@@ -3,6 +3,7 @@ package sample;
 import com.sun.media.jfxmediaimpl.platform.Platform;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
@@ -22,8 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -56,18 +56,16 @@ public class Game implements Serializable {
     String name;
 
     AnimationTimer at;
-    // TODO : Add difficulty -> Tushar
-    // TODO : Add revive -> Tushar
-    // TODO : beautify pause menu -> Tushar nad Rahul
 
-    // TODO : Add difficulty -> Tushar DONE
-    // TODO : Add revive -> Tushar DONE
-    // TODO : beautify pause menu -> Tushar nad Rahul DONE
+    // TODO : beautify pause menu -> Tushar nad Rahul(aur karni ho to)
 
-    // TODO : animation on collision -> Rahul
+    // TODO : Add difficulty -> (check)
+
+    // TODO : animation on collision -> Rahul(99%)
     // TODO : loading game animation -> Tushar and Rahul(Done)
     // TODO : sound -> Rahul(Done)
-    // TODO : Perfect Collision(Done)
+
+    // TODO : Intermediate Page btw collision and revive
     Random rand = new Random();
     String tempO[] = {
             "Ring",
@@ -211,7 +209,8 @@ public class Game implements Serializable {
         return RectB.intersects(RectA);
     }
 
-    public void update(double time, Circle ball_c) throws FileNotFoundException {
+    public void update(double time, Circle ball_c) throws FileNotFoundException
+    {
         // s = ut+0.5at^2
 //        System.out.println(time);
         time/=Math.pow(10,9);
@@ -306,105 +305,108 @@ public class Game implements Serializable {
         for (int i=0; i<obstacles.size(); i++)
         {
             if (obstacles.get(i).blast(ball_c))
-                if(score>=0) {
-                    t.stop();
-                    root.setEffect(new GaussianBlur());
-//                    System.out.println("REviev");
-                    HBox pauseRoot = new HBox(40);
-                    pauseRoot.setFillHeight(true);
-                    String  style= getClass().getResource("styles.css").toExternalForm();
-                    pauseRoot.getStylesheets().add(style);
-                    Label label = new Label("Revive");
-                    label.setId("paused");
-                    pauseRoot.setId("menu");
-                    pauseRoot.getChildren().add(label);
-                    pauseRoot.setAlignment(Pos.CENTER);
-                    pauseRoot.setPadding(new Insets(20));
-
-                    Button revive = new Button("Revive");
-                    Button restart = new Button("Restart ");
-                    Button exit=new Button("Exit");
-                    revive.setId("resume");
-                    restart.setId("save");
-                    exit.setId("exit");
-                    pauseRoot.getChildren().add(revive);
-                    pauseRoot.getChildren().add(exit);
-                    pauseRoot.getChildren().add(restart);
-                    Stage popupStage = new Stage(StageStyle.TRANSPARENT);
-                    popupStage.initOwner(Main.stage);
-                    popupStage.initModality(Modality.APPLICATION_MODAL);
-                    popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
-
-                    revive.setOnAction(event -> {
-                        root.setEffect(null);
-//                    timeline.play();
-                        score-=1;
-                        double minDis=100000;
-                        int ind=-1;
-                        for(int k=0;k<obstacles.size();k++)
-                        {
-                            double diff = ball.getLayY()-obstacles.get(k).getLayoutY();
-                            if (diff<minDis) {
-                                minDis = diff;
-                                ind = k;
-                            }
-                        }
-
-                        if(obstacles.get(ind).getLayoutY()>400)
-                        {
-                            for(int k=0;k<ind-1;k++) {
-                                obstacles.remove(0);
-                            }
-                        }
-                        else{
-                            for(int k=0;k<ind;k++) {
-                                obstacles.remove(0);
-                            }
-                        }
-                        text1.setText(String.valueOf(score));
-                        ball.setLayY(711);
-                        popupStage.hide();
-                        t.start();
-                    });
-
-                    restart .setOnAction(event -> {
-                        root.setEffect(null);
-//                    timeline.play();
-                        try {
-                            popupStage.hide();
-                            new Game();
-                        }
-                        catch(Exception e)
-                        {
-                        }
-                        popupStage.hide();
-
-                    });
-                    exit.setOnAction(event -> {
-                        root.setEffect(null);
-//                    timeline.play();
-                        popupStage.hide();
-                        try {
-                            new MainPage();
-                        } catch (FileNotFoundException | InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-//                        System.exit(0);
-                    });
-                    popupStage.show();
-                }
-                else {
-                    root.setEffect(null);
-//                    timeline.play();
-//                    popupStage.hide();
-                    t.stop();
-                    try {
-                        new MainPage();
-                    } catch (FileNotFoundException | InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-
-                    System.out.println("qwebo");
+            {
+                explode(ball);
+                //revive();
+//                if(score>=0) {
+//                    t.stop();
+//                    root.setEffect(new GaussianBlur());
+////                    System.out.println("REviev");
+//                    HBox pauseRoot = new HBox(40);
+//                    pauseRoot.setFillHeight(true);
+//                    String  style= getClass().getResource("styles.css").toExternalForm();
+//                    pauseRoot.getStylesheets().add(style);
+//                    Label label = new Label("Revive");
+//                    label.setId("paused");
+//                    pauseRoot.setId("menu");
+//                    pauseRoot.getChildren().add(label);
+//                    pauseRoot.setAlignment(Pos.CENTER);
+//                    pauseRoot.setPadding(new Insets(20));
+//
+//                    Button revive = new Button("Revive");
+//                    Button restart = new Button("Restart ");
+//                    Button exit=new Button("Exit");
+//                    revive.setId("resume");
+//                    restart.setId("save");
+//                    exit.setId("exit");
+//                    pauseRoot.getChildren().add(revive);
+//                    pauseRoot.getChildren().add(exit);
+//                    pauseRoot.getChildren().add(restart);
+//                    Stage popupStage = new Stage(StageStyle.TRANSPARENT);
+//                    popupStage.initOwner(Main.stage);
+//                    popupStage.initModality(Modality.APPLICATION_MODAL);
+//                    popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
+//
+//                    revive.setOnAction(event -> {
+//                        root.setEffect(null);
+////                    timeline.play();
+//                        score-=1;
+//                        double minDis=100000;
+//                        int ind=-1;
+//                        for(int k=0;k<obstacles.size();k++)
+//                        {
+//                            double diff = ball.getLayY()-obstacles.get(k).getLayoutY();
+//                            if (diff<minDis) {
+//                                minDis = diff;
+//                                ind = k;
+//                            }
+//                        }
+//
+//                        if(obstacles.get(ind).getLayoutY()>400)
+//                        {
+//                            for(int k=0;k<ind-1;k++) {
+//                                obstacles.remove(0);
+//                            }
+//                        }
+//                        else{
+//                            for(int k=0;k<ind;k++) {
+//                                obstacles.remove(0);
+//                            }
+//                        }
+//                        text1.setText(String.valueOf(score));
+//                        ball.setLayY(711);
+//                        popupStage.hide();
+//                        t.start();
+//                    });
+//
+//                    restart .setOnAction(event -> {
+//                        root.setEffect(null);
+////                    timeline.play();
+//                        try {
+//                            popupStage.hide();
+//                            new Game();
+//                        }
+//                        catch(Exception e)
+//                        {
+//                        }
+//                        popupStage.hide();
+//
+//                    });
+//                    exit.setOnAction(event -> {
+//                        root.setEffect(null);
+////                    timeline.play();
+//                        popupStage.hide();
+//                        try {
+//                            new MainPage();
+//                        } catch (FileNotFoundException | InterruptedException ex) {
+//                            ex.printStackTrace();
+//                        }
+////                        System.exit(0);
+//                    });
+//                    popupStage.show();
+//                }
+//                else {
+//                    root.setEffect(null);
+////                    timeline.play();
+////                    popupStage.hide();
+//                    t.stop();
+//                    try {
+//                        new MainPage();
+//                    } catch (FileNotFoundException | InterruptedException ex) {
+//                        ex.printStackTrace();
+//                    }
+//
+//                    System.out.println("qwebo");
 //                    System.exit(0);
 //                    root.setEffect(null);
 ////                    timeline.play();
@@ -416,91 +418,161 @@ public class Game implements Serializable {
 //                    {
 //                    }
 //                    popupStage.hide();
-                }
+            }
         }
-        //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
-//        Group root5 = new Group(rectangles);
-//        root.getChildren().add(root5);
-//        show();
-//
-//        ParallelTransition pt = new ParallelTransition();
-//
-//        Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(20),
-//                new EventHandler<ActionEvent>() {
-//
-//                    @Override
-//                    public void handle(ActionEvent t) {
-////                        System.out.println("timelne");
-//
-//                        final double width = 0.5 * 1200;//stage.getWidth();
-//                        final double height = 0.5 * 800;//stage.getHeight();
-//                        final double radius = Math.sqrt(2) * Math.max(width, height);
-//
-//
-//                        long now = System.nanoTime();
-//                        for (int i = 0; i < size; i++) {
-//                            Rectangle r = rectangles[i];
-//                            double angle = angles[i];
-//                            double tt = (now - delays[i]) % duration;
-//                            double d = tt*radius/duration;
-//
-//                            r.setOpacity((duration - tt)/(double)duration);
-//                            r.setTranslateX(Math.cos(angle)*d + width);
-//                            r.setTranslateY(Math.sin(angle)*d + height);
-//                            //pt.getChildren().add(Translate);
-//                        }
-//                        root.getChildren().add(new Group(rectangles));
-//
-//
-//                    }
-//                }));
-//
-//        timeline1.play();
-//        timeline1.setOnFinished(actionEvent -> timeline1.stop());
+    }
 
-        //new PauseMenu();
 
-//        at = new AnimationTimer(){
-//            long lastUpdate;
-//            int count = 0;
-//            @Override
-//            public void start(){
-//                lastUpdate = System.nanoTime();
-//                super.start();
-//            }
-//            @Override
-//            public void handle(long now) {
-//                count++;
-//                if ((now - lastUpdate)/Math.pow(10, 9) >= 1)
-//                {
-//                    try {
-//                        //super.s;
-//                        stopp();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//
-//                final double width = 0.5 * 1200;//stage.getWidth();
-//                final double height = 0.5 * 800;//stage.getHeight();
-//                final double radius = Math.sqrt(2) * Math.max(width, height);
-//
-//                for (int i = 0; i < size; i++) {
-//                    Rectangle r = rectangles[i];
-//                    double angle = angles[i];
-//                    double t = (now - delays[i]) % duration;
-//                    double d = t*radius/duration;
-//
-//                    r.setOpacity((duration - t)/(double)duration);
-//                    r.setTranslateX(Math.cos(angle)*d + width);
-//                    r.setTranslateY(Math.sin(angle)*d + height);
-//                }
-//                root.getChildren().add(new Group(rectangles));
-//            }
-//        };
-//        at.start();
+    public void revive()
+    {
+        if(score>=0) {
+            //System.out.println("starting");
+            t.stop();
+            root.setEffect(new GaussianBlur());
+//                    System.out.println("REviev");
+            HBox pauseRoot = new HBox(40);
+            pauseRoot.setFillHeight(true);
+            String  style= getClass().getResource("styles.css").toExternalForm();
+            pauseRoot.getStylesheets().add(style);
+            Label label = new Label("Revive");
+            label.setId("paused");
+            pauseRoot.setId("menu");
+            pauseRoot.getChildren().add(label);
+            pauseRoot.setAlignment(Pos.CENTER);
+            pauseRoot.setPadding(new Insets(20));
 
+            Button revive = new Button("Revive");
+            Button restart = new Button("Restart ");
+            Button exit=new Button("Exit");
+            revive.setId("resume");
+            restart.setId("save");
+            exit.setId("exit");
+            pauseRoot.getChildren().add(revive);
+            pauseRoot.getChildren().add(exit);
+            pauseRoot.getChildren().add(restart);
+            Stage popupStage = new Stage(StageStyle.TRANSPARENT);
+            popupStage.initOwner(Main.stage);
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
+
+            revive.setOnAction(event -> {
+                root.setEffect(null);
+//                    timeline.play();
+                score-=1;
+                double minDis=100000;
+                int ind=-1;
+                for(int k=0;k<obstacles.size();k++)
+                {
+                    double diff = ball.getLayY()-obstacles.get(k).getLayoutY();
+                    if (diff<minDis) {
+                        minDis = diff;
+                        ind = k;
+                    }
+                }
+                //System.out.println("after for revive");
+
+                if(obstacles.get(ind).getLayoutY()>400)
+                {
+                    for(int k=0;k<ind-1;k++) {
+                        obstacles.remove(0);
+                    }
+                }
+                else{
+                    for(int k=0;k<ind;k++) {
+                        obstacles.remove(0);
+                    }
+                }
+                text1.setText(String.valueOf(score));
+                ball.setLayY(711);
+                popupStage.hide();
+                t.start();
+            });
+
+            restart.setOnAction(event -> {
+                root.setEffect(null);
+                try {
+                    //System.out.println("restart");
+                    popupStage.hide();
+                    new Game();
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
+                popupStage.hide();
+
+            });
+            exit.setOnAction(event -> {
+                root.setEffect(null);
+                popupStage.hide();
+                try {
+                    new MainPage();
+                } catch (FileNotFoundException | InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+
+            });
+            popupStage.show();
+        }
+        else {
+            root.setEffect(null);
+
+            t.stop();
+            try {
+                new MainPage();
+            } catch (FileNotFoundException | InterruptedException ex) {
+                ex.printStackTrace();
+            }
+
+            //System.out.println("qwebo");
+        }
+    }
+
+    public void explode(Ball ball)
+    {
+        ParallelTransition parallelTransition = new ParallelTransition();
+
+        ArrayList<Color> arr = new ArrayList<>();
+        arr.add(Color.rgb(144, 13, 255));
+        arr.add(Color.rgb (250, 225, 0));
+        arr.add(Color.rgb(50, 219, 240));
+        arr.add(Color.rgb(255, 1, 129));
+
+        for (int i=0; i<100; i++)
+        {
+            Path path = new Path();
+            //Arc a1 = new Arc(250, 250, 3,3,0,360);
+            Circle c1 = new Circle(688, ball.getLayY(),3);
+            c1.setFill(arr.get(getRandom(4)));
+            root.getChildren().add(c1);
+
+            MoveTo moveTo = new MoveTo(688, ball.getLayY());
+            LineTo lineTo;
+            if (i%2==0)
+            {
+                int x1 = 0;
+                int x2 = 700;
+                lineTo = new LineTo(getRandom(x2)-x1, getRandom((int)ball.getLayY()+ 500));
+            }
+            else
+            {
+                int x1 = 700;
+                //int x2 = 1400;
+                lineTo = new LineTo(getRandom(x1)+x1, getRandom((int)ball.getLayY()+ 500));
+            }
+
+            path.getElements().addAll(moveTo, lineTo);
+
+            PathTransition pt = new PathTransition();
+            pt.setDuration(Duration.millis(400 + getRandom(1000)));
+            pt.setNode(c1);
+            pt.setPath(path);
+            parallelTransition.getChildren().add(pt);
+        }
+        SequentialTransition sq = new SequentialTransition(parallelTransition);
+        sq.play();
+        t.stop();
+        sq.setOnFinished(actionEvent -> revive());
     }
 
     public void tapBall()
