@@ -36,39 +36,19 @@ import javafx.util.Duration;
 
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class Game implements Serializable {
-    Group root;
-    Scene scene2;
-    ArrayList<Obstacle> obstacles;
-    ArrayList<Star> stars;
-    ArrayList<ColorSwitch> colorSwitches;
-    Ball ball;
-    User user;
-    long score = 0;
-    long difficulty = 0;
-    long y=0;
-    AnimationTimer t;
-    String name;
-
-    AnimationTimer at;
-    // TODO : Add difficulty -> Tushar
-    // TODO : Add revive -> Tushar
-    // TODO : beautify pause menu -> Tushar nad Rahul
-
-    // TODO : Add difficulty -> Tushar DONE
-    // TODO : Add revive -> Tushar DONE
-    // TODO : beautify pause menu -> Tushar nad Rahul DONE
-
-    // TODO : animation on collision -> Rahul
-    // TODO : loading game animation -> Tushar and Rahul
-    // TODO : sound -> Rahul(Done)
-    // TODO : Perfect Collision(75%done)
-    Random rand = new Random();
-    String tempO[] = {
+    // serializable objects
+    transient Group root;
+    transient Scene scene2;
+    transient ArrayList<Obstacle> obstacles;
+    transient ArrayList<Star> stars;
+    transient Random rand = new Random();
+    transient String tempO[] = {
             "Ring",
             "Square",
             "Triangle",
@@ -78,10 +58,31 @@ public class Game implements Serializable {
             "2Plus",
             "Plus"
     };
-    Text text1;
-    double g = 1500;
-    double speed = 0.0;
-    ArrayList<Group> root_list = new ArrayList<Group>();
+    transient Text text1;
+    transient double g = 1500;
+    transient double speed = 0.0;
+    transient ArrayList<ColorSwitch> colorSwitches;
+    transient Ball ball;
+    transient ArrayList<Group> root_list = new ArrayList<Group>();
+    transient AnimationTimer t;
+    transient AnimationTimer at;
+    // serializable objects
+    User user;
+    long score = 0;
+    long difficulty = 0;
+    long y=0;
+    String name;
+//    ArrayList<Integer> obstaclesSerializable;
+//    ArrayList<Integer> starsSerialzable;
+//    ArrayList<Integer> colorSwitchesSerializable;
+
+    // TODO : Add difficulty -> Tushar DONE
+    // TODO : Add revive -> Tushar DONE
+    // TODO : beautify pause menu -> Tushar nad Rahul DONE
+    // TODO : animation on collision -> Rahul
+    // TODO : loading game animation -> Tushar and Rahul
+    // TODO : sound -> Rahul(Done)
+    // TODO : Perfect Collision(75%done)
     public void resumeGame(){}
     public void pauseGame(){}
 //    public Ball getBall(){}
@@ -96,13 +97,27 @@ public class Game implements Serializable {
     public void playGame(){}
     public void setBackground(){}
     public void controlBall(){}
-    public void exitGame(){}
+    public void exitGame(){
+        try {
+            new MainPage();
+        }
+        catch (Exception e)
+        {}
+    }
     public void checkCollision(){}
 //    public Obstacle getRandomObstacle(){}
     public void setStars(int stars){}
     public void getStars(){}
     public void reviveGame(){}
-    public void saveAndExitGame(){}
+    public void saveAndExitGame()
+    {
+        try
+        {
+            new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, name));
+        }
+        catch(Exception exception){}
+    }
+
     Game( Group root, Scene scene, ArrayList<Obstacle> obstacles,
           ArrayList<Star> stars, User user, long score, long difficulty, String name)
     {
@@ -116,7 +131,8 @@ public class Game implements Serializable {
         this.name = name;
 
     }
-    Game() throws FileNotFoundException
+
+    Game() throws FileNotFoundException, IOException, ClassNotFoundException
     {
         this.name = "NEW GAME";
         root = new Group();
@@ -126,6 +142,7 @@ public class Game implements Serializable {
         this.obstacles = new ArrayList<Obstacle>();
         show();
     }
+
     public void addObstacle() throws FileNotFoundException
     {
         int ind = rand.nextInt(8);
@@ -186,16 +203,19 @@ public class Game implements Serializable {
         y-=1000;
 //        return y;
     }
-    public void play() throws FileNotFoundException
+
+    public void play() throws FileNotFoundException, IOException, ClassNotFoundException
     {
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
         this.show();
     }
+
     Game(String name)
     {
         this.name = name;
     }
+
     public int getRandom(int n)
     {
         Random rand = new Random();
@@ -376,8 +396,6 @@ public class Game implements Serializable {
                 }
                 else {
                     root.setEffect(null);
-//                    timeline.play();
-//                    popupStage.hide();
                     t.stop();
                     try {
                         new MainPage();
@@ -386,17 +404,6 @@ public class Game implements Serializable {
                     }
 
                     System.out.println("qwebo");
-//                    System.exit(0);
-//                    root.setEffect(null);
-////                    timeline.play();
-//                    try {
-////                        popupStage.hide();
-//                        new Game();
-//                    }
-//                    catch(Exception e)
-//                    {
-//                    }
-//                    popupStage.hide();
                 }
         }
         //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
@@ -495,6 +502,7 @@ public class Game implements Serializable {
         mediaPlayer.setAutoPlay(true);
 
     }
+
     public void scroll()
     {
         if(ball.getLayY()<375) {
@@ -504,7 +512,8 @@ public class Game implements Serializable {
             }
         }
     }
-    public void show() throws FileNotFoundException
+
+    public void show() throws FileNotFoundException, IOException, ClassNotFoundException
     {
 
         ball = new Ball(); // ball is the object of Ball Class
@@ -658,8 +667,9 @@ public class Game implements Serializable {
                     pauseRoot.getChildren().add(but);
                     but.setOnAction(eve ->{
                         root.setEffect(null);
-                        new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, textField.getText()));
+                        name = textField.getText();
                         popupStage.hide();
+                        saveAndExitGame();
                     });
 //                    popupStage.hide()
                 });
@@ -701,6 +711,21 @@ public class Game implements Serializable {
 
     }
 
+    public void save() throws IOException, ClassNotFoundException
+    {
+
+        ObjectOutputStream out = null;
+        try
+        {
+            out = new ObjectOutputStream( new FileOutputStream("tush.txt"));
+            out.writeObject(this);
+        }
+        finally
+        {
+            out.close();
+        }
+
+    }
 }
 /*      Timeline timeline1 = new Timeline(new KeyFrame(Duration.millis(10),
                 new EventHandler<ActionEvent>() {

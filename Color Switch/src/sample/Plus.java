@@ -16,12 +16,13 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Plus extends Obstacle implements Blast
+public class Plus extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    Line line1, line2, line3, line4;
+    transient Line line1, line2, line3, line4;
 
     public void setRoot(Group root)
     {

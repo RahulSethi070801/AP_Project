@@ -27,7 +27,7 @@ import java.util.Random;
 class Triangle extends Obstacle implements Blast
 {
 //    Group root;
-    Line line1, line2, line3;
+    transient Line line1, line2, line3;
 
     public Triangle()
     {

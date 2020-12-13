@@ -34,6 +34,7 @@ public class Ball
 {
     Group root;
     Circle ball;
+    Color color;
 
     public Color getColor() {
         return color;
@@ -42,8 +43,6 @@ public class Ball
     public void setColor(Color color) {
         this.color = color;
     }
-
-    Color color;
 
     public void setRoot(Group root)
     {
@@ -54,7 +53,6 @@ public class Ball
     {
         return root;
     }
-
 
     public int getRandom(int n)
     {
@@ -85,10 +83,8 @@ public class Ball
 
     }
 
-
     public void setLayoutY(double y)
     {
-//        System.out.println(y);
         this.ball.setLayoutY(this.ball.getLayoutY()+y);
     }
 
@@ -97,7 +93,6 @@ public class Ball
         this.ball.setLayoutY(y);
     }
 
-    
     public double getLayY()
     {
         return this.ball.getLayoutY();

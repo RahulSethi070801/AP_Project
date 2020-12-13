@@ -16,15 +16,16 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import javafx.animation.Timeline;
 
-public class HorizontalLine extends Obstacle implements Blast
+import java.io.Serializable;
+
+public class HorizontalLine extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    Line line1, line2, line3, line4;
-
-    TranslateTransition translateTransition1;
-    TranslateTransition translateTransition2;
-    TranslateTransition translateTransition3;
-    TranslateTransition translateTransition4;
+    transient Line line1, line2, line3, line4;
+    transient TranslateTransition translateTransition1;
+    transient TranslateTransition translateTransition2;
+    transient TranslateTransition translateTransition3;
+    transient TranslateTransition translateTransition4;
 
     public void setRoot(Group root)
     {

@@ -24,12 +24,13 @@ import javafx.util.Duration;
 //import java.time.Duration;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Random;
 
-class Square extends Obstacle implements Blast
+class Square extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    Line line1, line2, line3, line4;
+    transient Line line1, line2, line3, line4;
     public Square()
     {
         this.root = new Group();
