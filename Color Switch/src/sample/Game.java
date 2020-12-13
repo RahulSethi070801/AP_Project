@@ -35,6 +35,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.awt.event.ActionListener;
+import java.beans.Transient;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,9 +65,9 @@ public class Game implements Serializable {
     // TODO : beautify pause menu -> Tushar nad Rahul DONE
 
     // TODO : animation on collision -> Rahul
-    // TODO : loading game animation -> Tushar and Rahul
+    // TODO : loading game animation -> Tushar and Rahul(Done)
     // TODO : sound -> Rahul(Done)
-    // TODO : Perfect Collision(75%done)
+    // TODO : Perfect Collision(Done)
     Random rand = new Random();
     String tempO[] = {
             "Ring",
@@ -227,25 +228,43 @@ public class Game implements Serializable {
             {
                 if (getRandom(4) == 0)
                 {
+                    if (ball.getFill().equals(Color.rgb(144, 13, 255)))
                     continue;
+                    else
+                    {
+                        ball.setFill(Color.rgb(144, 13, 255));
+                        break;
+                    }
                 }
                 if (getRandom(4) == 1)
                 {
-                    ball.setFill(Color.rgb (250, 225, 0));
-//                                    root.getChildren().remove(root5);
-                    break;
+                    if (ball.getFill().equals((Color.rgb (250, 225, 0))))
+                        continue;
+                    else
+                    {
+                        ball.setFill(Color.rgb (250, 225, 0));
+                        break;
+                    }
                 }
                 if (getRandom(4) == 2)
                 {
-                    ball.setFill(Color.rgb(50, 219, 240));
-//                                    root.getChildren().remove(root5);
-                    break;
+                    if (ball.getFill().equals((Color.rgb(50, 219, 240))))
+                        continue;
+                    else
+                    {
+                        ball.setFill(Color.rgb(50, 219, 240));
+                        break;
+                    }
                 }
                 if (getRandom(4) == 3)
                 {
-                    ball.setFill(Color.rgb(255, 1, 129));
-//                                    root.getChildren().remove(root5);
-                    break;
+                    if (ball.getFill().equals((Color.rgb(255, 1, 129))))
+                        continue;
+                    else
+                    {
+                        ball.setFill(Color.rgb(255, 1, 129));
+                        break;
+                    }
                 }
             }
             String localDir = System.getProperty("user.dir");
@@ -513,7 +532,7 @@ public class Game implements Serializable {
         stars = new ArrayList<Star>();
         colorSwitches = new ArrayList<ColorSwitch>();
 
-        for(int i=0;i<10;i++)
+        for(int i=0;i<50;i++)
         {
             addObstacle();
         }

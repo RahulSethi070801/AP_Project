@@ -15,8 +15,8 @@ public abstract class Obstacle implements Serializable
 {
     protected double speed;
     protected String colors[] = { "Red", "Blue", "Pink", "Yellow"};
-    protected long x;
-    protected long y;
+    protected long xcentre;
+    protected long ycentre;
     protected double thickness;
     protected Group root;
     protected RotateTransition rotateTransition;
@@ -35,24 +35,24 @@ public abstract class Obstacle implements Serializable
         return thickness;
     }
 
-    public long getX() {
-        return x;
+    public long getXcentre() {
+        return xcentre;
     }
 
-    public long getY() {
-        return y;
+    public long getYcentre() {
+        return ycentre;
     }
 
     public void setSpeed(double speed) {
         this.speed = speed;
     }
 
-    public void setY(long y) {
-        this.y = y;
+    public void setYcentre(long y) {
+        this.ycentre = ycentre;
     }
 
-    public void setX(long x) {
-        this.x = x;
+    public void setXcentre(long x) {
+        this.xcentre = xcentre;
     }
 
     public void show(long y)
