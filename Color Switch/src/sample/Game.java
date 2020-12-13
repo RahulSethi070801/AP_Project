@@ -784,16 +784,10 @@ public class Game implements Serializable {
         Group root_score_star = new Group(imageView2);
         root.getChildren().add(root_score_star);
 
-
         Group root2 = new Group(imageView1);
         root2.addEventFilter(MouseEvent.MOUSE_CLICKED, event);
 
         root.getChildren().add(root2);
-
-
-//        root.getChildren().add(root6);
-
-
         root.getChildren().add(root_ball);
 
     }
