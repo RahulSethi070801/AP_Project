@@ -30,7 +30,8 @@ public class SavedGames implements Serializable
 {
     Group root;
     ArrayList<Game> savedGames;
-    SavedGames(ArrayList<Game> savedGames) throws FileNotFoundException {
+    SavedGames(ArrayList<Game> savedGames) throws FileNotFoundException
+    {
         this.savedGames = savedGames;
         root = new Group();
         show();

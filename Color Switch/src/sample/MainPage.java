@@ -36,8 +36,8 @@ public class MainPage
     Group root;
     ArrayList<Game> savedGames;
 //    Stage stage;
-    MainPage() throws FileNotFoundException
-    {
+    MainPage() throws FileNotFoundException, InterruptedException {
+        //Thread.sleep(10000);
         this.savedGames = new ArrayList<Game>();
         // TODO : read from a file (serializable)
         for(int i=0;i<5;i++){
@@ -83,8 +83,7 @@ public class MainPage
 
     }
 
-    public void show() throws FileNotFoundException
-    {
+    public void show() throws FileNotFoundException, InterruptedException {
         root = new Group();
 
         System.out.println(Main.stage);
