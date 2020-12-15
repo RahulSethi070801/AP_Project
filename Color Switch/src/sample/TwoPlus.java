@@ -157,6 +157,14 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         root.getChildren().add(root2);
         root.getChildren().add(root1);
 
+        addTransition(root1, root2);
+
+        this.y=root.getLayoutY();
+        duration = 4000;
+        
+    }
+    public void addTransition(Group root1, Group root2)
+    {
         rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(4000));
         rotateTransition.setNode(root1);
@@ -165,7 +173,7 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.play();
-
+    
         rotateTransition1 = new RotateTransition();
         rotateTransition1.setDuration(Duration.millis(4000));
         rotateTransition1.setNode(root2);
@@ -175,6 +183,49 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.play();
 
+    }
+    public void showSaved(long y)
+    {
+        line1 = new Line(100+400, y-400, 200+400, -400+y);
+        line1.setStrokeWidth(10);
+        line2 = new Line(200+400, -400+y, 300+400, -400+y);
+        line2.setStrokeWidth(10);
+        line3 = new Line(200+400, -400+y, 200+400, -500+y);
+        line3.setStrokeWidth(10);
+        line4 = new Line(200+400, -400+y, 200+400, -300+y);
+        line4.setStrokeWidth(10);
+
+        line1.setStroke(Color.rgb(144, 13, 255));
+        line2.setStroke(Color.rgb (250, 225, 0));
+        line3.setStroke(Color.rgb(50, 219, 240));
+        line4.setStroke(Color.rgb(255, 1, 129));
+
+        line5 = new Line(400+400, -400+y, 500+400, -400+y);
+        line5.setStrokeWidth(10);
+        line6 = new Line(400+400, -400+y, 300+400, -400+y);
+        line6.setStrokeWidth(10);
+        line7 = new Line(400+400, -400+y, 400+400, -500+y);
+        line7.setStrokeWidth(10);
+        line8 = new Line(400+400, -400+y, 400+400, -300+y);
+        line8.setStrokeWidth(10);
+
+        line5.setStroke(Color.rgb(144, 13, 255));
+        line6.setStroke(Color.rgb (250, 225, 0));
+        line7.setStroke(Color.rgb(50, 219, 240));
+        line8.setStroke(Color.rgb(255, 1, 129));
+
+
+        Group root1 = new Group();
+        root1.getChildren().addAll(line1, line2, line3, line4);
+        Group root2 = new Group();
+        root2.getChildren().addAll(line5, line6, line7, line8);
+        root = new Group();
+
+        root.getChildren().add(root2);
+        root.getChildren().add(root1);
+
+        addTransition(root1, root2);
+        this.y = root.getLayoutY();
         duration = 4000;
 
     }

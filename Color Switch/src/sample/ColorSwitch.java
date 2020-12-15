@@ -32,8 +32,8 @@ import java.util.Random;
 
 public class ColorSwitch implements Serializable {
     transient Group root;
-    double y;
-    String color;
+    private double y;
+    private String color;
 
     public ColorSwitch(){}
 
@@ -49,6 +49,7 @@ public class ColorSwitch implements Serializable {
     }
     public Group show(long y)
     {
+//        this.y=y;
         Arc arc1 = new Arc();
         arc1.setCenterX(700.0f);
         arc1.setCenterY(400.0f+y);
@@ -92,6 +93,7 @@ public class ColorSwitch implements Serializable {
         arc4.setType(ArcType.ROUND);
 
         root = new Group(arc1, arc2, arc3, arc4);
+        this.y=root.getLayoutY();
         return root;
     }
 
@@ -102,6 +104,7 @@ public class ColorSwitch implements Serializable {
     }
     public double getLayoutY()
     {
+        this.y=root.getLayoutY();
         return root.getLayoutY();
     }
 }

@@ -39,16 +39,17 @@ import java.io.*;
 import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observable;
 import java.util.Random;
 
 public class Game implements Serializable {
     // serializable objects
     transient Group root;
     transient Scene scene2;
-    transient ArrayList<Obstacle> obstacles;
-    transient ArrayList<Star> stars;
-    transient Random rand = new Random();
-    transient String tempO[] = {
+    ArrayList<Obstacle> obstacles;
+    ArrayList<Star> stars;
+    Random rand = new Random();
+    String tempO[] = {
             "Ring",
             "Square",
             "Triangle",
@@ -59,9 +60,9 @@ public class Game implements Serializable {
             "Plus"
     };
     transient Text text1;
-    transient double g = 1500;
-    transient double speed = 0.0;
-    transient ArrayList<ColorSwitch> colorSwitches;
+    double g = 1500;
+    double speed = 0.0;
+    ArrayList<ColorSwitch> colorSwitches;
     transient Ball ball;
     transient ArrayList<Group> root_list = new ArrayList<Group>();
     transient AnimationTimer t;
@@ -72,6 +73,58 @@ public class Game implements Serializable {
     long difficulty = 0;
     long y=0;
     String name;
+    boolean newGame = true;
+    public void setupGame()
+    {
+
+        root_list = new ArrayList<Group>();
+        System.out.println("starting obstacles");
+        for(int i=0;i<obstacles.size();i++)
+        {
+            Obstacle o = obstacles.get(i);
+            System.out.println("beofre "+o.y);
+//            if(o instanceof sample.HorizontalCircles)
+//            {
+//                o = new HorizontalLine();
+//            }
+//            System.out.println("after");
+            o.showSaved((long)o.y);
+            Group root_square = o.getRoot();
+            root.getChildren().add(root_square);
+//            System.out.println("qwieo");
+            root_list.add(root_square);
+        
+        }
+        System.out.println("starting stars");
+        for(int i=0;i<stars.size();i++)
+        {
+            try {
+                Star star = stars.get(i);
+                root.getChildren().add(star.show((double)675, star.y));
+                root_list.add(star.getRoot());
+//                stars.add(star);
+            }catch(Exception e){}
+        }
+        System.out.println("starting colorswtiches");
+
+        int y=500;
+        colorSwitches = new ArrayList<ColorSwitch>();
+        System.out.println("for loop for colorswitch");
+        for(int i=0;i<10;i++)
+        {
+            ColorSwitch colorswitch = new ColorSwitch();
+            System.out.println("qwueo");
+            colorswitch.show(y);
+            y-=1000;
+//            colorswitch.show((long)colorswitch.y);
+            System.out.println(root);
+            root.getChildren().add(colorswitch.show(y));
+            root_list.add(colorswitch.getRoot());
+            colorSwitches.add(colorswitch);
+        }
+
+//        this.play();
+    }
 //    ArrayList<Integer> obstaclesSerializable;
 //    ArrayList<Integer> starsSerialzable;
 //    ArrayList<Integer> colorSwitchesSerializable;
@@ -141,6 +194,16 @@ public class Game implements Serializable {
         Main.stage.setFullScreen(true);
         this.obstacles = new ArrayList<Obstacle>();
         show();
+    }
+    Game(Game game) throws FileNotFoundException, IOException, ClassNotFoundException
+    {
+        root = new Group();
+        game.root = new Group();
+        game.scene2 = new Scene(game.root, 800, 800, Color.BLACK);
+        Main.stage.setScene(game.scene2);
+        Main.stage.setFullScreen(true);
+//        this.obstacles = new ArrayList<Obstacle>();
+//        game.show();
     }
 
     public void addObstacle() throws FileNotFoundException
@@ -237,8 +300,11 @@ public class Game implements Serializable {
         this.speed += this.g*time;
         double s = (this.speed*time + 0.5*this.g*Math.pow(time,2));
 //        System.out.println(this.ball.getLayY()+" "+s);
-        if(this.ball.getLayY()+s<=710)
+        if(this.ball.getLayY()+s<=710) {
             this.ball.setLayoutY(s);
+//            System.out.println("DOWN "+this.ball.getLayY());
+//            System.out.println(this.speed+" speed "+this.g+" g "+time+" time");
+        }
 
         if (isCollide(ball, colorSwitches.get(0).getRoot()))
         {
@@ -306,8 +372,9 @@ public class Game implements Serializable {
         //System.out.println(obstacles.size());
         for (int i=0; i<obstacles.size(); i++)
         {
+//            System.out.println(this.obstacles.get(i)+" obstacle "+this.obstacles.get(i).getLayoutY());
             if (obstacles.get(i).blast(ball_c))
-                if(score>=0) {
+                if(score>=-100) {
                     t.stop();
                     root.setEffect(new GaussianBlur());
 //                    System.out.println("REviev");
@@ -403,7 +470,7 @@ public class Game implements Serializable {
                         ex.printStackTrace();
                     }
 
-                    System.out.println("qwebo");
+                    System.out.println("Game Over");
                 }
         }
         //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
@@ -493,14 +560,14 @@ public class Game implements Serializable {
 
     public void tapBall()
     {
+        // inverting direction
         this.speed = -400;
-
+        // playing sound
         String localDir = System.getProperty("user.dir");
         String path = localDir+"\\jump.wav";
         Media media = new Media(new File(path).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
-
     }
 
     public void scroll()
@@ -513,18 +580,26 @@ public class Game implements Serializable {
         }
     }
 
+    int counter=0;
     public void show() throws FileNotFoundException, IOException, ClassNotFoundException
     {
 
         ball = new Ball(); // ball is the object of Ball Class
         Circle ball_c = ball.show();
         Group root_ball = ball.getRoot();
-        stars = new ArrayList<Star>();
-        colorSwitches = new ArrayList<ColorSwitch>();
 
-        for(int i=0;i<10;i++)
-        {
-            addObstacle();
+        if(newGame) {
+            stars = new ArrayList<Star>();
+            colorSwitches = new ArrayList<ColorSwitch>();
+
+            for (int i = 0; i < 10; i++) {
+                addObstacle();
+            }
+        }
+        else{
+            System.out.println("Start");
+            this.setupGame();
+            System.out.println("End");
         }
 
         // Score count
@@ -551,6 +626,7 @@ public class Game implements Serializable {
             @Override
             public void handle(long now){
 
+//                System.out.println("Down");
                 //Ball Update
                 long elapsed = now - lastUpdate;
                 try {
@@ -558,7 +634,6 @@ public class Game implements Serializable {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-
                 scroll();
 //                checkCollisions();
 //                generalGenerate();
@@ -567,8 +642,12 @@ public class Game implements Serializable {
             }
         };
 
+//        int counter = 0;
         scene2.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.A) {
+            if (e.getCode() == KeyCode.Q) {
+                final int ctr=counter;
+                System.out.println("UP"+ctr);
+                counter++;
                 tapBall();
             }
         });
@@ -609,25 +688,16 @@ public class Game implements Serializable {
                 root.setEffect(new GaussianBlur());
 
                 HBox pauseRoot = new HBox(40);
-
-
                 String  style= getClass().getResource("styles.css").toExternalForm();
                 pauseRoot.getStylesheets().add(style);
-//                pauseRoot.getStylesheets().add(getClass().getResource(localDir+"styles.css").toExternalForm());
-
                 pauseRoot.setFillHeight(true);
                 Label paused = new Label("Paused");
                 paused.setId("paused");
                 pauseRoot.getChildren().add(paused);
-//                pauseRoot.setStyle(
-//
-//                );
                 pauseRoot.setId("menu");
                 pauseRoot.setAlignment(Pos.CENTER);
                 pauseRoot.setPadding(new Insets(20));
-
                 pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
-
                 Button resume = new Button("Resume");
                 Button exit=new Button("Exit");
                 Button save_game=new Button("Save and exit");
@@ -644,9 +714,9 @@ public class Game implements Serializable {
                 popupStage.initOwner(Main.stage);
                 popupStage.initModality(Modality.APPLICATION_MODAL);
                 popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
-
                 popupStage.setX(500);
                 popupStage.setY(300);
+
                 resume.setOnAction(event -> {
                     root.setEffect(null);
 //                    timeline.play();
@@ -655,7 +725,6 @@ public class Game implements Serializable {
                 });
 
                 save_game.setOnAction(event -> {
-
                     pauseRoot.getChildren().clear();
                     Label label = new Label("Enter Name");
                     label.setId("paused");
@@ -671,12 +740,10 @@ public class Game implements Serializable {
                         popupStage.hide();
                         saveAndExitGame();
                     });
-//                    popupStage.hide()
                 });
 
                 exit.setOnAction(event -> {
                     root.setEffect(null);
-//                    timeline.play();
                     popupStage.hide();
                     try {
                         new MainPage();
@@ -684,7 +751,6 @@ public class Game implements Serializable {
                         ex.printStackTrace();
                     }
                 });
-
                 popupStage.show();
             }
         };
@@ -713,12 +779,35 @@ public class Game implements Serializable {
 
     public void save() throws IOException, ClassNotFoundException
     {
-
         ObjectOutputStream out = null;
+        System.out.println(this.obstacles.size()+" obstacles size");
+        System.out.println(this.stars.size()+" stars size");
+        System.out.println(this.root_list.size()+" root_list size");
         try
         {
             out = new ObjectOutputStream( new FileOutputStream("tush.txt"));
+            for(int i=0;i<this.obstacles.size();i++)
+            {
+                System.out.println(this.obstacles.get(i)+" obstacle "+this.obstacles.get(i).getLayoutY());
+                root_list.get(i).setLayoutY(root_list.get(i).getLayoutY());
+            }
+            for(int i=0;i<this.stars.size();i++)
+            {
+                System.out.println(this.stars.get(i)+" stars "+this.stars.get(i).getLayoutY());
+                this.root_list.get(i+this.obstacles.size()).setLayoutY(this.root_list.get(i+this.root_list.size()).getLayoutY());
+            }
+            System.out.println(this.obstacles.size()+this.stars.size()+" obstacles + stars");
+            System.out.println(this.root_list.size()+" root_list");
+            for(int i=0;i<colorSwitches.size();i++)
+            {
+                this.colorSwitches.get(i).setLayoutY(this.colorSwitches.get(i).getLayoutY());
+            }
             out.writeObject(this);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("Yahan");
         }
         finally
         {

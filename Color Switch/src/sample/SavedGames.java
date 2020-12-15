@@ -25,15 +25,41 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-
-public class SavedGames implements Serializable
+import java.io.*;
+public class SavedGames
 {
     Group root;
     ArrayList<Game> savedGames;
+    ArrayList<Game> games = new ArrayList<Game>();
     SavedGames(ArrayList<Game> savedGames) throws FileNotFoundException
     {
         this.savedGames = savedGames;
         root = new Group();
+        File dir = new File("./");
+        File[] directoryListing = dir.listFiles();
+        ObjectInputStream in = null;
+        Game  g;
+        if (directoryListing != null) {
+//            for (File child : directoryListing) {
+                // Do something with child
+//                String name[] = child.getName().split("\\.",0);
+                try {
+//                    if (name[1].equals("txt")) {
+//                    String localDir = System.getProperty("user.dir");
+//                    System.out.println(localDir+"\\star.wav");
+                    String localDir = System.getProperty("user.dir");
+                    String path = localDir+"\\colorswitch.wav";
+                    System.out.println(new ObjectInputStream(new FileInputStream((localDir+"\\tush.txt"))));
+                        in = new ObjectInputStream(new FileInputStream((localDir+"\\tush.txt")));
+                        this.games.add((Game)in.readObject());
+                        System.out.println(games.get(games.size()-1).name);
+//                    }
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+//            }
+        }
+        System.out.println(this.games.size()+" Games ");
         show();
     }
 
@@ -87,7 +113,7 @@ public class SavedGames implements Serializable
         t.setFill(Color.WHITE);
         root.getChildren().add(t);
 
-        for(int i=0;i<this.savedGames.size();i++){
+        for(int i=0;i<this.games.size();i++){
             rectangle = new Polygon();
             rectangle.getPoints().addAll(new Double[]{
                     850.0, 350.0+(i+1)*50,
@@ -98,7 +124,7 @@ public class SavedGames implements Serializable
             rectangle.setFill(Color.WHITE);
             root.getChildren().add(rectangle);
 
-            t = new Text (730, 380+(i+1)*50, this.savedGames.get(i).name);
+            t = new Text (730, 380+(i+1)*50, this.games.get(i).name);
             // t.setText("This is a text sample");
             t.setFont(Font.font ("Comic Sans MS", 17));
             t.setFill(Color.BLUE);
@@ -107,10 +133,22 @@ public class SavedGames implements Serializable
             EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent e) {
+                    Game game = games.get(x-1);
+                    System.out.println(game.name);
                     System.out.println("Hello World"+x);
-                    Game game = savedGames.get(x-1);
                     try {
-                        game.play();
+                        System.out.println(game.obstacles.size());
+                        System.out.println(game.stars.size());
+                        System.out.println(game.score);
+                        System.out.println(game.difficulty);
+//                        System.out.println(game.colorSwitches.size());
+                        game.newGame=false;
+//                        game.setupGame();
+                        System.out.println("HO gaya ");
+                        new Game(game);
+                        System.out.println("qowue");
+                        game.show();
+//                        game.play();
                     }
                     catch(Exception ex){
                         System.out.println("HEHEEH");
