@@ -17,7 +17,7 @@ public abstract class Obstacle implements Serializable
     protected String colors[] = { "Red", "Blue", "Pink", "Yellow"};
     protected double x;
     protected double y;
-    protected long xcentre;
+    protected long xcentre; 
     protected long ycentre;
     protected double thickness;
     transient protected Group root;
@@ -43,6 +43,8 @@ public abstract class Obstacle implements Serializable
 
     public double getY() {
         return y;
+    }
+
     public long getXcentre() {
         return xcentre;
     }
@@ -86,6 +88,7 @@ public abstract class Obstacle implements Serializable
 
     public double getLayoutY()
     {
+        this.y = root.getLayoutY();
         return this.root.getLayoutY();
     }
 

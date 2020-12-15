@@ -25,10 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 public class MainPage
@@ -57,6 +54,16 @@ public class MainPage
             this.savedGames.add(new Game("Game"+(i+1)));
         }
         this.savedGames.add(game);
+//        ObjectInputStream in = null;
+//        try
+//        {
+//            in = new ObjectInputStream( new FileInputStream("tush.txt"));
+//            this.savedGames.add((Game)in.readObject());
+//        }
+//        finally
+//        {
+//            in.close();
+//        }
         try {
             show();
         }

@@ -270,7 +270,7 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
 
         this.root = new Group();
         root.getChildren().addAll(shape1,shape2,shape3,shape4, shape5, shape6, shape7, shape8);
-
+        this.y = this.root.getLayoutY();
         rotateTransition = new RotateTransition();
         //rotate.setAxis(Rotate.Z_AXIS);
         rotateTransition.setNode(root);
@@ -286,6 +286,7 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
     }
     public void setLayoutY(double y)
     {
+        this.y = y;
         this.root.setLayoutY(y);
     }
     public void setLayoutX(double x)
@@ -294,6 +295,7 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
     }
     public double getLayoutY()
     {
+        this.y = this.root.getLayoutY();
         return this.root.getLayoutY();
     }
     public double getLayoutX()

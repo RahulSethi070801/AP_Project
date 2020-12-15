@@ -170,9 +170,11 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         duration = 8000;
         root.getChildren().add(root1);
         root.getChildren().add(root2);
+        this.y = root.getLayoutY();
     }
     public void setLayoutY(double y)
     {
+        this.y =y;
         this.root.setLayoutY(y);
     }
     public void setLayoutX(double x)
@@ -181,6 +183,7 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
     }
     public double getLayoutY()
     {
+        this.y = root.getLayoutY();
         return this.root.getLayoutY();
     }
     public double getLayoutX()

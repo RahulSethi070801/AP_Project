@@ -92,6 +92,7 @@ public class ColorSwitch implements Serializable {
         arc4.setType(ArcType.ROUND);
 
         root = new Group(arc1, arc2, arc3, arc4);
+        this.y = root.getLayoutY();
         return root;
     }
 
@@ -102,6 +103,7 @@ public class ColorSwitch implements Serializable {
     }
     public double getLayoutY()
     {
+        this.y=root.getLayoutY();
         return root.getLayoutY();
     }
 }
