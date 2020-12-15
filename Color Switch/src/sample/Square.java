@@ -193,7 +193,44 @@ class Square extends Obstacle implements Blast, Serializable
 
         this.root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
-        this.y = this.root.getLayoutY();
+
+        this.y = y;
+        // System.out.println(root);
+        rotateTransition = new RotateTransition();
+        rotateTransition.setDuration(Duration.millis(5000));
+        rotateTransition.setNode(root);
+        rotateTransition.setByAngle(360);
+        rotateTransition.setCycleCount(Timeline.INDEFINITE);
+        rotateTransition.setAutoReverse(false);
+        rotateTransition.setInterpolator(Interpolator.LINEAR);
+        rotateTransition.play();
+    }
+    public void showSaved(long y)
+    {
+
+        line1 = new Line(500, 400-y, 700, 600-y);
+        line1.setStrokeWidth(15);
+        line1.setFill(null);
+        line2 = new Line(500, 400-y, 700, 200-y);
+        line2.setStrokeWidth(15);
+        line2.setFill(null);
+        line3 = new Line(700, 600-y, 900, 400-y);
+        line3.setStrokeWidth(15);
+        line3.setFill(null);
+        line4 = new Line(700, 200-y, 900, 400-y);
+        line4.setStrokeWidth(15);
+        line4.setFill(null);
+
+        line1.setStroke(Color.rgb(144, 13, 255));
+        line2.setStroke(Color.rgb (250, 225, 0));
+        line3.setStroke(Color.rgb(50, 219, 240));
+        line4.setStroke(Color.rgb(255, 1, 129));
+
+        this.root = new Group();
+        root.getChildren().addAll(line1, line2, line3, line4);
+
+        this.y = y;
+        root.setTranslateY(y);
         // System.out.println(root);
         rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));

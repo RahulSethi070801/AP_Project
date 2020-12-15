@@ -166,6 +166,10 @@ class Ring extends Obstacle implements Blast
 
     }
 
+    public void showSaved(long y)
+    {
+        show(y-400);
+    }
     public void show(long y)
     {
         Arc arc11 = new Arc(700, 400+y, 110, 110, 0, 90);
@@ -216,8 +220,8 @@ class Ring extends Obstacle implements Blast
 
         root = new Group();
         root.getChildren().addAll(shape1,shape2,shape3,shape4);
-
-        this.y = this.root.getLayoutY();
+//        root.setTranslateY(y);
+        this.y = y;
         rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);
@@ -229,5 +233,15 @@ class Ring extends Obstacle implements Blast
 
         return ;
 
+    }
+    public double getLayoutY()
+    {
+        this.y = this.root.getLayoutY();
+        return this.root.getLayoutY();
+    }
+    public void setLayoutY(double y)
+    {
+        this.y = y;
+        this.root.setLayoutY(y);
     }
 }

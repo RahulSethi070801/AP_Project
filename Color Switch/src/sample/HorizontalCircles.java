@@ -60,7 +60,7 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         }
         return false;
     }
-
+    
     public void show(long y)
     {
         Arc arc11 = new Arc(570, 400+y, 130, 130, 0, 90);
@@ -147,6 +147,8 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         Group root2 = new Group();
         root2.getChildren().addAll(shape6, shape5, shape8, shape7);
 
+
+
         rotateTransition = new RotateTransition();
         rotateTransition.setAxis(Rotate.Z_AXIS);
         rotateTransition.setByAngle(360);
@@ -170,11 +172,12 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         duration = 8000;
         root.getChildren().add(root1);
         root.getChildren().add(root2);
-        this.y = root.getLayoutY();
+        this.y = y;
+        root.setTranslateY(y);
     }
     public void setLayoutY(double y)
     {
-        this.y =y;
+        this.y = y;
         this.root.setLayoutY(y);
     }
     public void setLayoutX(double x)
@@ -183,7 +186,9 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
     }
     public double getLayoutY()
     {
-        this.y = root.getLayoutY();
+        //     System.out.println(root+" hosri");
+        //     System.out.println(this.y+" y");
+        this.y = this.root.getLayoutY();
         return this.root.getLayoutY();
     }
     public double getLayoutX()

@@ -178,6 +178,10 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
 
     }
 
+    public void showSaved(long y)
+    {
+        show(y-400);
+    }
     public void show(long y)
     {
         Arc arc11 = new Arc(700, 400+y, 150, 150, 0, 90);
@@ -270,7 +274,8 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
 
         this.root = new Group();
         root.getChildren().addAll(shape1,shape2,shape3,shape4, shape5, shape6, shape7, shape8);
-        this.y = this.root.getLayoutY();
+
+        this.y = y;
         rotateTransition = new RotateTransition();
         //rotate.setAxis(Rotate.Z_AXIS);
         rotateTransition.setNode(root);

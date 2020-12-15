@@ -38,6 +38,7 @@ public class Ball
     double y;
     String colorString;
 
+//    double y;
     public Color getColor() {
         return color;
     }

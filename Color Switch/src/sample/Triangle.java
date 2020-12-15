@@ -186,8 +186,42 @@ class Triangle extends Obstacle implements Blast
         r.setPivotX(317.3+380);
         r.setPivotY(200+y+200);
 
-        this.y = this.root.getLayoutY();
-        
+        this.y=y+400;
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                r.setAngle(r.getAngle()+2);
+            }
+        };
+        timer.start();
+    }
+    public void showSaved( long y)
+    {
+        line1 = new Line(200+380, y-400, 376+380, y-301.734-200);
+        line1.setStrokeWidth(10);
+        line1.setFill(null);
+        line2 = new Line(200+380, y-400, 376+380, y-98.266-200);
+        line2.setStrokeWidth(10);
+        line2.setFill(null);
+        line3 = new Line(376+380, y-301.734-200, 376+380, y-98.266-200);
+        line3.setStrokeWidth(10);
+        line3.setFill(null);
+
+        line1.setStroke(Color.rgb(144, 13, 255));
+        line2.setStroke(Color.rgb (255, 1, 129));
+        line3.setStroke(Color.rgb(50, 219, 240));
+
+
+        root = new Group();
+        root.getChildren().addAll(line1, line2, line3);
+
+        Rotate r = new Rotate();
+        root.getTransforms().add(r);
+        r.setPivotX(317.3+380);
+        r.setPivotY(y);
+
+        this.y = y;
+//        root.setTranslateY(y);
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {

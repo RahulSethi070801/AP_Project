@@ -46,7 +46,7 @@ public class MainPage
     }
     MainPage(Game game) throws IOException, ClassNotFoundException
     {
-        game.save();
+//        game.save();
         // TODO : first read all the saved games then save the recieved game
         this.savedGames = new ArrayList<Game>();
         // TODO : read from a file (serializable)

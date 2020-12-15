@@ -76,10 +76,16 @@ public abstract class Obstacle implements Serializable
     {
 
     }
+    public void showSaved(long y)
+    {
+
+    }
     public void setLayoutY(double y)
     {
         setY(y);
+        System.out.println("root y before");
         this.root.setLayoutY(y);
+        System.out.println("root y after");
     }
     public void setLayoutX(double x)
     {

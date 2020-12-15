@@ -76,6 +76,7 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
             figure.getChildren().add(oneLine);
         }
         root = figure;
+        this.y = y;
     }
 
     public Group makeOneLine(double x, long y)
@@ -96,7 +97,11 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
 
         root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
-        this.y = this.root.getLayoutY();
+        addTransition();
+        return root;
+    }
+    public void addTransition()
+    {
 
         translateTransition1 = new TranslateTransition();
         translateTransition1.setDuration(Duration.millis(5000));
@@ -134,6 +139,43 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         translateTransition4.setInterpolator(Interpolator.LINEAR);
         translateTransition4.play();
 
+    }
+    
+    public void showSaved(long y)
+    {
+        double X = -8000;
+        Group figure = new Group();
+
+        for(int i=0; i<100; i++)
+        {
+            Group oneLine;
+            oneLine = makeOneLine(X+=800, y);
+            figure.getChildren().add(oneLine);
+        }
+        root = figure;
+        this.root.getLayoutY();
+    }
+
+    public Group makeOneLineSaved(double x, long y)
+    {
+        line1 = new Line(x-400, 400-y, x-200, 400-y);
+        line1.setStrokeWidth(10);
+        line2 = new Line(x-200, 400-y, x, 400-y);
+        line2.setStrokeWidth(10);
+        line3 = new Line(x, 400-y, x+200, 400-y);
+        line3.setStrokeWidth(10);
+        line4 = new Line(x+200, 400-y, x+400, 400-y);
+        line4.setStrokeWidth(10);
+
+        line1.setStroke(Color.rgb(144, 13, 255));
+        line2.setStroke(Color.rgb (250, 225, 0));
+        line3.setStroke(Color.rgb(50, 219, 240));
+        line4.setStroke(Color.rgb(255, 1, 129));
+
+        Group root = new Group();
+        root.getChildren().addAll(line1, line2, line3, line4);
+
+        addTransition();
 
         return root;
     }
