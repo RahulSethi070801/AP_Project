@@ -21,23 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="second">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/META-INF/Color Switch.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Ball.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/ColorSwitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/ColorSwitch.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/ConcentricCircles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/ConcentricCircles.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/GameModesBanner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Heading$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Heading$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Heading.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Heading.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalCircles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalCircles.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalLine.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/MainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/MainPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/PlayButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/PlayButton$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/PlayButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/PlayButton.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Plus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Plus.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames$1.class" afterDir="false" />
@@ -45,16 +38,15 @@
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Star.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Star.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Triangle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/TwoPlus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/TwoPlus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ColorSwitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ColorSwitch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ConcentricCircles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ConcentricCircles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/HorizontalCircles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HorizontalCircles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/HorizontalLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HorizontalLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Obstacle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Plus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Ring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Ring.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/SavedGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SavedGames.java" afterDir="false" />
@@ -319,38 +311,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606598388727" />
-    <state width="1491" height="172" key="GridCell.Tab.0.bottom" timestamp="1608032360117">
+    <state width="1491" height="253" key="GridCell.Tab.0.bottom" timestamp="1608062188043">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="172" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608032360117" />
-    <state width="1491" height="172" key="GridCell.Tab.0.center" timestamp="1608032360117">
+    <state width="1491" height="253" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608062188043" />
+    <state width="1491" height="253" key="GridCell.Tab.0.center" timestamp="1608062188042">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="172" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608032360117" />
-    <state width="1491" height="172" key="GridCell.Tab.0.left" timestamp="1608032360117">
+    <state width="1491" height="253" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608062188042" />
+    <state width="1491" height="253" key="GridCell.Tab.0.left" timestamp="1608062188042">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="172" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608032360117" />
-    <state width="1491" height="172" key="GridCell.Tab.0.right" timestamp="1608032360117">
+    <state width="1491" height="253" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608062188042" />
+    <state width="1491" height="253" key="GridCell.Tab.0.right" timestamp="1608062188043">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="172" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608032360117" />
-    <state width="1491" height="260" key="GridCell.Tab.1.bottom" timestamp="1607872915797">
+    <state width="1491" height="253" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608062188043" />
+    <state width="1491" height="260" key="GridCell.Tab.1.bottom" timestamp="1608056073805">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="260" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607872915797" />
-    <state width="1491" height="260" key="GridCell.Tab.1.center" timestamp="1607872915797">
+    <state width="1491" height="260" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608056073805" />
+    <state width="1491" height="260" key="GridCell.Tab.1.center" timestamp="1608056073805">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="260" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1607872915797" />
-    <state width="1491" height="260" key="GridCell.Tab.1.left" timestamp="1607872915797">
+    <state width="1491" height="260" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1608056073805" />
+    <state width="1491" height="260" key="GridCell.Tab.1.left" timestamp="1608056073805">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="260" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1607872915797" />
-    <state width="1491" height="260" key="GridCell.Tab.1.right" timestamp="1607872915797">
+    <state width="1491" height="260" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1608056073805" />
+    <state width="1491" height="260" key="GridCell.Tab.1.right" timestamp="1608056073805">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="260" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1607872915797" />
+    <state width="1491" height="260" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1608056073805" />
     <state x="496" y="0" key="SettingsEditor" timestamp="1607371447649">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

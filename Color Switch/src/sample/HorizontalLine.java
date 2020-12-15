@@ -76,7 +76,7 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
             figure.getChildren().add(oneLine);
         }
         root = figure;
-        this.y = this.root.getLayoutY();
+        this.y = y;
     }
 
     public Group makeOneLine(double x, long y)

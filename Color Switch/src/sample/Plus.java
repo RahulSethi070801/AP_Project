@@ -170,7 +170,7 @@ public class Plus extends Obstacle implements Blast, Serializable
         root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
 
-        this.y = this.root.getLayoutY();
+        this.y = y;
         rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);
@@ -203,7 +203,8 @@ public class Plus extends Obstacle implements Blast, Serializable
         root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
 
-        this.y = this.root.getLayoutY();
+        this.y = y;
+//        root.setTranslateY(y);
         rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
         rotateTransition.setNode(root);

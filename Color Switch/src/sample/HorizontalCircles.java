@@ -61,11 +61,6 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         return false;
     }
     
-    public void showSaved(long y)
-    {
-            show(y-400);
-    }
-
     public void show(long y)
     {
         Arc arc11 = new Arc(570, 400+y, 130, 130, 0, 90);
@@ -177,7 +172,8 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         duration = 8000;
         root.getChildren().add(root1);
         root.getChildren().add(root2);
-        this.y = this.root.getLayoutY();
+        this.y = y;
+        root.setTranslateY(y);
     }
     public void setLayoutY(double y)
     {

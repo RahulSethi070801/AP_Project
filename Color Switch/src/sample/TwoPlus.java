@@ -159,7 +159,7 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
 
         addTransition(root1, root2);
 
-        this.y=root.getLayoutY();
+        this.y=y;
         duration = 4000;
         
     }
@@ -225,7 +225,8 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         root.getChildren().add(root1);
 
         addTransition(root1, root2);
-        this.y = root.getLayoutY();
+        this.y = y;
+        root.setTranslateY(y);
         duration = 4000;
 
     }

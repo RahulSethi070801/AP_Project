@@ -40,24 +40,23 @@ public class SavedGames
         ObjectInputStream in = null;
         Game  g;
         if (directoryListing != null) {
-//            for (File child : directoryListing) {
+            for (File child : directoryListing) {
                 // Do something with child
-//                String name[] = child.getName().split("\\.",0);
+                String name[] = child.getName().split("\\.",0);
                 try {
-//                    if (name[1].equals("txt")) {
+                    if (name[1].equals("txt")) {
 //                    String localDir = System.getProperty("user.dir");
 //                    System.out.println(localDir+"\\star.wav");
                     String localDir = System.getProperty("user.dir");
-                    String path = localDir+"\\colorswitch.wav";
-                    System.out.println(new ObjectInputStream(new FileInputStream((localDir+"\\tush.txt"))));
-                        in = new ObjectInputStream(new FileInputStream((localDir+"\\tush.txt")));
+                    System.out.println(new ObjectInputStream(new FileInputStream((localDir+"\\"+name[0]+".txt"))));
+                        in = new ObjectInputStream(new FileInputStream((localDir+"\\"+name[0]+".txt")));
                         this.games.add((Game)in.readObject());
                         System.out.println(games.get(games.size()-1).name);
-//                    }
+                    }
                 }catch(Exception e){
                     System.out.println(e);
                 }
-//            }
+            }
         }
         System.out.println(this.games.size()+" Games ");
         show();

@@ -221,6 +221,7 @@ class Triangle extends Obstacle implements Blast
         r.setPivotY(y);
 
         this.y = y;
+//        root.setTranslateY(y);
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {

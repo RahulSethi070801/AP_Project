@@ -36,6 +36,7 @@ public class Ball
     Circle ball;
     Color color;
 
+    double y;
     public Color getColor() {
         return color;
     }

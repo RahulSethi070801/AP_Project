@@ -25,7 +25,8 @@ public class Star implements Serializable {
         imageView3.setFitWidth(50);
         imageView3.setPreserveRatio(true);
         root = new Group(imageView3);
-        this.y= this.root.getLayoutY();
+        this.y = y;
+//        root.setTranslateY(y);
         return root;
     }
     public Group getRoot()
