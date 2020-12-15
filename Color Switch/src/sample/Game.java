@@ -9,6 +9,7 @@ import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -456,6 +457,8 @@ public class Game implements Serializable {
             popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
 
             revive.setOnAction(event -> {
+                join(ball);
+
                 root.setEffect(null);
 //                    timeline.play();
                 score-=1;
@@ -537,14 +540,15 @@ public class Game implements Serializable {
         arr.add(Color.rgb (250, 225, 0));
         arr.add(Color.rgb(50, 219, 240));
         arr.add(Color.rgb(255, 1, 129));
+        Group root3 = new Group();
 
-        for (int i=0; i<100; i++)
+        for (int i=0; i<1000; i++)
         {
             Path path = new Path();
             //Arc a1 = new Arc(250, 250, 3,3,0,360);
             Circle c1 = new Circle(688, ball.getLayY(),3);
             c1.setFill(arr.get(getRandom(4)));
-            root.getChildren().add(c1);
+            root3.getChildren().add(c1);
 
             MoveTo moveTo = new MoveTo(688, ball.getLayY());
             LineTo lineTo;
@@ -552,13 +556,13 @@ public class Game implements Serializable {
             {
                 int x1 = 0;
                 int x2 = 700;
-                lineTo = new LineTo(getRandom(x2)-x1, getRandom((int)ball.getLayY()+ 500));
+                lineTo = new LineTo(getRandom(x2)-x1 - 1400, getRandom((int)ball.getLayY()+ 1000));
             }
             else
             {
                 int x1 = 700;
                 //int x2 = 1400;
-                lineTo = new LineTo(getRandom(x1)+x1, getRandom((int)ball.getLayY()+ 500));
+                lineTo = new LineTo(getRandom(x1)+x1 + 1000, getRandom((int)ball.getLayY()+ 1000));
             }
 
             path.getElements().addAll(moveTo, lineTo);
@@ -569,10 +573,73 @@ public class Game implements Serializable {
             pt.setPath(path);
             parallelTransition.getChildren().add(pt);
         }
+        root.getChildren().add(root3);
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
+        //root.getChildren().remove(root3);
         t.stop();
         sq.setOnFinished(actionEvent -> revive());
+    }
+
+    public void join(Ball ball)
+    {
+        ParallelTransition parallelTransition = new ParallelTransition();
+
+        ArrayList<Color> arr = new ArrayList<>();
+        arr.add(Color.rgb(144, 13, 255));
+        arr.add(Color.rgb (250, 225, 0));
+        arr.add(Color.rgb(50, 219, 240));
+        arr.add(Color.rgb(255, 1, 129));
+
+        Group root3 = new Group();
+
+        for (int i=0; i<1000; i++)
+        {
+            Path path = new Path();
+            //Arc a1 = new Arc(250, 250, 3,3,0,360);
+            Circle c1 = new Circle(688, ball.getLayY(),3);
+            c1.setFill(arr.get(getRandom(4)));
+            root3.getChildren().add(c1);
+
+            MoveTo moveTo;
+
+            if (i%2==0)
+            {
+                int x1 = 0;
+                int x2 = 700;
+                moveTo = new MoveTo(getRandom(x2)-x1, getRandom((int)ball.getLayY()+ 500));
+            }
+            else
+            {
+                int x1 = 700;
+                //int x2 = 1400;
+                moveTo = new MoveTo(getRandom(x1)+x1, getRandom((int)ball.getLayY()+ 500));
+            }
+
+            LineTo lineTo = new LineTo(688, 700);
+
+            path.getElements().addAll(moveTo, lineTo);
+
+            PathTransition pt = new PathTransition();
+            pt.setDuration(Duration.millis(400 + getRandom(1000)));
+            pt.setNode(c1);
+            pt.setPath(path);
+            parallelTransition.getChildren().add(pt);
+        }
+        root.getChildren().add(root3);
+        SequentialTransition sq = new SequentialTransition(parallelTransition);
+        sq.play();
+        EventHandler<ActionEvent> punar_janam = actionEvent ->
+        {
+            for(Node i : root3.getChildren())
+            {
+                root3.getChildren().remove(i);
+            }
+            //t.stop();
+        };
+        sq.setOnFinished(punar_janam);
+
+        //sq.setOnFinished(actionEvent -> revive());
     }
 
     public void tapBall()

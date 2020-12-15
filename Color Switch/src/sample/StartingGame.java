@@ -47,21 +47,23 @@ class StartingGame
         return root;
     }
 
-    public void show() throws FileNotFoundException, InterruptedException {
+    public void show() throws FileNotFoundException, InterruptedException
+    {
+        Heading hd = new Heading();
+        hd.show();
+        Group root0 = hd.getRoot();
 
-        Ring r = new Ring();
-        r.show(0);
-        Group root1 = r.getRoot();
+        PlayButton pb = new PlayButton();
+        pb.show();
+        Group root1 = pb.getRoot();
 
         Ball b = new Ball();
         b.show();
         Group root2 = b.getRoot();
 
         TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(500), root2);
-        //translateTransition1.setFromY(700);
         translateTransition1.setToY(-150);
         translateTransition1.setCycleCount(1);
-        //translateTransition1.setAutoReverse(true);
 
 
         for (int i=0; i<2; i++)
@@ -126,7 +128,7 @@ class StartingGame
             }
         });
 
-        root.getChildren().addAll(root1, root2);
+        root.getChildren().addAll(root0, root1, root2);
 
 
     }

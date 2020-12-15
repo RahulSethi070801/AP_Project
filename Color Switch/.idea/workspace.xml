@@ -25,7 +25,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Design.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Design.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Heading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Heading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/StartingGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StartingGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,22 +286,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606598388727" />
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1607888623666">
+    <state width="1493" height="6" key="GridCell.Tab.0.bottom" timestamp="1608062411245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607888623666" />
-    <state width="1493" height="2" key="GridCell.Tab.0.center" timestamp="1607888623666">
+    <state width="1493" height="6" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608062411245" />
+    <state width="1493" height="6" key="GridCell.Tab.0.center" timestamp="1608062411245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607888623666" />
-    <state width="1493" height="2" key="GridCell.Tab.0.left" timestamp="1607888623666">
+    <state width="1493" height="6" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608062411245" />
+    <state width="1493" height="6" key="GridCell.Tab.0.left" timestamp="1608062411245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607888623666" />
-    <state width="1493" height="2" key="GridCell.Tab.0.right" timestamp="1607888623666">
+    <state width="1493" height="6" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608062411245" />
+    <state width="1493" height="6" key="GridCell.Tab.0.right" timestamp="1608062411245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607888623666" />
+    <state width="1493" height="6" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608062411245" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606994333489">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -327,18 +330,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="360" y="144" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606998014557" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1607861331033">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1607897635246">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1607861331033" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1607897635246" />
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605829336553">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1605829336553" />
-    <state x="209" y="114" key="new project wizard" timestamp="1606762968868">
+    <state x="209" y="66" key="new project wizard" timestamp="1608040129444">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1606762968868" />
+    <state x="209" y="66" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1608040129444" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1605989760387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

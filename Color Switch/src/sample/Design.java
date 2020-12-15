@@ -4,11 +4,16 @@ import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.*;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -16,6 +21,9 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class Design
 {
@@ -31,8 +39,7 @@ public class Design
         return root;
     }
 
-    public void show()
-    {
+    public void show() throws FileNotFoundException {
         root = new Group();
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
@@ -90,8 +97,68 @@ public class Design
         rotateTransition2.setInterpolator(Interpolator.LINEAR);
         rotateTransition2.play();
 
+
+        String localDir = System.getProperty("user.dir");
+
+        InputStream stream1 = new FileInputStream(localDir+"\\QuestionMark.png");
+        javafx.scene.image.Image image1 = new javafx.scene.image.Image(stream1);
+        ImageView imageView1 = new ImageView();
+        imageView1.setImage(image1);
+        imageView1.setX(400);
+        imageView1.setY(400);
+        imageView1.setFitWidth(80);
+        imageView1.setPreserveRatio(true);
+
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Bounds bounds = root.getBoundsInParent();
+                System.out.println("Hello World");
+                //imageView1.setFill(Color.DARKSLATEBLUE);
+                try {
+                    new Help();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        //Registering the event filter
+        imageView1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        InputStream stream2 = new FileInputStream(localDir+"\\Achievements.png");
+        javafx.scene.image.Image image2 = new javafx.scene.image.Image(stream2);
+        ImageView imageView2 = new ImageView();
+        imageView2.setImage(image2);
+        imageView2.setX(400);
+        imageView2.setY(500);
+        imageView2.setFitWidth(80);
+        imageView2.setPreserveRatio(true);
+
+
+
+        InputStream stream3 = new FileInputStream(localDir + "\\Speaker.png");
+        javafx.scene.image.Image image3 = new javafx.scene.image.Image(stream3);
+        ImageView imageView3 = new ImageView();
+        imageView3.setImage(image3);
+        imageView3.setX(1020);
+        imageView3.setY(400);
+        imageView3.setFitWidth(80);
+        imageView3.setPreserveRatio(true);
+
+        InputStream stream4 = new FileInputStream(localDir +"\\Music.png");
+        javafx.scene.image.Image image4 = new Image(stream4);
+        ImageView imageView4 = new ImageView();
+        imageView4.setImage(image4);
+        imageView4.setX(1007);
+        imageView4.setY(500);
+        imageView4.setFitWidth(110);
+        imageView4.setPreserveRatio(true);
+
+        Group root3 = new Group(imageView1, imageView2, imageView3, imageView4);
+
         root.getChildren().add(root1);
         root.getChildren().add(root2);
+        root.getChildren().add(root3);
 
     }
 

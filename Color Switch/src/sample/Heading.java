@@ -199,71 +199,10 @@ public class Heading
 
         Group root3 = new Group(text1, text2,text3, text4);
 
-        String localDir = System.getProperty("user.dir");
 
-        InputStream stream1 = new FileInputStream(localDir+"\\QuestionMark.png");
-        Image image1 = new Image(stream1);
-        ImageView imageView1 = new ImageView();
-        imageView1.setImage(image1);
-        imageView1.setX(400);
-        imageView1.setY(400);
-        imageView1.setFitWidth(80);
-        imageView1.setPreserveRatio(true);
-
-        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                Bounds bounds = root.getBoundsInParent();
-                System.out.println("Hello World");
-                //imageView1.setFill(Color.DARKSLATEBLUE);
-                try {
-                    new Help();
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        };
-        //Registering the event filter
-        imageView1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-
-        InputStream stream2 = new FileInputStream(localDir+"\\Achievements.png");
-        Image image2 = new Image(stream2);
-        ImageView imageView2 = new ImageView();
-        imageView2.setImage(image2);
-        imageView2.setX(400);
-        imageView2.setY(500);
-        imageView2.setFitWidth(80);
-        imageView2.setPreserveRatio(true);
-
-
-
-        InputStream stream3 = new FileInputStream(localDir + "\\Speaker.png");
-        Image image3 = new Image(stream3);
-        ImageView imageView3 = new ImageView();
-        imageView3.setImage(image3);
-        imageView3.setX(1020);
-        imageView3.setY(400);
-        imageView3.setFitWidth(80);
-        imageView3.setPreserveRatio(true);
-
-        InputStream stream4 = new FileInputStream(localDir +"\\Music.png");
-        Image image4 = new Image(stream4);
-        ImageView imageView4 = new ImageView();
-        imageView4.setImage(image4);
-        imageView4.setX(1007);
-        imageView4.setY(500);
-        imageView4.setFitWidth(110);
-        imageView4.setPreserveRatio(true);
-
-
-        Group root4 = new Group(imageView1, imageView2, imageView3, imageView4);
         root.getChildren().add(root1);
         root.getChildren().add(root2);
         root.getChildren().add(root3);
-        root.getChildren().add(root4);
-//        root.getChildren().add(root5);
-//        root.getChildren().add(root6);
-
     }
 
 }
