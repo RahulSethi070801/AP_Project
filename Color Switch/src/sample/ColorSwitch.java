@@ -27,12 +27,18 @@ import javafx.util.Duration;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Random;
 
-public class ColorSwitch {
-    Group root;
-    long y;
+public class ColorSwitch implements Serializable {
+    transient Group root;
+    double y;
     String color;
+
+    public ColorSwitch(){}
+
+    public ColorSwitch(String color)
+    {}
     public void setRoot(Group root)
     {
         this.root=root;
@@ -91,6 +97,7 @@ public class ColorSwitch {
 
     public void setLayoutY(double y)
     {
+        this.y = y;
         root.setLayoutY(y);
     }
     public double getLayoutY()

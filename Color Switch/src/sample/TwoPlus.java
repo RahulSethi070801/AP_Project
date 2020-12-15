@@ -15,14 +15,15 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class TwoPlus extends Obstacle implements Blast
+public class TwoPlus extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    Line line1, line2, line3, line4, line5, line6, line7, line8;
+    transient Line line1, line2, line3, line4, line5, line6, line7, line8;
+    transient RotateTransition rotateTransition1;
 
-    RotateTransition rotateTransition1;
     public void setRoot(Group root)
     {
         this.root = root;

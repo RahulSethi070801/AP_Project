@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
@@ -46,8 +47,9 @@ public class MainPage
 //        this.stage=stage;
         show();
     }
-    MainPage(Game game)
+    MainPage(Game game) throws IOException, ClassNotFoundException
     {
+        game.save();
         // TODO : first read all the saved games then save the recieved game
         this.savedGames = new ArrayList<Game>();
         // TODO : read from a file (serializable)

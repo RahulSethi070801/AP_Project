@@ -23,8 +23,8 @@ import java.util.Random;
 class Ring extends Obstacle implements Blast
 {
 //    Group root;
-    Shape shape1, shape2, shape3, shape4;
-    Arc arc12, arc22, arc32, arc42;
+    transient Shape shape1, shape2, shape3, shape4;
+    transient Arc arc12, arc22, arc32, arc42;
 
     public Ring()
     {

@@ -13,14 +13,16 @@ import javafx.animation.RotateTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.Timeline;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class HorizontalCircles extends Obstacle implements Blast
+public class HorizontalCircles extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    Shape shape1, shape2, shape3, shape4, shape5, shape6, shape7, shape8;
+    transient Shape shape1, shape2, shape3, shape4, shape5, shape6, shape7, shape8;
 
-    RotateTransition rotateTransition1;
+    transient RotateTransition rotateTransition1;
+
     public void setRoot(Group root)
     {
         this.root = root;

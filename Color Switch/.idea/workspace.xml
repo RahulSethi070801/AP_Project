@@ -156,7 +156,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="Color Switch" />
-      <option name="VM_PARAMETERS" value="--module-path F:\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.media,javafx.graphics,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Tushar\Downloads\javafx-sdk-15.0.1\lib --add-modules javafx.controls,javafx.media,javafx.graphics,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
       <extension name="coverage">
         <pattern>
@@ -208,7 +208,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -246,13 +246,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
@@ -266,10 +265,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606235154878" />
-    <state x="243" y="0" width="781" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607700468191">
+    <state x="243" y="0" width="781" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607856276395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="243" y="0" width="781" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1607700468191" />
+    <state x="243" y="0" width="781" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1607856276395" />
     <state x="954" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1607681449163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -341,11 +340,11 @@
     <state x="209" y="66" key="new project wizard" timestamp="1608040129444">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="209" y="66" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1608040129444" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1605989760387">
+    <state x="209" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1606762968868" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1607859455447">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1605989760387" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1607859455447" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607380063531">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

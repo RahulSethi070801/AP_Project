@@ -23,6 +23,7 @@ import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 public class GameEngine {
@@ -33,7 +34,7 @@ public class GameEngine {
     ArrayList<Star> stars;
     User user;
     ArrayList<Game> savedGames;
-    GameEngine() throws FileNotFoundException {
+    GameEngine() throws FileNotFoundException, IOException, ClassNotFoundException {
         root = new Group();
         scene2 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene2);

@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class Star implements Serializable {
 
-    Group root;
+    transient Group root;
     public Group  show(double x, double y) throws FileNotFoundException
     {
         String localDir = System.getProperty("user.dir");

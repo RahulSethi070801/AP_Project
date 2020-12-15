@@ -34,8 +34,6 @@ class PlayButton
         return root;
     }
 
-
-
     public void show()
     {
 
@@ -195,7 +193,7 @@ class PlayButton
                 polygon.setFill(Color.DARKSLATEBLUE);
                 try {
                     new GameEngine();
-                } catch (FileNotFoundException ex) {
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
@@ -248,4 +246,5 @@ class PlayButton
         rotate2.play();  
 
     }
+
 }
