@@ -173,7 +173,7 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         root.getChildren().add(root1);
         root.getChildren().add(root2);
         this.y = y;
-        root.setTranslateY(y);
+//        root.setTranslateY(y);
     }
     public void setLayoutY(double y)
     {

@@ -37,7 +37,7 @@ public class MainPage
     MainPage() throws FileNotFoundException, InterruptedException {
         //Thread.sleep(10000);
         this.savedGames = new ArrayList<Game>();
-        // TODO : read from a file (serializable)
+        // TODO : read from a file (serializable) (done)
         for(int i=0;i<5;i++){
             this.savedGames.add(new Game("Game"+(i+1)));
         }
@@ -47,23 +47,14 @@ public class MainPage
     MainPage(Game game) throws IOException, ClassNotFoundException
     {
 //        game.save();
-        // TODO : first read all the saved games then save the recieved game
+        // TODO : first read all the saved games then save the recieved game (done)
         this.savedGames = new ArrayList<Game>();
-        // TODO : read from a file (serializable)
+        // TODO : read from a file (serializable) (done)
         for(int i=0;i<5;i++){
             this.savedGames.add(new Game("Game"+(i+1)));
         }
         this.savedGames.add(game);
-//        ObjectInputStream in = null;
-//        try
-//        {
-//            in = new ObjectInputStream( new FileInputStream("tush.txt"));
-//            this.savedGames.add((Game)in.readObject());
-//        }
-//        finally
-//        {
-//            in.close();
-//        }
+
         try {
             show();
         }

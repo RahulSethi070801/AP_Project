@@ -172,6 +172,7 @@ class Ring extends Obstacle implements Blast
     }
     public void show(long y)
     {
+//        y+=400;
         Arc arc11 = new Arc(700, 400+y, 110, 110, 0, 90);
         arc11.setType(ArcType.ROUND);
         arc11.setFill(Color.VIOLET);

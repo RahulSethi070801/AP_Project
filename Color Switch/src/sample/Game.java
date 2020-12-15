@@ -110,7 +110,7 @@ public class Game implements Serializable {
 //    ArrayList<Integer> starsSerialzable;
 //    ArrayList<Integer> colorSwitchesSerializable;
 
-    // TODO : Add difficulty -> Tushar DONE
+    // TODO : Add difficulty -> Tushar DONE (under review)
     // TODO : Add revive -> Tushar DONE
     // TODO : beautify pause menu -> Tushar nad Rahul DONE
     // TODO : animation on collision -> Rahul
@@ -201,6 +201,7 @@ public class Game implements Serializable {
         System.out.println(scene2+" scene2 new");
         show();
     }
+
     Game(Game game) throws FileNotFoundException, IOException, ClassNotFoundException
     {
 //        root = new Group();
@@ -255,7 +256,7 @@ public class Game implements Serializable {
         else
             o = new Ring();
         o.show(y);
-
+        System.out.println(o.y+" "+o.getClass());
         obstacles.add(o);
         Group root_square = o.getRoot();
         root.getChildren().add(root_square);
@@ -266,10 +267,11 @@ public class Game implements Serializable {
             root_list.add(star.getRoot());
             stars.add(star);
         }
-        root.getChildren().add(colorswitch.show(y-500));
+        root.getChildren().add(colorswitch.show(y-250));
         root_list.add(colorswitch.getRoot());
         colorSwitches.add(colorswitch);
-        y-=1000;
+
+        y-=500;
 //        return y;
     }
 
@@ -449,7 +451,7 @@ public class Game implements Serializable {
                 int ind=-1;
                 for(int k=0;k<obstacles.size();k++)
                 {
-                    double diff = ball.getLayY()-obstacles.get(k).getLayoutY();
+                    double diff = ball.getLayY()-obstacles.get(k).getLayoutY()-root_list.get(root_list.indexOf(obstacles.get(k).getRoot())).getLayoutY();
                     if (diff<minDis) {
                         minDis = diff;
                         ind = k;
@@ -457,14 +459,21 @@ public class Game implements Serializable {
                 }
                 //System.out.println("after for revive");
 
+                System.out.println(ind + " ind");
                 if(obstacles.get(ind).getLayoutY()>400)
                 {
-                    for(int k=0;k<ind-1;k++) {
+                    for(int k=0;k<ind;k++) {
+//                        System.out.println("removing "+obstacles.get(0));
+                        root.getChildren().remove(obstacles.get(0).getRoot());
+                        root_list.remove(obstacles.get(0).getRoot());
                         obstacles.remove(0);
                     }
                 }
                 else{
-                    for(int k=0;k<ind;k++) {
+                    for(int k=0;k<=ind;k++) {
+//                        System.out.println("removing "+obstacles.get(0));
+                        root.getChildren().remove(obstacles.get(0).getRoot());
+                        root_list.remove(obstacles.get(0).getRoot());
                         obstacles.remove(0);
                     }
                 }
@@ -646,7 +655,7 @@ public class Game implements Serializable {
             for (int i = 0; i < root_list.size(); i++) {
                 double dey = root_list.get(i).getLayoutY();
 //                System.out.println(dey + " dey");
-                root_list.get(i).setLayoutY(dey + 5);
+                root_list.get(i).setLayoutY(dey + 2);
             }
         }
     }

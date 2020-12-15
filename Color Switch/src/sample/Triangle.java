@@ -218,7 +218,7 @@ class Triangle extends Obstacle implements Blast
         Rotate r = new Rotate();
         root.getTransforms().add(r);
         r.setPivotX(317.3+380);
-        r.setPivotY(y);
+        r.setPivotY(y-400);
 
         this.y = y;
 //        root.setTranslateY(y);
