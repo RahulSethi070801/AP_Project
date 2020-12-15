@@ -107,4 +107,8 @@ public class Ball
     {
         return this.ball.localToScene(this.ball.getBoundsInLocal());
     }
+
+    public Object getFill() {
+        return this.ball.getFill();
+    }
 }
