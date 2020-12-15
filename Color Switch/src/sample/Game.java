@@ -47,15 +47,15 @@ public class Game implements Serializable {
     // serializable objects
     transient Group root;
     transient Scene scene2;
-    transient ArrayList<Obstacle> obstacles;
-    transient ArrayList<Star> stars;
-    
+    ArrayList<Obstacle> obstacles;
+    ArrayList<Star> stars;
+    ArrayList<ColorSwitch> colorSwitches;
+    ArrayList<Group> root_list = new ArrayList<Group>();
+
     transient Text text1;
     // transient double g = 1500;
     //  double speed = 0.0;
-    transient ArrayList<ColorSwitch> colorSwitches;
     transient Ball ball;
-    transient ArrayList<Group> root_list = new ArrayList<Group>();
     transient AnimationTimer t;
     transient AnimationTimer at;
     // serializable objects
@@ -121,13 +121,21 @@ public class Game implements Serializable {
     {
         try
         {
-            new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, name));
+            new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, name, colorSwitches, root_list));
         }
         catch(Exception exception){}
     }
 
-    Game( Group root, Scene scene, ArrayList<Obstacle> obstacles,
-          ArrayList<Star> stars, User user, long score, long difficulty, String name)
+    Game( Group root,
+          Scene scene,
+          ArrayList<Obstacle> obstacles,
+          ArrayList<Star> stars,
+          User user,
+          long score,
+          long difficulty,
+          String name,
+          ArrayList<ColorSwitch> colorSwitches,
+          ArrayList<Group> root_list)
     {
         this.root=root;
         this.scene2=scene;
@@ -137,7 +145,8 @@ public class Game implements Serializable {
         this.score = score;
         this.difficulty = difficulty;
         this.name = name;
-
+        this.root_list=root_list;
+        this.colorSwitches = colorSwitches;
     }
 
     Game() throws FileNotFoundException, IOException, ClassNotFoundException
@@ -148,6 +157,8 @@ public class Game implements Serializable {
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
         this.obstacles = new ArrayList<Obstacle>();
+        System.out.println(root+" root new");
+        System.out.println(scene2+" scene2 new");
         show();
     }
 
@@ -214,8 +225,10 @@ public class Game implements Serializable {
 
     public void play() throws FileNotFoundException, IOException, ClassNotFoundException
     {
-        Main.stage.setScene(scene2);
+        Main.stage.setScene(this.scene2);
         Main.stage.setFullScreen(true);
+        System.out.println(root+" root saved");
+        System.out.println(scene2+" scene2 saved");
         this.show();
     }
 
@@ -336,121 +349,9 @@ public class Game implements Serializable {
             if (obstacles.get(i).blast(ball_c))
             {
                 explode(ball);
-                //revive();
-//                if(score>=0) {
-//                    t.stop();
-//                    root.setEffect(new GaussianBlur());
-////                    System.out.println("REviev");
-//                    HBox pauseRoot = new HBox(40);
-//                    pauseRoot.setFillHeight(true);
-//                    String  style= getClass().getResource("styles.css").toExternalForm();
-//                    pauseRoot.getStylesheets().add(style);
-//                    Label label = new Label("Revive");
-//                    label.setId("paused");
-//                    pauseRoot.setId("menu");
-//                    pauseRoot.getChildren().add(label);
-//                    pauseRoot.setAlignment(Pos.CENTER);
-//                    pauseRoot.setPadding(new Insets(20));
-//
-//                    Button revive = new Button("Revive");
-//                    Button restart = new Button("Restart ");
-//                    Button exit=new Button("Exit");
-//                    revive.setId("resume");
-//                    restart.setId("save");
-//                    exit.setId("exit");
-//                    pauseRoot.getChildren().add(revive);
-//                    pauseRoot.getChildren().add(exit);
-//                    pauseRoot.getChildren().add(restart);
-//                    Stage popupStage = new Stage(StageStyle.TRANSPARENT);
-//                    popupStage.initOwner(Main.stage);
-//                    popupStage.initModality(Modality.APPLICATION_MODAL);
-//                    popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
-//
-//                    revive.setOnAction(event -> {
-//                        root.setEffect(null);
-////                    timeline.play();
-//                        score-=1;
-//                        double minDis=100000;
-//                        int ind=-1;
-//                        for(int k=0;k<obstacles.size();k++)
-//                        {
-//                            double diff = ball.getLayY()-obstacles.get(k).getLayoutY();
-//                            if (diff<minDis) {
-//                                minDis = diff;
-//                                ind = k;
-//                            }
-//                        }
-//
-//                        if(obstacles.get(ind).getLayoutY()>400)
-//                        {
-//                            for(int k=0;k<ind-1;k++) {
-//                                obstacles.remove(0);
-//                            }
-//                        }
-//                        else{
-//                            for(int k=0;k<ind;k++) {
-//                                obstacles.remove(0);
-//                            }
-//                        }
-//                        text1.setText(String.valueOf(score));
-//                        ball.setLayY(711);
-//                        popupStage.hide();
-//                        t.start();
-//                    });
-//
-//                    restart .setOnAction(event -> {
-//                        root.setEffect(null);
-////                    timeline.play();
-//                        try {
-//                            popupStage.hide();
-//                            new Game();
-//                        }
-//                        catch(Exception e)
-//                        {
-//                        }
-//                        popupStage.hide();
-//
-//                    });
-//                    exit.setOnAction(event -> {
-//                        root.setEffect(null);
-////                    timeline.play();
-//                        popupStage.hide();
-//                        try {
-//                            new MainPage();
-//                        } catch (FileNotFoundException | InterruptedException ex) {
-//                            ex.printStackTrace();
-//                        }
-////                        System.exit(0);
-//                    });
-//                    popupStage.show();
-//                }
-//                else {
-//                    root.setEffect(null);
-////                    timeline.play();
-////                    popupStage.hide();
-//                    t.stop();
-//                    try {
-//                        new MainPage();
-//                    } catch (FileNotFoundException | InterruptedException ex) {
-//                        ex.printStackTrace();
-//                    }
-//
-//                    System.out.println("qwebo");
-//                    System.exit(0);
-//                    root.setEffect(null);
-////                    timeline.play();
-//                    try {
-////                        popupStage.hide();
-//                        new Game();
-//                    }
-//                    catch(Exception e)
-//                    {
-//                    }
-//                    popupStage.hide();
             }
         }
     }
-
 
     public void revive()
     {
@@ -684,6 +585,8 @@ public class Game implements Serializable {
 
     public void scroll()
     {
+        System.out.println("Scroll - root_list.size="+root_list.size()+" "+root_list);
+        System.out.println("Scroll - colorSwitches.size="+colorSwitches.size());
         if(ball.getLayY()<375) {
             for (int i = 0; i < root_list.size(); i++) {
                 double dey = root_list.get(i).getLayoutY();
@@ -788,25 +691,16 @@ public class Game implements Serializable {
                 root.setEffect(new GaussianBlur());
 
                 HBox pauseRoot = new HBox(40);
-
-
                 String  style= getClass().getResource("styles.css").toExternalForm();
                 pauseRoot.getStylesheets().add(style);
-//                pauseRoot.getStylesheets().add(getClass().getResource(localDir+"styles.css").toExternalForm());
-
                 pauseRoot.setFillHeight(true);
                 Label paused = new Label("Paused");
                 paused.setId("paused");
                 pauseRoot.getChildren().add(paused);
-//                pauseRoot.setStyle(
-//
-//                );
                 pauseRoot.setId("menu");
                 pauseRoot.setAlignment(Pos.CENTER);
                 pauseRoot.setPadding(new Insets(20));
-
                 pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
-
                 Button resume = new Button("Resume");
                 Button exit=new Button("Exit");
                 Button save_game=new Button("Save and exit");
@@ -819,11 +713,11 @@ public class Game implements Serializable {
                 pauseRoot.getChildren().add(resume);
                 pauseRoot.getChildren().add(exit);
                 pauseRoot.getChildren().add(save_game);
+
                 Stage popupStage = new Stage(StageStyle.TRANSPARENT);
                 popupStage.initOwner(Main.stage);
                 popupStage.initModality(Modality.APPLICATION_MODAL);
                 popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
-
                 popupStage.setX(500);
                 popupStage.setY(300);
                 resume.setOnAction(event -> {
@@ -893,6 +787,15 @@ public class Game implements Serializable {
     public void save() throws IOException, ClassNotFoundException
     {
 
+        try {
+            System.out.println(this.obstacles.size());
+            System.out.println(this.stars.size());
+            System.out.println(root_list);
+            System.out.println(colorSwitches.size());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         ObjectOutputStream out = null;
         try
         {

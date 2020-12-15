@@ -156,6 +156,7 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
 
         root.getChildren().add(root2);
         root.getChildren().add(root1);
+        this.y = this.root.getLayoutY();
 
         rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(4000));

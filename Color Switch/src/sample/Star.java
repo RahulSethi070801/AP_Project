@@ -12,6 +12,7 @@ import java.io.Serializable;
 public class Star implements Serializable {
 
     transient Group root;
+    double y;
     public Group  show(double x, double y) throws FileNotFoundException
     {
         String localDir = System.getProperty("user.dir");
@@ -24,6 +25,7 @@ public class Star implements Serializable {
         imageView3.setFitWidth(50);
         imageView3.setPreserveRatio(true);
         root = new Group(imageView3);
+        this.y = this.root.getLayoutY();
         return root;
     }
     public Group getRoot()
@@ -33,10 +35,12 @@ public class Star implements Serializable {
 
     public void setLayoutY(double y)
     {
+        this.y = y;
         root.setLayoutY(y);
     }
     public double getLayoutY()
     {
+        this.y = this.root.getLayoutY();
         return root.getLayoutY();
     }
 }

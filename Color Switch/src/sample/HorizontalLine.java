@@ -94,8 +94,9 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         line3.setStroke(Color.rgb(50, 219, 240));
         line4.setStroke(Color.rgb(255, 1, 129));
 
-        Group root = new Group();
+        root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
+        this.y = this.root.getLayoutY();
 
         translateTransition1 = new TranslateTransition();
         translateTransition1.setDuration(Duration.millis(5000));
@@ -138,6 +139,7 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
     }
     public void setLayoutY(double y)
     {
+        this.y = y;
         this.root.setLayoutY(y);
     }
     public void setLayoutX(double x)
@@ -146,6 +148,7 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
     }
     public double getLayoutY()
     {
+        this.y = root.getLayoutY();
         return this.root.getLayoutY();
     }
     public double getLayoutX()

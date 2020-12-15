@@ -32,9 +32,11 @@ import java.util.Random;
 
 public class Ball
 {
-    Group root;
-    Circle ball;
-    Color color;
+    transient Group root;
+    transient Circle ball;
+    transient Color color;
+    double y;
+    String colorString;
 
     public Color getColor() {
         return color;
@@ -79,22 +81,26 @@ public class Ball
 
         root.getChildren().add(this.ball);
 
+        this.y = root.getLayoutY();
         return ball;
 
     }
 
     public void setLayoutY(double y)
     {
+        this.y=y;
         this.ball.setLayoutY(this.ball.getLayoutY()+y);
     }
 
     public void setLayY(double y)
     {
+        this.y=y;
         this.ball.setLayoutY(y);
     }
 
     public double getLayY()
     {
+        this.y=this.ball.getLayoutY();
         return this.ball.getLayoutY();
     }
 

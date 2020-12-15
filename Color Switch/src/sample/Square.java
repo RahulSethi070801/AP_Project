@@ -193,7 +193,7 @@ class Square extends Obstacle implements Blast, Serializable
 
         this.root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
-
+        this.y = this.root.getLayoutY();
         // System.out.println(root);
         rotateTransition = new RotateTransition();
         rotateTransition.setDuration(Duration.millis(5000));
