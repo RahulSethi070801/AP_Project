@@ -63,66 +63,6 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
         return false;
     }
 
-//    public void blast(Circle ball)
-//    {
-//        if (isCollide(ball, shape1))
-//        {
-//            if (ball.getFill().equals(shape1.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape2))
-//        {
-//            if (ball.getFill().equals(shape2.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape3))
-//        {
-//            if (ball.getFill().equals(shape3.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape4))
-//        {
-//            if (ball.getFill().equals(shape4.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape5))
-//        {
-//            if (ball.getFill().equals(shape5.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape6))
-//        {
-//            if (ball.getFill().equals(shape6.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape7))
-//        {
-//            if (ball.getFill().equals(shape7.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape8))
-//        {
-//            if (ball.getFill().equals(shape8.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//    }
-
     public void explode()
     {
         final int size = 400;
@@ -137,17 +77,7 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
             delays[i] = (long) (Math.random()*duration);
             angles[i] = 2 * Math.PI * random.nextDouble();
         }
-//        stage.setScene(new Scene(new Pane(rectangles), 500, 500, Color.BLACK));
-//        stage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
-//        stage.show();
-
-//        Group root1 = new Group(rectangles);
-//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
-//        Main.stage.setScene(scene3);
-//        Main.stage.setFullScreen(true);
-        //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
         show(100);
-        //root.getChildren().add(root1);
 
         new AnimationTimer() {
             @Override
@@ -171,10 +101,6 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
             }
         }.start();
 
-//        Group root1 = new Group(rectangles);
-//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
-//        Main.stage.setScene(scene3);
-//        Main.stage.setFullScreen(true);
 
     }
 
@@ -186,73 +112,51 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
     {
         Arc arc11 = new Arc(700, 400+y, 150, 150, 0, 90);
         arc11.setType(ArcType.ROUND);
-//        arc11.setFill(Color.VIOLET);
 
         Arc arc12 = new Arc(700, 400+y, 130, 130, 0, 90);
         arc12.setType(ArcType.ROUND);
-//        arc12.setFill(Color.VIOLET);
 
         Arc arc13 = new Arc(700, 400+y, 110, 110, 0, 90);
         arc13.setType(ArcType.ROUND);
-//        arc13.setFill(Color.VIOLET);
 
         Arc arc14 = new Arc(700, 400+y, 90, 90, 0, 90);
         arc14.setType(ArcType.ROUND);
-//        arc14.setFill(Color.VIOLET);
-
-
 
         Arc arc21 = new Arc(700, 400+y, 150, 150, 90, 90);
         arc21.setType(ArcType.ROUND);
-//        arc21.setFill(Color.BLUE);
 
         Arc arc22 = new Arc(700, 400+y, 130, 130, 90, 90);
         arc22.setType(ArcType.ROUND);
-//        arc22.setFill(Color.BLUE);
 
         Arc arc23 = new Arc(700, 400+y, 110, 110, 90, 90);
         arc23.setType(ArcType.ROUND);
-//        arc23.setFill(Color.BLUE);
 
         Arc arc24 = new Arc(700, 400+y, 90, 90, 90, 90);
         arc24.setType(ArcType.ROUND);
-//        arc24.setFill(Color.BLUE);
-
-
 
         Arc arc31 = new Arc(700, 400+y, 150, 150, 180, 90);
         arc31.setType(ArcType.ROUND);
-//        arc31.setFill(Color.RED);
 
         Arc arc32 = new Arc(700, 400+y, 130, 130, 180, 90);
         arc32.setType(ArcType.ROUND);
-//        arc32.setFill(Color.RED);
 
         Arc arc33 = new Arc(700, 400+y, 110, 110, 180, 90);
         arc33.setType(ArcType.ROUND);
-//        arc33.setFill(Color.RED);
 
         Arc arc34 = new Arc(700, 400+y, 90, 90, 180, 90);
         arc34.setType(ArcType.ROUND);
-//        arc34.setFill(Color.RED);
-
-
 
         Arc arc41 = new Arc(700, 400+y, 150, 150, 270, 90);
         arc41.setType(ArcType.ROUND);
-//        arc41.setFill(Color.YELLOW);
 
         Arc arc42 = new Arc(700, 400+y, 130, 130, 270, 90);
         arc42.setType(ArcType.ROUND);
-//        arc42.setFill(Color.YELLOW);
 
         Arc arc43 = new Arc(700, 400+y, 110, 110, 270, 90);
         arc43.setType(ArcType.ROUND);
-//        arc43.setFill(Color.YELLOW);
 
         Arc arc44 = new Arc(700, 400+y, 90, 90, 270, 90);
         arc44.setType(ArcType.ROUND);
-//        arc44.setFill(Color.YELLOW);
 
         shape1 = Shape.subtract(arc11, arc12);
         shape1.setFill(Color.rgb(144, 13, 255));
@@ -277,7 +181,6 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
 
         this.y = y;
         rotateTransition = new RotateTransition();
-        //rotate.setAxis(Rotate.Z_AXIS);
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
@@ -286,8 +189,6 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.setNode(root);
         rotateTransition.play();
-
-
     }
     public void setLayoutY(double y)
     {

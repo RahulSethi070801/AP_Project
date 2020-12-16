@@ -460,9 +460,9 @@ public class Game implements Serializable {
                 //System.out.println("after for revive");
 
                 System.out.println(ind + " ind");
-                if(obstacles.get(ind).getLayoutY()>400)
+                if(obstacles.get(ind).getLayoutY()+root_list.get(root_list.indexOf(obstacles.get(ind).getRoot())).getLayoutY()>400)
                 {
-                    for(int k=0;k<ind;k++) {
+                    for(int k=0;k<=ind;k++) {
 //                        System.out.println("removing "+obstacles.get(0));
                         root.getChildren().remove(obstacles.get(0).getRoot());
                         root_list.remove(obstacles.get(0).getRoot());
@@ -470,7 +470,7 @@ public class Game implements Serializable {
                     }
                 }
                 else{
-                    for(int k=0;k<=ind;k++) {
+                    for(int k=0;k<ind;k++) {
 //                        System.out.println("removing "+obstacles.get(0));
                         root.getChildren().remove(obstacles.get(0).getRoot());
                         root_list.remove(obstacles.get(0).getRoot());
@@ -512,7 +512,6 @@ public class Game implements Serializable {
         }
         else {
             root.setEffect(null);
-
             t.stop();
             try {
                 new MainPage();
@@ -649,8 +648,6 @@ public class Game implements Serializable {
 
     public void scroll()
     {
-//        System.out.println("Scroll - root_list.size="+root_list.size()+" "+root_list);
-//        System.out.println("Scroll - colorSwitches.size="+colorSwitches.size());
         if(ball.getLayY()<375) {
             for (int i = 0; i < root_list.size(); i++) {
                 double dey = root_list.get(i).getLayoutY();
@@ -725,9 +722,9 @@ public class Game implements Serializable {
 //        int counter = 0;
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.Q) {
-                final int ctr=counter;
-                System.out.println("UP"+ctr);
-                counter++;
+//                final int ctr=counter;
+//                System.out.println("UP"+ctr);
+//                counter++;
                 tapBall();
             }
         });
