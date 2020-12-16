@@ -40,7 +40,7 @@ class Triangle extends Obstacle implements Blast
 
     public Group getRoot()
     {
-        System.out.println("Tri");
+//        System.out.println("Tri");
         return root;
     }
 
