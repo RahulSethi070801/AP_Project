@@ -44,7 +44,7 @@ public class SavedGames
                 // Do something with child
                 String name[] = child.getName().split("\\.",0);
                 try {
-                    if (name[1].equals("txt")) {
+                    if (name.length>1 && name[1].equals("txt")) {
 //                    String localDir = System.getProperty("user.dir");
 //                    System.out.println(localDir+"\\star.wav");
                     String localDir = System.getProperty("user.dir");

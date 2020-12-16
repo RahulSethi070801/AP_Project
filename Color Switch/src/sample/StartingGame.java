@@ -40,7 +40,6 @@ class StartingGame
 
     public Group getRoot()
     {
-
         return root;
     }
 
@@ -115,7 +114,7 @@ class StartingGame
         //circle.setStrokeWidth(5.0f);
         //circle.setStroke(Color.BLACK);
 
-        Circle circle1 = new Circle(700, 500, 75);
+        Circle circle1 = new Circle(700, 500, 65);
         circle1.setFill(Color.rgb(0, 0, 0));
         //circle1.setStrokeWidth(5.0f);
         //circle1.setStroke(Color.BLACK);

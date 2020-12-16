@@ -404,6 +404,11 @@ public class Game implements Serializable {
 //            System.out.println(this.obstacles.get(i)+" obstacle "+this.obstacles.get(i).getLayoutY());
             if (obstacles.get(i).blast(ball_c))
             {
+                String localDir = System.getProperty("user.dir");
+                String path = localDir+"\\dead.wav";
+                Media media = new Media(new File(path).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setAutoPlay(true);
                 explode(ball);
             }
         }
