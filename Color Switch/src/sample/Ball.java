@@ -36,15 +36,18 @@ public class Ball
     transient Circle ball;
     transient Color color;
     double y;
+    double x;
     String colorString;
 
-    Ball(double y)
+    Ball(double x, double y)
     {
         this.y = y;
+        this.x = x;
     }
 
     Ball()
     {
+        this.x = 688;
         this.y = 700;
     }
 
@@ -88,7 +91,7 @@ public class Ball
 
         ball = new Circle(10, Color.rgb(144, 13, 255));
         //real_ball.setColor(Color.rgb(144, 13, 255));
-        ball.relocate(688, y);
+        ball.relocate(x, y);
 
         root.getChildren().add(this.ball);
 

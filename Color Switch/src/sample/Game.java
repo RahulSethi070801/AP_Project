@@ -206,9 +206,11 @@ public class Game implements Serializable {
     {
 //        root = new Group();
         game.root = new Group();
-        game.scene2 = new Scene(game.root, 800, 800, Color.BLACK);
+        game.scene2 = new Scene(game.root, 1600, 1050, Color.BLACK);
         Main.stage.setScene(game.scene2);
-        Main.stage.setFullScreen(true);
+        Main.stage.setX(-25);
+        Main.stage.setY(-35);
+//        Main.stage.setFullScreen(true);
 //        this.obstacles = new ArrayList<Obstacle>();
 //        game.show();
     }

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
@@ -86,9 +87,18 @@ public class MainPage
     public void show() throws FileNotFoundException, InterruptedException {
         root = new Group();
 
+        FadeTransition fadeTransition1 = new FadeTransition();
+        fadeTransition1.setDuration(Duration.millis(2000));
+        fadeTransition1.setNode(root);
+        fadeTransition1.setFromValue(0);
+        fadeTransition1.setToValue(1);
+        fadeTransition1.play();
+
         System.out.println(Main.stage);
-        Main.stage.setScene(new Scene(root, 800, 800, Color.BLACK));
-        Main.stage.setFullScreen(true);
+        Main.stage.setScene(new Scene(root, 1600, 1050, Color.BLACK));
+        Main.stage.setX(-25);
+        Main.stage.setY(-35);
+        //Main.stage.setFullScreen(true);
 
         Heading hd = new Heading();
         hd.show();
