@@ -38,6 +38,16 @@ public class Ball
     double y;
     String colorString;
 
+    Ball(double y)
+    {
+        this.y = y;
+    }
+
+    Ball()
+    {
+        this.y = 700;
+    }
+
 //    double y;
     public Color getColor() {
         return color;
@@ -78,7 +88,7 @@ public class Ball
 
         ball = new Circle(10, Color.rgb(144, 13, 255));
         //real_ball.setColor(Color.rgb(144, 13, 255));
-        ball.relocate(688, 700);
+        ball.relocate(688, y);
 
         root.getChildren().add(this.ball);
 

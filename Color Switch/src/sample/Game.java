@@ -404,6 +404,11 @@ public class Game implements Serializable {
 //            System.out.println(this.obstacles.get(i)+" obstacle "+this.obstacles.get(i).getLayoutY());
             if (obstacles.get(i).blast(ball_c))
             {
+                String localDir = System.getProperty("user.dir");
+                String path = localDir+"\\dead.wav";
+                Media media = new Media(new File(path).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setAutoPlay(true);
                 explode(ball);
             }
         }
@@ -621,15 +626,15 @@ public class Game implements Serializable {
         root.getChildren().add(root3);
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
-        EventHandler<ActionEvent> punar_janam = actionEvent ->
-        {
-            for(Node i : root3.getChildren())
-            {
-                root3.getChildren().remove(i);
-            }
-            //t.stop();
-        };
-        sq.setOnFinished(punar_janam);
+//        EventHandler<ActionEvent> punar_janam = actionEvent ->
+//        {
+//            for(Node i : root3.getChildren())
+//            {
+//                root3.getChildren().remove(i);
+//            }
+//            //t.stop();
+//        };
+//        sq.setOnFinished(punar_janam);
 
         //sq.setOnFinished(actionEvent -> revive());
     }
