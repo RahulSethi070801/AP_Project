@@ -19,13 +19,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.*;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.io.*;
+
 public class SavedGames
 {
     Group root;
@@ -45,10 +45,8 @@ public class SavedGames
                 String name[] = child.getName().split("\\.",0);
                 try {
                     if (name.length>1 && name[1].equals("txt")) {
-//                    String localDir = System.getProperty("user.dir");
-//                    System.out.println(localDir+"\\star.wav");
-                    String localDir = System.getProperty("user.dir");
-                    System.out.println(new ObjectInputStream(new FileInputStream((localDir+"\\"+name[0]+".txt"))));
+                        String localDir = System.getProperty("user.dir");
+                        // System.out.println(new ObjectInputStream(new FileInputStream((localDir+"\\"+name[0]+".txt"))));
                         in = new ObjectInputStream(new FileInputStream((localDir+"\\"+name[0]+".txt")));
                         this.games.add((Game)in.readObject());
                         System.out.println(games.get(games.size()-1).name);

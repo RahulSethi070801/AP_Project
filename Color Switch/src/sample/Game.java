@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -422,13 +423,13 @@ public class Game implements Serializable {
             //System.out.println("starting");
             t.stop();
             root.setEffect(new GaussianBlur());
-//                    System.out.println("REviev");
-            HBox pauseRoot = new HBox(40);
-            pauseRoot.setFillHeight(true);
+            VBox pauseRoot = new VBox(40);
+            pauseRoot.setFillWidth(true);
             String  style= getClass().getResource("styles.css").toExternalForm();
             pauseRoot.getStylesheets().add(style);
-            Label label = new Label("Revive");
+            Label label = new Label("Game Over");
             label.setId("paused");
+            label.setEffect(new DropShadow(20,Color.BLACK));
             pauseRoot.setId("menu");
             pauseRoot.getChildren().add(label);
             pauseRoot.setAlignment(Pos.CENTER);
@@ -440,14 +441,20 @@ public class Game implements Serializable {
             revive.setId("resume");
             restart.setId("save");
             exit.setId("exit");
+            revive.setEffect(new DropShadow(20, Color.BLACK));
+            restart.setEffect(new DropShadow(20, Color.BLACK));
+            exit.setEffect(new DropShadow(20, Color.BLACK));
             pauseRoot.getChildren().add(revive);
             pauseRoot.getChildren().add(exit);
             pauseRoot.getChildren().add(restart);
+            pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
             Stage popupStage = new Stage(StageStyle.TRANSPARENT);
             popupStage.initOwner(Main.stage);
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
 
+            popupStage.setX(500);
+            popupStage.setY(250);
             revive.setOnAction(event -> {
                 join(ball);
 
@@ -467,9 +474,9 @@ public class Game implements Serializable {
                 //System.out.println("after for revive");
 
                 System.out.println(ind + " ind");
-                if(obstacles.get(ind).getLayoutY()>400)
+                if(obstacles.get(ind).getLayoutY()+root_list.get(root_list.indexOf(obstacles.get(ind).getRoot())).getLayoutY()>400)
                 {
-                    for(int k=0;k<ind;k++) {
+                    for(int k=0;k<=ind;k++) {
 //                        System.out.println("removing "+obstacles.get(0));
                         root.getChildren().remove(obstacles.get(0).getRoot());
                         root_list.remove(obstacles.get(0).getRoot());
@@ -477,7 +484,7 @@ public class Game implements Serializable {
                     }
                 }
                 else{
-                    for(int k=0;k<=ind;k++) {
+                    for(int k=0;k<ind;k++) {
 //                        System.out.println("removing "+obstacles.get(0));
                         root.getChildren().remove(obstacles.get(0).getRoot());
                         root_list.remove(obstacles.get(0).getRoot());
@@ -519,7 +526,6 @@ public class Game implements Serializable {
         }
         else {
             root.setEffect(null);
-
             t.stop();
             try {
                 new MainPage();
@@ -656,8 +662,6 @@ public class Game implements Serializable {
 
     public void scroll()
     {
-//        System.out.println("Scroll - root_list.size="+root_list.size()+" "+root_list);
-//        System.out.println("Scroll - colorSwitches.size="+colorSwitches.size());
         if(ball.getLayY()<375) {
             for (int i = 0; i < root_list.size(); i++) {
                 double dey = root_list.get(i).getLayoutY();
@@ -732,9 +736,9 @@ public class Game implements Serializable {
 //        int counter = 0;
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.Q) {
-                final int ctr=counter;
-                System.out.println("UP"+ctr);
-                counter++;
+//                final int ctr=counter;
+//                System.out.println("UP"+ctr);
+//                counter++;
                 tapBall();
             }
         });
@@ -774,11 +778,12 @@ public class Game implements Serializable {
                 t.stop();
                 root.setEffect(new GaussianBlur());
 
-                HBox pauseRoot = new HBox(40);
+                VBox pauseRoot = new VBox(40);
                 String  style= getClass().getResource("styles.css").toExternalForm();
                 pauseRoot.getStylesheets().add(style);
-                pauseRoot.setFillHeight(true);
+                pauseRoot.setFillWidth(true);
                 Label paused = new Label("Paused");
+                paused.setEffect(new DropShadow(20,Color.BLACK));
                 paused.setId("paused");
                 pauseRoot.getChildren().add(paused);
                 pauseRoot.setId("menu");
@@ -788,26 +793,29 @@ public class Game implements Serializable {
                 Button resume = new Button("Resume");
                 Button exit=new Button("Exit");
                 Button save_game=new Button("Save and exit");
+                Button restart = new Button("Restart ");
                 resume.setId("resume");
+                restart.setId("resume");
                 exit.setId("exit");
                 exit.setEffect(new DropShadow(20, Color.BLACK));
+                restart.setEffect(new DropShadow(20, Color.BLACK));
                 resume.setEffect(new DropShadow(20, Color.BLACK));
                 save_game.setEffect(new DropShadow(20, Color.BLACK));
                 save_game.setId("save");
                 pauseRoot.getChildren().add(resume);
-                pauseRoot.getChildren().add(exit);
+                pauseRoot.getChildren().add(restart);
                 pauseRoot.getChildren().add(save_game);
+                pauseRoot.getChildren().add(exit);
 
                 Stage popupStage = new Stage(StageStyle.TRANSPARENT);
                 popupStage.initOwner(Main.stage);
                 popupStage.initModality(Modality.APPLICATION_MODAL);
                 popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
                 popupStage.setX(500);
-                popupStage.setY(300);
+                popupStage.setY(250);
 
                 resume.setOnAction(event -> {
                     root.setEffect(null);
-//                    timeline.play();
                     t.start();
                     popupStage.hide();
                 });
@@ -838,6 +846,20 @@ public class Game implements Serializable {
                     } catch (FileNotFoundException | InterruptedException ex) {
                         ex.printStackTrace();
                     }
+                });
+                restart.setOnAction(event -> {
+                    root.setEffect(null);
+                    try {
+                        //System.out.println("restart");
+                        popupStage.hide();
+                        new Game();
+                    }
+                    catch(Exception ef)
+                    {
+                        System.out.println(ef);
+                    }
+                    popupStage.hide();
+
                 });
                 popupStage.show();
             }
