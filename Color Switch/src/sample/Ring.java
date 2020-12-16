@@ -67,110 +67,7 @@ class Ring extends Obstacle implements Blast
         return false;
     }
 
-//    public void blast(Circle ball)
-//    {
-//        //System.out.println("Ringggg");
-//        if (isCollide(ball, shape1))
-//        {
-////            System.out.println(ball.getColor());
-////            System.out.println(shape1.getFill());
-//            if (ball.getFill().equals(shape1.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//                //explode();
-//        }
-//        if (isCollide(ball, shape2))
-//        {
-////            System.out.println(ball.getColor());
-////            System.out.println(shape2.getFill());
-//            if (ball.getFill().equals(shape2.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//                //explode();
-//        }
-//        if (isCollide(ball, shape3))
-//        {
-////            System.out.println(ball.getColor());
-////            System.out.println(shape3.getFill());
-//            if (ball.getFill().equals(shape3.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//        if (isCollide(ball, shape4))
-//        {
-////            System.out.println(ball.getColor());
-////            System.out.println(shape4.getFill());
-//            if (ball.getFill().equals(shape4.getFill()))
-//                {}
-//            else
-//            {System.exit(0);}
-//        }
-//    }
-
-    public void explode()
-    {
-        System.out.println("explode");
-        final int size = 400;
-        final Rectangle[] rectangles = new Rectangle[size];
-        final long[] delays = new long[size];
-        final double[] angles = new double[size];
-        final double duration = Duration.seconds(3).toSeconds()*1000000;
-        final Random random = new Random();
-
-        for (int i = 0; i < size; i++) {
-            rectangles[i] = new Rectangle(5, 5, Color.hsb(random.nextInt(360), 1, 1));
-            delays[i] = (long) (Math.random()*duration);
-            angles[i] = 2 * Math.PI * random.nextDouble();
-        }
-//        stage.setScene(new Scene(new Pane(rectangles), 500, 500, Color.BLACK));
-//        stage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
-//        stage.show();
-
-//        Group root1 = new Group(rectangles);
-//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
-//        Main.stage.setScene(scene3);
-//        Main.stage.setFullScreen(true);
-        //scene3.getAccelerators().put(new KeyCodeCombination(KeyCode.ESCAPE), () -> System.exit(0));
-        show(100);
-        //root.getChildren().add(root1);
-
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-
-                final double width = 0.5 * 1200;//stage.getWidth();
-                final double height = 0.5 * 800;//stage.getHeight();
-                final double radius = Math.sqrt(2) * Math.max(width, height);
-
-                for (int i = 0; i < size; i++) {
-                    Rectangle r = rectangles[i];
-                    double angle = angles[i];
-                    double t = (now - delays[i]) % duration;
-                    double d = t*radius/duration;
-
-                    r.setOpacity((duration - t)/(double)duration);
-                    r.setTranslateX(Math.cos(angle)*d + width);
-                    r.setTranslateY(Math.sin(angle)*d + height);
-                }
-                root.getChildren().add(new Group(rectangles));
-            }
-        }.start();
-
-//        Group root1 = new Group(rectangles);
-//        Scene scene3 = new Scene(root1, 1200, 800, Color.BLACK);
-//        Main.stage.setScene(scene3);
-//        Main.stage.setFullScreen(true);
-
-    }
-
-    public void showSaved(long y)
-    {
-        show(y-400);
-    }
-    public void show(long y)
+    public void show(long y, long difficulty)
     {
 //        y+=400;
         Arc arc11 = new Arc(700, 400+y, 110, 110, 0, 90);
@@ -224,7 +121,8 @@ class Ring extends Obstacle implements Blast
 //        root.setTranslateY(y);
         this.y = y;
         rotateTransition = new RotateTransition();
-        rotateTransition.setDuration(Duration.millis(5000));
+        // rotateTransition.setDuration(Duration.millis(5000));
+        increaseDifficulty(rotateTransition, difficulty);
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
@@ -244,5 +142,11 @@ class Ring extends Obstacle implements Blast
     {
         this.y = y;
         this.root.setLayoutY(y);
+    }
+    public void increaseDifficulty(RotateTransition rt,  long difficulty)
+    {
+        rt.setDuration(Duration.millis(8000-difficulty));
+        // rt.setDuration(Duration.millis(8000-difficulty));
+        //duration-=difficulty;
     }
 }

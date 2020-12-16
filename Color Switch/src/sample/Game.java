@@ -67,19 +67,22 @@ public class Game implements Serializable {
     long y=0;
     String name;
     boolean newGame = true;
+    transient int ind = -1;
     public void setupGame()
     {
-
+        ind=-1;
         root_list = new ArrayList<Group>();
         System.out.println("starting obstacles");
+        System.out.println(obstacles);
         for(int i=0;i<obstacles.size();i++)
         {
             Obstacle o = obstacles.get(i);
 //            System.out.println("beofre "+o.y);
-            o.show((long)o.y);
+            o.show((long)o.y, difficulty);
+            difficulty+=500;
             root.getChildren().add(o.getRoot());
             root_list.add(o.getRoot());
-            System.out.println(obstacles.get(i).y+" "+obstacles.get(i).getClass());
+            System.out.println(obstacles.get(i).y+" "+obstacles.get(i)+" setup");
         }
         System.out.println("starting stars");
         for(int i=0;i<stars.size();i++)
@@ -166,6 +169,12 @@ public class Game implements Serializable {
     {
         try
         {
+            System.out.println("Before calling save");
+            System.out.println(obstacles);
+            for(int i=0;i<obstacles.size();i++)
+            {
+                System.out.println(obstacles.get(i).y+" "+obstacles.get(i)+" before saving");
+            }
             save();
             new MainPage();
         }
@@ -202,20 +211,6 @@ public class Game implements Serializable {
         System.out.println(scene2+" scene2 new");
         show();
     }
-
-    // Game(User user) throws FileNotFoundException, IOException, ClassNotFoundException
-    // {
-    //     this.name = "NEW GAME";
-    //     root = new Group();
-    //     scene2 = new Scene(root, 800, 800, Color.BLACK);
-    //     Main.stage.setScene(scene2);
-    //     Main.stage.setFullScreen(true);
-    //     this.obstacles = new ArrayList<Obstacle>();
-    //     System.out.println(root+" root new");
-    //     System.out.println(scene2+" scene2 new");
-    //     this.user = user;
-    //     show();
-    // }
 
     Game(Game game) throws FileNotFoundException, IOException, ClassNotFoundException
     {
@@ -254,10 +249,10 @@ public class Game implements Serializable {
         {
             o = new ConcentricCircles();
         }
-        else if(tempO[ind].equals("Triangle"))
-        {
-            o = new Triangle();
-        }
+//        else if(tempO[ind].equals("Triangle"))
+//        {
+//            o = new Triangle();
+//        }
 //        else if(tempO[ind].equals("Lines"))
 //        {
 //            o = new HorizontalLine();
@@ -272,7 +267,8 @@ public class Game implements Serializable {
         }
         else
             o = new Ring();
-        o.show(y);
+        o.show(y, difficulty);
+        difficulty -= 500;
         System.out.println(o.y+" "+o.getClass());
         obstacles.add(o);
         Group root_square = o.getRoot();
@@ -393,11 +389,11 @@ public class Game implements Serializable {
         if (isCollide(ball, stars.get(0).getRoot()))
         {
             //System.out.println("touch");
-            difficulty+=10;
-            for(int j=0;j<obstacles.size();j++)
-            {
-                obstacles.get(j).increaseDifficulty(difficulty);
-            }
+            difficulty+=1000;
+            // for(int j=0;j<obstacles.size();j++)
+            // {
+            //     obstacles.get(j).increaseDifficulty(difficulty);
+            // }
             root.getChildren().remove(stars.get(0).getRoot());
             root_list.remove(stars.get(0).getRoot());
             stars.remove(0);
@@ -426,6 +422,7 @@ public class Game implements Serializable {
                 Media media = new Media(new File(path).toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
                 mediaPlayer.setAutoPlay(true);
+                this.ind = i;
                 explode(ball);
             }
         }
@@ -476,35 +473,63 @@ public class Game implements Serializable {
 //                    timeline.play();
                 score-=1;
                 double minDis=100000;
-                int ind=-1;
-                for(int k=0;k<obstacles.size();k++)
-                {
-                    double diff = ball.getLayY()-obstacles.get(k).getLayoutY()-root_list.get(root_list.indexOf(obstacles.get(k).getRoot())).getLayoutY();
-                    if (diff<minDis) {
-                        minDis = diff;
-                        ind = k;
-                    }
-                }
-                //System.out.println("after for revive");
+//                int ind=-1;
+
+                System.out.println(ball.getLayY()+" ball y");
+
+//                for(int k=0;k<obstacles.size();k++)
+//                {
+//                    if(obstacles.get(k).y+root_list.get(root_list.indexOf(obstacles.get(k).getRoot())).getLayoutY()>=400)
+//                    {
+//                        ind = k;
+//                    }
+////                    double diff = ball.getLayY()-obstacles.get(k).y-root_list.get(root_list.indexOf(obstacles.get(k).getRoot())).getLayoutY();
+////                    System.out.println(diff+" distances");
+////                    if (diff<minDis) {
+////                        minDis = diff;
+////                        ind = k;
+////                    }
+//                }
 
                 System.out.println(ind + " ind");
-                if(obstacles.get(ind).getLayoutY()+root_list.get(root_list.indexOf(obstacles.get(ind).getRoot())).getLayoutY()>400)
+                if(ind >=0)
                 {
-                    for(int k=0;k<=ind;k++) {
-//                        System.out.println("removing "+obstacles.get(0));
+                    for(int i=0;i<=ind;i++){
+                        System.out.println("removing "+obstacles.get(0)+" "+obstacles.get(0).getClass()+" "+obstacles.get(i).y+" "+root_list.get(root_list.indexOf(obstacles.get(i).getRoot())).getLayoutY());
                         root.getChildren().remove(obstacles.get(0).getRoot());
                         root_list.remove(obstacles.get(0).getRoot());
                         obstacles.remove(0);
                     }
+                    ind=-1;
                 }
-                else{
-                    for(int k=0;k<ind;k++) {
-//                        System.out.println("removing "+obstacles.get(0));
-                        root.getChildren().remove(obstacles.get(0).getRoot());
-                        root_list.remove(obstacles.get(0).getRoot());
-                        obstacles.remove(0);
-                    }
-                }
+//                if(ind >=0 && obstacles.get(ind).y+root_list.get(root_list.indexOf(obstacles.get(ind).getRoot())).getLayoutY()>=400)
+//                {
+//                    System.out.println("if");
+//                    for(int k=0;k<=ind;k++) {
+////                        System.out.println("before removing "+obstacles.get(0));
+//                        root.getChildren().remove(obstacles.get(0).getRoot());
+//                        root_list.remove(obstacles.get(0).getRoot());
+//                        obstacles.remove(0);
+////                        System.out.println("after removing "+obstacles.get(0));
+//                    }
+//                }
+//                else if (ind>=0){
+//                    System.out.println("else");
+//                    for(int k=0;k<=ind;k++) {
+//                        if(obstacles.get(0).y+root_list.get(root_list.indexOf(obstacles.get(0).getRoot())).getLayoutY()>400) {
+//                            System.out.println("removing " + obstacles.get(0) + " " + obstacles.get(0).getClass());
+//                            root.getChildren().remove(obstacles.get(0).getRoot());
+//                            root_list.remove(obstacles.get(0).getRoot());
+//                            obstacles.remove(0);
+//                        }
+//                    }
+//                }
+//                System.out.println("after removeing obstacles");
+//                System.out.println(obstacles);
+//                for(int i=0;i<this.obstacles.size();i++)
+//                {
+//                    System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i)+" onscroll");
+//                }
                 text1.setText(String.valueOf(score));
                 ball.setLayY(711);
                 popupStage.hide();
@@ -706,7 +731,7 @@ public class Game implements Serializable {
             stars = new ArrayList<Star>();
             colorSwitches = new ArrayList<ColorSwitch>();
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 25; i++) {
                 addObstacle();
             }
         }
@@ -925,11 +950,13 @@ public class Game implements Serializable {
         try
         {
             out = new ObjectOutputStream( new FileOutputStream(name+".txt"));
+            System.out.println(obstacles);
             for(int i=0;i<this.obstacles.size();i++)
             {
+//                System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i)+" y before");
                 double temp = this.obstacles.get(i).y+this.root_list.get(this.root_list.indexOf(this.obstacles.get(i).getRoot())).getLayoutY();
                 this.obstacles.get(i).y = temp;
-                System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i).getClass());
+                System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i)+" saving ");
             }
             for(int i=0;i<this.stars.size();i++)
             {

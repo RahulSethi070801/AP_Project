@@ -63,52 +63,9 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
         return false;
     }
 
-    public void explode()
-    {
-        final int size = 400;
-        final Rectangle[] rectangles = new Rectangle[size];
-        final long[] delays = new long[size];
-        final double[] angles = new double[size];
-        final double duration = Duration.seconds(3).toSeconds()*1000000;
-        final Random random = new Random();
-
-        for (int i = 0; i < size; i++) {
-            rectangles[i] = new Rectangle(5, 5, Color.hsb(random.nextInt(360), 1, 1));
-            delays[i] = (long) (Math.random()*duration);
-            angles[i] = 2 * Math.PI * random.nextDouble();
-        }
-        show(100);
-
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-
-                final double width = 0.5 * 1200;//stage.getWidth();
-                final double height = 0.5 * 800;//stage.getHeight();
-                final double radius = Math.sqrt(2) * Math.max(width, height);
-
-                for (int i = 0; i < size; i++) {
-                    Rectangle r = rectangles[i];
-                    double angle = angles[i];
-                    double t = (now - delays[i]) % duration;
-                    double d = t*radius/duration;
-
-                    r.setOpacity((duration - t)/(double)duration);
-                    r.setTranslateX(Math.cos(angle)*d + width);
-                    r.setTranslateY(Math.sin(angle)*d + height);
-                }
-                root.getChildren().add(new Group(rectangles));
-            }
-        }.start();
-
-
-    }
-
-    public void showSaved(long y)
-    {
-        show(y-400);
-    }
-    public void show(long y)
+    
+    
+    public void show(long y,  long difficulty)
     {
         Arc arc11 = new Arc(700, 400+y, 150, 150, 0, 90);
         arc11.setType(ArcType.ROUND);
@@ -184,7 +141,8 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
-        rotateTransition.setDuration(Duration.millis(5000));
+        // rotateTransition.setDuration(Duration.millis(5000));
+        increaseDifficulty(rotateTransition, difficulty);
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.setNode(root);
@@ -207,5 +165,11 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
     public double getLayoutX()
     {
         return this.root.getLayoutX();
+    }
+    public void increaseDifficulty(RotateTransition rt,  long difficulty)
+    {
+        rt.setDuration(Duration.millis(8000-difficulty));
+        // rt.setDuration(Duration.millis(8000-difficulty));
+        //duration-=difficulty;
     }
 }

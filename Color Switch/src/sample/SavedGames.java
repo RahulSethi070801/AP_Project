@@ -132,18 +132,11 @@ public class SavedGames
                 public void handle(MouseEvent e) {
                     Game game = games.get(x-1);
                     System.out.println(game.name);
-                    System.out.println("Hello World"+x);
+//                    System.out.println("Hello World"+x);
                     try {
-                        System.out.println(game.obstacles.size());
-                        System.out.println(game.stars.size());
-                        System.out.println(game.score);
-                        System.out.println(game.difficulty);
-//                        System.out.println(game.colorSwitches.size());
                         game.newGame=false;
-//                        game.setupGame();
-                        System.out.println("HO gaya ");
                         new Game(game);
-                        System.out.println("qowue");
+                        System.out.println("Saved Game is initialized");
                         game.show();
 //                        game.play();
                     }
