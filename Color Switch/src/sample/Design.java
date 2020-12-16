@@ -136,23 +136,51 @@ public class Design
 
 
 
-        InputStream stream3 = new FileInputStream(localDir + "\\Speaker.png");
-        javafx.scene.image.Image image3 = new javafx.scene.image.Image(stream3);
+        InputStream stream31 = new FileInputStream(localDir + "\\Speaker.png");
+        javafx.scene.image.Image image31 = new javafx.scene.image.Image(stream31);
+        InputStream stream32 = new FileInputStream(localDir + "\\SpeakerMute.png");
+        javafx.scene.image.Image image32 = new javafx.scene.image.Image(stream32);
         ImageView imageView3 = new ImageView();
-        imageView3.setImage(image3);
+        imageView3.setImage(image31);
         imageView3.setX(1020);
         imageView3.setY(400);
         imageView3.setFitWidth(80);
         imageView3.setPreserveRatio(true);
 
-        InputStream stream4 = new FileInputStream(localDir +"\\Music.png");
-        javafx.scene.image.Image image4 = new Image(stream4);
+        EventHandler<MouseEvent> eventHandler3 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                if (imageView3.getImage() == image31)
+                    imageView3.setImage(image32);
+                else
+                    imageView3.setImage(image31);
+            }
+        };
+        //Registering the event filter
+        imageView3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler3);
+
+        InputStream stream41 = new FileInputStream(localDir +"\\Music.png");
+        javafx.scene.image.Image image41 = new Image(stream41);
+        InputStream stream42 = new FileInputStream(localDir +"\\Music.png");
+        javafx.scene.image.Image image42 = new Image(stream42);
         ImageView imageView4 = new ImageView();
-        imageView4.setImage(image4);
+        imageView4.setImage(image41);
         imageView4.setX(1007);
         imageView4.setY(500);
         imageView4.setFitWidth(110);
         imageView4.setPreserveRatio(true);
+
+        EventHandler<MouseEvent> eventHandler4 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                if (imageView4.getImage() == image41)
+                    imageView4.setImage(image42);
+                else
+                    imageView4.setImage(image41);
+            }
+        };
+        //Registering the event filter
+        imageView4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler4);
 
         Group root3 = new Group(imageView1, imageView2, imageView3, imageView4);
 
