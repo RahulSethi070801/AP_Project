@@ -33,7 +33,8 @@ public class Main extends Application {
     public static Stage stage;
     public static Stage stage2;
     public static boolean sound = true;
-
+    public static boolean newPage = true;
+    public static User user;
     public Main() {
         stage = new Stage();
         stage2 = new Stage();

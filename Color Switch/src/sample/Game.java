@@ -167,7 +167,7 @@ public class Game implements Serializable {
         try
         {
             save();
-            new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, name, colorSwitches, root_list));
+            new MainPage();
         }
         catch(Exception exception){
 
@@ -202,6 +202,20 @@ public class Game implements Serializable {
         System.out.println(scene2+" scene2 new");
         show();
     }
+
+    // Game(User user) throws FileNotFoundException, IOException, ClassNotFoundException
+    // {
+    //     this.name = "NEW GAME";
+    //     root = new Group();
+    //     scene2 = new Scene(root, 800, 800, Color.BLACK);
+    //     Main.stage.setScene(scene2);
+    //     Main.stage.setFullScreen(true);
+    //     this.obstacles = new ArrayList<Obstacle>();
+    //     System.out.println(root+" root new");
+    //     System.out.println(scene2+" scene2 new");
+    //     this.user = user;
+    //     show();
+    // }
 
     Game(Game game) throws FileNotFoundException, IOException, ClassNotFoundException
     {
@@ -502,6 +516,9 @@ public class Game implements Serializable {
                 try {
                     //System.out.println("restart");
                     popupStage.hide();
+                    Main.user.totalScore += score;
+                    if(Main.user.highestScore < score)
+                        Main.user.highestScore = score;
                     new Game();
                 }
                 catch(Exception e)
@@ -515,6 +532,9 @@ public class Game implements Serializable {
                 root.setEffect(null);
                 popupStage.hide();
                 try {
+                    Main.user.totalScore += score;
+                    if(Main.user.highestScore < score)
+                        Main.user.highestScore = score;
                     new MainPage();
                 } catch (FileNotFoundException | InterruptedException ex) {
                     ex.printStackTrace();
@@ -528,6 +548,9 @@ public class Game implements Serializable {
             root.setEffect(null);
             t.stop();
             try {
+                Main.user.totalScore += score;
+                if(Main.user.highestScore < score)
+                    Main.user.highestScore = score;
                 new MainPage();
             } catch (FileNotFoundException | InterruptedException ex) {
                 ex.printStackTrace();
@@ -821,6 +844,9 @@ public class Game implements Serializable {
                 });
 
                 save_game.setOnAction(event -> {
+                    Main.user.totalScore += score;
+                    if(Main.user.highestScore < score)
+                        Main.user.highestScore = score;
                     pauseRoot.getChildren().clear();
                     Label label = new Label("Enter Name");
                     label.setId("paused");
@@ -842,14 +868,20 @@ public class Game implements Serializable {
                     root.setEffect(null);
                     popupStage.hide();
                     try {
+                        Main.user.totalScore += score;
+                        if(Main.user.highestScore < score)
+                            Main.user.highestScore = score;
                         new MainPage();
-                    } catch (FileNotFoundException | InterruptedException ex) {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 });
                 restart.setOnAction(event -> {
                     root.setEffect(null);
                     try {
+                        Main.user.totalScore += score;
+                        if(Main.user.highestScore < score)
+                            Main.user.highestScore = score;
                         //System.out.println("restart");
                         popupStage.hide();
                         new Game();

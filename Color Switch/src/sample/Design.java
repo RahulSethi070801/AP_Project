@@ -134,6 +134,20 @@ public class Design
         imageView2.setFitWidth(80);
         imageView2.setPreserveRatio(true);
 
+        EventHandler<MouseEvent> eventHandler2 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Bounds bounds = root.getBoundsInParent();
+                System.out.println("Hello World");
+                try {
+                    new Achievements();
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        //Registering the event filter
+        imageView2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler2);
 
 
         InputStream stream31 = new FileInputStream(localDir + "\\Speaker.png");
@@ -159,9 +173,9 @@ public class Design
         //Registering the event filter
         imageView3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler3);
 
-        InputStream stream41 = new FileInputStream(localDir +"\\Music.png");
+        InputStream stream41 = new FileInputStream(localDir +"\\music-icon.png");
         javafx.scene.image.Image image41 = new Image(stream41);
-        InputStream stream42 = new FileInputStream(localDir +"\\Music.png");
+        InputStream stream42 = new FileInputStream(localDir +"\\muted-music.png");
         javafx.scene.image.Image image42 = new Image(stream42);
         ImageView imageView4 = new ImageView();
         imageView4.setImage(image41);
