@@ -21,11 +21,11 @@ import java.io.Serializable;
 public class HorizontalLine extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    transient Line line1, line2, line3, line4;
-    transient TranslateTransition translateTransition1;
-    transient TranslateTransition translateTransition2;
-    transient TranslateTransition translateTransition3;
-    transient TranslateTransition translateTransition4;
+    private transient Line line1, line2, line3, line4;
+    private transient TranslateTransition translateTransition1;
+    private transient TranslateTransition translateTransition2;
+    private transient TranslateTransition translateTransition3;
+    private transient TranslateTransition translateTransition4;
 
     public void setRoot(Group root)
     {
@@ -72,14 +72,14 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         for(int i=0; i<100; i++)
         {
             Group oneLine;
-            oneLine = makeOneLine(X+=800, y);
+            oneLine = makeOneLine(X+=800, y, difficulty);
             figure.getChildren().add(oneLine);
         }
         root = figure;
         this.y = y;
     }
 
-    public Group makeOneLine(double x, long y)
+    public Group makeOneLine(double x, long y, long difficulty)
     {
         line1 = new Line(x-400, 400+y, x-200, 400+y);
         line1.setStrokeWidth(10);
@@ -97,10 +97,11 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
 
         root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
-        addTransition();
+        addTransition(difficulty);
         return root;
     }
-    public void addTransition()
+
+    public void addTransition(long difficulty)
     {
 
         translateTransition1 = new TranslateTransition();
@@ -139,64 +140,9 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         translateTransition4.setInterpolator(Interpolator.LINEAR);
         translateTransition4.play();
 
+        increaseDifficulty(difficulty);
     }
     
-    public void showSaved(long y)
-    {
-        double X = -8000;
-        Group figure = new Group();
-
-        for(int i=0; i<100; i++)
-        {
-            Group oneLine;
-            oneLine = makeOneLine(X+=800, y);
-            figure.getChildren().add(oneLine);
-        }
-        root = figure;
-        this.root.getLayoutY();
-    }
-
-    public Group makeOneLineSaved(double x, long y)
-    {
-        line1 = new Line(x-400, 400-y, x-200, 400-y);
-        line1.setStrokeWidth(10);
-        line2 = new Line(x-200, 400-y, x, 400-y);
-        line2.setStrokeWidth(10);
-        line3 = new Line(x, 400-y, x+200, 400-y);
-        line3.setStrokeWidth(10);
-        line4 = new Line(x+200, 400-y, x+400, 400-y);
-        line4.setStrokeWidth(10);
-
-        line1.setStroke(Color.rgb(144, 13, 255));
-        line2.setStroke(Color.rgb (250, 225, 0));
-        line3.setStroke(Color.rgb(50, 219, 240));
-        line4.setStroke(Color.rgb(255, 1, 129));
-
-        Group root = new Group();
-        root.getChildren().addAll(line1, line2, line3, line4);
-
-        addTransition();
-
-        return root;
-    }
-    public void setLayoutY(double y)
-    {
-        this.y = y;
-        this.root.setLayoutY(y);
-    }
-    public void setLayoutX(double x)
-    {
-        this.root.setLayoutX(x);
-    }
-    public double getLayoutY()
-    {
-        this.y = root.getLayoutY();
-        return this.root.getLayoutY();
-    }
-    public double getLayoutX()
-    {
-        return this.root.getLayoutX();
-    }
     public void increaseDifficulty(long difficulty)
     {
         translateTransition1.setDuration(Duration.millis(duration-difficulty));

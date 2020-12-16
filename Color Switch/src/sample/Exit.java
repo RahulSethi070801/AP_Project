@@ -85,6 +85,5 @@ class Exit
         //Registering the event filter
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
-
     }
 }

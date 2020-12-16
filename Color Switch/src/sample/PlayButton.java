@@ -22,7 +22,7 @@ import java.io.FileNotFoundException;
 
 class PlayButton
 {
-    Group root;
+    private Group root;
 
     public void setRoot(Group root)
     {
@@ -116,6 +116,7 @@ class PlayButton
                 }
             }
         };
+
         //Registering the event filter to play
         circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         polygon.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);

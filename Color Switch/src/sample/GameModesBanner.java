@@ -22,11 +22,11 @@ import java.io.FileNotFoundException;
 import java.util.*;
 class GameModesBanner
 {
-    Group root;
-    ArrayList<Game> savedGames;
-    GameModesBanner(ArrayList<Game> savedGames){
-           this.savedGames = savedGames;
+    private Group root;
+
+    GameModesBanner(){
     }
+
     public void setRoot(Group root)
     {
         this.root = root;
@@ -70,22 +70,17 @@ class GameModesBanner
         root.getChildren().add(t2);
 
         Text t = new Text (693, 680, "SAVED GAMES");
-        // t.setText("This is a text sample");
         t.setFont(Font.font ("Comic Sans MS", 17));
         t.setFill(Color.WHITE);
         root.getChildren().add(t);
-
 
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent e)
             {
-                Bounds bounds = root.getBoundsInParent();
-                System.out.println("Hello World");
-                //root.setFill(Color.DARKSLATEBLUE);
                 try {
-                    new SavedGames(savedGames);
+                    new SavedGames();
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
@@ -93,7 +88,5 @@ class GameModesBanner
         };
         //Registering the event filter
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-
-
     }
 }

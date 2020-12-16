@@ -31,22 +31,22 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class ColorSwitch implements Serializable {
-    transient Group root;
-    double y;
-    String color;
+    private transient Group root;
+    private double y;
+    private String color;
 
     public ColorSwitch(){}
 
-    public ColorSwitch(String color)
-    {}
     public void setRoot(Group root)
     {
         this.root=root;
     }
+
     public Group getRoot()
     {
         return root;
     }
+
     public Group show(long y)
     {
 //        this.y=y;
@@ -105,6 +105,7 @@ public class ColorSwitch implements Serializable {
     public double getLayoutY()
     {
         this.y=root.getLayoutY();
-        return root.getLayoutY();
+        return this.y;
     }
+
 }

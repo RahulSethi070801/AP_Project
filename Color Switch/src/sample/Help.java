@@ -30,7 +30,7 @@ import java.io.InputStream;
 
 public class Help
 {
-    Group root;
+    private Group root;
 
     Help() throws FileNotFoundException {
         show();
@@ -47,7 +47,9 @@ public class Help
     }
 
     public void show() throws FileNotFoundException {
+
         root = new Group();
+
         Scene scene4 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene4);
         Main.stage.setFullScreen(true);
@@ -65,8 +67,6 @@ public class Help
                 "starts a game of Color Switch. This play mode allows you to \n" +
                 "play through randomly generated obstacles until you fail, \n" +
                 "collecting stars along the way.\n");
-
-
 
         text2.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
         text2.setFill(Color.WHITE);
@@ -108,7 +108,5 @@ public class Help
 
         root.getChildren().add(text1);
         root.getChildren().add(text2);
-
     }
-
 }

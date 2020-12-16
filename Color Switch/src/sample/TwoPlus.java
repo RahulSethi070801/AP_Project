@@ -21,8 +21,8 @@ import java.util.Random;
 public class TwoPlus extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    transient Line line1, line2, line3, line4, line5, line6, line7, line8;
-    transient RotateTransition rotateTransition1;
+    private transient Line line1, line2, line3, line4, line5, line6, line7, line8;
+    private transient RotateTransition rotateTransition1;
 
     public void setRoot(Group root)
     {
@@ -129,15 +129,11 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         rotateTransition1.setAutoReverse(false);
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.play();
-
     }
-    
 
     public void increaseDifficulty(RotateTransition rt,  long difficulty)
     {
         rt.setDuration(Duration.millis(8000-difficulty));
-        // rt.setDuration(Duration.millis(8000-difficulty));
-        //duration-=difficulty;
     }
 
 }

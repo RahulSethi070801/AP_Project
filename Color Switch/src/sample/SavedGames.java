@@ -28,35 +28,33 @@ import java.io.*;
 
 public class SavedGames
 {
-    Group root;
-    ArrayList<Game> savedGames;
-    ArrayList<Game> games = new ArrayList<Game>();
-    SavedGames(ArrayList<Game> savedGames) throws FileNotFoundException
+    private Group root;
+    private ArrayList<Game> savedGames;
+    private ArrayList<Game> games = new ArrayList<Game>();
+
+    SavedGames() throws FileNotFoundException
     {
-        this.savedGames = savedGames;
-        root = new Group();
+        this.root = new Group();
+        this.savedGames = new ArrayList<Game>();
+        
         File dir = new File("./");
         File[] directoryListing = dir.listFiles();
         ObjectInputStream in = null;
-        Game  g;
+        String localDir = System.getProperty("user.dir");
+
         if (directoryListing != null) {
-            for (File child : directoryListing) {
-                // Do something with child
+            for (File child : directoryListing) { // iterator design pattern
                 String name[] = child.getName().split("\\.",0);
                 try {
                     if (name.length>1 && name[1].equals("txt")) {
-                        String localDir = System.getProperty("user.dir");
-                        // System.out.println(new ObjectInputStream(new FileInputStream((localDir+"\\"+name[0]+".txt"))));
                         in = new ObjectInputStream(new FileInputStream((localDir+"\\"+name[0]+".txt")));
                         this.games.add((Game)in.readObject());
-                        System.out.println(games.get(games.size()-1).name);
                     }
                 }catch(Exception e){
                     e.printStackTrace();
                 }
             }
         }
-        System.out.println(this.games.size()+" Games ");
         show();
     }
 
@@ -105,7 +103,6 @@ public class SavedGames
         root.getChildren().add(t2);
 
         Text t = new Text (700, 280, "Game Modes");
-        // t.setText("This is a text sample");
         t.setFont(Font.font ("Comic Sans MS", 17));
         t.setFill(Color.WHITE);
         root.getChildren().add(t);
@@ -121,7 +118,7 @@ public class SavedGames
             rectangle.setFill(Color.WHITE);
             root.getChildren().add(rectangle);
 
-            t = new Text (730, 380+(i+1)*50, this.games.get(i).name);
+            t = new Text (730, 380+(i+1)*50, this.games.get(i).getName());
             // t.setText("This is a text sample");
             t.setFont(Font.font ("Comic Sans MS", 17));
             t.setFill(Color.BLUE);
@@ -131,10 +128,11 @@ public class SavedGames
                 @Override
                 public void handle(MouseEvent e) {
                     Game game = games.get(x-1);
-                    System.out.println(game.name);
+                    System.out.println(game.getName());
 //                    System.out.println("Hello World"+x);
                     try {
-                        game.newGame=false;
+//                        game.newGame=false;
+                        game.setNewGameFalse();
                         new Game(game);
                         System.out.println("Saved Game is initialized");
                         game.show();
@@ -170,9 +168,6 @@ public class SavedGames
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                //Bounds bounds = root.getBoundsInParent();
-                System.out.println("Hello World");
-                //root2.setFill(Color.DARKSLATEBLUE);
                 try {
                     new MainPage();
                 } catch (FileNotFoundException ex) {

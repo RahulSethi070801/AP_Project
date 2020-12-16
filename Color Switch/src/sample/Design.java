@@ -27,7 +27,7 @@ import java.io.InputStream;
 
 public class Design
 {
-    Group root;
+    private Group root;
 
     public void setRoot(Group root)
     {
@@ -72,8 +72,6 @@ public class Design
         line6.setStroke(Color.rgb(250, 225, 0));
         line7.setStroke(Color.rgb(50, 219, 240));
         line8.setStroke(Color.rgb(255, 1, 129));
-
-
 
         Group root1 = new Group(line1, line2, line3, line4);
 
@@ -203,5 +201,4 @@ public class Design
         root.getChildren().add(root3);
 
     }
-
 }

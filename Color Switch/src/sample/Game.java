@@ -1,15 +1,20 @@
+
+    // TODO : Add difficulty -> Tushar DONE (under review) (DONE)
+    // TODO : Add revive -> Tushar DONE
+    // TODO : beautify pause menu -> Tushar nad Rahul DONE
+    // TODO : animation on collision -> Rahul (DONE)
+    // TODO : loading game animation -> Tushar and Rahul (DONE)
+    // TODO : sound -> Rahul(Done)
+
+    // TODO : Intermediate Page btw collision and revive (DONE)
 package sample;
 
-import com.sun.media.jfxmediaimpl.platform.Platform;
 import javafx.animation.*;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,7 +25,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -30,100 +34,38 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Translate;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
-import java.awt.event.ActionListener;
-import java.beans.Transient;
 import java.io.*;
-import java.lang.reflect.Array;
-import java.net.Inet4Address;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Observable;
 import java.util.Random;
 
 public class Game implements Serializable {
+    // non serializable objects
+    private transient Group root;
+    private transient Scene scene2;
+    private transient ArrayList<Group> root_list = new ArrayList<Group>();
+    private transient Ball ball;
+    private transient AnimationTimer t;
+    private transient AnimationTimer at;
+    private transient Text text1;
+    private transient int ind = -1;
     // serializable objects
-    transient Group root;
-    transient Scene scene2;
-    transient ArrayList<Group> root_list = new ArrayList<Group>();
-    transient Ball ball;
-    transient AnimationTimer t;
-    transient AnimationTimer at;
-    transient Text text1;
-
-    ArrayList<Obstacle> obstacles;
-    ArrayList<Star> stars;
-    ArrayList<ColorSwitch> colorSwitches;
-    double g = 1500;
-    double speed = 0.0;
-    User user;
-    long score = 0;
-    long difficulty = 0;
-    long y=0;
-    String name;
-    boolean newGame = true;
-    transient int ind = -1;
-    public void setupGame()
-    {
-        ind=-1;
-        root_list = new ArrayList<Group>();
-        System.out.println("starting obstacles");
-        System.out.println(obstacles);
-        for(int i=0;i<obstacles.size();i++)
-        {
-            Obstacle o = obstacles.get(i);
-//            System.out.println("beofre "+o.y);
-            o.show((long)o.y, difficulty);
-            difficulty+=500;
-            root.getChildren().add(o.getRoot());
-            root_list.add(o.getRoot());
-            System.out.println(obstacles.get(i).y+" "+obstacles.get(i)+" setup");
-        }
-        System.out.println("starting stars");
-        for(int i=0;i<stars.size();i++)
-        {
-            try {
-                Star star = stars.get(i);
-                root.getChildren().add(star.show((double)675, star.y));
-                root_list.add(star.getRoot());
-                System.out.println(stars.get(i).y+" "+stars.get(i).getClass());
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-        System.out.println("starting colorswtiches");
-
-        for(int i=0;i<colorSwitches.size();i++)
-        {
-            ColorSwitch colorswitch = colorSwitches.get(i);
-//            System.out.println(colorSwitches);
-            root.getChildren().add(colorswitch.show((long)colorswitch.y));
-            root_list.add(colorswitch.getRoot());
-            System.out.println(colorSwitches.get(i).y+" "+colorSwitches.get(i).getClass());
-
-        }
-
-//        this.play();
-    }
-//    ArrayList<Integer> obstaclesSerializable;
-//    ArrayList<Integer> starsSerialzable;
-//    ArrayList<Integer> colorSwitchesSerializable;
-
-    // TODO : Add difficulty -> Tushar DONE (under review)
-    // TODO : Add revive -> Tushar DONE
-    // TODO : beautify pause menu -> Tushar nad Rahul DONE
-    // TODO : animation on collision -> Rahul
-    // TODO : loading game animation -> Tushar and Rahul
-    // TODO : sound -> Rahul(Done)
-
-    // TODO : Intermediate Page btw collision and revive
-    Random rand = new Random();
-    String tempO[] = {
+    private ArrayList<Obstacle> obstacles;
+    private ArrayList<Star> stars;
+    private ArrayList<ColorSwitch> colorSwitches;
+    private double g = 1500;
+    private double speed = 0.0;
+    private User user;
+    private long score = 0;
+    private long difficulty = 0;
+    private long y=0;
+    private String name;
+    private boolean newGame = true;
+    private Random rand = new Random();
+    private String tempO[] = {
             "Ring",
             "Square",
             "Triangle",
@@ -133,71 +75,6 @@ public class Game implements Serializable {
             "2Plus",
             "Plus"
     };
-    // Text text1;
-//    double g = 1500;
-//    double speed = 0.0;
-    // ArrayList<Group> root_list = new ArrayList<Group>();
-    public void resumeGame(){}
-    public void pauseGame(){}
-//    public Ball getBall(){}
-    public void setBall(){}
-//    public Obstacle getCurrentObstacle(){}
-    public void setCurrentObstacle(Obstacle obstacle){}
-    public long getDifficulty()
-    {
-        return this.difficulty;
-    }
-    public void setDifficulty(){}
-    public void playGame(){}
-    public void setBackground(){}
-    public void controlBall(){}
-    public void exitGame(){
-        try {
-            new MainPage();
-        }
-        catch (Exception e)
-        {}
-    }
-    public void checkCollision(){}
-//    public Obstacle getRandomObstacle(){}
-    public void setStars(int stars){}
-    public double getStars(){
-        return this.score;
-    }
-    public void reviveGame(){}
-    public void saveAndExitGame()
-    {
-        try
-        {
-            System.out.println("Before calling save");
-            System.out.println(obstacles);
-            for(int i=0;i<obstacles.size();i++)
-            {
-                System.out.println(obstacles.get(i).y+" "+obstacles.get(i)+" before saving");
-            }
-            save();
-            new MainPage();
-        }
-        catch(Exception exception){
-
-        }
-    }
-
-    Game(Group root, Scene scene, ArrayList<Obstacle> obstacles,
-         ArrayList<Star> stars, User user, long score, long difficulty, String name,
-         ArrayList<ColorSwitch> colorSwitches, ArrayList<Group> root_list)
-    {
-        this.root=root;
-        this.scene2=scene;
-        this.obstacles=obstacles;
-        this.stars = stars;
-        this.user = user;
-        this.score = score;
-        this.difficulty = difficulty;
-        this.name = name;
-        this.root_list = root_list;
-        this.colorSwitches = colorSwitches;
-    }
 
     Game() throws FileNotFoundException, IOException, ClassNotFoundException
     {
@@ -225,11 +102,98 @@ public class Game implements Serializable {
 //        game.show();
     }
 
+    Game(String name)
+    {
+        this.name = name;
+    }
+
+    public void setNewGameFalse() {
+        this.newGame=false;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public void setupGame()
+    {
+        ind=-1;
+        root_list = new ArrayList<Group>(); // initialising a new root_list to store all the roots of the components in the game
+
+        for(int i=0;i<obstacles.size();i++)
+        {
+            Obstacle o = obstacles.get(i);
+            o.show((long)o.y, difficulty);
+            difficulty+=500;
+            root.getChildren().add(o.getRoot());
+            root_list.add(o.getRoot());
+            // System.out.println(obstacles.get(i).y+" "+obstacles.get(i)+" setup");
+        }
+
+        for(int i=0;i<stars.size();i++)
+        {
+            try {
+                Star star = stars.get(i);
+                root.getChildren().add(star.show((double)675, star.getY()));
+                root_list.add(star.getRoot());
+                // System.out.println(stars.get(i).y+" "+stars.get(i).getClass());
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        for(int i=0;i<colorSwitches.size();i++)
+        {
+            ColorSwitch colorswitch = colorSwitches.get(i);
+            root.getChildren().add(colorswitch.show((long)colorswitch.getLayoutY()));
+            root_list.add(colorswitch.getRoot());
+            // System.out.println(colorSwitches.get(i).getLayoutY()+" "+colorSwitches.get(i).getClass());
+        }
+    }
+
+    public void resumeGame(){}
+    public void pauseGame(){}
+    public void setBall(){}
+    public void setCurrentObstacle(Obstacle obstacle){}
+    public long getDifficulty()
+    {
+        return this.difficulty;
+    }
+    public void setDifficulty(){}
+    public void playGame(){}
+    public void setBackground(){}
+    public void controlBall(){}
+    public void exitGame(){
+        try {
+            new MainPage();
+        }
+        catch (Exception e)
+        {}
+    }
+    public void checkCollision(){}
+    public void setStars(int stars){}
+    public double getStars(){
+        return this.score;
+    }
+    public void reviveGame(){}
+
+    public void saveAndExitGame()
+    {
+        try
+        {
+            save();
+            new MainPage();
+        }
+        catch(Exception exception){
+            exception.printStackTrace();
+        }
+    }
+
     public void addObstacle() throws FileNotFoundException
     {
-        int ind = rand.nextInt(8);
-//            int ind = 0;
-        Obstacle o;// = new Obstacle();
+        int ind = getRandom(8);
+        Obstacle o;
         Star star = new Star();
         ColorSwitch colorswitch = new ColorSwitch();
         if(tempO[ind].equals("Ring"))
@@ -239,7 +203,6 @@ public class Game implements Serializable {
         else if(tempO[ind].equals("Square"))
         {
             o = new Square();
-
         }
         else if(tempO[ind].equals("HorizontalCircles"))
         {
@@ -267,25 +230,24 @@ public class Game implements Serializable {
         }
         else
             o = new Ring();
+
         o.show(y, difficulty);
-        difficulty -= 500;
-        System.out.println(o.y+" "+o.getClass());
         obstacles.add(o);
+
         Group root_square = o.getRoot();
         root.getChildren().add(root_square);
         root_list.add(root_square);
-        if(!tempO[ind].equals("qwe"))
-        {
-            root.getChildren().add(star.show((double)675, (double)y+375));
-            root_list.add(star.getRoot());
-            stars.add(star);
-        }
+        //add star
+        root.getChildren().add(star.show((double)675, (double)y+375));
+        root_list.add(star.getRoot());
+        stars.add(star);
+        //add obstacle
         root.getChildren().add(colorswitch.show(y-250));
         root_list.add(colorswitch.getRoot());
         colorSwitches.add(colorswitch);
 
+        difficulty -= 500;
         y-=500;
-//        return y;
     }
 
     public void play() throws FileNotFoundException, IOException, ClassNotFoundException
@@ -294,14 +256,7 @@ public class Game implements Serializable {
         scene2 = new Scene(root, 800, 800, Color.BLACK);
         Main.stage.setScene(scene2);
         Main.stage.setFullScreen(true);
-        System.out.println(root+" root saved");
-        System.out.println(scene2+" scene2 saved");
         this.show();
-    }
-
-    Game(String name)
-    {
-        this.name = name;
     }
 
     public int getRandom(int n)
@@ -314,7 +269,6 @@ public class Game implements Serializable {
     {
         Bounds RectA = x.localToScene();
         Bounds RectB = y.localToScene(y.getBoundsInLocal());
-
         return RectB.intersects(RectA);
     }
 
@@ -430,120 +384,90 @@ public class Game implements Serializable {
 
     public void revive()
     {
-        if(score>=0) {
-            //System.out.println("starting");
-            t.stop();
-            root.setEffect(new GaussianBlur());
+        if(score>=2) {
+            t.stop(); // stop the animation timer
+            root.setEffect(new GaussianBlur()); // make the scene blurred
+
             VBox pauseRoot = new VBox(40);
             pauseRoot.setFillWidth(true);
+            pauseRoot.setId("menu");
+            pauseRoot.setAlignment(Pos.CENTER);
+            pauseRoot.setPadding(new Insets(20));
+            pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
+            //adding styled sheet to VBox
             String  style= getClass().getResource("styles.css").toExternalForm();
             pauseRoot.getStylesheets().add(style);
+
+
+            //adding label
             Label label = new Label("Game Over");
             label.setId("paused");
             label.setEffect(new DropShadow(20,Color.BLACK));
-            pauseRoot.setId("menu");
             pauseRoot.getChildren().add(label);
-            pauseRoot.setAlignment(Pos.CENTER);
-            pauseRoot.setPadding(new Insets(20));
-
+            // adding score
+            Label scorelabel = new Label("Score : "+score);
+            scorelabel.setId("paused");
+            scorelabel.setEffect(new DropShadow(20,Color.BLACK));
+            pauseRoot.getChildren().add(scorelabel);
+            //adding revive button
             Button revive = new Button("Revive");
-            Button restart = new Button("Restart ");
-            Button exit=new Button("Exit");
             revive.setId("resume");
-            restart.setId("save");
-            exit.setId("exit");
             revive.setEffect(new DropShadow(20, Color.BLACK));
-            restart.setEffect(new DropShadow(20, Color.BLACK));
-            exit.setEffect(new DropShadow(20, Color.BLACK));
             pauseRoot.getChildren().add(revive);
-            pauseRoot.getChildren().add(exit);
+            //adding restart
+            Button restart = new Button("Restart ");
+            restart.setId("save");
+            restart.setEffect(new DropShadow(20, Color.BLACK));
             pauseRoot.getChildren().add(restart);
-            pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
+            //adding exit
+            Button exit=new Button("Exit");
+            exit.setId("exit");
+            exit.setEffect(new DropShadow(20, Color.BLACK));
+            pauseRoot.getChildren().add(exit);
+            // make a stage
             Stage popupStage = new Stage(StageStyle.TRANSPARENT);
             popupStage.initOwner(Main.stage);
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
-
             popupStage.setX(500);
             popupStage.setY(250);
+
             revive.setOnAction(event -> {
                 join(ball);
-
                 root.setEffect(null);
-//                    timeline.play();
                 score-=1;
-                double minDis=100000;
-//                int ind=-1;
+                double diff = 711-ball.getLayY();
 
-                System.out.println(ball.getLayY()+" ball y");
-
-//                for(int k=0;k<obstacles.size();k++)
-//                {
-//                    if(obstacles.get(k).y+root_list.get(root_list.indexOf(obstacles.get(k).getRoot())).getLayoutY()>=400)
-//                    {
-//                        ind = k;
-//                    }
-////                    double diff = ball.getLayY()-obstacles.get(k).y-root_list.get(root_list.indexOf(obstacles.get(k).getRoot())).getLayoutY();
-////                    System.out.println(diff+" distances");
-////                    if (diff<minDis) {
-////                        minDis = diff;
-////                        ind = k;
-////                    }
-//                }
-
-                System.out.println(ind + " ind");
                 if(ind >=0)
                 {
                     for(int i=0;i<=ind;i++){
-                        System.out.println("removing "+obstacles.get(0)+" "+obstacles.get(0).getClass()+" "+obstacles.get(i).y+" "+root_list.get(root_list.indexOf(obstacles.get(i).getRoot())).getLayoutY());
                         root.getChildren().remove(obstacles.get(0).getRoot());
                         root_list.remove(obstacles.get(0).getRoot());
                         obstacles.remove(0);
                     }
                     ind=-1;
                 }
-//                if(ind >=0 && obstacles.get(ind).y+root_list.get(root_list.indexOf(obstacles.get(ind).getRoot())).getLayoutY()>=400)
-//                {
-//                    System.out.println("if");
-//                    for(int k=0;k<=ind;k++) {
-////                        System.out.println("before removing "+obstacles.get(0));
-//                        root.getChildren().remove(obstacles.get(0).getRoot());
-//                        root_list.remove(obstacles.get(0).getRoot());
-//                        obstacles.remove(0);
-////                        System.out.println("after removing "+obstacles.get(0));
-//                    }
-//                }
-//                else if (ind>=0){
-//                    System.out.println("else");
-//                    for(int k=0;k<=ind;k++) {
-//                        if(obstacles.get(0).y+root_list.get(root_list.indexOf(obstacles.get(0).getRoot())).getLayoutY()>400) {
-//                            System.out.println("removing " + obstacles.get(0) + " " + obstacles.get(0).getClass());
-//                            root.getChildren().remove(obstacles.get(0).getRoot());
-//                            root_list.remove(obstacles.get(0).getRoot());
-//                            obstacles.remove(0);
-//                        }
-//                    }
-//                }
-//                System.out.println("after removeing obstacles");
-//                System.out.println(obstacles);
-//                for(int i=0;i<this.obstacles.size();i++)
-//                {
-//                    System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i)+" onscroll");
-//                }
-                text1.setText(String.valueOf(score));
+
+                for(int i=0;i<root_list.size();i++)
+                {
+                    double dey = root_list.get(i).getLayoutY();
+                    root_list.get(i).setLayoutY(dey + diff);
+                }
+
+                text1.setText(String.valueOf(score)); //increment the score on the screen
+
                 ball.setLayY(711);
                 popupStage.hide();
-                t.start();
+                t.start(); // start the actiontimer again
             });
 
             restart.setOnAction(event -> {
                 root.setEffect(null);
                 try {
-                    //System.out.println("restart");
                     popupStage.hide();
-                    Main.user.totalScore += score;
-                    if(Main.user.highestScore < score)
-                        Main.user.highestScore = score;
+                    Main.user.incrementTotalScore(score);
+                    if(Main.user.getHighestScore() < score)
+                        Main.user.setHighestScore(score);
                     new Game();
                 }
                 catch(Exception e)
@@ -553,13 +477,14 @@ public class Game implements Serializable {
                 popupStage.hide();
 
             });
+
             exit.setOnAction(event -> {
                 root.setEffect(null);
                 popupStage.hide();
                 try {
-                    Main.user.totalScore += score;
-                    if(Main.user.highestScore < score)
-                        Main.user.highestScore = score;
+                    Main.user.incrementTotalScore(score);
+                    if(Main.user.getHighestScore() < score)
+                        Main.user.setHighestScore(score);
                     new MainPage();
                 } catch (FileNotFoundException | InterruptedException ex) {
                     ex.printStackTrace();
@@ -567,21 +492,85 @@ public class Game implements Serializable {
                 }
 
             });
+
             popupStage.show();
         }
         else {
-            root.setEffect(null);
+//            root.setEffect(null);
             t.stop();
             try {
-                Main.user.totalScore += score;
-                if(Main.user.highestScore < score)
-                    Main.user.highestScore = score;
-                new MainPage();
-            } catch (FileNotFoundException | InterruptedException ex) {
+                Main.user.incrementTotalScore(score);
+                if(Main.user.getHighestScore() < score)
+                    Main.user.setHighestScore(score);
+
+                VBox scoreBoard = new VBox(40);
+                scoreBoard.setFillWidth(true);
+                scoreBoard.setId("menu");
+                scoreBoard.setAlignment(Pos.CENTER);
+                scoreBoard.setPadding(new Insets(20));
+                scoreBoard.setEffect(new DropShadow(20, Color.BLACK));
+
+                String  style= getClass().getResource("styles.css").toExternalForm();
+                scoreBoard.getStylesheets().add(style);
+
+                Label label = new Label("Score :");
+                label.setId("paused");
+                label.setEffect(new DropShadow(20,Color.BLACK));
+                scoreBoard.getChildren().add(label);
+
+                Label scoreLabel = new Label(""+score);
+                scoreLabel.setId("paused");
+                scoreLabel.setEffect(new DropShadow(20,Color.BLACK));
+                scoreBoard.getChildren().add(scoreLabel);
+
+                Button restart = new Button("Restart");
+                restart.setId("resume");
+                restart.setEffect(new DropShadow(20, Color.BLACK));
+                scoreBoard.getChildren().add(restart);
+
+                Button exit = new Button("Exit");
+                exit.setId("exit");
+                exit.setEffect(new DropShadow(20, Color.BLACK));
+                scoreBoard.getChildren().add(exit);
+
+                Stage popupStage = new Stage(StageStyle.TRANSPARENT);
+                popupStage.initOwner(Main.stage);
+                popupStage.initModality(Modality.APPLICATION_MODAL);
+                popupStage.setScene(new Scene(scoreBoard, Color.TRANSPARENT));
+                popupStage.setX(500);
+                popupStage.setY(250);
+
+                restart.setOnAction(event -> {
+                    root.setEffect(null);
+                    try {
+                        popupStage.hide();
+                        Main.user.incrementTotalScore(score);
+                        if(Main.user.getHighestScore() < score)
+                            Main.user.setHighestScore(score);
+                        new Game();
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println(e);
+                    }
+                    popupStage.hide();
+
+                });
+
+                exit.setOnAction(event -> {
+                    popupStage.hide();
+                    try {
+                        new MainPage();
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                });
+                popupStage.show();
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
-            //System.out.println("qwebo");
         }
     }
 
@@ -594,6 +583,7 @@ public class Game implements Serializable {
         arr.add(Color.rgb (250, 225, 0));
         arr.add(Color.rgb(50, 219, 240));
         arr.add(Color.rgb(255, 1, 129));
+
         Group root3 = new Group();
 
         for (int i=0; i<1000; i++)
@@ -615,7 +605,6 @@ public class Game implements Serializable {
             else
             {
                 int x1 = 700;
-                //int x2 = 1400;
                 lineTo = new LineTo(getRandom(x1)+x1 + 1000, getRandom((int)ball.getLayY()+ 1000));
             }
 
@@ -630,7 +619,6 @@ public class Game implements Serializable {
         root.getChildren().add(root3);
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
-        //root.getChildren().remove(root3);
         t.stop();
         sq.setOnFinished(actionEvent -> revive());
     }
@@ -683,17 +671,6 @@ public class Game implements Serializable {
         root.getChildren().add(root3);
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
-//        EventHandler<ActionEvent> punar_janam = actionEvent ->
-//        {
-//            for(Node i : root3.getChildren())
-//            {
-//                root3.getChildren().remove(i);
-//            }
-//            //t.stop();
-//        };
-//        sq.setOnFinished(punar_janam);
-
-        //sq.setOnFinished(actionEvent -> revive());
     }
 
     public void tapBall()
@@ -713,13 +690,11 @@ public class Game implements Serializable {
         if(ball.getLayY()<375) {
             for (int i = 0; i < root_list.size(); i++) {
                 double dey = root_list.get(i).getLayoutY();
-//                System.out.println(dey + " dey");
                 root_list.get(i).setLayoutY(dey + 2);
             }
         }
     }
 
-    int counter=0;
     public void show() throws FileNotFoundException, IOException, ClassNotFoundException
     {
 
@@ -730,15 +705,12 @@ public class Game implements Serializable {
         if(newGame) {
             stars = new ArrayList<Star>();
             colorSwitches = new ArrayList<ColorSwitch>();
-
             for (int i = 0; i < 25; i++) {
                 addObstacle();
             }
         }
         else{
-            System.out.println("Start");
             this.setupGame();
-            System.out.println("End");
         }
 
         // Score count
@@ -764,8 +736,6 @@ public class Game implements Serializable {
             }
             @Override
             public void handle(long now){
-
-//                System.out.println("Down");
                 //Ball Update
                 long elapsed = now - lastUpdate;
                 try {
@@ -774,24 +744,17 @@ public class Game implements Serializable {
                     e.printStackTrace();
                 }
                 scroll();
-//                checkCollisions();
-//                generalGenerate();
-
                 lastUpdate = now;
             }
         };
 
-//        int counter = 0;
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.Q) {
-//                final int ctr=counter;
-//                System.out.println("UP"+ctr);
-//                counter++;
                 tapBall();
             }
         });
-
         t.start();
+
         // Show Pause button
         InputStream stream1 = new FileInputStream(localDir+"\\Pause.png");
         Image image1 = new Image(stream1);
@@ -801,15 +764,11 @@ public class Game implements Serializable {
         imageView1.setY(50);
         imageView1.setFitWidth(100);
         imageView1.setPreserveRatio(true);
+
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-//                Bounds bounds = root.getBoundsInParent();
-                //System.out.println("Pause");
-//                polygon.setFill(Color.DARKSLATEBLUE);
                 try {
-//                    t.pause();
-//                    timeline1.pause();
                     new PauseMenu();
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
@@ -821,39 +780,44 @@ public class Game implements Serializable {
         EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {
             public void handle(MouseEvent e)
             {
-//                t.pause();
-//                timeline1.pause();
                 t.stop();
                 root.setEffect(new GaussianBlur());
 
                 VBox pauseRoot = new VBox(40);
-                String  style= getClass().getResource("styles.css").toExternalForm();
-                pauseRoot.getStylesheets().add(style);
-                pauseRoot.setFillWidth(true);
-                Label paused = new Label("Paused");
-                paused.setEffect(new DropShadow(20,Color.BLACK));
-                paused.setId("paused");
-                pauseRoot.getChildren().add(paused);
                 pauseRoot.setId("menu");
                 pauseRoot.setAlignment(Pos.CENTER);
                 pauseRoot.setPadding(new Insets(20));
                 pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
+                pauseRoot.setFillWidth(true);
+
+                String  style= getClass().getResource("styles.css").toExternalForm();
+                pauseRoot.getStylesheets().add(style);
+
+                Label paused = new Label("Paused");
+                pauseRoot.getChildren().add(paused);
+                paused.setId("paused");
+                paused.setEffect(new DropShadow(20,Color.BLACK));
+
                 Button resume = new Button("Resume");
-                Button exit=new Button("Exit");
-                Button save_game=new Button("Save and exit");
-                Button restart = new Button("Restart ");
+                pauseRoot.getChildren().add(resume);
                 resume.setId("resume");
-                restart.setId("resume");
+                resume.setEffect(new DropShadow(20, Color.BLACK));
+
+                Button exit=new Button("Exit");
+                pauseRoot.getChildren().add(exit);
                 exit.setId("exit");
                 exit.setEffect(new DropShadow(20, Color.BLACK));
-                restart.setEffect(new DropShadow(20, Color.BLACK));
-                resume.setEffect(new DropShadow(20, Color.BLACK));
-                save_game.setEffect(new DropShadow(20, Color.BLACK));
-                save_game.setId("save");
-                pauseRoot.getChildren().add(resume);
-                pauseRoot.getChildren().add(restart);
+
+                Button save_game=new Button("Save and exit");
                 pauseRoot.getChildren().add(save_game);
-                pauseRoot.getChildren().add(exit);
+                save_game.setId("save");
+                save_game.setEffect(new DropShadow(20, Color.BLACK));
+
+                Button restart = new Button("Restart ");
+                pauseRoot.getChildren().add(restart);
+                restart.setId("resume");
+                restart.setEffect(new DropShadow(20, Color.BLACK));
+
 
                 Stage popupStage = new Stage(StageStyle.TRANSPARENT);
                 popupStage.initOwner(Main.stage);
@@ -869,9 +833,9 @@ public class Game implements Serializable {
                 });
 
                 save_game.setOnAction(event -> {
-                    Main.user.totalScore += score;
-                    if(Main.user.highestScore < score)
-                        Main.user.highestScore = score;
+                    Main.user.incrementTotalScore(score);
+                    if(Main.user.getHighestScore() < score)
+                        Main.user.setHighestScore(score);
                     pauseRoot.getChildren().clear();
                     Label label = new Label("Enter Name");
                     label.setId("paused");
@@ -893,20 +857,21 @@ public class Game implements Serializable {
                     root.setEffect(null);
                     popupStage.hide();
                     try {
-                        Main.user.totalScore += score;
-                        if(Main.user.highestScore < score)
-                            Main.user.highestScore = score;
+                        Main.user.incrementTotalScore(score);
+                        if(Main.user.getHighestScore() < score)
+                            Main.user.setHighestScore(score);
                         new MainPage();
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 });
+
                 restart.setOnAction(event -> {
                     root.setEffect(null);
                     try {
-                        Main.user.totalScore += score;
-                        if(Main.user.highestScore < score)
-                            Main.user.highestScore = score;
+                        Main.user.incrementTotalScore(score);
+                        if(Main.user.getHighestScore() < score)
+                            Main.user.setHighestScore(score);
                         //System.out.println("restart");
                         popupStage.hide();
                         new Game();
@@ -933,6 +898,7 @@ public class Game implements Serializable {
         imageView2.setY(50);
         imageView2.setFitWidth(80);
         imageView2.setPreserveRatio(true);
+
         Group root_score_star = new Group(imageView2);
         root.getChildren().add(root_score_star);
 
@@ -941,7 +907,6 @@ public class Game implements Serializable {
 
         root.getChildren().add(root2);
         root.getChildren().add(root_ball);
-
     }
 
     public void save() throws IOException, ClassNotFoundException
@@ -950,37 +915,36 @@ public class Game implements Serializable {
         try
         {
             out = new ObjectOutputStream( new FileOutputStream(name+".txt"));
-            System.out.println(obstacles);
+
             for(int i=0;i<this.obstacles.size();i++)
             {
-//                System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i)+" y before");
                 double temp = this.obstacles.get(i).y+this.root_list.get(this.root_list.indexOf(this.obstacles.get(i).getRoot())).getLayoutY();
                 this.obstacles.get(i).y = temp;
-                System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i)+" saving ");
+                // System.out.println(this.obstacles.get(i).y+" "+this.obstacles.get(i)+" saving ");
             }
+
             for(int i=0;i<this.stars.size();i++)
             {
-                double temp = this.stars.get(i).y+this.root_list.get(this.root_list.indexOf(this.stars.get(i).getRoot())).getLayoutY();
-                this.stars.get(i).y = temp;
-                System.out.println(this.stars.get(i).y+" "+this.stars.get(i).getClass());
+                double temp = this.stars.get(i).getY()+this.root_list.get(this.root_list.indexOf(this.stars.get(i).getRoot())).getLayoutY();
+                this.stars.get(i).setY(temp);
+                // System.out.println(this.stars.get(i).y+" "+this.stars.get(i).getClass());
             }
+
             for(int i=0;i<this.colorSwitches.size();i++)
             {
-                double temp = this.colorSwitches.get(i).y+this.root_list.get(this.root_list.indexOf(this.colorSwitches.get(i).getRoot())).getLayoutY();
-                this.colorSwitches.get(i).y = temp;
-                System.out.println(this.colorSwitches.get(i).y+" "+this.colorSwitches.get(i).getClass());
+                double temp = this.colorSwitches.get(i).getLayoutY()+this.root_list.get(this.root_list.indexOf(this.colorSwitches.get(i).getRoot())).getLayoutY();
+                this.colorSwitches.get(i).setLayoutY(temp);
+                // System.out.println(this.colorSwitches.get(i).getLayoutY()+" "+this.colorSwitches.get(i).getClass());
             }
             out.writeObject(this);
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("Yahan");
         }
         finally
         {
             out.close();
         }
-
     }
 }

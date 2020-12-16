@@ -36,7 +36,7 @@ import java.io.InputStream;
 
 public class Heading
 {
-    Group root;
+    private Group root;
 
     public void setRoot(Group root)
     {
@@ -48,12 +48,9 @@ public class Heading
         return root;
     }
 
-
     public void show() throws FileNotFoundException
     {
         root = new Group();
-        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        //stage.setTitle("Hello World");
 
         Text text1 = new Text();
         text1.setText("C");
@@ -132,6 +129,7 @@ public class Heading
         circle1.setFill(Color.BLACK);
 
         Group root1 = new Group(arc1, arc2, arc3, arc4, circle1);
+        root.getChildren().add(root1);
 
         RotateTransition rotateTransition1 = new RotateTransition();
         rotateTransition1.setDuration(Duration.millis(1000));
@@ -141,7 +139,6 @@ public class Heading
         rotateTransition1.setAutoReverse(false);
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.play();
-
 
         Arc arc5 = new Arc();
         arc5.setCenterX(810.0f);
@@ -187,6 +184,7 @@ public class Heading
         circle1.setFill(Color.BLACK);
 
         Group root2 = new Group(arc5, arc6, arc7, arc8, circle2);
+        root.getChildren().add(root2);
 
         RotateTransition rotateTransition2 = new RotateTransition();
         rotateTransition2.setDuration(Duration.millis(1000));
@@ -198,11 +196,6 @@ public class Heading
         rotateTransition2.play();
 
         Group root3 = new Group(text1, text2,text3, text4);
-
-
-        root.getChildren().add(root1);
-        root.getChildren().add(root2);
         root.getChildren().add(root3);
     }
-
 }
