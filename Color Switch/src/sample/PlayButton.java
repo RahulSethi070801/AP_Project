@@ -36,143 +36,61 @@ class PlayButton
 
     public void show()
     {
-
-        Arc arc1 = new Arc();
-        arc1.setCenterX(750.0f);
-        arc1.setCenterY(500.0f);
-        arc1.setStartAngle(0.0f);
-        arc1.setRadiusX(100.0f);
-        arc1.setLength(90.0f);
-        arc1.setType(ArcType.ROUND);
+        Arc arc1 = new Arc(750, 500, 100, 100, 0, 90);
         arc1.setFill(Color.rgb(144, 13, 255));
-        arc1.setRadiusY(100.0f);
+        arc1.setType(ArcType.ROUND);
 
-        Arc arc2 = new Arc();
-        arc2.setCenterX(750.0f);
-        arc2.setCenterY(500.0f);
-        arc2.setRadiusX(100.0f);
-        arc2.setRadiusY(100.0f);
-        arc2.setStartAngle(90.0f);
-        arc2.setLength(90.0f);
-        arc2.setType(ArcType.ROUND);
+        Arc arc2 = new Arc(750, 500, 100, 100, 90, 90);
         arc2.setFill(Color.rgb(250, 225, 0));
+        arc2.setType(ArcType.ROUND);
 
-        Arc arc3 = new Arc();
-        arc3.setCenterX(750.0f);
-        arc3.setCenterY(500.0f);
-        arc3.setRadiusX(100.0f);
-        arc3.setRadiusY(100.0f);
-        arc3.setStartAngle(180.0f);
-        arc3.setLength(90.0f);
-        arc3.setType(ArcType.ROUND);
+        Arc arc3 = new Arc(750, 500, 100, 100, 180, 90);
         arc3.setFill(Color.rgb(50, 219, 240));
+        arc3.setType(ArcType.ROUND);
 
-        Arc arc4 = new Arc();
-        arc4.setCenterX(750.0f);
-        arc4.setCenterY(500.0f);
-        arc4.setRadiusX(100.0f);
-        arc4.setRadiusY(100.0f);
-        arc4.setStartAngle(270.0f);
-        arc4.setLength(90.0f);
-        arc4.setType(ArcType.ROUND);
+        Arc arc4 = new Arc(750, 500, 100, 100, 270, 90);
         arc4.setFill(Color.rgb(255, 1, 129));
+        arc4.setType(ArcType.ROUND);
 
-        Arc arc5 = new Arc();
-        arc5.setCenterX(750.0f);
-        arc5.setCenterY(500.0f);
-        arc5.setRadiusX(80.0f);
-        arc5.setRadiusY(80.0f);
-        arc5.setStartAngle(0.0f);
-        arc5.setLength(90.0f);
-        arc5.setType(ArcType.ROUND);
+        Arc arc5 = new Arc(750, 500, 80, 80, 0, 90);
         arc5.setFill(Color.rgb(144, 13, 255));
+        arc5.setType(ArcType.ROUND);
 
-        Arc arc6 = new Arc();
-        arc6.setCenterX(750.0f);
-        arc6.setCenterY(500.0f);
-        arc6.setRadiusX(80.0f);
-        arc6.setRadiusY(80.0f);
-        arc6.setStartAngle(90.0f);
-        arc6.setLength(90.0f);
-        arc6.setType(ArcType.ROUND);
+        Arc arc6 = new Arc(750, 500, 80, 80, 90, 90);
         arc6.setFill(Color.rgb (250, 225, 0));
+        arc6.setType(ArcType.ROUND);
 
-        Arc arc7 = new Arc();
-        arc7.setCenterX(750.0f);
-        arc7.setCenterY(500.0f);
-        arc7.setRadiusX(80.0f);
-        arc7.setRadiusY(80.0f);
-        arc7.setStartAngle(180.0f);
-        arc7.setLength(90.0f);
-        arc7.setType(ArcType.ROUND);
+        Arc arc7 = new Arc(750, 500, 80, 80, 180, 90);
         arc7.setFill(Color.rgb(50, 219, 240));
+        arc7.setType(ArcType.ROUND);
 
-        Arc arc8 = new Arc();
-        arc8.setCenterX(750.0f);
-        arc8.setCenterY(500.0f);
-        arc8.setRadiusX(80.0f);
-        arc8.setRadiusY(80.0f);
-        arc8.setStartAngle(270.0f);
-        arc8.setLength(90.0f);
-        arc8.setType(ArcType.ROUND);
+        Arc arc8 = new Arc(750, 500, 80, 80, 270, 90);
         arc8.setFill(Color.rgb(255, 1, 129));
+        arc8.setType(ArcType.ROUND);
 
-        Arc arc9 = new Arc();
-        arc9.setCenterX(750.0f);
-        arc9.setCenterY(500.0f);
-        arc9.setRadiusX(60.0f);
-        arc9.setRadiusY(60.0f);
-        arc9.setStartAngle(0.0f);
-        arc9.setLength(90.0f);
-        arc9.setType(ArcType.ROUND);
+        Arc arc9 = new Arc(750, 500, 60, 60, 0, 90);
         arc9.setFill(Color.rgb(144, 13, 255));
+        arc9.setType(ArcType.ROUND);
 
-        Arc arc10 = new Arc();
-        arc10.setCenterX(750.0f);
-        arc10.setCenterY(500.0f);
-        arc10.setRadiusX(60.0f);
-        arc10.setRadiusY(60.0f);
-        arc10.setStartAngle(90.0f);
-        arc10.setLength(90.0f);
-        arc10.setType(ArcType.ROUND);
+        Arc arc10 = new Arc(750, 500, 60, 60, 90, 90);
         arc10.setFill(Color.rgb (250, 225, 0));
+        arc10.setType(ArcType.ROUND);
 
-        Arc arc11 = new Arc();
-        arc11.setCenterX(750.0f);
-        arc11.setCenterY(500.0f);
-        arc11.setRadiusX(60.0f);
-        arc11.setRadiusY(60.0f);
-        arc11.setStartAngle(180.0f);
-        arc11.setLength(90.0f);
-        arc11.setType(ArcType.ROUND);
+        Arc arc11 = new Arc(750, 500, 60, 60, 180, 90);
         arc11.setFill(Color.rgb(50, 219, 240));
+        arc11.setType(ArcType.ROUND);
 
-        Arc arc12 = new Arc();
-        arc12.setCenterX(750.0f);
-        arc12.setCenterY(500.0f);
-        arc12.setRadiusX(60.0f);
-        arc12.setRadiusY(60.0f);
-        arc12.setStartAngle(270.0f);
-        arc12.setLength(90.0f);
-        arc12.setType(ArcType.ROUND);
+        Arc arc12 = new Arc(750, 500, 60, 60, 270, 90);
         arc12.setFill(Color.rgb(255, 1, 129));
+        arc12.setType(ArcType.ROUND);
 
-        Circle circle = new Circle();
-        circle.setCenterX(750.0f);
-        circle.setCenterY(500.0f);
-        circle.setRadius(90.0f);
+        Circle circle = new Circle(750, 500, 90);
         circle.setFill(Color.rgb(0, 0, 0));
 
-        Circle circle1 = new Circle();
-        circle1.setCenterX(750.0f);
-        circle1.setCenterY(500.0f);
-        circle1.setRadius(70.0f);
+        Circle circle1 = new Circle(750, 500, 70);
         circle1.setFill(Color.rgb(0, 0, 0));
 
-        Circle circle2 = new Circle();
-        circle2.setCenterX(750.0f);
-        circle2.setCenterY(500.0f);
-        circle2.setRadius(50.0f);
+        Circle circle2 = new Circle(750, 500, 50);
         circle2.setFill(Color.rgb(39, 39, 39));
         circle2.setStrokeWidth(5.0f);
         circle2.setStroke(Color.BLACK);
