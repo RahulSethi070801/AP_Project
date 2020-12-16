@@ -38,6 +38,16 @@ public class Ball
     double y;
     String colorString;
 
+    Ball(double y)
+    {
+        this.y = y;
+    }
+
+    Ball()
+    {
+        this.y = 700;
+    }
+
 //    double y;
     public Color getColor() {
         return color;
