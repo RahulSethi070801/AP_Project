@@ -32,7 +32,7 @@ public class GameEngine {
     Scene scene2;
     ArrayList<Obstacle> obstacles;
     ArrayList<Star> stars;
-    User user;
+    // User user;
     ArrayList<Game> savedGames;
     GameEngine() throws FileNotFoundException, IOException, ClassNotFoundException {
         root = new Group();
@@ -42,16 +42,6 @@ public class GameEngine {
         new Game();
 //        show();
         System.out.println("Game Engine Initialized");
-    }
-
-    public User getUser()
-    {
-        return this.user;
-    }
-
-    public void setUser( User user)
-    {
-        this.user=user;
     }
 
     public void createUser()

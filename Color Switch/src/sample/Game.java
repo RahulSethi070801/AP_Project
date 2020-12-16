@@ -167,7 +167,7 @@ public class Game implements Serializable {
         try
         {
             save();
-            new MainPage(new Game(root, scene2, obstacles, stars, user, score, difficulty, name, colorSwitches, root_list));
+            new MainPage();
         }
         catch(Exception exception){
 
@@ -203,13 +203,29 @@ public class Game implements Serializable {
         show();
     }
 
+    // Game(User user) throws FileNotFoundException, IOException, ClassNotFoundException
+    // {
+    //     this.name = "NEW GAME";
+    //     root = new Group();
+    //     scene2 = new Scene(root, 800, 800, Color.BLACK);
+    //     Main.stage.setScene(scene2);
+    //     Main.stage.setFullScreen(true);
+    //     this.obstacles = new ArrayList<Obstacle>();
+    //     System.out.println(root+" root new");
+    //     System.out.println(scene2+" scene2 new");
+    //     this.user = user;
+    //     show();
+    // }
+
     Game(Game game) throws FileNotFoundException, IOException, ClassNotFoundException
     {
 //        root = new Group();
         game.root = new Group();
-        game.scene2 = new Scene(game.root, 800, 800, Color.BLACK);
+        game.scene2 = new Scene(game.root, 1600, 1050, Color.BLACK);
         Main.stage.setScene(game.scene2);
-        Main.stage.setFullScreen(true);
+        Main.stage.setX(-25);
+        Main.stage.setY(-35);
+//        Main.stage.setFullScreen(true);
 //        this.obstacles = new ArrayList<Obstacle>();
 //        game.show();
     }
@@ -500,6 +516,9 @@ public class Game implements Serializable {
                 try {
                     //System.out.println("restart");
                     popupStage.hide();
+                    Main.user.totalScore += score;
+                    if(Main.user.highestScore < score)
+                        Main.user.highestScore = score;
                     new Game();
                 }
                 catch(Exception e)
@@ -513,6 +532,9 @@ public class Game implements Serializable {
                 root.setEffect(null);
                 popupStage.hide();
                 try {
+                    Main.user.totalScore += score;
+                    if(Main.user.highestScore < score)
+                        Main.user.highestScore = score;
                     new MainPage();
                 } catch (FileNotFoundException | InterruptedException ex) {
                     ex.printStackTrace();
@@ -526,6 +548,9 @@ public class Game implements Serializable {
             root.setEffect(null);
             t.stop();
             try {
+                Main.user.totalScore += score;
+                if(Main.user.highestScore < score)
+                    Main.user.highestScore = score;
                 new MainPage();
             } catch (FileNotFoundException | InterruptedException ex) {
                 ex.printStackTrace();
@@ -819,6 +844,9 @@ public class Game implements Serializable {
                 });
 
                 save_game.setOnAction(event -> {
+                    Main.user.totalScore += score;
+                    if(Main.user.highestScore < score)
+                        Main.user.highestScore = score;
                     pauseRoot.getChildren().clear();
                     Label label = new Label("Enter Name");
                     label.setId("paused");
@@ -840,14 +868,20 @@ public class Game implements Serializable {
                     root.setEffect(null);
                     popupStage.hide();
                     try {
+                        Main.user.totalScore += score;
+                        if(Main.user.highestScore < score)
+                            Main.user.highestScore = score;
                         new MainPage();
-                    } catch (FileNotFoundException | InterruptedException ex) {
+                    } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 });
                 restart.setOnAction(event -> {
                     root.setEffect(null);
                     try {
+                        Main.user.totalScore += score;
+                        if(Main.user.highestScore < score)
+                            Main.user.highestScore = score;
                         //System.out.println("restart");
                         popupStage.hide();
                         new Game();

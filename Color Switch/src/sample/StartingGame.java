@@ -28,9 +28,11 @@ class StartingGame
 
     public StartingGame() throws FileNotFoundException, InterruptedException {
         this.root= new Group();
-        Scene scene0 = new Scene(root, 800, 800, Color.BLACK);
+        Scene scene0 = new Scene(root, 1600, 1050, Color.BLACK);
         Main.stage.setScene(scene0);
-        Main.stage.setFullScreen(true);
+        Main.stage.setX(-25);
+        Main.stage.setY(-35);
+        //Main.stage.setFullScreen(true);
         show();
     }
     public void setRoot(Group root)
@@ -49,77 +51,77 @@ class StartingGame
         hd.show();
         Group root0 = hd.getRoot();
 
-        Arc arc1 = new Arc(700, 500, 120, 120, 0, 90);
+        Arc arc1 = new Arc(720, 500, 120, 120, 0, 90);
         arc1.setFill(Color.rgb(144, 13, 255));
         arc1.setType(ArcType.ROUND);
         arc1.setStrokeWidth(30);
 
-        Arc arc2 = new Arc(700, 500, 120, 120, 90, 90);
+        Arc arc2 = new Arc(720, 500, 120, 120, 90, 90);
         arc2.setFill(Color.rgb(250, 225, 0));
         arc2.setType(ArcType.ROUND);
         arc2.setStrokeWidth(30);
 
-        Arc arc3 = new Arc(700, 500, 120, 120, 180, 90);
+        Arc arc3 = new Arc(720, 500, 120, 120, 180, 90);
         arc3.setFill(Color.rgb(50, 219, 240));
         arc3.setType(ArcType.ROUND);
         arc3.setStrokeWidth(30);
 
-        Arc arc4 = new Arc(700, 500, 120, 120, 270, 90);
+        Arc arc4 = new Arc(720, 500, 120, 120, 270, 90);
         arc4.setFill(Color.rgb(255, 1, 129));
         arc4.setType(ArcType.ROUND);
         arc4.setStrokeWidth(30);
 
-        Arc arc5 = new Arc(700, 500, 85, 85, 0, 90);
+        Arc arc5 = new Arc(720, 500, 85, 85, 0, 90);
         arc5.setFill(Color.rgb(144, 13, 255));
         arc5.setType(ArcType.ROUND);
         arc5.setStrokeWidth(25);
 
-        Arc arc6 = new Arc(700, 500, 85, 85, 90, 90);
+        Arc arc6 = new Arc(720, 500, 85, 85, 90, 90);
         arc6.setFill(Color.rgb (250, 225, 0));
         arc6.setType(ArcType.ROUND);
         arc6.setStrokeWidth(25);
 
-        Arc arc7 = new Arc(700, 500, 85, 85, 180, 90);
+        Arc arc7 = new Arc(720, 500, 85, 85, 180, 90);
         arc7.setFill(Color.rgb(50, 219, 240));
         arc7.setType(ArcType.ROUND);
         arc7.setStrokeWidth(25);
 
-        Arc arc8 = new Arc(700, 500, 85, 85, 270, 90);
+        Arc arc8 = new Arc(720, 500, 85, 85, 270, 90);
         arc8.setFill(Color.rgb(255, 1, 129));
         arc8.setType(ArcType.ROUND);
         arc8.setStrokeWidth(25);
 
-        Arc arc9 = new Arc(700, 500, 50, 50, 0, 90);
+        Arc arc9 = new Arc(720, 500, 50, 50, 0, 90);
         arc9.setFill(Color.rgb(144, 13, 255));
         arc9.setType(ArcType.ROUND);
         arc9.setStrokeWidth(25);
 
-        Arc arc10 = new Arc(700, 500, 50, 50, 90, 90);
+        Arc arc10 = new Arc(720, 500, 50, 50, 90, 90);
         arc10.setFill(Color.rgb (250, 225, 0));
         arc10.setType(ArcType.ROUND);
         arc10.setStrokeWidth(25);
 
-        Arc arc11 = new Arc(700, 500, 50, 50, 180, 90);
+        Arc arc11 = new Arc(720, 500, 50, 50, 180, 90);
         arc11.setFill(Color.rgb(50, 219, 240));
         arc11.setType(ArcType.ROUND);
         arc11.setStrokeWidth(25);
 
-        Arc arc12 = new Arc(700, 500, 50, 50, 270, 90);
+        Arc arc12 = new Arc(720, 500, 50, 50, 270, 90);
         arc12.setFill(Color.rgb(255, 1, 129));
         arc12.setType(ArcType.ROUND);
         arc12.setStrokeWidth(25);
 
-        Circle circle = new Circle(700, 500, 100);
+        Circle circle = new Circle(720, 500, 100);
         circle.setFill(Color.rgb(0, 0, 0));
         //circle.setStrokeWidth(5.0f);
         //circle.setStroke(Color.BLACK);
 
-        Circle circle1 = new Circle(700, 500, 65);
+        Circle circle1 = new Circle(720, 500, 65);
         circle1.setFill(Color.rgb(0, 0, 0));
         //circle1.setStrokeWidth(5.0f);
         //circle1.setStroke(Color.BLACK);
 
-        Circle circle2 = new Circle(700, 500, 30);
+        Circle circle2 = new Circle(720, 500, 30);
         circle2.setFill(Color.rgb(0,0,0));
         //circle2.setStrokeWidth(5.0f);
         //circle2.setStroke(Color.BLACK);
@@ -167,12 +169,12 @@ class StartingGame
 
         //Group root1 = new Group(arc1, arc2, arc3, arc4, arc5, arc6, arc7, arc8, arc9, arc10, arc11, arc12, circle, circle1, circle2);
 
-        Ball b = new Ball(800);
+        Ball b = new Ball(708, 800);
         b.show();
         Group root2 = b.getRoot();
         b.setFill(Color.rgb(255, 1, 129));
 
-        TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(1000), root2);
+        TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(600), root2);
         translateTransition1.setToY(-140);
         translateTransition1.setCycleCount(1);
 
@@ -189,13 +191,13 @@ class StartingGame
         }
 
 
-        TranslateTransition translateTransition2 = new TranslateTransition(Duration.millis(700), root2);
+        TranslateTransition translateTransition2 = new TranslateTransition(Duration.millis(600), root2);
         //translateTransition2.setFromY(400);
         translateTransition2.setToY(0);
         translateTransition2.setCycleCount(1);
         translateTransition2.setAutoReverse(true);
 
-        TranslateTransition translateTransition3 = new TranslateTransition(Duration.millis(700), root2);
+        TranslateTransition translateTransition3 = new TranslateTransition(Duration.millis(600), root2);
         //translateTransition3.setFromY(700);
         translateTransition3.setToY(-140);
         translateTransition3.setCycleCount(1);
@@ -203,21 +205,28 @@ class StartingGame
 
 
 
-        TranslateTransition translateTransition4 = new TranslateTransition(Duration.millis(700), root2);
+        TranslateTransition translateTransition4 = new TranslateTransition(Duration.millis(600), root2);
         //translateTransition4.setFromY(400);
         translateTransition4.setToY(0);
         translateTransition4.setCycleCount(1);
         translateTransition4.setAutoReverse(true);
 
-        TranslateTransition translateTransition5 = new TranslateTransition(Duration.millis(400), root2);
+        TranslateTransition translateTransition5 = new TranslateTransition(Duration.millis(300), root2);
         //translateTransition4.setFromY(400);
         translateTransition5.setToY(-310);
         translateTransition5.setCycleCount(1);
         translateTransition5.setAutoReverse(true);
 
+        FadeTransition fadeTransition1 = new FadeTransition();
+        fadeTransition1.setDuration(Duration.millis(1000));
+        fadeTransition1.setNode(root);
+        fadeTransition1.setFromValue(1);
+        fadeTransition1.setToValue(0);
+        //fadeTransition1.play();
+
 
         SequentialTransition sequentialTransition = new SequentialTransition();
-        sequentialTransition.getChildren().addAll(translateTransition1, translateTransition2, translateTransition3, translateTransition4, translateTransition5);
+        sequentialTransition.getChildren().addAll(translateTransition1, translateTransition2, translateTransition3, translateTransition4, translateTransition5, fadeTransition1);
         sequentialTransition.setCycleCount(1);
         sequentialTransition.setInterpolator(Interpolator.LINEAR);
         //sequentialTransition.setAutoReverse(true);

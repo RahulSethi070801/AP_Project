@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.*;
 public class User implements Serializable {
     long highestScore = 0;
+    long totalScore=0;
     String name;
     public User(String name)
     {
