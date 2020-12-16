@@ -622,15 +622,15 @@ public class Game implements Serializable {
         root.getChildren().add(root3);
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
-        EventHandler<ActionEvent> punar_janam = actionEvent ->
-        {
-            for(Node i : root3.getChildren())
-            {
-                root3.getChildren().remove(i);
-            }
-            //t.stop();
-        };
-        sq.setOnFinished(punar_janam);
+//        EventHandler<ActionEvent> punar_janam = actionEvent ->
+//        {
+//            for(Node i : root3.getChildren())
+//            {
+//                root3.getChildren().remove(i);
+//            }
+//            //t.stop();
+//        };
+//        sq.setOnFinished(punar_janam);
 
         //sq.setOnFinished(actionEvent -> revive());
     }
