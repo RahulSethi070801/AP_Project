@@ -61,7 +61,7 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         return false;
     }
     
-    public void show(long y)
+    public void show(long y, long difficulty)
     {
         Arc arc11 = new Arc(570, 400+y, 130, 130, 0, 90);
         arc11.setType(ArcType.ROUND);
@@ -153,7 +153,8 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         rotateTransition.setAxis(Rotate.Z_AXIS);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
-        rotateTransition.setDuration(Duration.millis(8000));
+       // rotateTransition.setDuration(Duration.millis(8000));
+        increaseDifficulty(rotateTransition, difficulty);
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.setNode(root1);
@@ -163,13 +164,15 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         rotateTransition1.setAxis(Rotate.Z_AXIS);
         rotateTransition1.setByAngle(-360);
         rotateTransition1.setCycleCount(Timeline.INDEFINITE);
-        rotateTransition1.setDuration(Duration.millis(8000));
+        increaseDifficulty(rotateTransition1, difficulty);
+        //rotateTransition1.setDuration(Duration.millis(8000));
         rotateTransition1.setAutoReverse(false);
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.setNode(root2);
         rotateTransition1.play();
 
         duration = 8000;
+        // increaseDifficulty(1000);
         root.getChildren().add(root1);
         root.getChildren().add(root2);
         this.y = y;
@@ -195,9 +198,10 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
     {
         return this.root.getLayoutX();
     }
-    public void increaseDifficulty(long difficulty)
+    public void increaseDifficulty(RotateTransition rt,  long difficulty)
     {
-        rotateTransition.setDuration(Duration.millis(duration-difficulty));
-        rotateTransition1.setDuration(Duration.millis(duration-difficulty));
+        rt.setDuration(Duration.millis(8000-difficulty));
+        // rt.setDuration(Duration.millis(8000-difficulty));
+        //duration-=difficulty;
     }
 }
