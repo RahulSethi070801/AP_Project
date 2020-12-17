@@ -128,11 +128,19 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         Group root2 = new Group();
         root2.getChildren().addAll(shape6, shape5, shape8, shape7);
 
+        this.speed = (int)difficulty;
+
         rotateTransition = new RotateTransition();
         rotateTransition.setAxis(Rotate.Z_AXIS);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
-        increaseDifficulty(rotateTransition, difficulty);
+        if (speed == 1)
+            rotateTransition.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            rotateTransition.setDuration(Duration.millis(4500));
+        else
+            rotateTransition.setDuration(Duration.millis(3000));
+        //increaseDifficulty(rotateTransition, difficulty);
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.setNode(root1);
@@ -142,13 +150,19 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
         rotateTransition1.setAxis(Rotate.Z_AXIS);
         rotateTransition1.setByAngle(-360);
         rotateTransition1.setCycleCount(Timeline.INDEFINITE);
-        increaseDifficulty(rotateTransition1, difficulty);
+        if (speed == 1)
+            rotateTransition1.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            rotateTransition1.setDuration(Duration.millis(4500));
+        else
+            rotateTransition1.setDuration(Duration.millis(3000));
+        //increaseDifficulty(rotateTransition1, difficulty);
         rotateTransition1.setAutoReverse(false);
         rotateTransition1.setInterpolator(Interpolator.LINEAR);
         rotateTransition1.setNode(root2);
         rotateTransition1.play();
 
-        duration = 8000;
+        //duration = 8000;
         root.getChildren().add(root1);
         root.getChildren().add(root2);
         this.y = y;
@@ -165,9 +179,9 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
             return yy;
     }
 
-    public void increaseDifficulty(RotateTransition rt,  long difficulty)
-    {
-        if(duration-difficulty>0)
-            rt.setDuration(Duration.millis(duration-difficulty));
-    }
+//    public void increaseDifficulty(RotateTransition rt,  long difficulty)
+//    {
+//        if(duration-difficulty>0)
+//            rt.setDuration(Duration.millis(duration-difficulty));
+//    }
 }

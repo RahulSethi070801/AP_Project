@@ -25,6 +25,7 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
 {
 //    Group root;
     private transient Shape shape1, shape2, shape3, shape4, shape5, shape6, shape7, shape8;
+    //private int speed;
 
     public void setRoot(Group root)
     {
@@ -135,16 +136,23 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
 
         this.y = y;
 
+        this.speed = (int)difficulty;
         rotateTransition = new RotateTransition();
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
-        increaseDifficulty(rotateTransition, difficulty);
+        if (speed == 1)
+            rotateTransition.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            rotateTransition.setDuration(Duration.millis(4500));
+        else
+            rotateTransition.setDuration(Duration.millis(3000));
+        //increaseDifficulty(rotateTransition, difficulty);
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.setNode(root);
         rotateTransition.play();
-        duration = 5000;
+        //duration = 5000;
     }
     public void setLayoutY(double y)
     {
@@ -163,8 +171,8 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
         return this.root.getLayoutX();
     }
 
-    public void increaseDifficulty(RotateTransition rt,  long difficulty)
-    {
-        rt.setDuration(Duration.millis(duration-difficulty));
-    }
+//    public void increaseDifficulty(RotateTransition rt,  long difficulty)
+//    {
+//        rt.setDuration(Duration.millis(duration-difficulty));
+//    }
 }

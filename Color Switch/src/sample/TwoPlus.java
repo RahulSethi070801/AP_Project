@@ -106,14 +106,20 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         addTransition(root1, root2, difficulty);
 
         this.y=y;
-        duration = 4000;
+        //duration = 4000;
         
     }
     public void addTransition(Group root1, Group root2, long difficulty)
     {
+        this.speed = (int)difficulty;
         rotateTransition = new RotateTransition();
-        // rotateTransition.setDuration(Duration.millis(4000));
-        increaseDifficulty(rotateTransition, difficulty);
+        if (speed == 1)
+            rotateTransition.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            rotateTransition.setDuration(Duration.millis(4500));
+        else
+            rotateTransition.setDuration(Duration.millis(3000));
+        //increaseDifficulty(rotateTransition, difficulty);
         rotateTransition.setNode(root1);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
@@ -122,7 +128,13 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         rotateTransition.play();
     
         rotateTransition1 = new RotateTransition();
-        increaseDifficulty(rotateTransition1, difficulty);
+        if (speed == 1)
+            rotateTransition1.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            rotateTransition1.setDuration(Duration.millis(4500));
+        else
+            rotateTransition1.setDuration(Duration.millis(3000));
+        //increaseDifficulty(rotateTransition1, difficulty);
         rotateTransition1.setNode(root2);
         rotateTransition1.setByAngle(-360);
         rotateTransition1.setCycleCount(Timeline.INDEFINITE);
@@ -131,9 +143,9 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         rotateTransition1.play();
     }
 
-    public void increaseDifficulty(RotateTransition rt,  long difficulty)
-    {
-        rt.setDuration(Duration.millis(5000-difficulty));
-    }
+//    public void increaseDifficulty(RotateTransition rt,  long difficulty)
+//    {
+//        rt.setDuration(Duration.millis(5000-difficulty));
+//    }
 
 }

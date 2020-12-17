@@ -18,14 +18,15 @@ public abstract class Obstacle implements Serializable
     transient protected RotateTransition rotateTransition;
 
     // serializable objects
-    protected double speed;
+   // protected double speed;
     protected String colors[] = { "Red", "Blue", "Pink", "Yellow"};
     protected double x;
     protected double y;
     protected double xx=570.0;
     protected double yy;
     protected double thickness;
-    protected long duration = 5000;
+    protected int speed;
+    //protected long duration = 5000;
 
     public double getX() {
         return x;

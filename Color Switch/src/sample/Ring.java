@@ -112,9 +112,16 @@ class Ring extends Obstacle implements Blast
         root.getChildren().addAll(shape1,shape2,shape3,shape4);
 
         this.y = y;
+        this.speed = (int)difficulty;
 
         rotateTransition = new RotateTransition();
-        increaseDifficulty(rotateTransition, difficulty);
+//        increaseDifficulty(rotateTransition, difficulty);
+        if (speed == 1)
+            rotateTransition.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            rotateTransition.setDuration(Duration.millis(4500));
+        else
+            rotateTransition.setDuration(Duration.millis(3000));
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
@@ -125,8 +132,8 @@ class Ring extends Obstacle implements Blast
         return ;
     }
 
-    public void increaseDifficulty(RotateTransition rt,  long difficulty)
-    {
-        rt.setDuration(Duration.millis(8000-difficulty));
-    }
+//    public void increaseDifficulty(RotateTransition rt,  long difficulty)
+//    {
+//        rt.setDuration(Duration.millis(8000-difficulty));
+//    }
 }

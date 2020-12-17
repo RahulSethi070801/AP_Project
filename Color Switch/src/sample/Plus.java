@@ -84,10 +84,17 @@ public class Plus extends Obstacle implements Blast, Serializable
 
         root = new Group();
         root.getChildren().addAll(line1, line2, line3, line4);
+        this.speed = (int)difficulty;
 
         this.y = y;
         rotateTransition = new RotateTransition();
-        increaseDifficulty(rotateTransition, difficulty);
+//        increaseDifficulty(rotateTransition, difficulty);
+        if (speed == 1)
+            rotateTransition.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            rotateTransition.setDuration(Duration.millis(4500));
+        else
+            rotateTransition.setDuration(Duration.millis(3000));
         rotateTransition.setNode(root);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(Timeline.INDEFINITE);
@@ -95,14 +102,14 @@ public class Plus extends Obstacle implements Blast, Serializable
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.play();
 
-        duration = 6000;
+//        duration = 6000;
     }
     
-    public void increaseDifficulty(RotateTransition rt,  long difficulty)
-    {
-        if(duration - difficulty > 0)
-            rt.setDuration(Duration.millis(duration-difficulty));
-    }
+//    public void increaseDifficulty(RotateTransition rt,  long difficulty)
+//    {
+//        if(duration - difficulty > 0)
+//            rt.setDuration(Duration.millis(duration-difficulty));
+//    }
 
 }
 

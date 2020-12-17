@@ -122,8 +122,7 @@ public class Game implements Serializable, Display {
         for(int i=0;i<obstacles.size();i++)
         {
             Obstacle o = obstacles.get(i);
-            o.show((long)o.y, difficulty);
-            difficulty+=500;
+            o.show((long)o.y, (long)o.speed);
             root.getChildren().add(o.getRoot());
             root_list.add(o.getRoot());
             // System.out.println(obstacles.get(i).y+" "+obstacles.get(i)+" setup");
@@ -187,7 +186,7 @@ public class Game implements Serializable, Display {
         }
     }
 
-    public void addObstacle() throws FileNotFoundException
+    public void addObstacle(int i) throws FileNotFoundException
     {
         int ind = getRandom(8);
         Obstacle o;
@@ -228,6 +227,14 @@ public class Game implements Serializable, Display {
         else
             o = new HorizontalLine();
 
+        if (i<=2)
+            setDifficulty(1);
+        else if (i>2 && i<=6)
+            setDifficulty(2);
+        else
+            setDifficulty(3);
+
+
         o.show(y, difficulty);
         obstacles.add(o);
 
@@ -243,7 +250,7 @@ public class Game implements Serializable, Display {
         root_list.add(colorswitch.getRoot());
         colorSwitches.add(colorswitch);
 
-        setDifficulty(difficulty-500);
+//        setDifficulty(difficulty+1);
 
         y-=500;
     }
@@ -705,7 +712,7 @@ public class Game implements Serializable, Display {
             stars = new ArrayList<Star>();
             colorSwitches = new ArrayList<ColorSwitch>();
             for (int i = 0; i < 25; i++) {
-                addObstacle();
+                addObstacle(i);
             }
         }
         else{

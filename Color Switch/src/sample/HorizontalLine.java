@@ -72,7 +72,7 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         double X = -26000;
 //        Group figure = new Group();
 
-        duration = 8000;
+        //duration = 8000;
         for(int i=0; i<20; i++)
         {
             Group oneLine;
@@ -109,8 +109,14 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
     public void addTransition(long difficulty)
     {
 
+        this.speed = (int)difficulty;
         translateTransition1 = new TranslateTransition();
-        translateTransition1.setDuration(Duration.millis(8000));
+        if (speed == 1)
+            translateTransition1.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            translateTransition1.setDuration(Duration.millis(4500));
+        else
+            translateTransition1.setDuration(Duration.millis(3000));
         translateTransition1.setNode(line1);
         translateTransition1.setByX(1600);
         translateTransition1.setCycleCount(Timeline.INDEFINITE);
@@ -119,7 +125,12 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         translateTransition1.play();
 
         translateTransition2 = new TranslateTransition();
-        translateTransition2.setDuration(Duration.millis(8000));
+        if (speed == 1)
+            translateTransition2.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            translateTransition2.setDuration(Duration.millis(4500));
+        else
+            translateTransition2.setDuration(Duration.millis(3000));
         translateTransition2.setNode(line2);
         translateTransition2.setByX(1600);
         translateTransition2.setCycleCount(Timeline.INDEFINITE);
@@ -128,7 +139,12 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         translateTransition2.play();
 
         translateTransition3 = new TranslateTransition();
-        translateTransition3.setDuration(Duration.millis(8000));
+        if (speed == 1)
+            translateTransition3.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            translateTransition3.setDuration(Duration.millis(4500));
+        else
+            translateTransition3.setDuration(Duration.millis(3000));
         translateTransition3.setNode(line3);
         translateTransition3.setByX(1600);
         translateTransition3.setCycleCount(Timeline.INDEFINITE);
@@ -137,7 +153,12 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         translateTransition3.play();
 
         translateTransition4 = new TranslateTransition();
-        translateTransition4.setDuration(Duration.millis(8000));
+        if (speed == 1)
+            translateTransition4.setDuration(Duration.millis(6000));
+        else if (speed == 2)
+            translateTransition4.setDuration(Duration.millis(4500));
+        else
+            translateTransition4.setDuration(Duration.millis(3000));
         translateTransition4.setNode(line4);
         translateTransition4.setByX(1600);
         translateTransition4.setCycleCount(Timeline.INDEFINITE);
@@ -145,18 +166,18 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         translateTransition4.setInterpolator(Interpolator.LINEAR);
         translateTransition4.play();
 
-        increaseDifficulty(difficulty);
+        //increaseDifficulty(difficulty);
     }
     
-    public void increaseDifficulty(long difficulty)
-    {
-        if(duration-difficulty>0)
-        {
-            translateTransition1.setDuration(Duration.millis(duration-difficulty));
-            translateTransition2.setDuration(Duration.millis(duration-difficulty));
-            translateTransition3.setDuration(Duration.millis(duration-difficulty));
-            translateTransition4.setDuration(Duration.millis(duration-difficulty));
-            duration-=difficulty;
-        }
-    }
+//    public void increaseDifficulty(long difficulty)
+//    {
+//        if(duration-difficulty>0)
+//        {
+//            translateTransition1.setDuration(Duration.millis(duration-difficulty));
+//            translateTransition2.setDuration(Duration.millis(duration-difficulty));
+//            translateTransition3.setDuration(Duration.millis(duration-difficulty));
+//            translateTransition4.setDuration(Duration.millis(duration-difficulty));
+//            duration-=difficulty;
+//        }
+//    }
 }
