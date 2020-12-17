@@ -32,12 +32,12 @@ import java.util.Random;
 
 public class Ball
 {
-    transient Group root;
-    transient Circle ball;
-    transient Color color;
-    double y;
-    double x;
-    String colorString;
+    private transient Group root;
+    private transient Circle ball;
+    private transient Color color;
+    private double y;
+    private double x;
+    private String colorString;
 
     Ball(double x, double y)
     {
@@ -51,7 +51,6 @@ public class Ball
         this.y = 700;
     }
 
-//    double y;
     public Color getColor() {
         return color;
     }
@@ -70,12 +69,6 @@ public class Ball
         return root;
     }
 
-    public int getRandom(int n)
-    {
-        Random rand = new Random();
-        return rand.nextInt(n);
-    }
-
     public static boolean isCollide(Circle x, Group y)
     {
         Bounds RectA = x.localToScene(x.getBoundsInLocal());
@@ -90,23 +83,21 @@ public class Ball
         root = new Group();
 
         ball = new Circle(10, Color.rgb(144, 13, 255));
-        //real_ball.setColor(Color.rgb(144, 13, 255));
         ball.relocate(x, y);
 
         root.getChildren().add(this.ball);
-
         this.y = root.getLayoutY();
-        return ball;
 
+        return ball;
     }
 
-    public void setLayoutY(double y)
+    public void setLayoutY(double y) // value to be added passed as parameter
     {
-        this.y=y;
+        this.y=this.ball.getLayoutY()+y;
         this.ball.setLayoutY(this.ball.getLayoutY()+y);
     }
 
-    public void setLayY(double y)
+    public void setLayY(double y) // value to be set is passed as parameter
     {
         this.y=y;
         this.ball.setLayoutY(y);

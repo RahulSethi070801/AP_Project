@@ -1,44 +1,22 @@
 package sample;
 
-import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.*;
-import javafx.scene.shape.Polygon;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-
-import java.awt.*;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 class Achievements
 {
-    Group root;
+    private Group root;
 
     Achievements() throws FileNotFoundException {
         show();
@@ -79,17 +57,17 @@ class Achievements
         achievements.setId("achievements");
         pauseRoot.getChildren().add(achievements);
 
-        javafx.scene.control.Label name = new javafx.scene.control.Label("Player name : " + Main.user.name);
+        javafx.scene.control.Label name = new javafx.scene.control.Label("Player name : " + Main.user.getName());
         name.setEffect(new DropShadow(20,Color.BLACK));
         name.setId("user");
         pauseRoot.getChildren().add(name);
 
-        javafx.scene.control.Label highestScore = new javafx.scene.control.Label("Highest Score : " + Main.user.highestScore);
+        javafx.scene.control.Label highestScore = new javafx.scene.control.Label("Highest Score : " + Main.user.getHighestScore());
         highestScore.setEffect(new DropShadow(20,Color.BLACK));
         highestScore.setId("user");
         pauseRoot.getChildren().add(highestScore);
 
-        javafx.scene.control.Label totalStars = new javafx.scene.control.Label("Total Stars : " + Main.user.totalScore);
+        javafx.scene.control.Label totalStars = new javafx.scene.control.Label("Total Stars : " + Main.user.getTotalScore());
         totalStars.setEffect(new DropShadow(20,Color.BLACK));
         totalStars.setId("user");
         pauseRoot.getChildren().add(totalStars);
@@ -117,8 +95,5 @@ class Achievements
         });
 
         popupStage.show();
-
-
     }
-
 }

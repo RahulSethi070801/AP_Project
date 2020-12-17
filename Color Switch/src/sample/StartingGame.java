@@ -24,7 +24,7 @@ import java.util.Random;
 
 class StartingGame
 {
-    Group root;
+    private Group root;
 
     public StartingGame() throws FileNotFoundException, InterruptedException {
         this.root= new Group();
@@ -32,9 +32,9 @@ class StartingGame
         Main.stage.setScene(scene0);
         Main.stage.setX(-25);
         Main.stage.setY(-35);
-        //Main.stage.setFullScreen(true);
         show();
     }
+
     public void setRoot(Group root)
     {
         this.root = root;
@@ -167,8 +167,6 @@ class StartingGame
         rotate2.setNode(root33);
         rotate2.play();
 
-        //Group root1 = new Group(arc1, arc2, arc3, arc4, arc5, arc6, arc7, arc8, arc9, arc10, arc11, arc12, circle, circle1, circle2);
-
         Ball b = new Ball(708, 800);
         b.show();
         Group root2 = b.getRoot();
@@ -177,7 +175,6 @@ class StartingGame
         TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(600), root2);
         translateTransition1.setToY(-140);
         translateTransition1.setCycleCount(1);
-
 
         for (int i=0; i<2; i++)
         {
@@ -190,20 +187,15 @@ class StartingGame
             Main.sound = false;
         }
 
-
         TranslateTransition translateTransition2 = new TranslateTransition(Duration.millis(600), root2);
-        //translateTransition2.setFromY(400);
         translateTransition2.setToY(0);
         translateTransition2.setCycleCount(1);
         translateTransition2.setAutoReverse(true);
 
         TranslateTransition translateTransition3 = new TranslateTransition(Duration.millis(600), root2);
-        //translateTransition3.setFromY(700);
         translateTransition3.setToY(-140);
         translateTransition3.setCycleCount(1);
         translateTransition3.setAutoReverse(true);
-
-
 
         TranslateTransition translateTransition4 = new TranslateTransition(Duration.millis(600), root2);
         //translateTransition4.setFromY(400);
@@ -222,8 +214,6 @@ class StartingGame
         fadeTransition1.setNode(root);
         fadeTransition1.setFromValue(1);
         fadeTransition1.setToValue(0);
-        //fadeTransition1.play();
-
 
         SequentialTransition sequentialTransition = new SequentialTransition();
         sequentialTransition.getChildren().addAll(translateTransition1, translateTransition2, translateTransition3, translateTransition4, translateTransition5, fadeTransition1);
@@ -242,7 +232,5 @@ class StartingGame
         });
 
         root.getChildren().addAll(root0, root1, root2);
-
-
     }
 }

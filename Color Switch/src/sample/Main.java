@@ -40,21 +40,17 @@ public class Main extends Application {
         stage2 = new Stage();
     }
 
-
     @Override
     public void start(Stage stage1) throws Exception
     {
         stage.show();
         new StartingGame();
-        //new MainPage();
     }
-
 
     public static void main(String[] args) {
         launch(args);
     }
 }
-
 
 /*
 

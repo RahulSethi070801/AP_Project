@@ -21,18 +21,20 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.io.Serializable;
 import java.util.Random;
 
 
-class Triangle extends Obstacle implements Blast
+class Triangle extends Obstacle implements Blast, Serializable
 {
 //    Group root;
-    transient Line line1, line2, line3;
+    private transient Line line1, line2, line3;
 
     public Triangle()
     {
         this.root = new Group();
     }
+
     public void setRoot(Group root)
     {
         this.root = root;
@@ -40,13 +42,11 @@ class Triangle extends Obstacle implements Blast
 
     public Group getRoot()
     {
-//        System.out.println("Tri");
         return root;
     }
 
     public static boolean isCollide(Circle x, Shape y)
     {
-//        System.out.println(y);
         Shape intersect = Shape.intersect(x,y);
         boolean b = false;
         if (intersect.getBoundsInLocal().getWidth() != -1)
@@ -72,22 +72,23 @@ class Triangle extends Obstacle implements Blast
     }
 
 
-    public void show( long y)
+    public void show( long y, long difficulty)
     {
+
         line1 = new Line(200+380, 200+y+200, 376+380, 301.734+y+200);
         line1.setStrokeWidth(10);
         line1.setFill(null);
+        line1.setStroke(Color.rgb(144, 13, 255));
+
         line2 = new Line(200+380, 200+y+200, 376+380, 98.266+y+200);
         line2.setStrokeWidth(10);
         line2.setFill(null);
+        line2.setStroke(Color.rgb (255, 1, 129));
+
         line3 = new Line(376+380, 301.734+y+200, 376+380, 98.266+y+200);
         line3.setStrokeWidth(10);
         line3.setFill(null);
-
-        line1.setStroke(Color.rgb(144, 13, 255));
-        line2.setStroke(Color.rgb (255, 1, 129));
         line3.setStroke(Color.rgb(50, 219, 240));
-
 
         root = new Group();
         root.getChildren().addAll(line1, line2, line3);
@@ -98,6 +99,7 @@ class Triangle extends Obstacle implements Blast
         r.setPivotY(200+y+200);
 
         this.y=y+400;
+
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
