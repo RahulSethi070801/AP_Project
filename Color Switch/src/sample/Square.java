@@ -69,7 +69,6 @@ class Square extends Obstacle implements Blast, Serializable
             {
                 return true;
             }
-
         }
         return false;
     }
