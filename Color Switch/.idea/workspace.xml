@@ -20,26 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1664e7a4-6c4d-4cb7-ab89-93876fefb4b5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/ConcentricCircles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/ConcentricCircles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalCircles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalCircles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/HorizontalLine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Obstacle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Plus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Plus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Ring.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/SavedGames.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Color Switch/sample/TwoPlus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Color Switch/sample/TwoPlus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/ConcentricCircles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ConcentricCircles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HorizontalCircles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HorizontalCircles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/HorizontalLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/HorizontalLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Obstacle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Plus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Ring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Ring.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/TwoPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TwoPlus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +115,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="F:/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -167,7 +150,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
       <module name="Color Switch" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\Tushar\Downloads\javafx-sdk-15.0.1\lib --add-modules javafx.controls,javafx.media,javafx.graphics,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAME" />
+      <option name="VM_PARAMETERS" value="--module-path F:\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.media,javafx.graphics,javafx.fxml --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
       <extension name="coverage">
         <pattern>
@@ -219,7 +202,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -260,12 +243,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
@@ -279,42 +263,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1606235154878" />
-    <state x="670" y="0" width="816" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608217764716">
+    <state x="670" y="0" width="816" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608224664938">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="670" y="0" width="816" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1608217764716" />
+    <state x="670" y="0" width="816" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1608224664938" />
     <state x="954" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1607681449163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="954" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607681449163" />
-    <state x="1002" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1608212018893">
+    <state x="1002" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1608224645193">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="1002" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1608212018893" />
+    <state x="1002" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1608224645193" />
     <state x="397" y="5" key="CommitChangelistDialog2" timestamp="1605509054881">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="397" y="5" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1605509054881" />
-    <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1608193140453">
+    <state x="722" y="154" key="FileChooserDialogImpl" timestamp="1608224679735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1608193140453" />
-    <state width="1491" height="72" key="GridCell.Tab.0.bottom" timestamp="1608223421356">
+    <state x="722" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1608224679735" />
+    <state width="1493" height="77" key="GridCell.Tab.0.bottom" timestamp="1608224772191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="72" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608223421356" />
-    <state width="1491" height="72" key="GridCell.Tab.0.center" timestamp="1608223421355">
+    <state width="1493" height="77" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608224772191" />
+    <state width="1493" height="77" key="GridCell.Tab.0.center" timestamp="1608224772190">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="72" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608223421355" />
-    <state width="1491" height="72" key="GridCell.Tab.0.left" timestamp="1608223421355">
+    <state width="1493" height="77" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608224772190" />
+    <state width="1493" height="77" key="GridCell.Tab.0.left" timestamp="1608224772188">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="72" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608223421355" />
-    <state width="1491" height="72" key="GridCell.Tab.0.right" timestamp="1608223421356">
+    <state width="1493" height="77" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608224772188" />
+    <state width="1493" height="77" key="GridCell.Tab.0.right" timestamp="1608224772190">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="72" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608223421356" />
+    <state width="1493" height="77" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608224772190" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606994333489">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -331,10 +315,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1491" height="260" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1608063462988" />
-    <state x="496" y="0" key="SettingsEditor" timestamp="1608217782396">
+    <state x="496" y="0" key="SettingsEditor" timestamp="1608224685044">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="496" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1608217782396" />
+    <state x="496" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1608224685044" />
     <state x="618" y="327" key="VCS.ChangelistChooser" timestamp="1605509077399">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

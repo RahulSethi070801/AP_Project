@@ -157,9 +157,9 @@ public class Design implements Display
         javafx.scene.image.Image image32 = new javafx.scene.image.Image(stream32);
         ImageView imageView3 = new ImageView();
         imageView3.setImage(image31);
-        imageView3.setX(1020);
+        imageView3.setX(1010);
         imageView3.setY(400);
-        imageView3.setFitWidth(80);
+        imageView3.setFitWidth(70);
         imageView3.setPreserveRatio(true);
 
         EventHandler<MouseEvent> eventHandler3 = new EventHandler<MouseEvent>() {
@@ -188,7 +188,7 @@ public class Design implements Display
         imageView4.setImage(image41);
         imageView4.setX(1007);
         imageView4.setY(500);
-        imageView4.setFitWidth(110);
+        imageView4.setFitWidth(80);
         imageView4.setPreserveRatio(true);
 
         EventHandler<MouseEvent> eventHandler4 = new EventHandler<MouseEvent>() {
