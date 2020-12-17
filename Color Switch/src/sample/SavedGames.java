@@ -140,7 +140,7 @@ public class SavedGames
                     }
                     catch(Exception ex){
                         System.out.println("HEHEEH");
-                        System.out.println(ex);
+                        ex.printStackTrace();
                     }
                 }
             };

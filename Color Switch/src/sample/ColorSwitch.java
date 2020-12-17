@@ -32,8 +32,8 @@ import java.util.Random;
 
 public class ColorSwitch implements Serializable {
     private transient Group root;
-    private double y;
     private String color;
+    double y;
 
     public ColorSwitch(){}
 

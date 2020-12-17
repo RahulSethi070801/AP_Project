@@ -70,7 +70,7 @@ public class Main extends Application {
 // TODO : high score total score serializable (done)
 // TODO : PPT
 // TODO : Integrate (done)
-// TODO : Horizontal Line
+// TODO : Horizontal Line (done)
 // TODO : Design Pattern
 
 /*

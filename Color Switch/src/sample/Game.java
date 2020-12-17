@@ -148,24 +148,19 @@ public class Game implements Serializable {
         for(int i=0;i<colorSwitches.size();i++)
         {
             ColorSwitch colorswitch = colorSwitches.get(i);
-            root.getChildren().add(colorswitch.show((long)colorswitch.getLayoutY()));
+            root.getChildren().add(colorswitch.show((long)colorswitch.y));
             root_list.add(colorswitch.getRoot());
             // System.out.println(colorSwitches.get(i).getLayoutY()+" "+colorSwitches.get(i).getClass());
         }
     }
 
-    public void resumeGame(){}
-    public void pauseGame(){}
-    public void setBall(){}
-    public void setCurrentObstacle(Obstacle obstacle){}
+
     public long getDifficulty()
     {
         return this.difficulty;
     }
     public void setDifficulty(){}
-    public void playGame(){}
-    public void setBackground(){}
-    public void controlBall(){}
+
     public void exitGame(){
         try {
             new MainPage();
@@ -438,7 +433,7 @@ public class Game implements Serializable {
             revive.setOnAction(event -> {
                 join(ball);
                 root.setEffect(null);
-                score-=1;
+                score-=2;
                 double diff = 711-ball.getLayY();
 
                 if(ind >=0)
