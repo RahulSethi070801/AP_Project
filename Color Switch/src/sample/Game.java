@@ -10,6 +10,7 @@
 package sample;
 
 import javafx.animation.*;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
@@ -24,6 +25,7 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -334,7 +336,8 @@ public class Game implements Serializable {
             String path = localDir+"\\colorswitch.wav";
             Media media = new Media(new File(path).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.setAutoPlay(Main.sound);
+//            mediaPlayer.setCycleCount();
 
             root.getChildren().remove(colorSwitches.get(0).getRoot());
             root_list.remove(colorSwitches.get(0).getRoot());
@@ -357,7 +360,7 @@ public class Game implements Serializable {
             String path = localDir+"\\star.wav";
             Media media = new Media(new File(path).toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.setAutoPlay(Main.sound);
         }
         /*if (obstacles.get(0).getLayoutY() > 800)
         {
@@ -375,7 +378,7 @@ public class Game implements Serializable {
                 String path = localDir+"\\dead.wav";
                 Media media = new Media(new File(path).toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
-                mediaPlayer.setAutoPlay(true);
+                mediaPlayer.setAutoPlay(Main.sound);
                 this.ind = i;
                 explode(ball);
             }
@@ -513,12 +516,12 @@ public class Game implements Serializable {
                 String  style= getClass().getResource("styles.css").toExternalForm();
                 scoreBoard.getStylesheets().add(style);
 
-                Label label = new Label("Score :");
+                Label label = new Label("GAME OVER" );
                 label.setId("paused");
                 label.setEffect(new DropShadow(20,Color.BLACK));
                 scoreBoard.getChildren().add(label);
 
-                Label scoreLabel = new Label(""+score);
+                Label scoreLabel = new Label("SCORE : "+score);
                 scoreLabel.setId("paused");
                 scoreLabel.setEffect(new DropShadow(20,Color.BLACK));
                 scoreBoard.getChildren().add(scoreLabel);
@@ -537,7 +540,7 @@ public class Game implements Serializable {
                 popupStage.initOwner(Main.stage);
                 popupStage.initModality(Modality.APPLICATION_MODAL);
                 popupStage.setScene(new Scene(scoreBoard, Color.TRANSPARENT));
-                popupStage.setX(500);
+                popupStage.setX(450);
                 popupStage.setY(250);
 
                 restart.setOnAction(event -> {
@@ -616,6 +619,8 @@ public class Game implements Serializable {
             pt.setPath(path);
             parallelTransition.getChildren().add(pt);
         }
+        ball.setFill(Color.BLACK);
+        ball.setFill(Color.TRANSPARENT);
         root.getChildren().add(root3);
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
@@ -633,7 +638,8 @@ public class Game implements Serializable {
         arr.add(Color.rgb(50, 219, 240));
         arr.add(Color.rgb(255, 1, 129));
 
-        Group root3 = new Group();
+        //Group root3 = new Group();
+        ArrayList<Group> smallballs = new ArrayList<>();
 
         for (int i=0; i<1000; i++)
         {
@@ -641,7 +647,10 @@ public class Game implements Serializable {
             //Arc a1 = new Arc(250, 250, 3,3,0,360);
             Circle c1 = new Circle(688, ball.getLayY(),3);
             c1.setFill(arr.get(getRandom(4)));
-            root3.getChildren().add(c1);
+            Group temp = new Group(c1);
+            root.getChildren().add(temp);
+            smallballs.add(temp);
+            //root3.getChildren().add(c1);
 
             MoveTo moveTo;
 
@@ -658,7 +667,7 @@ public class Game implements Serializable {
                 moveTo = new MoveTo(getRandom(x1)+x1, getRandom((int)ball.getLayY()+ 500));
             }
 
-            LineTo lineTo = new LineTo(688, 700);
+            LineTo lineTo = new LineTo(698, 710);
 
             path.getElements().addAll(moveTo, lineTo);
 
@@ -668,9 +677,20 @@ public class Game implements Serializable {
             pt.setPath(path);
             parallelTransition.getChildren().add(pt);
         }
-        root.getChildren().add(root3);
+
+        //root.getChildren().add(root3);
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
+
+        ball.setFill(arr.get(getRandom(4)));
+        EventHandler<ActionEvent> event1 = actionEvent -> {
+            for (int i=0; i<1000; i++)
+            {
+                root.getChildren().remove(smallballs.get(i));
+            }
+        };
+
+        sq.setOnFinished(event1);
     }
 
     public void tapBall()
@@ -682,7 +702,7 @@ public class Game implements Serializable {
         String path = localDir+"\\jump.wav";
         Media media = new Media(new File(path).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setAutoPlay(Main.sound);
     }
 
     public void scroll()

@@ -176,16 +176,14 @@ class StartingGame
         translateTransition1.setToY(-140);
         translateTransition1.setCycleCount(1);
 
-        for (int i=0; i<2; i++)
-        {
-            Main.sound = true;
-            String localDir = System.getProperty("user.dir");
-            String path = localDir+"\\jump.wav";
-            Media media = new Media(new File(path).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setAutoPlay(Main.sound);
-            Main.sound = false;
-        }
+
+        String localDir = System.getProperty("user.dir");
+        String path = localDir+"\\jump.wav";
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(3);
+        mediaPlayer.setAutoPlay(Main.sound);
+
 
         TranslateTransition translateTransition2 = new TranslateTransition(Duration.millis(600), root2);
         translateTransition2.setToY(0);

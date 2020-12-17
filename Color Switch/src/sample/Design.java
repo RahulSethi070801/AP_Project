@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.*;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -21,6 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -163,9 +166,15 @@ public class Design
             @Override
             public void handle(MouseEvent e) {
                 if (imageView3.getImage() == image31)
+                {
                     imageView3.setImage(image32);
+                    Main.sound = false;
+                }
                 else
+                {
                     imageView3.setImage(image31);
+                    Main.sound = true;
+                }
             }
         };
         //Registering the event filter
@@ -186,9 +195,22 @@ public class Design
             @Override
             public void handle(MouseEvent e) {
                 if (imageView4.getImage() == image41)
+                {
                     imageView4.setImage(image42);
+
+//                    Main.music=false;
+                    Main.mediaPlayerMain.stop();
+                }
                 else
+                {
                     imageView4.setImage(image41);
+                    Main.localDir = System.getProperty("user.dir");
+                    Main.path = localDir+"\\BackgroundMusic.mp3";
+                    Main.mediaMain = new Media(new File(Main.path).toURI().toString());
+                    Main.mediaPlayerMain = new MediaPlayer(Main.mediaMain);
+                    Main.music = true;
+                    Main.mediaPlayerMain.setAutoPlay(Main.music);
+                }
             }
         };
         //Registering the event filter
