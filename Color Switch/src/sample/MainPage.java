@@ -20,6 +20,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.*;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
@@ -81,6 +83,11 @@ public class MainPage
         Main.stage.setScene(new Scene(root, 1600, 1050, Color.BLACK));
         Main.stage.setX(-25);
         Main.stage.setY(-35);
+
+
+
+        Main.mediaPlayerMain.setAutoPlay(Main.music);
+
 
         if (Main.newPage)
         {
@@ -159,6 +166,10 @@ public class MainPage
         gmb.show();
         Group root4 = gmb.getRoot();
 
+        FunModeBanner fmb = new FunModeBanner();
+        fmb.show();
+        Group root6 = fmb.getRoot();
+
         Exit exit = new Exit();
         exit.show();
         Group root5 = exit.getRoot();
@@ -166,6 +177,7 @@ public class MainPage
         root.getChildren().add(root1);
         root.getChildren().add(root4);
         root.getChildren().add(root5);
+        root.getChildren().addAll(root6);
 
         Main.newPage = false;
 

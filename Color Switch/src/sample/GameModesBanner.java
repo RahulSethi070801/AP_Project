@@ -43,33 +43,33 @@ class GameModesBanner
 
         Polygon rectangle = new Polygon();
         rectangle.getPoints().addAll(new Double[]{
-            850.0, 650.0,
-            650.0, 650.0,
-            650.0, 700.0,
-            850.0, 700.0,
+            850.0, 710.0,
+            650.0, 710.0,
+            650.0, 760.0,
+            850.0, 760.0,
         });
         rectangle.setFill(Color.BLUE);
         root.getChildren().add(rectangle);
 
         Polygon t1 = new Polygon();
         t1.getPoints().addAll(new Double[]{
-            850.0, 650.0,
-            835.0, 675.0,
-            850.0, 700.0,
+            850.0, 710.0,
+            835.0, 735.0,
+            850.0, 760.0,
         });
         t1.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t1);
 
         Polygon t2 = new Polygon();
         t2.getPoints().addAll(new Double[]{
-            650.0, 650.0,
-            665.0, 675.0,
-            650.0, 700.0,
+            650.0, 710.0,
+            665.0, 735.0,
+            650.0, 760.0,
         });
         t2.setFill(Color.rgb(0, 0, 0));
         root.getChildren().add(t2);
 
-        Text t = new Text (693, 680, "SAVED GAMES");
+        Text t = new Text (693, 740, "SAVED GAMES");
         t.setFont(Font.font ("Comic Sans MS", 17));
         t.setFill(Color.WHITE);
         root.getChildren().add(t);
