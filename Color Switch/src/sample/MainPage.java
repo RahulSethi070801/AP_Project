@@ -183,7 +183,7 @@ public class MainPage
         root.getChildren().add(root1);
         root.getChildren().add(root4);
         root.getChildren().add(root5);
-        root.getChildren().addAll(root6);
+        root.getChildren().add(root6);
 
         Main.newPage = false;
 

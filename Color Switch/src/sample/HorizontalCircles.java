@@ -63,7 +63,7 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
     
     public void show(long y, long difficulty)
     {
-        this.yy = y;
+        this.y = y;
         Arc arc11 = new Arc(570, 400+y, 130, 130, 0, 90);
         arc11.setType(ArcType.ROUND);
         Arc arc12 = new Arc(570, 400+y, 90, 90, 0, 90);
