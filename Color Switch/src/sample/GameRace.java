@@ -318,7 +318,7 @@ public class GameRace
             Label label1 = new Label("Score : " + score);
             label1.setId("paused");
             label1.setEffect(new DropShadow(20,Color.BLACK));
-            pauseRoot.getChildren().add(label);
+            pauseRoot.getChildren().add(label1);
 
             Button restart = new Button("Restart ");
             Button exit=new Button("Exit");
@@ -348,7 +348,7 @@ public class GameRace
                 }
                 catch(Exception e)
                 {
-                    System.out.println(e);
+                    e.printStackTrace();
                 }
                 popupStage.hide();
 
@@ -360,9 +360,7 @@ public class GameRace
                 try {
                     //Main.stage2.close();
                     new MainPage();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -395,11 +393,11 @@ public class GameRace
         // inverting direction
         this.speed = -400;
         // playing sound
-//        String localDir = System.getProperty("user.dir");
-//        String path = localDir+"\\jump.wav";
-//        Media media = new Media(new File(path).toURI().toString());
-//        MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.setAutoPlay(true);
+        String localDir = System.getProperty("user.dir");
+        String path = localDir+"\\jump.wav";
+        Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(true);
     }
 
     public void scroll()

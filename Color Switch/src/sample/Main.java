@@ -44,6 +44,7 @@ public class Main extends Application {
     public static String localDir;
     public static String path;
     public Main() {
+        System.out.println("oausbdo");
         stage = new Stage();
         stage2 = new Stage();
     }
@@ -66,7 +67,7 @@ public class Main extends Application {
 }
 
 
-// TODO : high score total score serializable
+// TODO : high score total score serializable (done)
 // TODO : PPT
 // TODO : Integrate (done)
 // TODO : Horizontal Line

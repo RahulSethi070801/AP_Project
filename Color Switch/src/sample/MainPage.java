@@ -126,7 +126,13 @@ public class MainPage
                 root.setEffect(null);
                 String name = textField.getText();
                 Main.user = new User(name);
-
+                try {
+                    Main.user.initScores();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
                 Design ds = new Design();
                 try{
                     ds.show();

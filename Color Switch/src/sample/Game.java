@@ -489,7 +489,7 @@ public class Game implements Serializable {
                     if(Main.user.getHighestScore() < score)
                         Main.user.setHighestScore(score);
                     new MainPage();
-                } catch (FileNotFoundException | InterruptedException ex) {
+                } catch (Exception ex) {
                     ex.printStackTrace();
                     System.out.println("Game Over");
                 }
@@ -554,7 +554,7 @@ public class Game implements Serializable {
                     }
                     catch(Exception e)
                     {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                     popupStage.hide();
 
@@ -853,9 +853,15 @@ public class Game implements Serializable {
                 });
 
                 save_game.setOnAction(event -> {
-                    Main.user.incrementTotalScore(score);
-                    if(Main.user.getHighestScore() < score)
-                        Main.user.setHighestScore(score);
+                    try {
+                        Main.user.incrementTotalScore(score);
+                        if (Main.user.getHighestScore() < score)
+                            Main.user.setHighestScore(score);
+                    }
+                    catch(Exception ex)
+                    {
+                        ex.printStackTrace();
+                    }
                     pauseRoot.getChildren().clear();
                     Label label = new Label("Enter Name");
                     label.setId("paused");
@@ -898,7 +904,7 @@ public class Game implements Serializable {
                     }
                     catch(Exception ef)
                     {
-                        System.out.println(ef);
+                        ef.printStackTrace();
                     }
                     popupStage.hide();
 
