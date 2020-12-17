@@ -218,10 +218,10 @@ public class Game implements Serializable {
 //        {
 //            o = new Triangle();
 //        }
-//        else if(tempO[ind].equals("Lines"))
-//        {
-//            o = new HorizontalLine();
-//        }
+        else if(tempO[ind].equals("Lines"))
+        {
+            o = new HorizontalLine();
+        }
         else if(tempO[ind].equals("2Plus"))
         {
             o = new TwoPlus();
@@ -231,7 +231,7 @@ public class Game implements Serializable {
             o = new Plus();
         }
         else
-            o = new Ring();
+            o = new HorizontalLine();
 
         o.show(y, difficulty);
         obstacles.add(o);
