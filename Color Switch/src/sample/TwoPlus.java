@@ -65,13 +65,13 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
     public void show(long y, long difficulty)
     {
         line1 = new Line(100+400, 400+y, 200+400, 400+y);
-        line1.setStrokeWidth(10);
+        line1.setStrokeWidth(20);
         line2 = new Line(200+400, 400+y, 300+400, 400+y);
-        line2.setStrokeWidth(10);
+        line2.setStrokeWidth(20);
         line3 = new Line(200+400, 400+y, 200+400, 500+y);
-        line3.setStrokeWidth(10);
+        line3.setStrokeWidth(20);
         line4 = new Line(200+400, 400+y, 200+400, 300+y);
-        line4.setStrokeWidth(10);
+        line4.setStrokeWidth(20);
 
         line1.setStroke(Color.rgb(144, 13, 255));
         line2.setStroke(Color.rgb (250, 225, 0));
@@ -79,13 +79,13 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
         line4.setStroke(Color.rgb(255, 1, 129));
 
         line5 = new Line(400+400, 400+y, 500+400, 400+y);
-        line5.setStrokeWidth(10);
+        line5.setStrokeWidth(20);
         line6 = new Line(400+400, 400+y, 300+400, 400+y);
-        line6.setStrokeWidth(10);
+        line6.setStrokeWidth(20);
         line7 = new Line(400+400, 400+y, 400+400, 500+y);
-        line7.setStrokeWidth(10);
+        line7.setStrokeWidth(20);
         line8 = new Line(400+400, 400+y, 400+400, 300+y);
-        line8.setStrokeWidth(10);
+        line8.setStrokeWidth(20);
 
         line5.setStroke(Color.rgb(144, 13, 255));
         line6.setStroke(Color.rgb (250, 225, 0));
