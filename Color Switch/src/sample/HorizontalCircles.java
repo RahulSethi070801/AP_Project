@@ -167,6 +167,7 @@ public class HorizontalCircles extends Obstacle implements Blast, Serializable
 
     public void increaseDifficulty(RotateTransition rt,  long difficulty)
     {
-        rt.setDuration(Duration.millis(8000-difficulty));
+        if(duration-difficulty>0)
+            rt.setDuration(Duration.millis(duration-difficulty));
     }
 }

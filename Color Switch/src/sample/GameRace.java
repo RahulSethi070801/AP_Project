@@ -53,25 +53,19 @@ import java.util.Random;
 public class GameRace implements Display
 {
     public static Stage stage;
-    // serializable objects
-    transient Group root;
-    transient Scene scene2;
-    transient ArrayList<Group> root_list = new ArrayList<Group>();
-    transient Ball ball;
-    transient AnimationTimer t;
-    transient Text text1;
-
+    Group root;
+    Scene scene2;
+    ArrayList<Group> root_list = new ArrayList<Group>();
+    Ball ball;
+    AnimationTimer t;
+    Text text1;
     ArrayList<ObsRec> obstacles;
     ArrayList<StarRace> stars;
     double g = 1500;
     double speed = 0.0;
-
     long score = 0;
     long difficulty = 0;
     long x=600;
-    String name;
-    boolean newGame = true;
-    transient int ind = 0;
     long count = 0;
 
     Random rand = new Random();
@@ -80,15 +74,6 @@ public class GameRace implements Display
     public long getDifficulty()
     {
         return this.difficulty;
-    }
-    public void setDifficulty(){}
-    public void playGame(){}
-    public void setBackground(){}
-
-
-    public void setStars(int stars){}
-    public double getStars(){
-        return this.score;
     }
 
     public GameRace()
@@ -104,26 +89,7 @@ public class GameRace implements Display
         catch(Exception e) {
             e.printStackTrace();
         }
-
     }
-
-//    public void init()
-//    {
-//        root= new Group();
-//        scene2=new Scene(root, 800, 800);
-//        scene2.setFill(Color.BLACK);
-//        Main.stage2.setScene(scene2);
-//        Main.stage2.setFullScreen(true);
-//        this.obstacles = new ArrayList<>();
-//        try{
-//            show();
-//        }
-//        catch(Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
 
     public void addObstacle() throws FileNotFoundException
     {
@@ -164,22 +130,17 @@ public class GameRace implements Display
         count++;
     }
 
-
-
     public int getRandom(int n)
     {
         Random rand = new Random();
         return rand.nextInt(n);
     }
 
-
     public void update(double time, Circle ball_c) throws FileNotFoundException
     {
-
         time/=Math.pow(10,9);
         this.speed += this.g*time;
         double s = (this.speed*time + 0.5*this.g*Math.pow(time,2));
-//        System.out.println(this.ball.getLayY()+" "+s);
         if(this.ball.getLayY()+s>900)
         {
             explode(ball);
@@ -197,50 +158,25 @@ public class GameRace implements Display
                 root_list.remove(stars.get(index).getRoot());
                 stars.remove(index);
                 ball.setFill(Color.rgb(getRandom(256), getRandom(256), getRandom(256)));
+                String localDir = System.getProperty("user.dir");
+                String path = localDir+"\\star.wav";
+                Media media = new Media(new File(path).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setAutoPlay(Main.sound);
                 continue;
             }
             index++;
         }
 
-//        ArrayList<Double> a = new ArrayList<>();
-//        int index=0;
-//        while(index<stars.size()){
-//
-//            if (isCollide(ball_c, stars.get(index).getRoot()))
-//            {
-////                System.out.println("collide");
-////                root.getChildren().remove(stars.get(i).getRoot());
-////                //root_list.remove(stars.get(0).getRoot());
-////                stars.remove(i);
-//                text1.setText(String.valueOf(++score));
-//                    System.out.println(index);
-//                    stars.remove(index);
-//                    continue;
-//                // Sound
-////                String localDir = System.getProperty("user.dir");
-////                String path = localDir+"\\star.wav";
-////                Media media = new Media(new File(path).toURI().toString());
-////                MediaPlayer mediaPlayer = new MediaPlayer(media);
-////                mediaPlayer.setAutoPlay(true);
-//            }
-//            index++;
-//        }
-//        stars.removeAll(a);
-
         for (int i=0; i<obstacles.size(); i++)
         {
-//            System.out.println(this.obstacles.get(i)+" obstacle "+this.obstacles.get(i).getLayoutY());
             if (obstacles.get(i).blast(ball_c))
             {
-//                String localDir = System.getProperty("user.dir");
-//                String path = localDir+"\\dead.wav";
-//                Media media = new Media(new File(path).toURI().toString());
-//                MediaPlayer mediaPlayer = new MediaPlayer(media);
-//                mediaPlayer.setAutoPlay(true);
-//                this.ind = i;
-
-//                System.exit(0);
-
+                String localDir = System.getProperty("user.dir");
+                String path = localDir+"\\dead.wav";
+                Media media = new Media(new File(path).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setAutoPlay(true);
                 explode(ball);
             }
         }
@@ -292,7 +228,6 @@ public class GameRace implements Display
         SequentialTransition sq = new SequentialTransition(parallelTransition);
         sq.play();
         ball.setFill(Color.TRANSPARENT);
-        //root.getChildren().remove(root3);
         t.stop();
         sq.setOnFinished(actionEvent -> revive());
     }
@@ -300,7 +235,6 @@ public class GameRace implements Display
     public void revive()
     {
         if(score>=0) {
-            //System.out.println("starting");
             t.stop();
             root.setEffect(new GaussianBlur());
             VBox pauseRoot = new VBox(40);
@@ -378,14 +312,8 @@ public class GameRace implements Display
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            //System.out.println("qwebo");
         }
     }
-
-
-
-
 
     public void tapBall()
     {
@@ -402,17 +330,12 @@ public class GameRace implements Display
 
     public void scroll()
     {
-//        if(ball.getLayY()<375) {
-//        System.out.println("scroll");
         for (int i = 0; i < root_list.size(); i++) {
             double dex = root_list.get(i).getLayoutX();
-//                System.out.println(dey + " dey");
             root_list.get(i).setLayoutX(dex - 2);
         }
-//        }
     }
 
-    int counter=0;
     public void show() throws FileNotFoundException, IOException, ClassNotFoundException
     {
 
@@ -439,7 +362,6 @@ public class GameRace implements Display
 
         String localDir = System.getProperty("user.dir");
 
-//        System.out.println("pqwinep");
         t = new AnimationTimer(){
             long lastUpdate;
             int i;
@@ -450,11 +372,9 @@ public class GameRace implements Display
             }
             @Override
             public void handle(long now){
-//                System.out.println(now);
                 //Ball Update
                 long elapsed = now - lastUpdate;
                 try {
-//                    System.out.println("aosdo");
                     update(elapsed, ball_c);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -465,22 +385,13 @@ public class GameRace implements Display
             }
         };
 
-//        System.out.println("hahaahah");
-//        int counter = 0;
         scene2.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.Q) {
-//                final int ctr=counter;
-//                System.out.println("UP"+ctr);
-//                counter++;
-//                System.out.println(scene2);
                 tapBall();
                 t.start();
             }
         });
 
-//        System.out.println("before start");
-
-//        System.out.println("after start");
         // Show Pause button
         InputStream stream1 = new FileInputStream(localDir+"\\Pause.png");
         Image image1 = new Image(stream1);
@@ -490,28 +401,11 @@ public class GameRace implements Display
         imageView1.setY(50);
         imageView1.setFitWidth(100);
         imageView1.setPreserveRatio(true);
-//        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent e) {
-////                Bounds bounds = root.getBoundsInParent();
-//                //System.out.println("Pause");
-////                polygon.setFill(Color.DARKSLATEBLUE);
-//                try {
-////                    t.pause();
-////                    timeline1.pause();
-//                    new PauseMenu();
-//                } catch (FileNotFoundException ex) {
-//                    ex.printStackTrace();
-//                }
-//            }
-//        };
 
         // pause menu
         EventHandler<MouseEvent> event = new EventHandler<MouseEvent>() {
             public void handle(MouseEvent e)
             {
-//                t.pause();
-//                timeline1.pause();
                 t.stop();
                 root.setEffect(new GaussianBlur());
 
@@ -567,13 +461,11 @@ public class GameRace implements Display
                 restart.setOnAction(event -> {
                     root.setEffect(null);
                     try {
-                        //System.out.println("restart");
                         popupStage.hide();
                         new GameRace();
                     }
                     catch(Exception ef)
                     {
-//                        System.out.println(ef);
                         ef.printStackTrace();
                     }
                     popupStage.hide();
@@ -582,8 +474,6 @@ public class GameRace implements Display
                 popupStage.show();
             }
         };
-        //Registering the event filter
-
 
         // Score Star
         InputStream stream2 = new FileInputStream(localDir+"\\Star1.png");
@@ -601,7 +491,6 @@ public class GameRace implements Display
         root2.addEventFilter(MouseEvent.MOUSE_CLICKED, event);
 
         root.getChildren().add(root2);
-        //root.getChildren().add(root_ball);
 
     }
 }

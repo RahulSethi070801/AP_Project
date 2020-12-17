@@ -94,11 +94,14 @@ public class Plus extends Obstacle implements Blast, Serializable
         rotateTransition.setAutoReverse(false);
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.play();
+
+        duration = 6000;
     }
     
     public void increaseDifficulty(RotateTransition rt,  long difficulty)
     {
-        rt.setDuration(Duration.millis(8000-difficulty));
+        if(duration - difficulty > 0)
+            rt.setDuration(Duration.millis(duration-difficulty));
     }
 
 }

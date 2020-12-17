@@ -123,7 +123,6 @@ class Ring extends Obstacle implements Blast
         rotateTransition.play();
 
         return ;
-
     }
 
     public void increaseDifficulty(RotateTransition rt,  long difficulty)

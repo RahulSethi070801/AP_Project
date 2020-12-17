@@ -72,6 +72,7 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
         double X = -26000;
 //        Group figure = new Group();
 
+        duration = 8000;
         for(int i=0; i<20; i++)
         {
             Group oneLine;
@@ -149,10 +150,13 @@ public class HorizontalLine extends Obstacle implements Blast, Serializable
     
     public void increaseDifficulty(long difficulty)
     {
-        translateTransition1.setDuration(Duration.millis(duration-difficulty));
-        translateTransition2.setDuration(Duration.millis(duration-difficulty));
-        translateTransition3.setDuration(Duration.millis(duration-difficulty));
-        translateTransition4.setDuration(Duration.millis(duration-difficulty));
-        duration-=difficulty;
+        if(duration-difficulty>0)
+        {
+            translateTransition1.setDuration(Duration.millis(duration-difficulty));
+            translateTransition2.setDuration(Duration.millis(duration-difficulty));
+            translateTransition3.setDuration(Duration.millis(duration-difficulty));
+            translateTransition4.setDuration(Duration.millis(duration-difficulty));
+            duration-=difficulty;
+        }
     }
 }

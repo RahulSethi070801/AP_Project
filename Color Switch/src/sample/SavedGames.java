@@ -2,16 +2,23 @@ package sample;
 
 import javafx.application.Application;
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Group; 
 import javafx.scene.shape.*; 
 import javafx.scene.paint.Color;
-import javafx.scene.transform.Rotate;  
+import javafx.scene.transform.Rotate;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javafx.animation.RotateTransition;  
 import javafx.animation.Interpolator;
@@ -74,111 +81,69 @@ public class SavedGames implements Display
         Main.stage.setScene(scene3);
         Main.stage.setFullScreen(true);
 
-        Polygon rectangle = new Polygon();
-        rectangle.getPoints().addAll(new Double[]{
-                850.0, 250.0,
-                650.0, 250.0,
-                650.0, 300.0,
-                850.0, 300.0,
-        });
-        rectangle.setFill(Color.BLUE);
-        root.getChildren().add(rectangle);
+        VBox pauseRoot = new VBox(40);
+        pauseRoot.setFillWidth(true);
+        pauseRoot.setId("menu");
+        pauseRoot.setAlignment(Pos.CENTER);
+        pauseRoot.setPadding(new Insets(20));
+        pauseRoot.setEffect(new DropShadow(20, Color.BLACK));
+        //adding styled sheet to VBox
+        String  style= getClass().getResource("styles.css").toExternalForm();
+        pauseRoot.getStylesheets().add(style);
 
-        Polygon t1 = new Polygon();
-        t1.getPoints().addAll(new Double[]{
-                850.0, 250.0,
-                835.0, 275.0,
-                850.0, 300.0,
-        });
-        t1.setFill(Color.rgb(0, 0, 0));
-        root.getChildren().add(t1);
 
-        Polygon t2 = new Polygon();
-        t2.getPoints().addAll(new Double[]{
-                650.0, 250.0,
-                665.0, 275.0,
-                650.0, 300.0,
-        });
-        t2.setFill(Color.rgb(0, 0, 0));
-        root.getChildren().add(t2);
+        //adding label
+        Label label = new Label("Saved Games");
+        label.setId("paused");
+        label.setEffect(new DropShadow(20,Color.BLACK));
+        pauseRoot.getChildren().add(label);
 
-        Text t = new Text (700, 280, "Game Modes");
-        t.setFont(Font.font ("Comic Sans MS", 17));
-        t.setFill(Color.WHITE);
-        root.getChildren().add(t);
+        Stage popupStage = new Stage(StageStyle.TRANSPARENT);
+        popupStage.initOwner(Main.stage);
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.setScene(new Scene(pauseRoot, Color.TRANSPARENT));
+        popupStage.setX(500);
+        popupStage.setY(250);
 
         for(int i=0;i<this.games.size();i++){
-            rectangle = new Polygon();
-            rectangle.getPoints().addAll(new Double[]{
-                    850.0, 350.0+(i+1)*50,
-                    650.0, 350.0+(i+1)*50,
-                    650.0, 390.0+(i+1)*50,
-                    850.0, 390.0+(i+1)*50,
-            });
-            rectangle.setFill(Color.WHITE);
-            root.getChildren().add(rectangle);
+            Button restart = new Button(this.games.get(i).getName());
+            restart.setId("resume");
+            restart.setEffect(new DropShadow(20, Color.BLACK));
+            pauseRoot.getChildren().add(restart);
 
-            t = new Text (730, 380+(i+1)*50, this.games.get(i).getName());
-            // t.setText("This is a text sample");
-            t.setFont(Font.font ("Comic Sans MS", 17));
-            t.setFill(Color.BLUE);
-            root.getChildren().add(t);
             int x = i+1;
-            EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent e) {
-                    Game game = games.get(x-1);
-                    System.out.println(game.getName());
-//                    System.out.println("Hello World"+x);
-                    try {
-//                        game.newGame=false;
-                        game.setNewGameFalse();
-                        new Game(game);
-                        System.out.println("Saved Game is initialized");
-                        game.show();
-//                        game.play();
-                    }
-                    catch(Exception ex){
-                        System.out.println("HEHEEH");
-                        ex.printStackTrace();
-                    }
+            restart.setOnAction(event -> {
+                Game game = games.get(x-1);
+                System.out.println(game.getName());
+                try {
+                    game.setNewGameFalse();
+                    new Game(game);
+                    System.out.println("Saved Game is initialized");
+                    game.show();
                 }
-            };
-            //Registering the event filter 
-            t.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-            // t.setOnMouseEntered( e -> t.setFill(Color.YELLOW));
-            registerHandler(t, Color.BLUE, Color.MAGENTA);
-            
+                catch(Exception ex){
+                    ex.printStackTrace();
+                }
+                popupStage.hide();
+            });
         }
 
-        String localDir = System.getProperty("user.dir");
+        Button exit=new Button("Exit");
+        exit.setId("exit");
+        exit.setEffect(new DropShadow(20, Color.BLACK));
+        pauseRoot.getChildren().add(exit);
 
-        InputStream stream1 = new FileInputStream(localDir + "//Back.jpg");
-        Image image1 = new Image(stream1);
-        ImageView imageView1 = new ImageView();
-        imageView1.setImage(image1);
-        imageView1.setX(50);
-        imageView1.setY(50);
-        imageView1.setFitWidth(80);
-        imageView1.setPreserveRatio(true);
-
-        Group root2 = new Group(imageView1);
-        root.getChildren().add(root2);
-
-        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                try {
-                    new MainPage();
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+        exit.setOnAction(event -> {
+            root.setEffect(null);
+            popupStage.hide();
+            try {
+                new MainPage();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        };
+        });
 
-        root2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        popupStage.show();
     }
 
     public void changeColor(Text t){

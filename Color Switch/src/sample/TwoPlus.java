@@ -133,7 +133,7 @@ public class TwoPlus extends Obstacle implements Blast, Serializable
 
     public void increaseDifficulty(RotateTransition rt,  long difficulty)
     {
-        rt.setDuration(Duration.millis(8000-difficulty));
+        rt.setDuration(Duration.millis(5000-difficulty));
     }
 
 }

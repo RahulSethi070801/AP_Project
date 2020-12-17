@@ -93,15 +93,11 @@ public class Game implements Serializable, Display {
 
     Game(Game game) throws FileNotFoundException, IOException, ClassNotFoundException
     {
-//        root = new Group();
         game.root = new Group();
         game.scene2 = new Scene(game.root, 1600, 1050, Color.BLACK);
         Main.stage.setScene(game.scene2);
         Main.stage.setX(-25);
         Main.stage.setY(-35);
-//        Main.stage.setFullScreen(true);
-//        this.obstacles = new ArrayList<Obstacle>();
-//        game.show();
     }
 
     Game(String name)
@@ -154,13 +150,14 @@ public class Game implements Serializable, Display {
         }
     }
 
-
     public long getDifficulty()
     {
         return this.difficulty;
     }
 
-    public void setDifficulty(){}
+    public void setDifficulty(long difficulty){
+        this.difficulty = difficulty;
+    }
 
     public void exitGame(){
         try {
@@ -169,12 +166,14 @@ public class Game implements Serializable, Display {
         catch (Exception e)
         {}
     }
-    public void checkCollision(){}
-    public void setStars(int stars){}
+
+    public void setStars(int stars){
+        this.score = stars;
+    }
+
     public double getStars(){
         return this.score;
     }
-    public void reviveGame(){}
 
     public void saveAndExitGame()
     {
@@ -244,7 +243,8 @@ public class Game implements Serializable, Display {
         root_list.add(colorswitch.getRoot());
         colorSwitches.add(colorswitch);
 
-        difficulty -= 500;
+        setDifficulty(difficulty-500);
+
         y-=500;
     }
 
@@ -272,19 +272,16 @@ public class Game implements Serializable, Display {
 
     public void update(double time, Circle ball_c) throws FileNotFoundException
     {
-        // s = ut+0.5at^2
-//        System.out.println(time);
         time/=Math.pow(10,9);
         this.speed += this.g*time;
         double s = (this.speed*time + 0.5*this.g*Math.pow(time,2));
-//        System.out.println(this.ball.getLayY()+" "+s);
+
         if(this.ball.getLayY()+s<=710) {
             this.ball.setLayoutY(s);
         }
 
         if (isCollide(ball, colorSwitches.get(0).getRoot()))
         {
-            //System.out.println("touch");
             while (true)
             {
                 if (getRandom(4) == 0)
@@ -341,12 +338,7 @@ public class Game implements Serializable, Display {
         }
         if (isCollide(ball, stars.get(0).getRoot()))
         {
-            //System.out.println("touch");
             difficulty+=1000;
-            // for(int j=0;j<obstacles.size();j++)
-            // {
-            //     obstacles.get(j).increaseDifficulty(difficulty);
-            // }
             root.getChildren().remove(stars.get(0).getRoot());
             root_list.remove(stars.get(0).getRoot());
             stars.remove(0);
@@ -358,16 +350,8 @@ public class Game implements Serializable, Display {
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setAutoPlay(Main.sound);
         }
-        /*if (obstacles.get(0).getLayoutY() > 800)
-        {
-            System.out.println("a");
-            obstacles.remove(0);
-            addObstacle();
-        }*/
-        //System.out.println(obstacles.size());
         for (int i=0; i<obstacles.size(); i++)
         {
-//            System.out.println(this.obstacles.get(i)+" obstacle "+this.obstacles.get(i).getLayoutY());
             if (obstacles.get(i).blast(ball_c))
             {
                 String localDir = System.getProperty("user.dir");
@@ -634,7 +618,6 @@ public class Game implements Serializable, Display {
         arr.add(Color.rgb(50, 219, 240));
         arr.add(Color.rgb(255, 1, 129));
 
-        //Group root3 = new Group();
         ArrayList<Group> smallballs = new ArrayList<>();
 
         for (int i=0; i<1000; i++)
@@ -954,8 +937,8 @@ public class Game implements Serializable, Display {
 
             for(int i=0;i<this.colorSwitches.size();i++)
             {
-                double temp = this.colorSwitches.get(i).getLayoutY()+this.root_list.get(this.root_list.indexOf(this.colorSwitches.get(i).getRoot())).getLayoutY();
-                this.colorSwitches.get(i).setLayoutY(temp);
+                double temp = this.colorSwitches.get(i).y+this.root_list.get(this.root_list.indexOf(this.colorSwitches.get(i).getRoot())).getLayoutY();
+                this.colorSwitches.get(i).y = temp;
                 // System.out.println(this.colorSwitches.get(i).getLayoutY()+" "+this.colorSwitches.get(i).getClass());
             }
             out.writeObject(this);

@@ -144,6 +144,7 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
         rotateTransition.setInterpolator(Interpolator.LINEAR);
         rotateTransition.setNode(root);
         rotateTransition.play();
+        duration = 5000;
     }
     public void setLayoutY(double y)
     {
@@ -164,6 +165,6 @@ public class ConcentricCircles extends Obstacle implements Blast, Serializable
 
     public void increaseDifficulty(RotateTransition rt,  long difficulty)
     {
-        rt.setDuration(Duration.millis(8000-difficulty));
+        rt.setDuration(Duration.millis(duration-difficulty));
     }
 }
