@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class PauseMenu
+public class PauseMenu implements Display
 {
 
     PauseMenu() throws FileNotFoundException {

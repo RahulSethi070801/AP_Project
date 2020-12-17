@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
 import java.io.FileNotFoundException;
 
-class Achievements
+class Achievements implements Display
 {
     private Group root;
 

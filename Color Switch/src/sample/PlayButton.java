@@ -20,7 +20,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.FileNotFoundException;
 
-class PlayButton
+class PlayButton implements Display
 {
     private Group root;
 

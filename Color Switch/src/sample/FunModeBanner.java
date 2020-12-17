@@ -20,7 +20,7 @@ import javafx.scene.text.*;
 
 import java.io.FileNotFoundException;
 import java.util.*;
-class FunModeBanner
+class FunModeBanner implements Display
 {
     private Group root;
 

@@ -44,7 +44,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game implements Serializable {
+public class Game implements Serializable, Display {
     // non serializable objects
     private transient Group root;
     private transient Scene scene2;
@@ -159,6 +159,7 @@ public class Game implements Serializable {
     {
         return this.difficulty;
     }
+
     public void setDifficulty(){}
 
     public void exitGame(){

@@ -34,7 +34,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 
-public class Heading
+public class Heading implements Display
 {
     private Group root;
 

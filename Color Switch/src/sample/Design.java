@@ -28,7 +28,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class Design
+public class Design implements Display
 {
     private Group root;
 

@@ -26,7 +26,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.io.*;
 
-public class SavedGames
+public class SavedGames implements Display
 {
     private Group root;
     private ArrayList<Game> savedGames;

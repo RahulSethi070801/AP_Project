@@ -50,7 +50,7 @@ import java.util.Random;
 
 
 
-public class GameRace
+public class GameRace implements Display
 {
     public static Stage stage;
     // serializable objects

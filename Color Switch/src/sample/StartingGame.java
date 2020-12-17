@@ -22,7 +22,7 @@ import java.sql.Time;
 import java.util.Random;
 
 
-class StartingGame
+class StartingGame implements Display
 {
     private Group root;
 

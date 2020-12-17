@@ -41,7 +41,7 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.*;
 
-public class MainPage
+public class MainPage implements Display
 {
     private Group root;
 

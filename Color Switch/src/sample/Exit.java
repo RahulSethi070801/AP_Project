@@ -18,7 +18,7 @@ import javafx.animation.Interpolator;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.*;
 
-class Exit
+class Exit implements Display
 {
     Group root;
 
